@@ -1,0 +1,59 @@
+<template>
+    <header>
+        <div class="container">
+            <h1>{{ title }}</h1>
+            <div class="container-mode">
+                <h2>{{mode}} mode</h2>
+                <Toggle :mode="mode" @toggle="$emit('toggle')" />
+            </div>
+        </div>
+    </header>
+</template>
+<script>
+
+import Toggle from './BookstoreToggle'
+
+export default {
+    props: ['mode'],
+    data() {
+        return {
+            title: 'Livraria do cowboy'
+        }
+    },
+    components: {
+        Toggle
+    }
+}
+</script>
+<style scoped>
+    .dark header {
+        background: #121420;
+    }
+    header{
+        height: 60px;
+        background: #95d9da;
+        transition: background 0.3s ease-in-out;
+        display: flex;
+        align-items: center;
+    }
+    header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    header h1 {
+        font-size: 24px;
+        color:#fff;
+        font-weight: 700;
+    }
+    header h2 {
+        font-size: 18px;
+        text-transform: capitalize;
+        font-weight: 700;
+        color:#fff;
+    }
+    .container-mode {
+        display: flex;
+        align-items: center;
+    }
+</style>
