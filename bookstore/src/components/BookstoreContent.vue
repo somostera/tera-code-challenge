@@ -1,25 +1,13 @@
 <template>
+    
     <div class="content">
-        <div class="wrapper">
-            <InputSearch :mode="mode"/>
-            <Selected :mode="mode"/>
-        </div>
-        <SectionBooks />
-        
+         <router-view></router-view>    
     </div>
 </template>
 <script>
-import InputSearch from './BookstoreInput'
-import Selected from './BookstoreSelected'
-import SectionBooks from './BookstoreSectionBooks'
 
 export default {
     props: ['mode'],
-    components: {
-        InputSearch,
-        Selected,
-        SectionBooks
-    }
 }
 </script>
 <style scoped>

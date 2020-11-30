@@ -1,8 +1,20 @@
 <template>
+<div>
+     <input 
+       type="text" 
+       placeholder="Procure por um livro"
+       v-model="busca"       
+        />
+        <select name="cars" id="cars">
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+</select>
   <div class="books-container">
-     <div class="list-books" v-for="item in books" :key="item.index">
+     <div class="list-books" v-for="(item, index) in resultadoBusca" :key="item.index">
        <div class="container-img">
-           <img class="img" :src="item.cover_picture" alt="">
+           <img @click="goToPage(`/books/${index}`)" class="img" :src="item.cover_picture" alt="">
         </div>
         <div class="wrapper-info-book">
             <div>
@@ -15,29 +27,43 @@
             </div>
             
         </div>
-     </div>   
+     </div>
+  </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
-import config from '../../config/config'
 
 export default {
   name: 'App',
   data() {
-    return {
-      books: []
+      return {
+            busca:''
+        }
+    },
+  computed: {
+    gettersbooks() {
+    return this.$store.getters.allBooks
+    },
+    books() {
+    return this.$store.getters.allBooks
+    },
+     resultadoBusca: function() {
+            if(this.busca == '' || this.busca == ' ') {
+                return this.$store.getters.allBooks;
+            } else {
+                return this.$store.getters.getBooksFromName(this.busca)
+            }
+        }
+  },
+  mounted() {
+    this.$store.dispatch("getBooks");
+  },
+    methods: {
+      goToPage(page) {
+        this.$router.push(page);
+      }
     }
-  },
-  components: {
-  },
-  created() {
-    axios.get(`${config.apiURL}/books`)
-    .then((response) => {
-      this.books = response.data
-    })
-  }
 }
 </script>
 
@@ -46,7 +72,7 @@ export default {
     width: 100%;
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
-    
+
 }
 .container-img {
     width: 150px;
@@ -56,6 +82,7 @@ export default {
 .container-img .img {
     width: 100%;
     height: 100%;
+    cursor:pointer;
 }
 
 .list-books {
