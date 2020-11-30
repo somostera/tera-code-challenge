@@ -13,7 +13,7 @@ export default {
   name: 'App',
   data() {
     return {
-      mode:'light'
+      mode:'light',
     }
   },
   components: {
