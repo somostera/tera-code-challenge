@@ -1,16 +1,7 @@
 <template>
 <div>
-     <input 
-       type="text" 
-       placeholder="Procure por um livro"
-       v-model="busca"       
-        />
-        <select name="cars" id="cars">
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="mercedes">Mercedes</option>
-            <option value="audi">Audi</option>
-</select>
+    <Input v-model="book"/>
+    <h2>Seu livro é {{book}}</h2>
   <div class="books-container">
      <div class="list-books" v-for="(item, index) in resultadoBusca" :key="item.index">
        <div class="container-img">
@@ -34,11 +25,18 @@
 
 <script>
 
+import Input from '../components/BookstoreInput'
+
 export default {
   name: 'App',
+  components: {
+      Input
+  },
   data() {
       return {
-            busca:''
+            busca:'',
+            selected:'',
+            book: ''
         }
     },
   computed: {
@@ -49,10 +47,10 @@ export default {
     return this.$store.getters.allBooks
     },
      resultadoBusca: function() {
-            if(this.busca == '' || this.busca == ' ') {
+            if(this.book == '' || this.book == ' ') {
                 return this.$store.getters.allBooks;
             } else {
-                return this.$store.getters.getBooksFromName(this.busca)
+                return this.$store.getters.getBooksFromName(this.book)
             }
         }
   },

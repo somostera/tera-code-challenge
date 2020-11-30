@@ -1,22 +1,23 @@
 <template>
     <div class="container-input">
        <input 
-       type="text" 
-       placeholder="Procure por um livro"
-       v-model="search"  
-       @change="$emit('input-search', $event.target.value)"     
+       type="text"
+       :value="value"
+        @keyup="$emit('input', $event.target.value)"
+        placeholder="Busque por um livro"   
         />
         <h2>Titulo: {{search}}</h2>
   </div>
 </template>
 <script>
 export default {
+    
     data() {
       return {
             busca:''
         }
     },
-    props: ['mode','search']
+    props: ['mode','input']
 }
 </script>
 <style scoped>
