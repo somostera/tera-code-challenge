@@ -1,7 +1,9 @@
 <template>
 <div>
-    <Input v-model="book"/>
-    <Selected :selecionado="selecionado" @selectionado="changeSelectionado"/>
+    <div class="container-inputs">
+        <Input v-model="book"/>
+        <Selected :selecionado="selecionado" @selectionado="changeSelectionado"/>
+    </div>
       <div class="books-container">
      <div class="list-books" v-for="(item, index) in resultadoBusca" :key="item.index">
        <div class="container-img">
@@ -114,6 +116,12 @@ export default {
 .wrapper-icon .icon {
     font-size: 20px;
 }
+.container-inputs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+}
 
 @media(min-width: 550px) {
     .books-container {
@@ -123,6 +131,11 @@ export default {
 @media(min-width: 750px) {
     .books-container {
         grid-template-columns: 25% 25% 25% 25%;
+    }
+    .container-inputs {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 }
 </style>
