@@ -78,10 +78,10 @@ export default {
 
 <style scoped> 
 .books-container {
-    width: 100%;
+    width: 95%;
     display: grid;
     grid-template-columns: 100%;
-
+    margin-top: 20px;
 }
 .container-img {
     width: 150px;
@@ -95,7 +95,7 @@ export default {
 }
 
 .list-books {
-    margin: 20px;
+    margin: 4px;
     padding: 10px;
 }
 .wrapper-info-book {
