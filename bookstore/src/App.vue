@@ -2,6 +2,7 @@
   <div class="app" :class="mode" >
     <Header :mode="mode" @toggle="toggle"/>
     <Content :mode="mode"/>
+
   </div>
 </template>
 
@@ -27,7 +28,7 @@ export default {
       } else {
         this.mode ='dark'
       }
-    }
+    },
   }
 }
 </script>

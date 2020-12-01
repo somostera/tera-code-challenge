@@ -1,8 +1,8 @@
 <template>
 <div>
     <Input v-model="book"/>
-    <h2>Seu livro é {{book}}</h2>
-  <div class="books-container">
+    <Selected :selecionado="selecionado" @selectionado="changeSelectionado"/>
+      <div class="books-container">
      <div class="list-books" v-for="(item, index) in resultadoBusca" :key="item.index">
        <div class="container-img">
            <img @click="goToPage(`/books/${index}`)" class="img" :src="item.cover_picture" alt="">
@@ -26,19 +26,21 @@
 <script>
 
 import Input from '../components/BookstoreInput'
+import Selected from '../components/BookstoreSelected'
 
 export default {
   name: 'App',
   components: {
-      Input
+      Input,
+      Selected
   },
   data() {
       return {
-            busca:'',
-            selected:'',
-            book: ''
+            book: '',
+            selecionado: 'Aqui é o da lista'
         }
     },
+    props: ['selecao'],
   computed: {
     gettersbooks() {
     return this.$store.getters.allBooks
@@ -46,13 +48,16 @@ export default {
     books() {
     return this.$store.getters.allBooks
     },
-     resultadoBusca: function() {
-            if(this.book == '' || this.book == ' ') {
-                return this.$store.getters.allBooks;
-            } else {
-                return this.$store.getters.getBooksFromName(this.book)
-            }
+    resultadoBusca: function() {
+        if(this.book == '' || this.book == ' ') {
+            return this.$store.getters.allBooks;
+        } else {
+            return this.$store.getters.getBooksFromName(this.book)
         }
+    },
+    resultadoSelecao() {
+        return this.$store.getBooksFromClassification;
+    }
   },
   mounted() {
     this.$store.dispatch("getBooks");
@@ -60,7 +65,11 @@ export default {
     methods: {
       goToPage(page) {
         this.$router.push(page);
+      },
+      changeSelectionado(value) {
+          this.selecionado = value;
       }
+      
     }
 }
 </script>
@@ -69,7 +78,7 @@ export default {
 .books-container {
     width: 100%;
     display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-columns: 100%;
 
 }
 .container-img {
@@ -104,5 +113,16 @@ export default {
 }
 .wrapper-icon .icon {
     font-size: 20px;
+}
+
+@media(min-width: 550px) {
+    .books-container {
+        grid-template-columns: 50% 50%;
+    }
+}
+@media(min-width: 750px) {
+    .books-container {
+        grid-template-columns: 25% 25% 25% 25%;
+    }
 }
 </style>

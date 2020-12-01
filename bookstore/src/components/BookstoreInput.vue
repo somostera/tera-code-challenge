@@ -2,11 +2,9 @@
     <div class="container-input">
        <input 
        type="text"
-       :value="value"
         @keyup="$emit('input', $event.target.value)"
         placeholder="Busque por um livro"   
         />
-        <h2>Titulo: {{search}}</h2>
   </div>
 </template>
 <script>

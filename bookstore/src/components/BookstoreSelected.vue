@@ -1,15 +1,19 @@
 <template>
-<select name="" id="">
-    <option value="">Filtros</option>
-     <option value="">Melhores Avaliados</option>
-      <option value="">Em Destaque</option>
-       <option value="">Livros Curtidos</option>
-       <option value="">Por Categoria</option>
-</select>
+<div>
+    <select @change="$emit('selectionado', $event.target.value)">
+        <option value="">Selecione uma classificação</option>
+        <option value="melhores avaliados">Melhores Avaliados</option>
+        <option value="aquele">Aquele</option>
+    </select>
+    </div>
 </template>
 <script>
 export default {
-    props: ['mode']
+    props: ['mode','selecionado'],
+    data(){
+        return{
+        }
+    }
 }
 </script>
 <style scoped>

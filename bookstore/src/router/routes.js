@@ -13,7 +13,7 @@ export default new VueRouter ({
     },
     {
         path:'/books/:idbook',
-        component: GetBook
+        component: GetBook,
     }
 ]
 })

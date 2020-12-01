@@ -28,10 +28,12 @@ export default {
 <style scoped>
     .dark header {
         background: #121420;
+        box-shadow: 0px 2px 5px 0px #18112d;
     }
     header{
         height: 60px;
         background: #95d9da;
+        box-shadow: 0px 2px 5px 0px #8888;
         transition: background 0.3s ease-in-out;
         display: flex;
         align-items: center;
@@ -42,12 +44,13 @@ export default {
         align-items: center;
     }
     header h1 {
-        font-size: 24px;
+        font-size: 16px;
         color:#fff;
         font-weight: 700;
     }
     header h2 {
-        font-size: 18px;
+        font-size: 16px;
+        margin-right: 8px;
         text-transform: capitalize;
         font-weight: 700;
         color:#fff;
@@ -55,5 +58,13 @@ export default {
     .container-mode {
         display: flex;
         align-items: center;
+    }
+    @media(min-width: 750px) {
+         header h1 {
+        font-size: 24px;
+    }
+    header h2 {
+        font-size: 18px;
+    }
     }
 </style>

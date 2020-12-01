@@ -24,7 +24,7 @@ export default new Vuex.Store({
         getBooksFromName: state => name => {
             let books = state.books.filter(book => book.name.includes(name));
             return books;
-        }
+        },
     },
     actions: {
         getBooks({commit}) {

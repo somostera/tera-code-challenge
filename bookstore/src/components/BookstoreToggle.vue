@@ -21,8 +21,9 @@ export default {
 .toggle {
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 34px;
+  width: 50px;
+  height: 24px;
+  margin-right: 15px;
 }
 .toggle input {
   opacity: 0;
@@ -43,8 +44,8 @@ export default {
 .toggler:before {
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
+  height: 16px;
+  width: 16px;
   left: 4px;
   bottom: 4px;
   background: #FFF;
@@ -67,5 +68,24 @@ input:checked + .toggler:before {
 }
 .toggler.round:before {
   border-radius: 50%;
+}
+@media(min-width: 750px){
+  .toggle {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+  }
+  .toggler:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background: #FFF;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+  }
 }
 </style>
