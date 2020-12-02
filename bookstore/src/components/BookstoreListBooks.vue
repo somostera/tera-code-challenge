@@ -4,6 +4,7 @@
         <Input v-model="book"/>
         <Selected :selecionado="selecionado" @selectionado="changeSelectionado"/>
     </div>
+    <h2 class="quantity">Total: {{countBooks}}</h2>
       <div class="books-container">
      <div class="list-books" v-for="(item, index) in resultadoBusca" :key="item.index">
        <div class="container-img">
@@ -38,14 +39,13 @@ import Input from '../components/BookstoreInput'
 import Selected from '../components/BookstoreSelected'
 
 export default {
-  name: 'App',
-  components: {
-      Input,
-      Selected
-  },
-  data() {
-      return {
-
+    name: 'App',
+    components: {
+        Input,
+        Selected
+    },
+    data() {
+        return {
             currentPage:1,
             perPage:8,  
             book: '',
@@ -53,41 +53,43 @@ export default {
         }
     },
     props: ['selecao'],
-  computed: {
-    gettersbooks() {
-    return this.$store.getters.allBooks
-    },
-    books() {
-    return this.$store.getters.allBooks
-    },
-    rows() {
-        return this.books.length
-    },
-    resultadoBusca: function() {
-        if(this.book == '' || this.book == ' ') {
-            return this.$store.getters.allBooks.slice(
-                (this.currentPage - 1) * this.perPage,
-                this.currentPage * this.perPage,
-            )
-        } else {
-            return this.$store.getters.getBooksFromName(this.book)
+    computed: {
+        gettersbooks() {
+            return this.$store.getters.allBooks
+        },
+        books() {
+            return this.$store.getters.allBooks
+        },
+        rows() {
+            return this.books.length
+        },
+        resultadoBusca: function() {
+            if(this.book == '' || this.book == ' ') {
+                return this.$store.getters.allBooks.slice(
+                    (this.currentPage - 1) * this.perPage,
+                    this.currentPage * this.perPage,
+                )
+            } else {
+                return this.$store.getters.getBooksFromName(this.book)
+            }
+        },
+        resultadoSelecao() {
+            return this.$store.getBooksFromClassification;
+        },
+        countBooks() {
+            return this.$store.getters.allBooks.length;
         }
     },
-    resultadoSelecao() {
-        return this.$store.getBooksFromClassification;
-    }
-  },
-  mounted() {
-    this.$store.dispatch("getBooks");
-  },
+    mounted() {
+        this.$store.dispatch("getBooks");
+    },
     methods: {
-      goToPage(page) {
-        this.$router.push(page);
-      },
-      changeSelectionado(value) {
-          this.selecionado = value;
-      },
-      
+        goToPage(page) {
+            this.$router.push(page);
+        },
+            changeSelectionado(value) {
+        this.selecionado = value;
+        },
     }
 }
 </script>
@@ -143,6 +145,11 @@ export default {
     width: 95%;
 }
 
+.quantity {
+    font-size: 16px;
+    color: gray;
+    margin-top: 15px;
+}
 @media(min-width: 550px) {
     .books-container {
         grid-template-columns: 50% 50%;
