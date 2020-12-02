@@ -53,4 +53,22 @@ export default {
   background: #1b2432;
   color: #f3f3f3;
 }
+.pagination {
+  margin-bottom: 0;
+  padding: 40px;
+}
+.page-link {
+  background:  #f1ffff !important;
+  color: black !important;
+  border:none !important;
+}
+
+.dark .page-link {
+  background: #1b2432 !important;
+  color: #fff !important;
+}
+
+
+
+
 </style>

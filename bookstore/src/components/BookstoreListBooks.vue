@@ -22,6 +22,13 @@
         </div>
      </div>
   </div>
+    <b-pagination 
+    v-model = "currentPage" 
+    :total-rows = "rows" 
+    :per-page = "perPage" 
+    aria-controls = "itemList" 
+    align = "center" 
+    ></b-pagination>
   </div>
 </template>
 
@@ -38,6 +45,9 @@ export default {
   },
   data() {
       return {
+
+            currentPage:1,
+            perPage:8,  
             book: '',
             selecionado: 'Aqui é o da lista'
         }
@@ -50,9 +60,15 @@ export default {
     books() {
     return this.$store.getters.allBooks
     },
+    rows() {
+        return this.books.length
+    },
     resultadoBusca: function() {
         if(this.book == '' || this.book == ' ') {
-            return this.$store.getters.allBooks;
+            return this.$store.getters.allBooks.slice(
+                (this.currentPage - 1) * this.perPage,
+                this.currentPage * this.perPage,
+            )
         } else {
             return this.$store.getters.getBooksFromName(this.book)
         }
@@ -70,13 +86,17 @@ export default {
       },
       changeSelectionado(value) {
           this.selecionado = value;
-      }
+      },
       
     }
 }
 </script>
 
 <style scoped> 
+.page-item .page-link {
+    background-color: red !important;
+}
+
 .books-container {
     width: 95%;
     display: grid;
