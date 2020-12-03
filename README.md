@@ -1,89 +1,59 @@
-# Tera Code Challenge
+<div align="center">
+    <img alt="Tera" src=".github/tera-logo.svg" width="80px" />
+</div>
 
-Olá, bora pro desafio? :dancers:
-
-O nosso desafio proposto é uma aplicação de uma livraria, com o design da aplicação que mandei no email, que deve ser feito com Vuejs.
-
-Vou separar a explicação em partes pra ficar mais fácil: **Integração**, **Funcionalidades do App**, **Funcionalidades por página**, **Avaliação** e **Como entregar**.
+<h3 align="center">
+  🚀 Tera Code Challenge
+</h3>
 
 
-## Integração
+<p align="center">
+  <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#rocket-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#rocket-executando">Executando</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#memo-licença">Licença</a>
+</p>
+<br>
 
-Liberamos uma API para que você possa consumir e ter acesso aos livros
+## 💻 Projeto
 
-[https://us-central1-tera-platform.cloudfunctions.net/url-tera-code-challenge](https://us-central1-tera-platform.cloudfunctions.net/url-tera-code-challenge)
+Esse projeto foi desenvolvido como desafio técnico para vaga de desenvolvedora front end na <a href="https://somostera.com/">Tera</a>. Trata-se de um projeto front end desenvolvido em Vue.js para uma livraria fictícia, a Livraria do Cowboy.
 
-Ela só aceita GET e retorna um Array de objetos, esse é o schema do objeto:
+## 🎨 Layout
 
+<p align="center">
+    <img alt="Livraria" src=".github/screenshot.png" width="720px" />
+</p>
+
+## 🚀 Tecnologias
+
+Esse projeto foi desenvolvido com as seguintes tecnologias:
+
+- [Vue.js 3](https://v3.vuejs.org/)
+- [Vuex](https://vuex.vuejs.org/)
+- [Vue Router](https://router.vuejs.org/)
+- [Sass](https://sass-lang.com/)
+
+## 💻 Executando
+
+```bash
+# Clone este repositório
+$ git clone https://github.com/milena-rosa/tera-code-challenge.git
+
+# Acesse a pasta do projeto no seu terminal
+$ cd tera-code-challenge
+
+# Instale as dependências
+$ yarn install
+
+# Execute a aplicação
+$ yarn serve
 ```
-{
-  "name": String,
-  "author": String,
-  "description": String, 
-  "cover_picture": String,
-  "category": String,
-  "stock": Integer,
-  "users_who_liked": Array<String>
-}
-```
 
-## Funcionalidades do App
+## 📝 Licença
 
+Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
 
-Dark Mode, clicável ali na Navbar.
+---
 
-Curtir, o gerenciamento desse estado deve ser feito localmente.
-
-
-## Funcionalidades por Página
-
-
-Temos só duas páginas neste desafio, página de Listagem, a de Descrição.
-
-
-### Página de Listagem
-
-Na tela de listagem temos as seguintes funcionalidades:
-
-- Listagem dos Livros
-- Pesquisa por Nome
-- Filtros de pesquisa:
-  - Melhores Avaliados (Com mais curtir)
-  - Em estoque
-  - Ordem Alfabética
-  - Livros curtidos (Os que você deu curtir)
-  - Por categoria* (abre outro input para pesquisar por nome da categoria)
-- Páginação da listagem
-- Curtir um livro (clique no coração)
-
-
-### Página de Descrição
-
-Na tela de descrição temos as seguintes funcionalidades:
-
-- Botão de Voltar
-- Curtir um livro (clique no coração)
-
-
-## Avaliação
-
-A avaliação vai ser feita no todo do que for entregue, mas existem alguns pontos que vão chamar mais atenção.
-
-- Componentização
-  - A maneira em que as peças do sistema foram pensadas e abstraidas.
-- Organização do código
-  - Como você pensou e organizou seu código, desde a estrutura das pastas até o código escrito.
-- Resiliência da aplicação
-  - Não importa até onde você conseguiu chegar, o que importa é que o seu entregavel esteja funcionando sem quebrar e com qualidade.
-
-Apreciamos também:
-
-- Transições
-  - Deixe a livraria bonita, como se fosse sua :sunglasses:
-- Fidelidade com o Design proposto
-
-## Como entregar
-
-Pedimos para que você crie um Fork desse repositório e faça um pull request com o código e com um README.md descrevendo como rodar o projeto
-
-Desejamos boa sorte, e muito obrigado!
+Feito por [Milena Boselli Rosa](https://www.linkedin.com/in/milena-rosa/).

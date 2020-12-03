@@ -1,0 +1,50 @@
+:root {
+  --color__bg: #f1ffff;
+  --color__text: #000;
+  --color__bg_nav: #95d9da;
+  --color__text_nav: #fff;
+  --color__shadow: rgba(70, 70, 70, 0.2);
+
+  @media screen {
+    &[data-theme='dark'] {
+      --color__bg: #1b2432;
+      --color__text: #fff;
+      --color__bg_nav: #121420;
+      --color__text_nav: #fff;
+      --color__shadow: rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Montserrat, Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button,
+input,
+select {
+  border: 0;
+}
