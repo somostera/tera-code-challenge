@@ -16,8 +16,11 @@
                 <h2 class="text-second">{{item.author}}</h2>
                 <h2 class="text-second">{{item.category}}</h2>
             </div>
-            <div class="wrapper-icon">
-                <font-awesome-icon :icon="['far', 'heart']" class="icon"/>
+            <div v-if="!(likes.includes(index))" class="wrapper-icon" @click="handleLike($event, index )">
+                <font-awesome-icon :icon="['far', 'heart']" class="icon" />
+            </div>
+            <div v-else class="wrapper-icon" @click="removeLike($event, index )">
+                <font-awesome-icon :icon="['fas', 'heart']" class="icon" />
             </div>
             
         </div>
@@ -49,7 +52,10 @@ export default {
             currentPage:1,
             perPage:8,  
             book: '',
-            selecionado: 'Aqui é o da lista'
+            selecionado:'',
+            clicked: false,
+            likes:[],
+            indexLike: '',
         }
     },
     props: ['selecao'],
@@ -82,13 +88,40 @@ export default {
     },
     mounted() {
         this.$store.dispatch("getBooks");
+        if (localStorage.getItem('likes')) {
+            try {
+                this.likes = JSON.parse(localStorage.getItem('likes'));
+            } catch(e) {
+                localStorage.removeItem('likes');
+            }
+    }
     },
+
     methods: {
         goToPage(page) {
             this.$router.push(page);
         },
             changeSelectionado(value) {
         this.selecionado = value;
+        },
+        handleLike(event,i) {
+            if(this.likes.includes(i)) {
+                return;
+            }
+            this.likes.push(i);
+            this.saveLikes();
+        },
+        removeLike(event,index) {
+            console.log('Lista antes da remocao: ', this.likes);
+            console.log('event', event);
+            console.log('index', index);
+            this.likes.splice(this.likes.indexOf(index), 1);
+            this.saveLikes();
+            console.log('Lista depois da remocão: ', this.likes);
+        },
+        saveLikes(){
+            const parsed = JSON.stringify(this.likes);
+            localStorage.setItem('likes', parsed);
         },
     }
 }
@@ -137,6 +170,7 @@ export default {
 }
 .wrapper-icon .icon {
     font-size: 20px;
+    cursor: pointer;
 }
 .container-inputs {
     display: flex;
