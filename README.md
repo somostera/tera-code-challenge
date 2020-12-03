@@ -7,25 +7,25 @@
 </h3>
 
 <p align="center">
-  <a href="#projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#project">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#layout">Layout</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#executando">Executando</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#memo-licença">Licença</a>
+  <a href="#technologies">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#execution">Executando</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#license">Licença</a>
 </p>
 <br>
 
-## 💻 Projeto
+## <a name="project"></a>💻 Projeto
 
 Esse projeto foi desenvolvido como desafio técnico para vaga de desenvolvedora front end na <a href="https://somostera.com/">Tera</a>. Trata-se de um projeto front end desenvolvido em Vue.js para uma livraria fictícia, a Livraria do Cowboy.
 
-## 🎨 Layout
+## <a name="layout"></a>🎨 Layout
 
 <p align="center">
     <img alt="Livraria" src=".github/screenshot.png" width="720px" />
 </p>
 
-## 🚀 Tecnologias
+## <a name="technologies"></a>🚀 Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
@@ -34,7 +34,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [Vue Router](https://router.vuejs.org/)
 - [Sass](https://sass-lang.com/)
 
-## 💻 Executando
+## <a name="execution"></a>💻 Executando
 
 ```bash
 # Clone este repositório
@@ -50,7 +50,7 @@ $ yarn install
 $ yarn serve
 ```
 
-## 📝 Licença
+## <a name="license"></a>📝 Licença
 
 Esse projeto está sob a licença MIT.
 
