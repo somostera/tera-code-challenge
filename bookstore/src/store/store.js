@@ -28,7 +28,7 @@ export default new Vuex.Store({
     },
     actions: {
         getBooks({commit}) {
-            axios.get(`${config.apiURL}/books`)
+            axios.get(`${config.apiURL}/url-tera-code-challenge`)
             .then((response) => {
                 commit('SET_BOOKS', response.data)
             })

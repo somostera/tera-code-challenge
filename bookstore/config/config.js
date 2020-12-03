@@ -1,3 +1,3 @@
 export default {
-    apiURL: 'http://localhost:3000'
+    apiURL: 'https://us-central1-tera-platform.cloudfunctions.net/'
 }
