@@ -1,39 +1,58 @@
 <template>
-<div>
-    <div class="container-inputs">
-        <Input v-model="book"/>
-        <Selected :selecionado="selecionado" @selectionado="changeSelectionado"/>
+    <div>
+        <div class="container-inputs">
+            <Input v-model="book"/>
+            <Selected :selecionado="selecionado" @selectionado="changeSelectionado"/>
+        </div>
+        <h2 class="quantity">Total: {{countBooks}}</h2>
+        <div class="books-container" v-if="selecionado != ''">
+            <div class="list-books" v-for="(item, index) in resultadoSelecao" :key="item.index">
+            <div class="container-img">
+                <img @click="goToPage(`/books/${index}`)" class="img" :src="item.cover_picture" alt="">
+            </div>
+            <div class="wrapper-info-book">
+                <div>
+                    <h2 class="text-main">{{item.name}}</h2>
+                    <h2 class="text-second">{{item.author}}</h2>
+                    <h2 class="text-second">{{item.category}}</h2>
+                </div>
+                <div v-if="!(likes.includes(index))" class="wrapper-icon" @click="handleLike($event, index )">
+                    <font-awesome-icon :icon="['far', 'heart']" class="icon" />
+                </div>
+                <div v-else class="wrapper-icon" @click="removeLike($event, index )">
+                    <font-awesome-icon :icon="['fas', 'heart']" class="icon" />
+                </div>
+            </div>
+        </div>
     </div>
-    <h2 class="quantity">Total: {{countBooks}}</h2>
-      <div class="books-container">
-     <div class="list-books" v-for="(item, index) in resultadoBusca" :key="item.index">
-       <div class="container-img">
-           <img @click="goToPage(`/books/${index}`)" class="img" :src="item.cover_picture" alt="">
+        <div class="books-container" v-else>
+            <div class="list-books" v-for="(item, index) in resultadoBusca" :key="item.index">
+            <div class="container-img">
+                <img @click="goToPage(`/books/${index}`)" class="img" :src="item.cover_picture" alt="">
+            </div>
+            <div class="wrapper-info-book">
+                <div>
+                    <h2 class="text-main">{{item.name}}</h2>
+                    <h2 class="text-second">{{item.author}}</h2>
+                    <h2 class="text-second">{{item.category}}</h2>
+                </div>
+                <div v-if="!(likes.includes(index))" class="wrapper-icon" @click="handleLike($event, index )">
+                    <font-awesome-icon :icon="['far', 'heart']" class="icon" />
+                </div>
+                <div v-else class="wrapper-icon" @click="removeLike($event, index )">
+                    <font-awesome-icon :icon="['fas', 'heart']" class="icon" />
+                </div>
+            </div>
         </div>
-        <div class="wrapper-info-book">
-            <div>
-                <h2 class="text-main">{{item.name}}</h2>
-                <h2 class="text-second">{{item.author}}</h2>
-                <h2 class="text-second">{{item.category}}</h2>
-            </div>
-            <div v-if="!(likes.includes(index))" class="wrapper-icon" @click="handleLike($event, index )">
-                <font-awesome-icon :icon="['far', 'heart']" class="icon" />
-            </div>
-            <div v-else class="wrapper-icon" @click="removeLike($event, index )">
-                <font-awesome-icon :icon="['fas', 'heart']" class="icon" />
-            </div>
-            
-        </div>
-     </div>
-  </div>
-    <b-pagination 
-    v-model = "currentPage" 
-    :total-rows = "rows" 
-    :per-page = "perPage" 
-    aria-controls = "itemList" 
-    align = "center" 
-    ></b-pagination>
-  </div>
+    </div>
+        <b-pagination 
+        v-model = "currentPage" 
+        :total-rows = "rows" 
+        :per-page = "perPage" 
+        aria-controls = "itemList" 
+        align = "center" 
+        ></b-pagination>
+    </div>
 </template>
 
 <script>
@@ -80,7 +99,7 @@ export default {
             }
         },
         resultadoSelecao() {
-            return this.$store.getBooksFromClassification;
+            return this.$store.getters.getBooksFromClassification(this.selecionado);
         },
         countBooks() {
             return this.$store.getters.allBooks.length;
@@ -94,7 +113,7 @@ export default {
             } catch(e) {
                 localStorage.removeItem('likes');
             }
-    }
+        }
     },
 
     methods: {
@@ -112,12 +131,8 @@ export default {
             this.saveLikes();
         },
         removeLike(event,index) {
-            console.log('Lista antes da remocao: ', this.likes);
-            console.log('event', event);
-            console.log('index', index);
             this.likes.splice(this.likes.indexOf(index), 1);
             this.saveLikes();
-            console.log('Lista depois da remocão: ', this.likes);
         },
         saveLikes(){
             const parsed = JSON.stringify(this.likes);

@@ -1,9 +1,11 @@
 <template>
 <div class="select-container">
     <select @change="$emit('selectionado', $event.target.value)">
-        <option value="">Selecione uma classificação</option>
+        <option value="">Filtros</option>
         <option value="melhores avaliados">Melhores Avaliados</option>
-        <option value="aquele">Aquele</option>
+        <option value="em estoque">Em estoque</option>
+        <option value="livros curtidos">Livros Curtidos</option>
+         <option value="ordem alfabetica">Ordem Alfabética</option>
     </select>
     </div>
 </template>
