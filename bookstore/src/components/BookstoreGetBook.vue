@@ -41,6 +41,10 @@ export default {
         font-size: 16px;
         cursor: pointer;
     }
+    .icon {
+        margin-right: 5px;
+    }
+
     .container-book {
         width: 100%;
         margin: 0 auto;

@@ -38,13 +38,13 @@ input {
     font-size: 14px;
 }
 @media(min-width: 750px) {
-.container-input {
-    width: 100%;
-}
-   input {
-    width: 50%;
-    font-size: 16px;
-    color:#aaa;
-} 
+    .container-input {
+        width: 100%;
+    }
+    input {
+        width: 50%;
+        font-size: 16px;
+        color:#aaa;
+    } 
 }
 </style>

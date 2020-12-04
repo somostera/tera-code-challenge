@@ -20,7 +20,7 @@
                     <font-awesome-icon :icon="['far', 'heart']" class="icon" />
                 </div>
                 <div v-else class="wrapper-icon" @click="removeLike($event, index )">
-                    <font-awesome-icon :icon="['fas', 'heart']" class="icon" />
+                    <font-awesome-icon :icon="['fas', 'heart']" class="icon icon-full" />
                 </div>
             </div>
         </div>
@@ -40,7 +40,7 @@
                     <font-awesome-icon :icon="['far', 'heart']" class="icon" />
                 </div>
                 <div v-else class="wrapper-icon" @click="removeLike($event, index )">
-                    <font-awesome-icon :icon="['fas', 'heart']" class="icon" />
+                    <font-awesome-icon :icon="['fas', 'heart']" class="icon-full" />
                 </div>
             </div>
         </div>
@@ -186,6 +186,18 @@ export default {
 .wrapper-icon .icon {
     font-size: 20px;
     cursor: pointer;
+    color:black;
+}
+.dark .wrapper-icon .icon {
+    font-size: 20px;
+    cursor: pointer;
+    color:#fff;
+}
+.wrapper-icon .icon-full {
+    font-size: 20px;
+    cursor: pointer;
+    color:red;
+
 }
 .container-inputs {
     display: flex;

@@ -10,9 +10,7 @@
     </header>
 </template>
 <script>
-
 import Toggle from './BookstoreToggle'
-
 export default {
     props: ['mode'],
     data() {
@@ -66,5 +64,5 @@ export default {
     header h2 {
         font-size: 18px;
     }
-    }
+}
 </style>
