@@ -199,6 +199,12 @@ export default {
     color:red;
 
 }
+.dark .wrapper-icon .icon-full {
+    font-size: 20px;
+    cursor: pointer;
+    color:red;
+
+}
 .container-inputs {
     display: flex;
     justify-content: space-between;

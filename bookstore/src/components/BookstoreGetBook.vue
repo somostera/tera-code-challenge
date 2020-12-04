@@ -11,6 +11,7 @@
                 <h2 class="info">{{book.author}}</h2>
                 <h2 class="info">{{book.category}}</h2>
             </div>
+            
             <h2 class="info">Em estoque: {{book.stock}}</h2>
         </div>
         
