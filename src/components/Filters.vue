@@ -8,7 +8,13 @@
       @change="searchBook($event)"
     >
     <div class="filters__container">
-      <input class="filters__search-box category" :class="`filters__search-box-${styleMode}`" type="text" v-if="isCategoryOpen" placeholder="Nome da Categoria">
+      <input
+        class="filters__search-box category"
+        :class="`filters__search-box-${styleMode}`"
+        type="text" v-if="isCategoryOpen"
+        placeholder="Nome da Categoria"
+        @change="searchByCategory($event)"
+      >
       <div>
         <div class="filters-dropdown-container" :class="`filters-dropdown-container-${styleMode}`" @click="openDropDown">
           <span class="filters-dropdown" :class="`filters-dropdown-${styleMode}`">Filtros </span>
@@ -69,7 +75,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters({styleMode:'styleMode', booksList: 'booksList'}),
+    ...mapGetters({styleMode:'styleMode', booksList: 'booksList', booksLiked: 'booksLiked'}),
   },
 
   methods: {
@@ -80,7 +86,6 @@ export default {
     },
 
     handleClick(field) {
-      console.log(field);
       let filteredList
       if(field === 'topRated') {
         filteredList = this.booksList.filter(element => {
@@ -101,6 +106,13 @@ export default {
           return 0;
         })
         this.setFilteredList(filteredList)
+      } else
+      if(field === 'likedBooks') {
+        filteredList = this.booksList.filter(element => this.booksLiked.includes(element.name))
+        this.setFilteredList(filteredList)
+      } else
+      if(field === 'byCategory') {
+        this.isCategoryOpen = true
       }
     },
 
@@ -108,6 +120,14 @@ export default {
       const searchText = event.target.value
       const filteredList = this.booksList.filter(element => {
         return element.name.toLowerCase().indexOf(searchText.toLowerCase()) !== -1
+      })
+      this.setFilteredList(filteredList)
+    },
+
+    searchByCategory(event) {
+      const searchText = event.target.value
+      const filteredList = this.booksList.filter(element => {
+        return element.category.toLowerCase().indexOf(searchText.toLowerCase()) !== -1
       })
       this.setFilteredList(filteredList)
     }
