@@ -1,0 +1,16 @@
+:root {
+  --dark-mode-header-background: #11131f;
+  --dark-mode-body-background: #1a2332;
+  --dark-mode-header-font-color: #fbf7f8;
+  --dark-mode-body-font-color: #fbf7f8;
+  --dark-mode-filter-font-color: #feffff;
+  --dark-mode-filter-background: #3f3f4b;
+  --dark-mode-border-color: #11131f;
+  --light-mode-header-background: #94d8d9;
+  --light-mode-body-background: #f0ffff;
+  --light-mode-header-font-color: #fcf8f7;
+  --light-mode-body-font-color: #000000;
+  --light-mode-filter-font-color: #6d6d6f;
+  --light-mode-filter-background: #ffffff;
+  --light-mode-border-color: #cdcdcd
+}
