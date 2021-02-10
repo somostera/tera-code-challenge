@@ -8,7 +8,7 @@ class BooksUsersSchema extends Schema {
     this.create('books_users', table => {
       table.increments()
       table.integer('book_id').unsigned()
-      table.integer('users_id').unsigned()
+      table.integer('user_id').unsigned()
       table.timestamps()
 
       table.foreign('book_id').references('books.id').onDelete('cascade')
