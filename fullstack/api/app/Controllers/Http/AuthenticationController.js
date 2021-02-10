@@ -19,10 +19,6 @@ class AuthenticationController {
   async register({ request, auth, response }) {
     const user = await User.create(request.all())
 
-    const token = await auth.generate(user)
-
-    Object.assign(user, token)
-
     return response.json(user)
   }
 
