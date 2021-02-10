@@ -21,9 +21,9 @@ Route.get('/', () => {
 })
 
 Route.group(() => {
-  Route.post('/login', 'AuthenticationControllerh.login')
-  Route.get('/users', 'AuthenticationControllerh.index').middleware('auth')
-  Route.get('/user', 'AuthenticationControllerh.user').middleware('auth')
-  Route.put('/user', 'AuthenticationControllerh.update').middleware('auth')
-  Route.post('/user', 'AuthenticationControllerh.register')
+  Route.post('/login', 'AuthenticationController.login')
+  Route.get('/users', 'AuthenticationController.index').middleware('auth')
+  Route.get('/user', 'AuthenticationController.user').middleware('auth')
+  Route.put('/user', 'AuthenticationController.update').middleware('auth')
+  Route.post('/user', 'AuthenticationController.register')
 }).prefix('/api/v1')
