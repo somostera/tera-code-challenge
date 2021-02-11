@@ -4,6 +4,8 @@
     <label for="switcher"></label>
     <main class="main">
       <Navbar />
+
+      <router-view></router-view>
     </main>
   </div>
 </template>

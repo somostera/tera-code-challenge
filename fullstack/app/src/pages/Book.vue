@@ -2,31 +2,16 @@
   <div>
     <div>
       <form action="#" class="" @submit.prevent="save">
-        <div
-        >
-          <input
-            type="text"
-            id="nome"
-            v-model="model.nome"
-          />
+        <div>
+          <input type="text" id="nome" v-model="model.nome" />
           <label for="nome">Nome...</label>
         </div>
- 
-        </div>
 
-        <div >
-          <button
-            type="submit"
-          >
-            Salvar
-          </button>
+        <div>
+          <button type="submit">Salvar</button>
 
-          <button
-            :disabled="!model.id"
-            type="button"
-            @click="remove"
-          >
-            Apagar\
+          <button :disabled="!model.id" type="button" @click="remove">
+            Apagar
           </button>
         </div>
       </form>
@@ -40,7 +25,7 @@ export default {
   name: "Book",
   data: function () {
     return {
-      model: {}
+      model: {},
     };
   },
   methods: {
@@ -54,7 +39,7 @@ export default {
     },
     goToList() {
       this.$router.push({ name: "books" });
-    }
+    },
   },
 };
 </script>
