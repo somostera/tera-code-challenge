@@ -14,6 +14,7 @@ class BookController {
   async index({ request, response }) {
     const { page, limit, order } = request.all()
     const books = await Book.query()
+      .with('users_who_liked')
       .orderBy('name', order ?? 'asc')
       .paginate(page ?? 1, limit ?? 10)
     return response.json({
@@ -23,7 +24,10 @@ class BookController {
   }
 
   async show({ params, response }) {
-    const book = await Book.findOrFail(params.id)
+    const book = await Book.query()
+      .where('id', params.id)
+      .with('users_who_liked')
+      .fetch()
     return response.json({ data: book, message: 'Ok' })
   }
 
