@@ -12,18 +12,38 @@ const Database = use('Database')
 const Book = use('App/Models/Book')
 
 class BookController {
-  async index({ request, response }) {
-    let { page, limit, filter, order } = request.all()
-
+  async index({ request, response, auth }) {
+    let { page, limit, filter, order, query, liked } = request.all()
     page = page ?? 1
     limit = limit ?? 10
     filter = 'name'
     order = order ?? 'asc'
 
-    const books = await Book.query()
-      .with('users_who_liked')
-      .orderBy(filter, order)
-      .paginate(page, limit)
+    let books = null
+
+    if (query) {
+      books = await Book.query()
+        .with('users_who_liked')
+        .where('name', 'like', `%${query}%`)
+        .orderBy(filter, order)
+        .paginate(page, limit)
+    } else if (liked) {
+      const curUser = await auth.getUser()
+
+      const likedBooks = await Database.from('books_users')
+        .where('user_id', curUser.id)
+        .map(row => row.book_id)
+
+      books = await Book.query()
+        .with('users_who_liked')
+        .whereIn('id', likedBooks)
+        .paginate(page, limit)
+    } else {
+      books = await Book.query()
+        .with('users_who_liked')
+        .orderBy(filter, order)
+        .paginate(page, limit)
+    }
 
     return response.json({
       data: books,
@@ -71,6 +91,7 @@ class BookController {
       const likes = await Database.from('books_users')
         .where('book_id', book.id)
         .count()
+
       book.likes = likes[0]['count(*)']
 
       book.save()
@@ -80,6 +101,7 @@ class BookController {
       const likes = await Database.from('books_users')
         .where('book_id', book.id)
         .count()
+
       book.likes = likes[0]['count(*)']
 
       book.save()
