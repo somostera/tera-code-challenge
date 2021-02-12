@@ -13,10 +13,10 @@ const Book = use('App/Models/Book')
 
 class BookController {
   async index({ request, response, auth }) {
-    let { page, limit, filter, order, query, liked } = request.all()
+    let { page, limit, filter, order, query, liked, stock } = request.all()
     page = page ?? 1
     limit = limit ?? 10
-    filter = 'name'
+    filter = filter ?? 'name'
     order = order ?? 'asc'
 
     let books = null
@@ -37,6 +37,12 @@ class BookController {
       books = await Book.query()
         .with('users_who_liked')
         .whereIn('id', likedBooks)
+        .paginate(page, limit)
+    } else if (stock) {
+      books = await Book.query()
+        .with('users_who_liked')
+        .where('stock', '>', 0)
+        .orderBy(filter, order)
         .paginate(page, limit)
     } else {
       books = await Book.query()
