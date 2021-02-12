@@ -9,6 +9,7 @@ class BooksSchema extends Schema {
       table.increments()
       table.string('name')
       table.string('author')
+      table.string('description')
       table.string('cover_picture')
       table.string('category')
       table.integer('stock')

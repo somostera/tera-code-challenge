@@ -7,86 +7,45 @@
 /**
  * Resourceful controller for interacting with books
  */
+
+const Book = use('App/Models/Book')
+
 class BookController {
-  /**
-   * Show a list of all books.
-   * GET books
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async index ({ request, response, view }) {
+  async index({ request, response }) {
+    const { page, limit, order } = request.all()
+    const books = await Book.query()
+      .orderBy('name', order ?? 'asc')
+      .paginate(page ?? 1, limit ?? 10)
+    return response.json({
+      data: books,
+      message: 'Ok',
+    })
   }
 
-  /**
-   * Render a form to be used for creating a new book.
-   * GET books/create
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async create ({ request, response, view }) {
+  async show({ params, response }) {
+    const book = await Book.findOrFail(params.id)
+    return response.json({ data: book, message: 'Ok' })
   }
 
-  /**
-   * Create/save a new book.
-   * POST books
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   */
-  async store ({ request, response }) {
+  async store({ request, response }) {
+    let attributes = request.all()
+    const book = await Book.create(attributes)
+    return response.json({ data: book, message: 'Created!' })
   }
 
-  /**
-   * Display a single book.
-   * GET books/:id
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async show ({ params, request, response, view }) {
+  async update({ params, request, response }) {
+    const book = await Book.findOrFail(params.id)
+    book.merge(request.all())
+    book.save()
+    return response.json({ data: book, message: 'Updated!' })
   }
 
-  /**
-   * Render a form to update an existing book.
-   * GET books/:id/edit
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async edit ({ params, request, response, view }) {
-  }
-
-  /**
-   * Update book details.
-   * PUT or PATCH books/:id
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   */
-  async update ({ params, request, response }) {
-  }
-
-  /**
-   * Delete a book with id.
-   * DELETE books/:id
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   */
-  async destroy ({ params, request, response }) {
+  async destroy({ params, response }) {
+    const book = await Book.findOrFail(params.id)
+    await book.delete()
+    return response.json({
+      message: 'Deleted!',
+    })
   }
 }
 
