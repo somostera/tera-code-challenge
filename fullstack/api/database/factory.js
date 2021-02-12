@@ -15,8 +15,8 @@
 const Factory = use('Factory')
 
 Factory.blueprint('App/Models/User', faker => {
-  const username = faker.name({ nationality: 'it' })
   const name = faker.name({ nationality: 'it' })
+  const username = name.split(' ')[1].toLowerCase()
   const email = username.toLowerCase().split(' ').join('.') + '@email.com'
 
   return {
