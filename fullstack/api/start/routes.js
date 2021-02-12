@@ -34,4 +34,5 @@ Route.group(() => {
   Route.post('/books', 'BookController.store').middleware('auth')
   Route.put('/books/:id', 'BookController.update').middleware('auth')
   Route.delete('/books/:id', 'BookController.destroy').middleware('auth')
+  Route.post('/books/:id', 'BookController.updateLikes').middleware('auth')
 }).prefix('/api/v1')

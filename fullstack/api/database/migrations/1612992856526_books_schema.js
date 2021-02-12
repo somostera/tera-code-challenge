@@ -13,6 +13,7 @@ class BooksSchema extends Schema {
       table.string('cover_picture')
       table.string('category')
       table.integer('stock')
+      table.integer('likes')
       table.timestamps()
     })
   }
