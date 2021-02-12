@@ -2,7 +2,6 @@
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
-/** @typedef {import('@adonisjs/framework/src/View')} View */
 
 /**
  * Resourceful controller for interacting with books
@@ -17,6 +16,7 @@ class BookController {
       .with('users_who_liked')
       .orderBy('name', order ?? 'asc')
       .paginate(page ?? 1, limit ?? 10)
+
     return response.json({
       data: books,
       message: 'Ok',
