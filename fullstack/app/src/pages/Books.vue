@@ -1,13 +1,34 @@
 <template>
   <div id="books">
     <section>
+      <form class="filtros">
+        <div class="input-wrapper">
+          <input
+            type="text"
+            v-model="search"
+            placeholder="Procure por um livro"
+          />
+        </div>
+        <div class="filtros-wrapper">
+          <select name="filtros" id="filtros">
+            <option value="">Melhores Avaliados</option>
+            <option value="">Em estoque</option>
+            <option value="">Ordem Alfabetica</option>
+            <option value="">Livros Curtidos</option>
+          </select>
+        </div>
+      </form>
       <ul>
         <li :key="book.id" v-for="book of list">
           <img :src="book.cover_picture" :alt="book.name" />
           <h4>{{ book.name }}</h4>
           <span>{{ book.author }}</span>
           <span>{{ book.category }}</span>
-          <heart-button :book="book" @click="heartClicked" />
+          <heart-button
+            :book="book"
+            @click="heartClicked"
+            :liked="book.liked"
+          />
         </li>
       </ul>
     </section>
@@ -17,9 +38,9 @@
 
 <script>
 import { books } from "@/services/api.js";
-import HeartButton from '@/components/HeartButton.vue';
+import HeartButton from "@/components/HeartButton.vue";
 export default {
-  components: {HeartButton},
+  components: { HeartButton },
   name: "Books",
   data: function () {
     return {
@@ -30,8 +51,8 @@ export default {
     this.init();
   },
   methods: {
-    heartClicked (data) {
-      console.log(data);
+    heartClicked(data) {
+      data.liked = !data.liked;
     },
     view(book) {
       this.$router.push({ name: "book", params: { id: book.id } });
@@ -70,5 +91,21 @@ section ul li img {
   height: 250px;
   width: auto;
   margin: auto;
+}
+.input-wrapper {
+  width: 300px;
+  display: block;
+  position: relative;
+  margin: 0 20px;
+}
+.filtros-wrapper {
+  width: 300px;
+  display: block;
+  position: relative;
+  margin: 0 20px;
+}
+form.filtros {
+  display: flex;
+  justify-content: space-between;
 }
 </style>
