@@ -16,6 +16,11 @@
         <div class="like">&#60;3</div>
       </div>
     </div>
+    <div class="pagination">
+      <div>
+        &#60; 1 2 3 ... 40 >
+      </div>
+    </div>
   </div>
 </template>
 
@@ -62,5 +67,19 @@ export default { name: 'Bookshelf' }
   justify-content: space-between;
   margin-top: 10px;
   padding: 0 20px 0 30px;
+}
+
+.pagination {
+  display: flex;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.pagination div {
+  display: inline-block;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 600px) {
 }
 </style>
