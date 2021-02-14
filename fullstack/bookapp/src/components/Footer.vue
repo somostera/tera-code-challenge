@@ -15,8 +15,6 @@ export default {
 .footer {
   /* Footer */
 
-  /* Auto Layout */
-
   display: flex;
   flex-direction: row;
   justify-content: center;

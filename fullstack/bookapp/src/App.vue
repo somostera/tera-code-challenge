@@ -16,8 +16,8 @@ export default {
 }
 </script>
 
-<style lang="scss">
-@import url('https://fonts.googleapis.com/css2?family=Merienda&display=swap');
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 body,
 h1,
 h2,
