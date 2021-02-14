@@ -36,8 +36,49 @@ body {
   font-family: Nunito, Helvetica, sans-serif;
 }
 
+.button {
+  /* button */
+
+  width: 160px;
+  height: 50px;
+  border: none;
+
+  background: #4b4b4b;
+  box-shadow: 0px -0.5px 4px rgba(0, 0, 0, 0.25),
+    0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  font-weight: bold;
+  font-size: 1rem;
+  color: #ffffff;
+}
+
 .container {
   padding: 0 50px;
+}
+
+.input {
+  width: 100%;
+  height: 40px;
+  font-size: 16px;
+  font-family: Nunito;
+  padding: 0 12px;
+
+  background: #ffffff;
+  border: 1px solid #c4c4c4;
+  box-sizing: border-box;
+  box-shadow: 0px -0.5px 4px rgba(0, 0, 0, 0.25),
+    0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  /* Inside Auto Layout */
+
+  margin: 12px 0 20px 0;
+}
+
+.label {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  color: $dark;
 }
 
 .main {

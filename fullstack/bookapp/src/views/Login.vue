@@ -1,11 +1,24 @@
 <template>
-  <section>Login</section>
+  <article>
+    <h1>Entrar no sistema</h1>
+    <LoginComponent />
+  </article>
 </template>
 
 <script>
-// import HelloWorld from '@/components/HelloWorld.vue'
+import LoginComponent from '@/components/LoginComponent.vue'
 export default {
   name: 'Login',
-  components: {}
+  components: { LoginComponent }
 }
 </script>
+
+<style scoped>
+article {
+  padding-top: 30px;
+}
+
+h1 {
+  text-align: center;
+}
+</style>
