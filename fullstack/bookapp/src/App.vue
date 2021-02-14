@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <NavBar />
-    <main class="main container">
+    <main class="main container bg-light">
       <router-view />
     </main>
     <Footer />
@@ -85,6 +85,10 @@ body {
   height: calc(100vh - 43px);
   padding-top: 20px;
   padding-bottom: 20px;
+}
+
+.bg-light {
+  background-color: #f1ffff;
 }
 
 @media only screen and (max-width: 600px) {
