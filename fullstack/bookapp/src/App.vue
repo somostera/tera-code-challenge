@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <NavBar />
-    <router-view />
+    <main class="main container">
+      <router-view />
+    </main>
     <Footer />
   </div>
 </template>
@@ -34,6 +36,10 @@ body {
 
 .container {
   padding: 0 50px;
+}
+
+.main {
+  height: calc(100vh - 43px);
 }
 
 @media only screen and (max-width: 600px) {
