@@ -19,6 +19,11 @@ export default {
 <style lang="scss">
 @import './assets/sass/main.scss';
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+a {
+  color: $secondary;
+  text-decoration: none;
+}
 body,
 h1,
 h2,
@@ -90,7 +95,7 @@ body {
 }
 
 .main {
-  min-height: 100vh;
+  min-height: calc(100vh - 74px);
   padding-top: 20px;
   padding-bottom: 20px;
 }

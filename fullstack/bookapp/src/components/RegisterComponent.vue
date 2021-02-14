@@ -4,13 +4,13 @@
       <label class="label" for="input-name">Nome:</label>
       <input class="input" id="input-name" type="text" />
 
-      <label class="label" for="input-username">Nome de usuário:</label>
+      <label class="label" for="input-username">* Nome de usuário:</label>
       <input class="input" id="input-username" type="text" />
 
-      <label class="label" for="input-email">Email:</label>
+      <label class="label" for="input-email">* Email:</label>
       <input class="input" id="input-email" type="email" />
 
-      <label class="label" for="input-password">Senha:</label>
+      <label class="label" for="input-password">* Senha:</label>
       <input class="input" id="input-password" type="password" />
     </div>
     <div class="form-footer">
