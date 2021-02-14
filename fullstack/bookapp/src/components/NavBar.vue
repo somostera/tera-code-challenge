@@ -1,7 +1,7 @@
 <template>
   <section class="navbar container">
     <p class="nav-title">Livraria do cowboy</p>
-    <a href="">Dark mode</a>
+    <p class="dark-mode">Dark mode</p>
   </section>
 </template>
 
@@ -15,6 +15,10 @@ export default {
 </script>
 
 <style scoped>
+.dark-mode {
+  font-size: 18px;
+}
+
 .navbar {
   /* NavBar */
 
@@ -31,16 +35,19 @@ export default {
 
 .navbar p {
   color: #ffffff;
-  font-size: 28px;
 }
 
 .nav-title {
-  font-weight: 600;
+  font-size: 28px;
 }
 
 @media only screen and (max-width: 600px) {
-  .navbar p {
+  .nav-title {
     font-size: 18px;
+  }
+
+  .dark-mode {
+    font-size: 14px;
   }
 }
 </style>
