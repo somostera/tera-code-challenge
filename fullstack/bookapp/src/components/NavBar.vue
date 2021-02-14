@@ -1,8 +1,8 @@
 <template>
-  <section class="navbar container">
+  <header class="navbar container">
     <p class="nav-title">Livraria do cowboy</p>
     <p class="dark-mode">Dark mode</p>
-  </section>
+  </header>
 </template>
 
 <script>

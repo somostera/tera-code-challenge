@@ -40,6 +40,8 @@ body {
 
 .main {
   height: calc(100vh - 43px);
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 @media only screen and (max-width: 600px) {

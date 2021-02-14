@@ -1,5 +1,5 @@
 <template>
-  <section class="footer"><p>All copyright®</p></section>
+  <footer class="footer"><p>All copyright®</p></footer>
 </template>
 
 <script>
