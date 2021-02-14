@@ -5,7 +5,7 @@
   "scripts": {
     "postinstall": "npm run prepare-project",
     "prepare-project": "cd server && npm install && cd ../app && npm install",
-    "start": "npm-run-all --parallel run-server run-app ",
+    "start": "npm-run-all --parallel server app ",
     "test": "echo \"No tests yet\" ",
     "app": "cd app && npm run serve",
     "server": "cd server && npm run start",
