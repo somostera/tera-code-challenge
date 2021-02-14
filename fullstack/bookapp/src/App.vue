@@ -15,6 +15,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Merienda&display=swap');
 body,
 h1,
 h2,
@@ -25,5 +26,19 @@ h6,
 p {
   padding: 0;
   margin: 0;
+}
+
+body {
+  font-family: Nunito, Helvetica, sans-serif;
+}
+
+.container {
+  padding: 0 50px;
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    padding: 0 20px;
+  }
 }
 </style>
