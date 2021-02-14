@@ -14,14 +14,14 @@ export default {
 <style>
 .footer {
   /* Footer */
-
+  position: static;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 
   height: 43px;
-
+  bottom: 0;
   background: #c4c4c4;
 }
 </style>

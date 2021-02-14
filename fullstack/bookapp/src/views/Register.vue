@@ -1,11 +1,13 @@
 <template>
-  <section>Register</section>
+  <section>
+    <RegisterComponent />
+  </section>
 </template>
 
 <script>
-// import HelloWorld from '@/components/HelloWorld.vue'
+import RegisterComponent from '@/components/RegisterComponent.vue'
 export default {
   name: 'Register',
-  components: {}
+  components: { RegisterComponent }
 }
 </script>

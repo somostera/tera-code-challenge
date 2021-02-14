@@ -56,6 +56,14 @@ body {
   padding: 0 50px;
 }
 
+.form-footer {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
+}
+
 .input {
   width: 100%;
   height: 40px;
@@ -82,13 +90,13 @@ body {
 }
 
 .main {
-  height: calc(100vh - 43px);
+  min-height: 100vh;
   padding-top: 20px;
   padding-bottom: 20px;
 }
 
 .bg-light {
-  background-color: #f1ffff;
+  background-color: $light;
 }
 
 @media only screen and (max-width: 600px) {
