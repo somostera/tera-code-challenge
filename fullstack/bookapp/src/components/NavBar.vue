@@ -14,7 +14,9 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '../assets/sass/main.scss';
+
 .dark-mode {
   font-size: 18px;
 }
@@ -29,7 +31,7 @@ export default {
 
   height: 74px;
 
-  background: #95d9da;
+  background: $primary;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 

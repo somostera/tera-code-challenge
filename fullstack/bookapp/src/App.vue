@@ -16,7 +16,8 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@import './assets/sass/main.scss';
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 body,
 h1,
@@ -26,6 +27,7 @@ h4,
 h5,
 h6,
 p {
+  color: $dark;
   padding: 0;
   margin: 0;
 }
