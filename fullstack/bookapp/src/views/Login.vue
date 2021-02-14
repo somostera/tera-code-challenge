@@ -14,11 +14,8 @@ export default {
 </script>
 
 <style scoped>
-article {
-  padding-top: 30px;
-}
-
 h1 {
+  margin-top: 30px;
   text-align: center;
 }
 </style>

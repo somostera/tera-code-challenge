@@ -1,5 +1,6 @@
 <template>
   <section>
+    <h1>Criar conta</h1>
     <RegisterComponent />
   </section>
 </template>
@@ -11,3 +12,10 @@ export default {
   components: { RegisterComponent }
 }
 </script>
+
+<style scoped>
+h1 {
+  margin-top: 30px;
+  text-align: center;
+}
+</style>
