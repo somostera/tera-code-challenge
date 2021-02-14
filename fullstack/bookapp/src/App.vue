@@ -24,6 +24,12 @@ a {
   color: $secondary;
   text-decoration: none;
 }
+
+article {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
 body,
 h1,
 h2,
@@ -39,6 +45,14 @@ p {
 
 body {
   font-family: Nunito, Helvetica, sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+.bg-light {
+  background-color: $light;
 }
 
 .button {
@@ -100,8 +114,9 @@ body {
   padding-bottom: 20px;
 }
 
-.bg-light {
-  background-color: $light;
+.text-btn {
+  color: $dark;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 600px) {

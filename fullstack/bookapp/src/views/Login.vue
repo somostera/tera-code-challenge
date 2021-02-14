@@ -4,7 +4,7 @@
     <LoginComponent />
     <p>
       Não possui conta?
-      <router-link to="register">Crie uma aqui</router-link>
+      <router-link to="registrar">Crie uma aqui</router-link>
     </p>
   </article>
 </template>
@@ -18,11 +18,6 @@ export default {
 </script>
 
 <style scoped>
-h1 {
-  margin-top: 30px;
-  text-align: center;
-}
-
 p {
   text-align: center;
 }
