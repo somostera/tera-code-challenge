@@ -116,7 +116,7 @@ class BookController {
     book = await Book.query()
       .where('id', book.id)
       .with('users_who_liked')
-      .fetch()
+      .first()
 
     return response.json({ data: book, message: 'Updated!' })
   }
