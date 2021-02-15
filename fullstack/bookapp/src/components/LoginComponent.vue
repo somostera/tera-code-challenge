@@ -41,7 +41,7 @@ export default {
           .dispatch('loginUser', { email, password })
           .then(() => {
             this.$store.dispatch('getUser')
-            this.$route.push('/')
+            this.$router.push('/')
           })
           .catch((error) => {
             this.errors.push(error)

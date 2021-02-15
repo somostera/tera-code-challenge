@@ -27,7 +27,7 @@ export default new Vuex.Store({
   actions: {
     getUser(context) {
       return api.get('/user').then((response) => {
-        context.commit('UPDATE_USER', response.data)
+        context.commit('UPDATE_USER', response.data.data)
         context.commit('UPDATE_LOGIN', true)
       })
     },
@@ -39,7 +39,7 @@ export default new Vuex.Store({
           password: payload.password
         })
         .then((response) => {
-          localStorage.setItem('token', `Bearer ${response.data.token}`)
+          localStorage.setItem('token', `Bearer ${response.data.data.token}`)
         })
     },
 
@@ -59,13 +59,13 @@ export default new Vuex.Store({
 
     getBook(context, payload) {
       return api.get(`books/${payload}`).then((response) => {
-        context.commit('UPDATE_BOOK', response.data)
+        context.commit('UPDATE_BOOK', response.data.data)
       })
     },
 
     updateBook(context, payload) {
       return api.put(`/books/${payload.id}`, payload).then((response) => {
-        context.commit('UPDATE_BOOK', response.data)
+        context.commit('UPDATE_BOOK', response.data.data)
       })
     },
 
@@ -79,7 +79,7 @@ export default new Vuex.Store({
       return api
         .post(`/books/${payload.book.id}`, payload.deslike)
         .then((response) => {
-          context.commit('UPDATE_BOOK', response.data)
+          context.commit('UPDATE_BOOK', response.data.data)
         })
     }
   }
