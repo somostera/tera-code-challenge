@@ -1,34 +1,24 @@
 const express = require('express');
 const bodyParser = require('body-parser')
+const cors = require('./config/cors')
 
 const UserController = require('./app/controllers/UserController');
 const AuthController = require('./app/controllers/AuthController');
 const BookController = require('./app/controllers/BookController');
 
-const auth = require('./app/middlewares/auth');
-
-
+//const auth = require('./app/middlewares/auth');
 const routes = new express.Router()
 
-routes.use(function(req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
+//cors
 
-    // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+routes.use(cors());
 
-    // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
-
-    // Set to true if you need the website to include cookies in the requests sent
-    // to the API (e.g. in case you use sessions)
-    res.setHeader('Access-Control-Allow-Credentials', true);
-
-
-    next();
-});
+//bodyParser
 
 routes.use(bodyParser.urlencoded({ extended: true }))
 routes.use(bodyParser.json())
+
+/// rotas
 
 routes.post('/auth', AuthController.store)
 routes.post('/users', UserController.store);
