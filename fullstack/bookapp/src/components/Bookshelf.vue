@@ -25,7 +25,9 @@
 </template>
 
 <script>
-export default { name: 'Bookshelf' }
+export default {
+  name: 'Bookshelf'
+}
 </script>
 
 <style lang="scss">

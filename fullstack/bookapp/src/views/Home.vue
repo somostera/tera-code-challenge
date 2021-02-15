@@ -7,8 +7,13 @@
         type="text"
         placeholder="Procure um livro"
       />
-      <input class="input" id="input-select" type="text" />
+      <div class="filter">
+        <select class="select">
+          <option value="">Filtro</option>
+        </select>
+      </div>
     </div>
+
     <p>Total: 40</p>
     <Bookshelf />
   </article>
@@ -25,22 +30,39 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/sass/main.scss';
+
 #input-search {
   max-width: 500px;
 }
 
-#input-select {
-  max-width: 200px;
+.filter {
+  width: 200px;
   margin-left: 10px;
 }
 
 .filter-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.select {
+  width: 100%;
+  height: 40px;
+  font-size: 16px;
+  font-family: Nunito;
+  padding: 0 0 0 12px;
+  margin: 12px 0 20px 0;
+
+  background: #ffffff;
+  border: 1px solid #c4c4c4;
+  box-sizing: border-box;
+  @include shadow;
 }
 
 @media only screen and (max-width: 600px) {
-  #input-select {
+  .filter {
     max-width: 150px;
   }
 }
