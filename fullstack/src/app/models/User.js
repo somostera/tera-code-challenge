@@ -17,10 +17,6 @@ const UserSchema = new mongoose.Schema({
     },
     password: {
         type: String
-    },
-    role: {
-        type: String,
-        default: 'user'
     }
 }, {
     timestamps: true
@@ -36,13 +32,12 @@ UserSchema.methods.checkPassword = function(password) {
     return bcrypt.compare(password, this.password)
 }
 
-// Retorna um JSON com os dados do usuário (name, email, role)
+// Retorna um JSON com os dados do usuário (name, email )
 UserSchema.methods.getJson = function() {
     return {
         _id: this.id,
         name: this.name,
-        email: this.email,
-        role: this.role
+        email: this.email
     }
 }
 
@@ -60,7 +55,6 @@ UserSchema.methods.getAuthJson = function() {
         _id: this.id,
         name: this.name,
         email: this.email,
-        role: this.role,
         token: this.generateToken()
     }
 }
