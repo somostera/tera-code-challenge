@@ -1,4 +1,4 @@
-const port = 3000
+const port = process.env.PORT || 3000
 
 const express = require('express')
 const server = express()
@@ -9,7 +9,7 @@ require('./config/mongodb')
 server.use(require('./routes'));
 
 
-server.listen(process.env.PORT || port, function() {
+server.listen(port, function() {
     console.log(`BACKEND is running on port ${port}.`)
 })
 
