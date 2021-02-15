@@ -15,7 +15,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/sass/main.scss';
+@import '@/assets/sass/main.scss';
 
 .dark-mode {
   font-size: 18px;
@@ -28,11 +28,12 @@ export default {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 10px;
 
   height: 74px;
 
   background: $primary;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  @include shadow;
 }
 
 .navbar p {

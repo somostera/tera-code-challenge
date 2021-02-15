@@ -17,7 +17,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import './assets/sass/main.scss';
+@import '@/assets/sass/main.scss';
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
 a {
@@ -26,8 +26,12 @@ a {
 }
 
 article {
-  padding-top: 30px;
+  padding-top: 10px;
   padding-bottom: 30px;
+}
+
+body {
+  background-color: $light;
 }
 
 body,
