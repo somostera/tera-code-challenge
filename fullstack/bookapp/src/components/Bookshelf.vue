@@ -13,7 +13,7 @@
           <p class="book-author">Martin Fowler</p>
           <p class="book-category">Technology</p>
         </div>
-        <div class="like">&#60;3</div>
+        <div class="like"><img src="@/assets/like.png" width="24" /></div>
       </div>
     </div>
     <div class="pagination">
