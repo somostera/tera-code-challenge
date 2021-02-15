@@ -1,5 +1,6 @@
 import axios from 'axios'
 const Env = process.env
+const { localStorage } = window
 
 const axiosInstance = axios.create({
   baseURL: Env.VUE_APP_API_BASEURL
@@ -7,7 +8,7 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   function(config) {
-    const token = window.localStorage.token
+    const token = localStorage.getItem('token')
     if (token) {
       config.headers.Authorization = token
     }

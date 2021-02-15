@@ -11,6 +11,9 @@ const routes = [
   {
     path: '/',
     name: 'Home',
+    meta: {
+      logged: true
+    },
     component: Home
   },
   {
@@ -26,6 +29,9 @@ const routes = [
   {
     path: '/formulario',
     name: 'Form',
+    meta: {
+      logged: true
+    },
     component: Form
   }
 ]
@@ -33,7 +39,22 @@ const routes = [
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes,
+  scrollBehavior() {
+    return window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+})
+
+/* Middleware authentication */
+router.beforeEach((to, from, next) => {
+  if (to.matched.some((record) => record.meta.logged)) {
+    if (!window.localStorage.token) {
+      next('/entrar')
+    } else {
+      next()
+    }
+  }
+  next()
 })
 
 export default router
