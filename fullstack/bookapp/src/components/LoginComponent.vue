@@ -23,7 +23,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/sass/main.scss';
+@import '../assets/sass/main.scss';
 
 form {
   padding: 0px;

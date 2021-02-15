@@ -30,7 +30,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/sass/main.scss';
+@import '../assets/sass/main.scss';
 
 #input-search {
   max-width: 500px;

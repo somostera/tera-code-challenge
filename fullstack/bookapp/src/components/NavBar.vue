@@ -15,7 +15,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/sass/main.scss';
+@import '../assets/sass/main.scss';
 
 .dark-mode {
   font-size: 18px;
