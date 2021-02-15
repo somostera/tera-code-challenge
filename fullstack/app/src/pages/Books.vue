@@ -1,23 +1,19 @@
 <template>
   <div id="books">
+    <div id="filtros">
+      <v-text-field
+        v-model="search.text"
+        label="Procure por um Livro"
+      ></v-text-field>
+      <v-select
+        label="Filtro"
+        v-model="search.filtro"
+        :items="filters"
+        item-text="label"
+        item-value="value"
+      ></v-select>
+    </div>
     <section>
-      <form class="filtros">
-        <div class="input-wrapper">
-          <input
-            type="text"
-            v-model="search"
-            placeholder="Procure por um livro"
-          />
-        </div>
-        <div class="filtros-wrapper">
-          <select name="filtros" id="filtros">
-            <option value="">Melhores Avaliados</option>
-            <option value="">Em estoque</option>
-            <option value="">Ordem Alfabetica</option>
-            <option value="">Livros Curtidos</option>
-          </select>
-        </div>
-      </form>
       <ul>
         <li :key="book.id" v-for="book of list">
           <img :src="book.cover_picture" :alt="book.name" />
@@ -31,6 +27,11 @@
           />
         </li>
       </ul>
+      <v-fab-transition>
+        <v-btn fab right bottom absolute @click="addNew">
+          <v-icon>mdi-plus</v-icon>
+        </v-btn>
+      </v-fab-transition>
     </section>
   </div>
 </template>
@@ -45,6 +46,25 @@ export default {
   data: function () {
     return {
       list: [],
+      search: {},
+      filters: [
+        {
+          label: "Melhores Avaliados",
+          value: "best",
+        },
+        {
+          label: "Em estoque",
+          value: "inStock",
+        },
+        {
+          label: "Ordem Alfabetica",
+          value: "asc",
+        },
+        {
+          label: "Livros Curtidos",
+          value: "liked",
+        },
+      ],
     };
   },
   created: function () {
@@ -92,20 +112,14 @@ section ul li img {
   width: auto;
   margin: auto;
 }
-.input-wrapper {
-  width: 300px;
-  display: block;
-  position: relative;
-  margin: 0 20px;
-}
-.filtros-wrapper {
-  width: 300px;
-  display: block;
-  position: relative;
-  margin: 0 20px;
-}
-form.filtros {
+#filtros {
   display: flex;
   justify-content: space-between;
+  width: 100%;
+  padding: 5px 10px;
+}
+
+#filtros > * {
+  max-width: 200px;
 }
 </style>
