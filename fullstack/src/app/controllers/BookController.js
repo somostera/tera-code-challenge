@@ -84,15 +84,15 @@ class BookController {
     }
 
     async update(req, res) {
-
-        const query = {_id: req.params.id}
+        const query = {"_id": req.params.id}
         const update = req.body
 
-        const book = Book.updateOne(query, update, options)
-        .then(() => {
-          return res.json({book: book.getJson()})
+        console.log(query)
+        console.log(update)
 
-        })
+        
+        await Book.updateOne(query, update)
+        .then(() => res.status(204).send())
         .catch(err => console.error(`Failed to add review: ${err}`))
       
     }
