@@ -87,9 +87,6 @@ class BookController {
         const query = {"_id": req.params.id}
         const update = req.body
 
-        console.log(query)
-        console.log(update)
-
         
         await Book.updateOne(query, update)
         .then(() => res.status(204).send())
