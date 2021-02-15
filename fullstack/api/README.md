@@ -16,5 +16,5 @@ node ace migration:run
 Execute o seguinte comando para rodar o servidor localmente.
 
 ```js
-node ace serve --dev
+npm start --dev
 ```
