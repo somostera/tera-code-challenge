@@ -88,7 +88,7 @@ class BookController {
 
   async updateLikes({ params, request, response, auth }) {
     const curUser = await auth.getUser()
-    const book = await Book.findOrFail(params.id)
+    let book = await Book.findOrFail(params.id)
     const { deslike } = request.all()
 
     if (deslike) {
@@ -112,6 +112,11 @@ class BookController {
 
       book.save()
     }
+
+    book = await Book.query()
+      .where('id', book.id)
+      .with('users_who_liked')
+      .fetch()
 
     return response.json({ data: book, message: 'Updated!' })
   }
