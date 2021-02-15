@@ -79,6 +79,12 @@ h1 {
   padding: 0 50px;
 }
 
+.erro-info {
+  text-align: center;
+  color: $danger;
+  font-weight: 700;
+}
+
 .form-footer {
   display: flex;
   flex-direction: row-reverse;
