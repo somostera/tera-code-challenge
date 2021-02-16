@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
-import axios from 'axios'
 
 Vue.use(Vuex)
 export default new Vuex.Store({
@@ -19,11 +18,6 @@ export default new Vuex.Store({
         },
         setUser(state,user){
             state.user = user
-            if(user){
-                axios.defaults.headers.common['Authorization'] = `${user.token}`
-            } else{
-                delete axios.defaults.headers.common['Authorization']
-            }
         },
         setBooksLiked(state, book){
             let position = state.booksLiked.findIndex(b => b._id === book._id)
@@ -45,7 +39,7 @@ export default new Vuex.Store({
             return  state.booksLiked
         },
         getUser(state) {
-            return state.user.id;
+            return state.user;
         }
     }
 })

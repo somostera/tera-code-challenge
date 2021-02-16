@@ -17,6 +17,32 @@
       </div>
       <small @click="toBook">{{book.category}}</small>
       <br>
+
+      <b-modal
+      id="modal-prevent-closing"
+      ref="modal"
+      title="Digite seu nome:"
+      v-model="modalShow"
+      @hidden="resetModal"
+      @ok="handleOk"
+      centered
+    >
+      <form ref="form" @submit.stop.prevent="handleSubmit">
+        <b-form-group
+          label="Nome"
+          label-for="name-input"
+          invalid-feedback="Nome é obrigatório"
+          :state="nameState"
+        >
+          <b-form-input
+            id="name-input"
+            v-model="name"
+            :state="nameState"
+            required
+          ></b-form-input>
+        </b-form-group>
+      </form>
+    </b-modal>
         
     </div>
        
@@ -30,7 +56,10 @@ export default {
     data(){
       return{
         iconLike: 'heart',
-        like: false
+        like: false,
+        name: null,
+        nameState: null,
+        modalShow: false
       }
     },
     computed: mapState(['booksLiked','user']),
@@ -43,14 +72,44 @@ export default {
          
           this.book.like = !this.book.like
           this.$emit('update', this.book)
-          if(this.book.like){
-            this.$store.commit("setBooksLiked", this.book)
+          if(this.user === null){
+            this.modalShow = true
           } else{
-            this.$store.commit("removeBooksLiked", this.book)
-          }
+            if(this.book.like){
+              this.$store.commit("setBooksLiked", this.book)
+            } else{
+              this.$store.commit("removeBooksLiked", this.book)
+            }
         
           this.book.like ? this.iconLike ='heart-fill' : this.iconLike = 'heart'
-        }
+          }
+        
+        },
+        checkFormValidity() {
+          const valid = this.$refs.form.checkValidity()
+          this.nameState = valid
+          return valid
+        },
+        resetModal() {
+            this.name = ''
+            this.nameState = null
+        },
+         handleOk(bvModalEvt) {
+
+            bvModalEvt.preventDefault()
+            this.handleSubmit()
+
+        },
+        handleSubmit() {
+          
+          if (!this.checkFormValidity()) {
+            return
+          }
+          this.$store.commit('setUser', this.name)
+          this.$nextTick(() => {
+            this.$bvModal.hide('modal-prevent-closing')
+          })
+        },
     },
     mounted(){
 

@@ -1,7 +1,7 @@
 <template>
   <div class="books-list">
       <span v-if="user" @click="logout" class="login"> 
-      <b-link @click="logout" >[Sair]</b-link><strong>{{user.name}}</strong></span>
+      [Sair]<strong>{{getUser}}</strong></span>
       <span v-else> [Entrar] </span>
       
     <div class="filters">
@@ -78,7 +78,7 @@
 
 <script>
 import BookItem from './BookItem'
-import {baseApiUrl,userKey} from '../../../global'
+import {baseApiUrl} from '../../../global'
 import axios from 'axios'
 import {mapState} from 'vuex'
 import {filters} from './FilterBooks'
@@ -132,16 +132,15 @@ export default {
             })
         },
         logout(){
-            localStorage.removeItem(userKey)
+            //localStorage.removeItem(userKey)
             this.$store.commit('setUser',null)
             this.$store.state.booksLiked = []
-            this.$router.push({path: '/signin'},() => {})
             sessionStorage.clear();
         },
         getLikes(){
             this.books.map((book,index)=>{
                 book.users_who_liked.map((user) =>{
-                    if(user === this.user.name){
+                    if(user === this.user){
 
                         this.books[index].like = true
                         this.$store.commit('setBooksLiked',book)
@@ -160,15 +159,15 @@ export default {
                    
                    this.books[index] = book
                    const userExists = this.books[index].users_who_liked.filter( user =>{
-                       return (user === this.$store.state.user.name )           
+                       return (user === this.user)           
                    })
                     
                    if(userExists.length === 0 && book.like){
-                       this.books[index].users_who_liked.push(this.$store.state.user.name)
+                       this.books[index].users_who_liked.push(this.user)
 
                    } else if(userExists.length !== 0){
                        let position = book.users_who_liked.findIndex(user =>
-                        user === this.$store.state.user.name)
+                        user === this.user)
                        this.books[index].users_who_liked.splice(position,1)
                    } 
                    axios.put(`${baseApiUrl}/books/${b._id}`,this.books[index])
@@ -261,12 +260,14 @@ export default {
                 return this.books
             }
             
-        }
+        }          
+          
       
     },
     mounted(){
         this.getBooks()
         this.setSize()
+        console.log(this.user)
     },
     watch:{
          'filterName': function(){
