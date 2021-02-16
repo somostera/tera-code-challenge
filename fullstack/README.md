@@ -132,57 +132,6 @@ https://backend-tera.herokuapp.com/
 * **Data Params**
 	None
 	
-**Cadastrar usuário**
-----
-  Cadastra um novo usuário
-
-* **URL**
-	/users
-
-* **Method:**
-	`POST`
-  
-*  **URL Params**
-	Nenhum
-
-* **Data Params**
-	name = [string]
-	email = [string]
-	password = [string]
-	
-**Listar usuários**
-----
-  Retorna todos os usuários do sistema
-
-* **URL**
-	/users
-
-* **Method:**
-	`GET`
-  
-*  **URL Params**
-	Nenhum
-
-* **Data Params**
-	Nenhum
-
-**Autenticação**
-----
-  Verifica se o usuário está cadastrado e retorna um token
-
-* **URL**
-	/auth
-
-* **Method:**
-	`POST`
-  
-*  **URL Params**
-	email = [string]
-	password = [string]
-
-* **Data Params**
-	Nenhum
-	
 	
 	
 
