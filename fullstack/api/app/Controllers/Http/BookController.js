@@ -25,6 +25,7 @@ class BookController {
       books = await Book.query()
         .with('users_who_liked')
         .where('name', 'like', `%${query}%`)
+        .orWhere('category', 'like', `%${query}%`)
         .orderBy(filter, order)
         .paginate(page, limit)
     } else if (liked) {
