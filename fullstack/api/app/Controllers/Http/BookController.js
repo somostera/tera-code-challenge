@@ -63,7 +63,7 @@ class BookController {
     const book = await Book.query()
       .where('id', params.id)
       .with('users_who_liked')
-      .fetch()
+      .first()
     return response.json({ data: book, message: 'Ok' })
   }
 
