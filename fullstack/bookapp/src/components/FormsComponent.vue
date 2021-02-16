@@ -67,13 +67,17 @@ export default {
 
   created() {
     this.getBook()
-    console.log(this.book)
   },
 
   methods: {
     getBook() {
       const bookId = this.$route.params.id
-      this.$store.dispatch('getBook', bookId)
+      console.log(bookId)
+      if (bookId) {
+        this.$store.dispatch('getBook', bookId)
+      } else {
+        this.$store.dispatch('clearBook')
+      }
     },
 
     updateBook() {

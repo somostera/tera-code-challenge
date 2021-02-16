@@ -1,6 +1,10 @@
 <template>
   <article>
-    <p class="text-btn" @click="$router.back()">&#60; Voltar</p>
+    <div>
+      <p class="text-btn" @click="$router.back()">
+        &#60; Voltar
+      </p>
+    </div>
     <FormsComponent />
   </article>
 </template>
@@ -16,6 +20,7 @@ export default {
 
 <style lang="scss" scoped>
 p {
+  display: inline-block;
   margin-top: 10px;
 }
 </style>

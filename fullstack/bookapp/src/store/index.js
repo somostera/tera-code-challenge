@@ -26,7 +26,11 @@ export default new Vuex.Store({
     },
 
     UPDATE_BOOK(state, payload) {
-      state.book = Object.assign({}, state.book, payload)
+      if (payload) {
+        state.book = Object.assign({}, state.book, payload)
+      } else {
+        state.book = {}
+      }
     },
 
     UPDATE_PLACEHOLDER(state, payload) {
@@ -94,6 +98,10 @@ export default new Vuex.Store({
         .then((response) => {
           context.commit('UPDATE_BOOK', response.data.data)
         })
+    },
+
+    clearBook(context) {
+      context.commit('UPDATE_BOOK', false)
     },
 
     setPlaceholder(context, payload) {
