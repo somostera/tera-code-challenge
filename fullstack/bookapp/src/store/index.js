@@ -46,7 +46,7 @@ export default new Vuex.Store({
     },
 
     createUser(_, payload) {
-      return api.post('/users', payload)
+      return api.post('/user', payload)
     },
 
     logoutUser(context) {
