@@ -107,7 +107,7 @@ export default {
         .filter((item) => item)
         .join('&')
 
-      return `books?page=${this.page}&limit=${this.limit}&${query}`
+      return `books?page=${this.page + 1}&limit=${this.limit}&${query}`
     },
     user() {
       return this.$store.state.user
@@ -116,6 +116,9 @@ export default {
 
   watch: {
     url() {
+      this.getBooks()
+    },
+    page() {
       this.getBooks()
     }
   },
