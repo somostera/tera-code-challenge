@@ -181,7 +181,7 @@ export default {
 
   methods: {
     clearFilters() {
-      this.$store.dispatch('setSeach', '')
+      this.$store.dispatch('setSearch', '')
       this.page = 0
       this.limit = 8
       this.filter = ''
