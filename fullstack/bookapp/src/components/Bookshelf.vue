@@ -14,10 +14,14 @@
           <p class="book-author">{{ book.author }}</p>
           <p class="book-category">{{ book.category }}</p>
         </div>
-        <div v-if="checkLike(book.users_who_liked)" class="like">
+        <div
+          v-if="checkLike(book.users_who_liked)"
+          @click="dislike(book.id)"
+          class="like"
+        >
           <img src="@/assets/liked.png" width="24" />
         </div>
-        <div v-else class="like">
+        <div v-else class="like" @click="like(book.id)">
           <img src="@/assets/like.png" width="24" />
         </div>
       </div>
@@ -129,13 +133,25 @@ export default {
 
   methods: {
     checkLike(users_who_liked) {
-      let liked = null
+      let liked = false
       if (users_who_liked.length > 0) {
-        liked = users_who_liked.filter((user) => {
-          return user.id === this.user.id
+        users_who_liked.forEach((user) => {
+          if (user.id === this.user.id) {
+            liked = true
+          }
         })
       }
       return liked
+    },
+
+    dislike(bookId) {
+      api
+        .post(`/books/${bookId}`, { deslike: true })
+        .then(() => this.getBooks())
+    },
+
+    like(bookId) {
+      api.post(`/books/${bookId}`).then(() => this.getBooks())
     },
 
     getBooks() {
