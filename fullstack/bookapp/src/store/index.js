@@ -65,6 +65,7 @@ export default new Vuex.Store({
     },
 
     logoutUser(context) {
+      context.commit('UPDATE_BOOK', false)
       context.commit('UPDATE_USER', {})
       localStorage.removeItem('token')
       context.commit('UPDATE_LOGIN', false)

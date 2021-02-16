@@ -15,6 +15,7 @@
         >&times;</a
       >
       <p class="text-btn" @click="toForm()">Adicionar Livro</p>
+      <p class="text-btn" @click="logout()">Sair</p>
     </div>
   </div>
 </template>
@@ -29,6 +30,12 @@ export default {
   methods: {
     closeNav() {
       document.getElementById('mySidenav').style.width = '0'
+    },
+
+    logout() {
+      this.closeNav()
+      this.$store.dispatch('logoutUser')
+      this.$router.push('/entrar').catch(() => {})
     },
 
     openNav() {

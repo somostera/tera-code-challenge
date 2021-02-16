@@ -1,9 +1,9 @@
 <template>
   <article>
     <div>
-      <p class="text-btn" @click="$router.back()">
+      <router-link to="/" tag="p">
         &#60; Voltar
-      </p>
+      </router-link>
     </div>
     <FormsComponent />
   </article>
