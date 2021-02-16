@@ -1,8 +1,10 @@
 let router = require("express").Router();
 const BookService = require("../service/BookService");
+const ModelMiddleware = require("./middlware/ModelMiddleware");
 
 this.service = new BookService();
 
+router.use(ModelMiddleware);
 router.post("/", async (req, res) => {
   let dto = req.body;
 
@@ -17,8 +19,9 @@ router.post("/", async (req, res) => {
   return;
 });
 
-router.get("/list", (req, res) => {
-  res.send(this.service.search({ size: 10 }));
+router.get("/list", async (req, res) => {
+  let result = await this.service.search({}, { size: 10 });
+  res.send(result);
 });
 
 router.put("/:id", async (req, res) => {

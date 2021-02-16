@@ -1,10 +1,11 @@
-CREATE TABLE IF NOT EXISTS book
+CREATE TABLE IF NOT EXISTS BOOKSSS
   (
-     id            SERIAL NOT NULL PRIMARY KEY,
-     name          VARCHAR(28) NOT NULL,
-     author        VARCHAR(12) NOT NULL,
-     description   VARCHAR(514),
-     cover_picture VARCHAR(88),
-     category      VARCHAR(13) NOT NULL,
-     stock         INTEGER NOT NULL DEFAULT 0
+     ID            SERIAL NOT NULL PRIMARY KEY,
+     NAME          VARCHAR(200) NOT NULL,
+     AUTHOR        VARCHAR(100) NOT NULL,
+     DESCRIPTION   VARCHAR(5000),
+     COVER_PICTURE VARCHAR(500),
+     CATEGORY      VARCHAR(300) NOT NULL,
+     STOCK         INTEGER NOT NULL DEFAULT 0,
+     USER_WHO_LIKED TEXT[]
   ); 

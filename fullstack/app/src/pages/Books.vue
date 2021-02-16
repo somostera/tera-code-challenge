@@ -14,6 +14,7 @@
       ></v-select>
     </div>
     <section>
+      {{ list }}
       <ul>
         <li :key="book.id" v-for="book of list">
           <img :src="book.cover_picture" :alt="book.name" />
@@ -82,6 +83,7 @@ export default {
     },
     init() {
       books.list().then((result) => {
+        console.log(result.data);
         this.list = result.data;
       });
     },
