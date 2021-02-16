@@ -28,7 +28,15 @@ const routes = [
   },
   {
     path: '/formulario',
-    name: 'Form',
+    name: 'Create',
+    meta: {
+      logged: true
+    },
+    component: Form
+  },
+  {
+    path: '/formulario/:id',
+    name: 'Edit',
     meta: {
       logged: true
     },

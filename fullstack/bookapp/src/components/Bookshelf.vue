@@ -7,9 +7,10 @@
         :alt="book.name"
         width="120"
         height="160"
+        @click="toPage(book.id)"
       />
       <div class="info">
-        <div class="title">
+        <div class="title" @click="toPage(book.id)">
           <h2 class="book-title">{{ book.name }}</h2>
           <p class="book-author">{{ book.author }}</p>
           <p class="book-category">{{ book.category }}</p>
@@ -227,6 +228,10 @@ export default {
     rageChange(start, end) {
       this.start = start
       this.end = end
+    },
+
+    toPage(bookId) {
+      this.$router.push(`/formulario/${bookId}`)
     }
   }
 }
