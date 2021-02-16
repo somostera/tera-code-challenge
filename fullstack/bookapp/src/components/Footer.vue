@@ -1,5 +1,7 @@
 <template>
-  <footer class="footer"><p>All copyright®</p></footer>
+  <footer class="footer">
+    <p>By <a href="https://teoian.com">Teoian</a> with Vue.js and Node.js</p>
+  </footer>
 </template>
 
 <script>
