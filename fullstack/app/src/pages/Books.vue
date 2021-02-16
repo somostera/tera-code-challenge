@@ -14,7 +14,6 @@
       ></v-select>
     </div>
     <section>
-      {{ list }}
       <ul>
         <li :key="book.id" v-for="book of list">
           <img :src="book.cover_picture" :alt="book.name" />

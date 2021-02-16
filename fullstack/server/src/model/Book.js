@@ -1,7 +1,7 @@
 const Model = require("@schirrel/pg-connection/Model");
 class Book extends Model {
   constructor(args = {}, fromDatabase) {
-    super("BOOKSSS");
+    super("BOOKS");
     this.addColumn("name", "NAME")
       .addColumn("author", "AUTHOR")
       .addColumn("description", "DESCRIPTION")
