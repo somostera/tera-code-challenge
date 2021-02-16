@@ -55,10 +55,6 @@ h1 {
   text-align: center;
 }
 
-.bg-light {
-  background-color: $light;
-}
-
 .button {
   /* button */
 
@@ -127,6 +123,16 @@ h1 {
 .text-btn {
   color: $dark;
   cursor: pointer;
+}
+
+/* color classes */
+
+.bg-light {
+  background-color: $light;
+}
+
+.bg-danger {
+  background-color: $danger;
 }
 
 @media only screen and (max-width: 600px) {
