@@ -130,12 +130,19 @@ export default {
             })
         },
         onDelete(){
-            axios.delete(`${baseApiUrl}/books/${this.book._id}`)
-            .then(()=>{
-                this.book = {}
-                this.$toasted.global.defaultSuccess();
+            this.$bvModal.msgBoxConfirm(`Deletar o livro ${this.book.name}?`)
+            .then(() => {
+                 axios.delete(`${baseApiUrl}/books/${this.book._id}`)
+                .then(()=>{
+                    this.book = {}
+                    this.$toasted.global.defaultSuccess();
+                })
+                .catch(showError)
             })
-            .catch(showError)
+            .catch(err => {
+               return err
+            })
+           
         },
         onUpdate(){
             axios.put(`${baseApiUrl}/books/${this.book._id}`,this.book)
