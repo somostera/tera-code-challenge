@@ -4,38 +4,49 @@ const errorHandler = require('./../helpers/dbErrorHandler')
 class UserController {
 
     async index(req, res) {
-        const users = await User.find({})
-        .select('-password');
 
-        return res.json(users)
+        await User.find({})
+        .select('-password')
+        .then(users =>{
+           res.json(users)
+        })
+        .catch(err=>{
+
+            return res.status(400).json({
+                error: errorHandler.getErrorMessage(err)
+            })
+        })
+       
     }
 
     async show(req, res) {
-        const user = await User.findById(req.params.id)
-        .select('-password');
-
-        if(!user) {
-            return res.json({error: 'Usuário não encontrado'})
+        try{
+            const user = await User.findById(req.params.id)
+            .select('-password');
+    
+            if(!user) {
+                return res.json({error: 'Usuário não encontrado'})
+            }
+    
+            return res.json(user)
+        } catch(err){
+             return res.status(400).json({
+                error: errorHandler.getErrorMessage(err)
+            })
         }
-
-        return res.json(user)
+      
     }
 
 
     async store(req, res) {
-
-
-        try{
-            const user = await User.create(req.body)
-            return res.json({user: user.getJson()})
-            
-        }
-        catch(err){
-            return res.status(400).json({
-                error: errorHandler.getErrorMessage(err)
+           await User.create(req.body)
+            .then(() =>{
+                res.sendStatus(201).send()
+            }).catch(err =>{
+                return res.status(400).json({
+                    error: errorHandler.getErrorMessage(err)
+                })
             })
-        }
-
         
     }
 
