@@ -59,12 +59,6 @@ export default new Vuex.Store({
       return api.post('/books', payload)
     },
 
-    getBooks(context, payload) {
-      return api.get(`books?${payload}`).then((response) => {
-        context.commit('UPDATE_BOOK', response.data.data)
-      })
-    },
-
     getBook(context, payload) {
       return api.get(`books/${payload}`).then((response) => {
         context.commit('UPDATE_BOOK', response.data.data)

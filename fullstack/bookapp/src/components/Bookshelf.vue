@@ -1,32 +1,146 @@
 <template>
   <div class="bookshelf">
-    <div class="book" v-for="(item, index) in 8" :key="index">
+    <div class="book" v-for="book in books" :key="book.id">
       <img
         class="cover"
-        src="https://images-na.ssl-images-amazon.com/images/I/41TPrNDI50L._SX218_BO1,204,203,200_QL40_ML2_.jpg"
-        alt="clear archteture book"
+        :src="book.cover_picture"
+        :alt="book.name"
         width="120"
+        height="160"
       />
       <div class="info">
         <div class="title">
-          <h2 class="book-title">Clean Archteture</h2>
-          <p class="book-author">Martin Fowler</p>
-          <p class="book-category">Technology</p>
+          <h2 class="book-title">{{ book.name }}</h2>
+          <p class="book-author">{{ book.author }}</p>
+          <p class="book-category">{{ book.category }}</p>
         </div>
-        <div class="like"><img src="@/assets/like.png" width="24" /></div>
+        <div v-if="book.users_who_liked.includes(user)" class="like">
+          <img src="@/assets/liked.png" width="24" />
+        </div>
+        <div v-else class="like">
+          <img src="@/assets/like.png" width="24" />
+        </div>
       </div>
     </div>
     <div class="pagination">
-      <div>
-        &#60; 1 2 3 ... 40 >
-      </div>
+      <vue-ads-pagination
+        :total-items="total"
+        :page="page"
+        :items-per-page="limit"
+      >
+        <template slot="buttons" slot-scope="props">
+          <vue-ads-page-button
+            v-for="(button, key) in props.buttons"
+            :key="key"
+            v-bind="button"
+            :class="{ 'bg-yellow-dark': button.active }"
+            @page-change="page = button.page"
+            @range-change="
+              start = button.start
+              end = button.end
+            "
+          />
+        </template>
+      </vue-ads-pagination>
     </div>
   </div>
 </template>
 
 <script>
+import { api } from '@/services/index.js'
+import VueAdsPagination, { VueAdsPageButton } from 'vue-ads-pagination'
+import '../../node_modules/@fortawesome/fontawesome-free/css/all.css'
+import '../../node_modules/vue-ads-pagination/dist/vue-ads-pagination.css'
+
 export default {
-  name: 'Bookshelf'
+  name: 'Bookshelf',
+  components: {
+    VueAdsPagination,
+    VueAdsPageButton
+  },
+  data() {
+    return {
+      books: [],
+      page: 0,
+      limit: 8,
+      filter: '',
+      order: '',
+      query: '',
+      liked: false,
+      stock: false,
+      start: 0,
+      end: 0,
+      total: 0
+    }
+  },
+  computed: {
+    url() {
+      let query = [
+        {
+          name: 'filter',
+          value: this.filter
+        },
+        {
+          name: 'order',
+          value: this.order
+        },
+        {
+          name: 'query',
+          value: this.query
+        },
+        {
+          name: 'liked',
+          value: this.liked
+        },
+        {
+          name: 'stock',
+          value: this.stock
+        }
+      ]
+
+      query = query
+        .map((item) => {
+          if (item.value) {
+            return `${item.name}=${item.value}`
+          }
+        })
+        .filter((item) => item)
+        .join('&')
+
+      return `books?page=${this.page}&limit=${this.limit}&${query}`
+    },
+    user() {
+      return this.$store.state.user
+    }
+  },
+
+  watch: {
+    url() {
+      this.getBooks()
+    }
+  },
+
+  created() {
+    this.getBooks()
+  },
+
+  methods: {
+    getBooks() {
+      api.get(this.url).then((response) => {
+        this.total = Number(response.data.data.total)
+        this.books = response.data.data.data
+      })
+    },
+
+    pageChange(page) {
+      this.page = page
+    },
+
+    rageChange(start, end) {
+      this.start = start
+      this.end = end
+    }
+  }
 }
 </script>
 

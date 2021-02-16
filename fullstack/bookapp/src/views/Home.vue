@@ -14,7 +14,6 @@
       </div>
     </div>
 
-    <p>Total: 40</p>
     <Bookshelf />
   </article>
 </template>
