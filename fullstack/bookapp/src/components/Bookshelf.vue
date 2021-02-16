@@ -14,7 +14,7 @@
           <p class="book-author">{{ book.author }}</p>
           <p class="book-category">{{ book.category }}</p>
         </div>
-        <div v-if="book.users_who_liked.includes(user)" class="like">
+        <div v-if="checkLike(book.users_who_liked)" class="like">
           <img src="@/assets/liked.png" width="24" />
         </div>
         <div v-else class="like">
@@ -128,6 +128,16 @@ export default {
   },
 
   methods: {
+    checkLike(users_who_liked) {
+      let liked = null
+      if (users_who_liked.length > 0) {
+        liked = users_who_liked.filter((user) => {
+          return user.id === this.user.id
+        })
+      }
+      return liked
+    },
+
     getBooks() {
       api.get(this.url).then((response) => {
         this.total = Number(response.data.data.total)
