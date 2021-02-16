@@ -98,6 +98,7 @@ export default {
   top: 0;
   left: 0;
   background-color: $primary;
+  @include shadow;
   overflow-x: hidden;
   transition: 0.2s;
   padding-top: 60px;
@@ -110,10 +111,6 @@ export default {
   color: #f1f1f1;
   display: block;
   transition: 0.3s;
-}
-
-.sidenav a:hover {
-  color: #818181;
 }
 
 .sidenav .closebtn {
