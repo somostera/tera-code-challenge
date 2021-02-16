@@ -7354,10 +7354,10 @@ sass-graph@2.2.5:
     scss-tokenizer "^0.2.3"
     yargs "^13.3.2"
 
-sass-loader@5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/sass-loader/-/sass-loader-5.0.0.tgz#896ce4cf376975186358a1ce079673f55af0797e"
-  integrity sha1-iWzkzzdpdRhjWKHOB5Zz9VrweX4=
+sass-loader@6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/sass-loader/-/sass-loader-6.0.0.tgz#f7ce02901e6c19c99af313fe3377c9c2bbe050a2"
+  integrity sha1-984CkB5sGcma8xP+M3fJwrvgUKI=
   dependencies:
     async "^2.0.1"
     loader-utils "^0.2.15"
