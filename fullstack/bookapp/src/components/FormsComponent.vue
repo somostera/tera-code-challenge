@@ -46,9 +46,15 @@
       </textarea>
     </div>
     <div class="form-footer">
-      <button class="button" type="submit" v-if="!bookId">Criar</button>
-      <button class="button" type="submit" v-if="bookId">Atualizar</button>
-      <button class="button bg-danger" v-if="bookId">Deletar</button>
+      <button class="button" type="submit" @click="createBook()" v-if="!bookId">
+        Criar
+      </button>
+      <button class="button" type="submit" @click="updateBook()" v-if="bookId">
+        Atualizar
+      </button>
+      <button class="button bg-danger" @click="deleteBook()" v-if="bookId">
+        Deletar
+      </button>
     </div>
   </form>
 </template>
@@ -92,11 +98,21 @@ export default {
 
     updateBook() {
       this.$store.dispatch('updateBook', this.book)
+      this.$router.push('/')
     },
 
-    deteleBook() {
+    deleteBook() {
       this.$store.dispatch('deleteBook', this.book)
+      this.$router.push('/')
     },
+
+    createBook() {
+      if (this.book) {
+        this.$store.dispatch('createBook', this.book)
+        this.$router.push('/')
+      }
+    },
+
     clearBook() {
       this.$store.dispatch('clearBook')
     }

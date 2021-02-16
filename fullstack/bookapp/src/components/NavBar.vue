@@ -36,6 +36,7 @@ export default {
     },
 
     toForm() {
+      this.closeNav()
       this.$store.dispatch('clearBook')
       this.$router.push('/formulario').catch(() => {})
     }
