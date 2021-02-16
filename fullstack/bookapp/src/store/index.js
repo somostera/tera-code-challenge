@@ -10,20 +10,31 @@ export default new Vuex.Store({
   plugins: [createPersistedState()],
   strict: true,
   state: {
+    book: {},
     logged: false,
-    user: {},
-    book: {}
+    placeholder: 'Procure um livro',
+    searchBook: '',
+    user: {}
   },
   mutations: {
     UPDATE_LOGIN(state, payload) {
       state.logged = payload
     },
+
     UPDATE_USER(state, payload) {
       state.user = Object.assign({}, state.user, payload)
     },
 
     UPDATE_BOOK(state, payload) {
       state.book = Object.assign({}, state.book, payload)
+    },
+
+    UPDATE_PLACEHOLDER(state, payload) {
+      state.placeholder = payload
+    },
+
+    UPDATE_SEARCH_BOOK(state, payload) {
+      state.searchBook = payload
     }
   },
   actions: {
@@ -83,6 +94,16 @@ export default new Vuex.Store({
         .then((response) => {
           context.commit('UPDATE_BOOK', response.data.data)
         })
+    },
+
+    setPlaceholder(context, payload) {
+      if (payload) {
+        context.commit('UPDATE_PLACEHOLDER', payload)
+      }
+    },
+
+    setSearch(context, payload) {
+      context.commit('UPDATE_SEARCH_BOOK', payload)
     }
   }
 })

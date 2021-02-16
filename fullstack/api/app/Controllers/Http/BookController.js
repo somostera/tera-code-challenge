@@ -38,6 +38,7 @@ class BookController {
       books = await Book.query()
         .with('users_who_liked')
         .whereIn('id', likedBooks)
+        .orderBy(filter, order)
         .paginate(page, limit)
     } else if (stock) {
       books = await Book.query()

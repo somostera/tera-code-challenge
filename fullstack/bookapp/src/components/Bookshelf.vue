@@ -58,6 +58,12 @@ import '../../node_modules/vue-ads-pagination/dist/vue-ads-pagination.css'
 
 export default {
   name: 'Bookshelf',
+  props: {
+    selected: {
+      type: String,
+      default: ''
+    }
+  },
   components: {
     VueAdsPagination,
     VueAdsPageButton
@@ -69,7 +75,6 @@ export default {
       limit: 8,
       filter: '',
       order: '',
-      query: '',
       liked: false,
       stock: false,
       start: 0,
@@ -78,8 +83,11 @@ export default {
     }
   },
   computed: {
+    query() {
+      return this.$store.state.searchBook
+    },
     url() {
-      let query = [
+      let config = [
         {
           name: 'filter',
           value: this.filter
@@ -102,7 +110,7 @@ export default {
         }
       ]
 
-      query = query
+      config = config
         .map((item) => {
           if (item.value) {
             return `${item.name}=${item.value}`
@@ -111,7 +119,7 @@ export default {
         .filter((item) => item)
         .join('&')
 
-      return `books?page=${this.page + 1}&limit=${this.limit}&${query}`
+      return `books?page=${this.page + 1}&limit=${this.limit}&${config}`
     },
     user() {
       return this.$store.state.user
@@ -124,6 +132,46 @@ export default {
     },
     page() {
       this.getBooks()
+    },
+
+    selected() {
+      this.$store.dispatch('setPlaceholder', 'Procure um livro')
+      switch (this.selected) {
+        case 'best':
+          this.clearFilters()
+          this.filter = 'likes'
+          this.order = 'desc'
+          this.getBooks()
+          break
+        case 'stock':
+          this.clearFilters()
+          this.filter = 'stock'
+          this.order = 'desc'
+          this.stock = true
+          this.getBooks()
+          break
+        case 'order':
+          this.clearFilters()
+          this.filter = 'name'
+          this.getBooks()
+          break
+        case 'liked':
+          this.clearFilters()
+          this.liked = true
+          this.filter = 'name'
+          this.order = 'asc'
+          this.getBooks()
+          break
+        case 'category':
+          this.clearFilters()
+          this.filter = 'category'
+          this.order = 'asc'
+          this.$store.dispatch('setPlaceholder', 'Busque por cateroria')
+          this.getBooks()
+          break
+        default:
+          break
+      }
     }
   },
 
@@ -132,6 +180,17 @@ export default {
   },
 
   methods: {
+    clearFilters() {
+      this.$store.dispatch('setSeach', '')
+      this.page = 0
+      this.limit = 8
+      this.filter = ''
+      this.order = ''
+      this.liked = false
+      this.stock = false
+      this.start = 0
+    },
+
     checkLike(users_who_liked) {
       let liked = false
       if (users_who_liked.length > 0) {
