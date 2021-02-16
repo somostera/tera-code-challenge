@@ -46,8 +46,9 @@
       </textarea>
     </div>
     <div class="form-footer">
-      <button class="button" type="submit">Atualizar</button>
-      <button class="button bg-danger" v-if="book">Deletar</button>
+      <button class="button" type="submit" v-if="!bookId">Criar</button>
+      <button class="button" type="submit" v-if="bookId">Atualizar</button>
+      <button class="button bg-danger" v-if="bookId">Deletar</button>
     </div>
   </form>
 </template>
@@ -56,12 +57,22 @@
 export default {
   name: 'FormsComponent',
   data() {
-    return {}
+    return {
+      bookId: null
+    }
   },
 
   computed: {
     book() {
       return this.$store.state.book
+    }
+  },
+
+  watch: {
+    bookId() {
+      if (!this.bookId) {
+        this.clearBook()
+      }
     }
   },
 
@@ -71,12 +82,11 @@ export default {
 
   methods: {
     getBook() {
-      const bookId = this.$route.params.id
-      console.log(bookId)
-      if (bookId) {
-        this.$store.dispatch('getBook', bookId)
+      this.bookId = this.$route.params.id
+      if (this.bookId) {
+        this.$store.dispatch('getBook', this.bookId)
       } else {
-        this.$store.dispatch('clearBook')
+        this.clearBook()
       }
     },
 
@@ -86,6 +96,9 @@ export default {
 
     deteleBook() {
       this.$store.dispatch('deleteBook', this.book)
+    },
+    clearBook() {
+      this.$store.dispatch('clearBook')
     }
   }
 }

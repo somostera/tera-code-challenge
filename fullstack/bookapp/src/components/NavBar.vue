@@ -14,7 +14,7 @@
       <a href="javascript:void(0)" class="closebtn" @click="closeNav()"
         >&times;</a
       >
-      <router-link to="/formulario">Adicionar Livro</router-link>
+      <p class="text-btn" @click="toForm()">Adicionar Livro</p>
     </div>
   </div>
 </template>
@@ -27,12 +27,17 @@ export default {
   },
 
   methods: {
+    closeNav() {
+      document.getElementById('mySidenav').style.width = '0'
+    },
+
     openNav() {
       document.getElementById('mySidenav').style.width = '250px'
     },
 
-    closeNav() {
-      document.getElementById('mySidenav').style.width = '0'
+    toForm() {
+      this.$store.dispatch('clearBook')
+      this.$router.push('/formulario').catch(() => {})
     }
   }
 }
@@ -104,6 +109,7 @@ export default {
   padding-top: 60px;
 }
 
+.sidenav p,
 .sidenav a {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
