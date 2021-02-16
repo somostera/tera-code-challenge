@@ -2,21 +2,24 @@
   <div id="books">
     <div id="filtros">
       <v-text-field
-        v-model="search.text"
+        v-model="search.name"
+        @input="searchList"
+        @bluc="searchList"
         label="Procure por um Livro"
       ></v-text-field>
       <v-select
         label="Filtro"
-        v-model="search.filtro"
+        v-model="search.filter"
         :items="filters"
         item-text="label"
         item-value="value"
+        @change="searchList"
       ></v-select>
     </div>
     <section>
       <ul>
         <li :key="book.id" v-for="book of list">
-          <img :src="book.cover_picture" :alt="book.name" />
+          <img :src="book.coverPicture" :alt="book.name" />
           <h4>{{ book.name }}</h4>
           <span>{{ book.author }}</span>
           <span>{{ book.category }}</span>
@@ -68,7 +71,7 @@ export default {
     };
   },
   created: function () {
-    this.init();
+    this.searchList({});
   },
   methods: {
     heartClicked(data) {
@@ -80,8 +83,8 @@ export default {
     addNew() {
       this.$router.push({ name: "book" });
     },
-    init() {
-      books.list().then((result) => {
+    searchList() {
+      books.search(this.search).then((result) => {
         console.log(result.data);
         this.list = result.data;
       });

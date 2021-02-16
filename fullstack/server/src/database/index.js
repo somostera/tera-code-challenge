@@ -8,7 +8,6 @@ const logger = require("../utils/logger");
 module.exports = () => {
   Database.query(sql)
     .then((res) => {
-      logger.info(res);
       populate();
     })
     .catch((err) => {

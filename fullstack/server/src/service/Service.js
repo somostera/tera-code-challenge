@@ -40,14 +40,12 @@ class Service {
   }
   async list() {
     let result = await this.repository.list();
-    result = result.map((item) => new this.table(item));
+    result = result.map((item) => new this.table(item, true));
     return result;
   }
 
   async search(options) {
     let result = await this.repository.search(options);
-    result = result.map((item) => new this.table(item, true));
-
     return result;
   }
   async paginate(options) {

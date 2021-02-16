@@ -5,6 +5,9 @@ const repository = new BookRepository();
 const logger = require("../utils/logger");
 
 const treat = (item) => {
+  item.users_who_liked = item.users_who_liked
+    ? "{" + item.users_who_liked.toString() + "}"
+    : "";
   for (let property in item) {
     item[property.toUpperCase()] = item[property];
     delete item[property];

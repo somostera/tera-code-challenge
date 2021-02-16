@@ -19,11 +19,20 @@ router.post("/", async (req, res) => {
   return;
 });
 
+router.get("/search", async (req, res) => {
+  let result = await this.service.search(req.query);
+  res.send(result);
+});
+
 router.get("/list", async (req, res) => {
   let result = await this.service.search({}, { size: 10 });
   res.send(result);
 });
-
+router.get("/:id", async (req, res) => {
+  let id = req.params.id;
+  let result = await this.service.get(id);
+  res.send(result);
+});
 router.put("/:id", async (req, res) => {
   let id = req.params.id;
   let dto = req.body;
