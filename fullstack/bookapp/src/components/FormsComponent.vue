@@ -87,12 +87,11 @@ export default {
 
     updateBook() {
       if (this.bookId) {
-        console.log(this.book)
-
+        delete this.book.users_who_liked
         api
           .put(`/books/${this.bookId}`, this.book)
           .then(() => {
-            this.$router.back()
+            this.$router.push('/')
           })
           .catch((error) => {
             console.log(error)
@@ -102,11 +101,10 @@ export default {
 
     deleteBook() {
       if (this.bookId) {
-        console.log(this.book)
         api
           .delete(`/books/${this.bookId}`)
           .then(() => {
-            this.$router.back()
+            this.$router.push('/')
           })
           .catch((error) => {
             console.log(error)
@@ -117,7 +115,7 @@ export default {
     createBook() {
       if (this.book) {
         api.post(`/books`, this.book).then(() => {
-          this.$router.back()
+          this.$router.push('/')
         })
       }
     }
