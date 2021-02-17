@@ -17,31 +17,49 @@
       </div>
       <small @click="toBook">{{book.category}}</small>
       <br>
-
       <b-modal
       id="modal-prevent-closing"
       ref="modal"
       title="Digite seu nome:"
       v-model="modalShow"
       @hidden="resetModal"
-      @ok="handleOk"
-      centered
-    >
+      centered>
       <form ref="form" @submit.stop.prevent="handleSubmit">
         <b-form-group
-          label="Nome"
+        label="Nome"
           label-for="name-input"
           invalid-feedback="Nome é obrigatório"
-          :state="nameState"
-        >
+          :state="nameState">
+          
           <b-form-input
-            id="name-input"
-            v-model="name"
-            :state="nameState"
-            required
-          ></b-form-input>
-        </b-form-group>
+          id="name-input"
+          v-model="name"
+          required></b-form-input>
+
+          <div class="validation-text">
+            <span :hidden="!this.userExists">*Nome já existente</span>
+          </div>
+
+				</b-form-group>
       </form>
+
+       <template #modal-footer="{ cancel }">
+
+          <b-button :hide="userExists" size="sm" variant="success" :hidden="userExists" 
+          @click="handleSubmit()">
+            OK
+          </b-button>
+          <b-button :hidden="!userExists" size="sm" variant="success"
+          @click="handleSubmit()">
+            Logar
+          </b-button>
+          <b-button size="sm" variant="danger" 
+          @click="cancel()">
+            Cancelar
+          </b-button>
+
+      </template>
+
     </b-modal>
         
     </div>
@@ -51,6 +69,8 @@
 
 <script>
 import {mapState} from 'vuex'
+import axios from 'axios'
+import {baseApiUrl} from '../../../global'
 export default {
     props: ['book','edit'],
     data(){
@@ -59,7 +79,8 @@ export default {
         like: false,
         name: null,
         nameState: null,
-        modalShow: false
+        modalShow: false,
+        userExists: false
       }
     },
     computed: mapState(['booksLiked','user']),
@@ -81,9 +102,26 @@ export default {
               this.$store.commit("removeBooksLiked", this.book)
             }
         
-          this.book.like ? this.iconLike ='heart-fill' : this.iconLike = 'heart'
+          
           }
+          this.book.like ? this.iconLike ='heart-fill' : this.iconLike = 'heart'
         
+        },
+       handleSubmit() {
+
+          if (!this.checkFormValidity()) {
+            return
+          }
+ 
+          this.$store.commit('setUser', this.name) 
+          this.$store.commit('setBooksLiked', this.book)
+          this.$emit('update', this.book)
+          //this.$emit('logged', null)
+          
+             
+          this.$nextTick(() => {
+            this.$bvModal.hide('modal-prevent-closing')
+          })
         },
         checkFormValidity() {
           const valid = this.$refs.form.checkValidity()
@@ -93,6 +131,7 @@ export default {
         resetModal() {
             this.name = ''
             this.nameState = null
+            this.userExists = false
         },
          handleOk(bvModalEvt) {
 
@@ -100,25 +139,36 @@ export default {
             this.handleSubmit()
 
         },
-        handleSubmit() {
-          
-          if (!this.checkFormValidity()) {
-            return
-          }
-          this.$store.commit('setUser', this.name)
-          this.$nextTick(() => {
-            this.$bvModal.hide('modal-prevent-closing')
-          })
+      
+        checkUserExists(){
+           axios.get(`${baseApiUrl}/books/users/${this.name}`)
+            .then((res) =>{
+                if(res.data !== null){
+                   this.userExists = true
+                } else{
+                   this.userExists = false
+                }
+            })
+            .catch(err =>{
+                return err
+            })
         },
+        verifyLikes(){
+           this.book.like ? this.iconLike ='heart-fill' : this.iconLike = 'heart'            
+        }
     },
     mounted(){
-
-      this.book.like ? this.iconLike ='heart-fill' : this.iconLike = 'heart'
+    
+      this.verifyLikes()
+      
         
     },
     watch:{
       'book':function(){
-        this.book.like ? this.iconLike ='heart-fill' : this.iconLike = 'heart'
+           this.book.like ? this.iconLike ='heart-fill' : this.iconLike = 'heart'
+      },
+      'name':function(){
+            this.checkUserExists()
       }
     }
 }
@@ -166,6 +216,11 @@ export default {
 }
 .books-content:hover{
   cursor:pointer;
+}
+
+.validation-text span{
+        font-size: 15px;
+        color: red;
 }
 
 

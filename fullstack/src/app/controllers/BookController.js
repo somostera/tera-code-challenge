@@ -58,6 +58,19 @@ class BookController {
             })
        
     }
+
+    async getUsersNames(req, res) {
+        await  Book.findOne({users_who_liked: req.params.name})
+        .then( books =>{
+            return res.json(books)
+        })
+        .catch(err =>{
+            return res.status(400).json({
+                error: errorHandler.getErrorMessage(err)
+            })
+        })
+   
+    }
   
     async destroy(req, res) {
             const book = await Book.findById(req.params.id)

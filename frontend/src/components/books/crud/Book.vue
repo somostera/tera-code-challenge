@@ -71,7 +71,8 @@ export default {
                 cover_picture: ''
             },
             bookExists: false,
-            errors: {}
+            errors: {},
+            confirmDelete : ''
         }
     },
     methods:{

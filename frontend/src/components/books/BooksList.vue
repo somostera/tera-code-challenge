@@ -1,8 +1,8 @@
 <template>
   <div class="books-list">
       <span v-if="user" @click="logout" class="login"> 
-      [Sair]<strong>{{getUser}}</strong></span>
-      <span v-else> [Entrar] </span>
+        [Sair]<strong>{{user}}</strong>
+      </span>
       
     <div class="filters">
 
@@ -50,7 +50,7 @@
                     no-gutters	           
                     class="mb-2 mt-2" >
 
-                    <BookItem :book="book" @update="updateBooks"/>
+                    <BookItem :book="book" @update="updateBooks" @logged="getBooks"/>
                       
                 </b-col>   
 
@@ -125,6 +125,7 @@ export default {
             axios.get(`${baseApiUrl}/books`)
             .then(res =>{
                 this.books = res.data
+                console.log(this.books)
                 this.getLikes()
             })
             .catch(err => {
@@ -132,12 +133,13 @@ export default {
             })
         },
         logout(){
-            //localStorage.removeItem(userKey)
+            this.getBooks()
             this.$store.commit('setUser',null)
             this.$store.state.booksLiked = []
             sessionStorage.clear();
         },
         getLikes(){
+            this.$store.state.booksLiked = []
             this.books.map((book,index)=>{
                 book.users_who_liked.map((user) =>{
                     if(user === this.user){
@@ -155,7 +157,7 @@ export default {
           
              this.books.map((b,index)=>{
               
-               if(b._id === book._id){
+               if(b._id === book._id && this.user !== null){
                    
                    this.books[index] = book
                    const userExists = this.books[index].users_who_liked.filter( user =>{
@@ -172,6 +174,8 @@ export default {
                    } 
                    axios.put(`${baseApiUrl}/books/${b._id}`,this.books[index])
                    .then((res) =>{
+                       console.log(res)
+                       this.getBooks()
                         return res 
                     }).catch(err =>{
                         return err

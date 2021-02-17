@@ -21,10 +21,11 @@ routes.use(bodyParser.json())
 routes.get('/books', BookController.index)
 routes.get('/categories', BookController.getCategory);
 routes.get('/books/:name', BookController.getBookByTitle)
+routes.get('/books/users/:name', BookController.getUsersNames)
+
 routes.post('/books', BookController.create)
 routes.put('/books/:id', BookController.update)
 routes.delete('/books/:id', BookController.destroy)
-
 
 
 module.exports = routes
