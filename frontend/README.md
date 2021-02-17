@@ -20,7 +20,12 @@ https://frontend-books.herokuapp.com/
 $ npm install
 
 ## Execute a aplicação em modo de desenvolvimento
-$ npm run serve
+$ npm run serve 
+
+ou 
+
+$ npm start
+
 
 ## O servidor iniciará na porta:8080 - acesse <http://localhost:8080> 
 
