@@ -10,7 +10,6 @@ export default new Vuex.Store({
   plugins: [createPersistedState()],
   strict: true,
   state: {
-    book: {},
     darkmode: false,
     logged: false,
     placeholder: 'Procure um livro',
@@ -24,14 +23,6 @@ export default new Vuex.Store({
 
     UPDATE_USER(state, payload) {
       state.user = Object.assign({}, state.user, payload)
-    },
-
-    UPDATE_BOOK(state, payload) {
-      if (payload) {
-        state.book = Object.assign({}, state.book, payload)
-      } else {
-        state.book = {}
-      }
     },
 
     UPDATE_PLACEHOLDER(state, payload) {
@@ -75,40 +66,6 @@ export default new Vuex.Store({
       localStorage.removeItem('token')
       context.commit('UPDATE_LOGIN', false)
       context.commit('UPDATE_DARKMODE', false)
-    },
-
-    createBook(_, payload) {
-      return api.post('/books', payload)
-    },
-
-    getBook(context, payload) {
-      return api.get(`books/${payload}`).then((response) => {
-        context.commit('UPDATE_BOOK', response.data.data)
-      })
-    },
-
-    updateBook(context, payload) {
-      return api.put(`/books/${payload.id}`, payload).then((response) => {
-        context.commit('UPDATE_BOOK', response.data.data)
-      })
-    },
-
-    deleteBook(context, payload) {
-      return api.delete(`/books/${payload.id}`).then(() => {
-        context.commit('UPDATE_BOOK', {})
-      })
-    },
-
-    likeBook(context, payload) {
-      return api
-        .post(`/books/${payload.book.id}`, payload.deslike)
-        .then((response) => {
-          context.commit('UPDATE_BOOK', response.data.data)
-        })
-    },
-
-    clearBook(context) {
-      context.commit('UPDATE_BOOK', false)
     },
 
     setPlaceholder(context, payload) {

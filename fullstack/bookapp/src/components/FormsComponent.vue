@@ -60,25 +60,14 @@
 </template>
 
 <script>
+import { api } from '@/services/index.js'
+
 export default {
   name: 'FormsComponent',
   data() {
     return {
-      bookId: null
-    }
-  },
-
-  computed: {
-    book() {
-      return this.$store.state.book
-    }
-  },
-
-  watch: {
-    bookId() {
-      if (!this.bookId) {
-        this.clearBook()
-      }
+      bookId: null,
+      book: {}
     }
   },
 
@@ -90,31 +79,47 @@ export default {
     getBook() {
       this.bookId = this.$route.params.id
       if (this.bookId) {
-        this.$store.dispatch('getBook', this.bookId)
-      } else {
-        this.clearBook()
+        api.get(`/books/${this.bookId}`).then((response) => {
+          this.book = response.data.data
+        })
       }
     },
 
     updateBook() {
-      this.$store.dispatch('updateBook', this.book)
-      this.$router.push('/')
+      if (this.bookId) {
+        console.log(this.book)
+
+        api
+          .put(`/books/${this.bookId}`, this.book)
+          .then(() => {
+            this.$router.back()
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+      }
     },
 
     deleteBook() {
-      this.$store.dispatch('deleteBook', this.book)
-      this.$router.push('/')
+      if (this.bookId) {
+        console.log(this.book)
+        api
+          .delete(`/books/${this.bookId}`)
+          .then(() => {
+            this.$router.back()
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+      }
     },
 
     createBook() {
       if (this.book) {
-        this.$store.dispatch('createBook', this.book)
-        this.$router.push('/')
+        api.post(`/books`, this.book).then(() => {
+          this.$router.back()
+        })
       }
-    },
-
-    clearBook() {
-      this.$store.dispatch('clearBook')
     }
   }
 }

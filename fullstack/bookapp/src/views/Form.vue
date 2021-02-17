@@ -1,7 +1,7 @@
 <template>
   <article>
     <div>
-      <router-link to="/" tag="p">
+      <router-link to="/">
         &#60; Voltar
       </router-link>
     </div>
@@ -19,8 +19,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-p {
+@import '../assets/sass/main.scss';
+
+a {
   display: inline-block;
   margin-top: 10px;
+  color: $dark;
 }
 </style>
