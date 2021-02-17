@@ -20,7 +20,6 @@ export default new Vuex.Store({
             state.user = user
         },
         setBooksLiked(state, book){
-            console.log(book.name)
             let position = state.booksLiked.findIndex(b => b._id === book._id)
             if(position === -1){
                 state.booksLiked.push(book)

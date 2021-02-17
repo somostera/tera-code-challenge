@@ -1,6 +1,6 @@
 <template>
 <div class="book">
- <div class="back"><a href="/" >  Voltar</a></div>
+ <div class="back"><a href="/">  &lt; Voltar</a></div>
   <div class="book-form">
      
 
@@ -195,7 +195,7 @@ export default {
 
     .form-modal {
         flex: 1; 
-        width:50%
+        width:60%;
     }
 
     .button-add{
@@ -212,6 +212,17 @@ export default {
     .validation-text span{
         font-size: 15px;
         color: red;
+    }
+
+    .back{
+        text-decoration:none;
+        color:black;
+    }
+
+    a {
+        color: black;
+        text-decoration: none;
+        background-color: transparent;
     }
 
 </style>

@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div class="back"><a href="/" >  Voltar</a></div>
-        <b-card no-body class="overflow-hidden" >
+        <div class="back"><a href="/" > &lt; Voltar</a></div>
+        <b-card no-body class="overflow-hidden mt-4" >
             <b-row no-gutters>
                 <b-col md="6">
                     <b-card-img :src="book.cover_picture" alt="Image" class="rounded-0"></b-card-img>
@@ -43,4 +43,15 @@ export default {
 .dark .card{
     background: black;
 }
+
+.back{
+        text-decoration:none;
+        color:black;
+    }
+
+    a {
+        color: black;
+        text-decoration: none;
+        background-color: transparent;
+    }
 </style>
