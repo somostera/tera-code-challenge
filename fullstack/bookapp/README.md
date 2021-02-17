@@ -1,5 +1,7 @@
 # bookapp
 
+Criar arquivo .env baseado no .env.example
+
 ## Project setup
 ```
 yarn install

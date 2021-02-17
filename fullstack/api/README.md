@@ -2,6 +2,15 @@
 
 Clone manualmente o repo e execute `npm install`.
 
+Criar arquivo .env baseado no .env.example
+
+### Gerando a key
+
+Execute o seguinte comando para gerar a chave da aplicação.
+
+```js
+node ace key:generate
+```
 
 ### Migrações
 
@@ -9,14 +18,6 @@ Execute o seguinte comando para rodar as migrações de inicialização.
 
 ```js
 node ace migration:run
-```
-
-### Seeds
-
-Execute o seguinte comando para rodar as seeds e popular o banco de dados de inicialização.
-
-```js
-node ace seed
 ```
 
 
