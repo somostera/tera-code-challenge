@@ -25,7 +25,7 @@
             </div>
 
             <label for="book-quantidade">Quantidade em estoque</label>
-            <b-input type="text" id="book-quantidade" v-model="book.stock"/>
+            <b-input type="number" id="book-quantidade" v-model="book.stock"/>
 
             <label for="book-url">Url da capa</label>
             <b-input type="text" id="book-url" v-model="book.cover_picture"/>
@@ -77,8 +77,9 @@ export default {
     },
     methods:{
          checkForm(e) {
-            if (this.book.name && this.book.author && this.book.description
-            && this.book.category && this.book.cover_picture) {
+            if (this.book.name !== '' && this.book.author !== ''&& 
+            this.book.description !== '' && this.book.category !== '' 
+            && this.book.cover_picture !== '') {
               return true;
             }
 
@@ -94,6 +95,10 @@ export default {
               this.errors.description = 'Preencha o autor';
             }
 
+             if (this.book.category  === '') {
+              this.errors.category = 'Preencha a categoria';
+            }
+
             if (this.book.cover_picture  === '') {
               this.errors.cover_picture = 'Preencha com a imagem'
             }
@@ -106,10 +111,10 @@ export default {
         },
         onSubmit(e){
             if(this.checkForm(e)){
-                console.log(this.book)
                  axios.post(`${baseApiUrl}/books`, this.book)
                 .then(()=>{
                    this.$toasted.global.defaultSuccess()
+                   this.errors = {}
                    this.book = {}
                 })
                 .catch(showError)
@@ -150,6 +155,7 @@ export default {
             .then(()=>{
                 this.$toasted.global.defaultSuccess();
                 this.book = {}
+                this.errors = {}
             })
             .catch(showError)
         }
