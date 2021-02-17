@@ -14,13 +14,14 @@ class BookService extends Service {
 
     if (utils.defined(options.name)) {
       _options.name = options.name + "%";
+      _params.useLike = { name: true };
     }
 
     if (utils.defined(options.filter)) {
       switch (options.filter) {
         case "asc":
           _params.custom = {
-            query: ` ORDER BY ${this.table().getColumn("name")} ASC`,
+            query: ` ORDER BY ${new this.table().getColumn("name")} ASC`,
           };
           break;
         case "inStock":

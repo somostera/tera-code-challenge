@@ -16,7 +16,7 @@ const _books = {
   list: () => api.get("/book/list"),
   search: (params) => api.get("/book/search", { params }),
   create: (data) => api.post("/book", data),
-  delete: (id) => api.post(`/book/${id}`),
+  delete: (id) => api.delete(`/book/${id}`),
   update: (data) => api.post(`/book/${data.id}`, data),
   get: (id) => api.get(`/book/${id}`),
 };

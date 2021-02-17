@@ -44,8 +44,8 @@ class Service {
     return result;
   }
 
-  async search(options) {
-    let result = await this.repository.search(options);
+  async search(options, params = {}) {
+    let result = await this.repository.search(options, params);
     return result;
   }
   async paginate(options) {

@@ -4,7 +4,7 @@
       <v-text-field
         v-model="search.name"
         @input="searchList"
-        @bluc="searchList"
+        @blur="searchList"
         label="Procure por um Livro"
       ></v-text-field>
       <v-select
@@ -17,19 +17,11 @@
       ></v-select>
     </div>
     <section>
-      <ul>
-        <li :key="book.id" v-for="book of list" @click="view($event, book)">
-          <img :src="book.coverPicture" :alt="book.name" />
-          <h4>{{ book.name }}</h4>
-          <span>{{ book.author }}</span>
-          <span>{{ book.category }}</span>
-          <heart-button
-            :book="book"
-            @click="heartClicked"
-            :liked="book.liked"
-          />
-        </li>
-      </ul>
+      <v-row>
+        <v-col md="3" sm="6" cols="12" :key="book.id" v-for="book of list">
+          <BookCard :book="book" />
+        </v-col>
+      </v-row>
       <v-fab-transition>
         <v-btn fab right bottom absolute @click="addNew">
           <v-icon>mdi-plus</v-icon>
@@ -42,9 +34,9 @@
 
 <script>
 import { books } from "@/services/api.js";
-import HeartButton from "@/components/HeartButton.vue";
+import BookCard from "@/components/BookCard.vue";
 export default {
-  components: { HeartButton },
+  components: { BookCard },
   name: "Books",
   data: function () {
     return {
@@ -74,13 +66,6 @@ export default {
     this.searchList({});
   },
   methods: {
-    heartClicked(data) {
-      data.liked = !data.liked;
-    },
-    view($event, book) {
-      console.log(book.id);
-      this.$router.push({ name: "book", params: { id: book.id } });
-    },
     addNew() {
       this.$router.push({ name: "book" });
     },
@@ -102,26 +87,6 @@ section ul {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 5px;
-}
-section ul li {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  align-content: flex-start;
-  justify-content: center;
-  transition: all 300ms ease;
-  padding: 5px;
-  cursor: pointer;
-}
-
-section ul li:hover {
-  background: #eee;
-}
-
-section ul li img {
-  height: 250px;
-  width: auto;
-  margin: auto;
 }
 #filtros {
   display: flex;

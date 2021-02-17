@@ -33,6 +33,11 @@ router.get("/:id", async (req, res) => {
   let result = await this.service.get(id);
   res.send(result);
 });
+router.delete("/:id", async (req, res) => {
+  let id = req.params.id;
+  await this.service.delete(id);
+  res.send();
+});
 router.put("/:id", async (req, res) => {
   let id = req.params.id;
   let dto = req.body;

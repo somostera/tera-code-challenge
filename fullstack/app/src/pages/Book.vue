@@ -7,7 +7,7 @@
       <v-text-field
         id="name"
         v-model="model.name"
-        :counter="100"
+        :counter="200"
         label="Nome"
         :rules="rules"
         required
@@ -25,14 +25,14 @@
       <v-text-field
         id="category"
         v-model="model.category"
-        :counter="100"
+        :counter="300"
         :rules="rules"
         label="Categoria"
         required
       ></v-text-field>
 
       <v-text-field
-        id="category"
+        id="stock"
         v-model="model.stock"
         :counter="10"
         :rules="rules"
@@ -52,7 +52,7 @@
       <v-textarea
         required
         v-model="model.description"
-        :counter="1000"
+        :counter="5000"
         :rules="rules"
         id="description"
       >
@@ -89,14 +89,13 @@ export default {
     };
   },
   mounted() {
-    
     if (this.$route.params && this.$route.params.id) {
-    this.init();
+      this.init();
     }
   },
   methods: {
     async init() {
-  let result = await books.get(this.$route.params.id);
+      let result = await books.get(this.$route.params.id);
       this.model = result.data;
     },
     async save() {
@@ -115,8 +114,8 @@ export default {
         (!this.model.stock && this.model.stock != 0)
       );
     },
-    remove() {
-      books.delete(this.model.key);
+    async remove() {
+      await books.delete(this.model.id);
       this.goToList();
     },
     goToList() {
@@ -125,3 +124,26 @@ export default {
   },
 };
 </script>
+
+
+<style scoped>
+.form-footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+form {
+  max-width: 50vw;
+  margin: auto;
+}
+.form-footer > button {
+  background: var(--button-color) !important;
+  color: white !important;
+  border-radius: 0 !important;
+  box-shadow: 0px 4px 2px 0 rgb(0 0 0 / 28%);
+}
+.form-footer > button > span {
+  color: white !important;
+}
+</style>
