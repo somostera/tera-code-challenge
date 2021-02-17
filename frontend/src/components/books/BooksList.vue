@@ -4,7 +4,7 @@
         [Sair]<strong>{{user}}</strong>
       </span>
       
-    <div class="filters">
+    <div class="filters mt-2">
 
         <div :class="!showSelectCategory ? 'filter-name' :'filter-name-category'">
             <b-input type="text" v-model="filterName" placeholder="Procure por um livro"/>
@@ -14,7 +14,7 @@
             <b-select type="text" 
             :options="items" 
             v-model="filterSelected" 
-            placeholder="Filtros"/>
+            />
         </div>
 
          <div :class="{'filter-category': showSelectCategory}">
@@ -99,7 +99,7 @@ export default {
             filterName:'',
             categorySelected: null,
             items:[
-                { value: null, text: 'Filtro' },
+                {value: null, text: 'Filtro' },
                 {value: '0', text:'Melhores Avaliados'},
                 {value: '1', text:'Em estoque'},
                 {value: '2', text:'Ordem Alfabética'},
@@ -129,7 +129,6 @@ export default {
             axios.get(`${baseApiUrl}/books`)
             .then(res =>{
                 this.books = res.data
-                console.log(this.books)
                 this.getLikes()
             })
             .catch(err => {
@@ -178,7 +177,6 @@ export default {
                    } 
                    axios.put(`${baseApiUrl}/books/${b._id}`,this.books[index])
                    .then((res) =>{
-                       console.log(res)
                        this.getBooks()
                         return res 
                     }).catch(err =>{
@@ -275,7 +273,6 @@ export default {
     mounted(){
         this.getBooks()
         this.setSize()
-        console.log(this.user)
     },
     watch:{
          'filterName': function(){
