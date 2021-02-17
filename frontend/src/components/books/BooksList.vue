@@ -73,6 +73,10 @@
             </paginate-links>
         </div>
         </div>
+
+        <a href="/books" class="float">
+            <b-icon icon="plus" scale="2" class="my-float"></b-icon>
+        </a>
   </div>
 </template>
 
@@ -327,6 +331,19 @@ export default {
     padding: 2px;
 }
 
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:30px;
+	right:400px;
+	background-color:#3cdbdb;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+}
+
+
 .filter-select-category{
     margin-right: auto;
     width:30%;
@@ -337,6 +354,22 @@ export default {
         margin-left: auto;
         padding: 2px 5px 0px 2px;
         width:30%;
+    }
+
+    .float{
+        position:fixed;
+        width:60px;
+        height:60px;
+        bottom:30px;
+        left:85%;
+        background-color:#3cdbdb;
+        color:#FFF;
+        border-radius:50px;
+        text-align:center;
+    }
+
+    .my-float{
+        margin-top:22px;
     }
 
 
@@ -361,6 +394,22 @@ export default {
         padding: 2px;
     }
 
+    .float{
+        position:fixed;
+        width:60px;
+        height:60px;
+        bottom:30px;
+        left: 88%;
+        background-color:#3cdbdb;
+        color:#FFF;
+        border-radius:50px;
+        text-align:center;
+    }
+
+    .my-float{
+        margin-top:22px;
+    }
+
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -382,6 +431,22 @@ export default {
     .filter-category{
         padding: 2px;
     }
+
+    .float{
+        position:fixed;
+        width:60px;
+        height:60px;
+        bottom:30px;
+        left: 91%;
+        background-color:#3cdbdb;
+        color:#FFF;
+        border-radius:50px;
+        text-align:center;
+    }
+
+    .my-float{
+        margin-top:22px;
+    }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -402,6 +467,22 @@ export default {
 
     .filter-category{
         padding: 2px;
+    }
+
+    .float{
+        position:fixed;
+        width:60px;
+        height:60px;
+        bottom:30px;
+        left: 92%;
+        background-color:#3cdbdb;
+        color:#FFF;
+        border-radius:50px;
+        text-align:center;
+    }
+
+    .my-float{
+        margin-top:22px;
     }
 
 }
@@ -426,6 +507,22 @@ export default {
     .filter-category{
         padding: 2px;
     }
+
+    .float{
+        position:fixed;
+        width:60px;
+        height:60px;
+        bottom:30px;
+        left: 94%;
+        background-color:#3cdbdb;
+        color:#FFF;
+        border-radius:50px;
+        text-align:center;
+    }
+
+    .my-float{
+        margin-top:22px;
+    }
 }
 
 .page-link-books {
@@ -436,6 +533,15 @@ export default {
     line-height: 1.25;
     background-color: transparent !important;
 }
+
+  .dark .float{
+        background-color: #101520;
+        color:#FFF;
+    }
+
+
+
+
 
 
 </style>
