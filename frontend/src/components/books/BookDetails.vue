@@ -45,13 +45,17 @@ export default {
 }
 
 .back{
-        text-decoration:none;
-        color:black;
-    }
+    text-decoration:none;
+    color:black;
+}
 
-    a {
-        color: black;
+a {
+    color: black;
         text-decoration: none;
         background-color: transparent;
-    }
+}
+
+.dark a{
+    color:white;
+}
 </style>

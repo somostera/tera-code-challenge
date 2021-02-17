@@ -328,18 +328,6 @@ export default {
     padding: 2px;
 }
 
-.float{
-	position:fixed;
-	width:60px;
-	height:60px;
-	bottom:30px;
-	right:400px;
-	background-color:#3cdbdb;
-	color:#FFF;
-	border-radius:50px;
-	text-align:center;
-}
-
 
 .filter-select-category{
     margin-right: auto;
@@ -353,12 +341,12 @@ export default {
         width:30%;
     }
 
-    .float{
+   .float{
         position:fixed;
         width:60px;
         height:60px;
         bottom:30px;
-        left:85%;
+        left:80%;
         background-color:#3cdbdb;
         color:#FFF;
         border-radius:50px;
@@ -529,6 +517,10 @@ export default {
     margin-left: -1px;
     line-height: 1.25;
     background-color: transparent !important;
+}
+
+.pagination:hover{
+    cursor:pointer;
 }
 
   .dark .float{
