@@ -4,7 +4,8 @@ import RequestObservable from "./requestObservable";
 
 
 const api = axios.create({
-  baseURL: "http://localhost:3000/api",
+//baseURL: "http://localhost:3000/api",
+baseURL : "https://livraria-do-cowboy.herokuapp.com/api"
 });
 
 const observable = new RequestObservable();

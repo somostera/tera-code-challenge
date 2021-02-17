@@ -1,4 +1,4 @@
-const db = require("../../../db.json");
+const db = require("../../db.json");
 const Book = require("../model/Book");
 const BookRepository = require("../repository/BookRepository");
 const repository = new BookRepository();
