@@ -1,7 +1,7 @@
 import Vue from 'vue'
 
-//export const baseApiUrl = 'https://backend-tera.herokuapp.com'
-export const baseApiUrl = 'http://localhost:3000'
+export const baseApiUrl = 'https://backend-tera.herokuapp.com'
+//export const baseApiUrl = 'http://localhost:3000'
 export const userKey = '__cowboy_user'
 
 export function showError(e) {

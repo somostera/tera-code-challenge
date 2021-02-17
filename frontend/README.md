@@ -1,21 +1,33 @@
-# Tera Code Challenge - FrontEnd
+# ✨ Tera Code Challenge - Fullstack ✨
 
-## Project setup
-```
-npm install
-```
+## Descrição do Projeto
+<p align="center">Front end do desafio proposto utilizando Vue.js</p>
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## 🛠 Tecnologias
 
-### Compiles and minifies for production
-```
-npm run build
-```
+As seguintes ferramentas foram usadas na construção do projeto:
 
-### Lints and fixes files
-```
-npm run lint
-```
+- Vue.js
+
+# 🎲 Rodando o Front End no Desenvolvimento (servidor)
+
+## Instale as dependências
+$ npm install
+
+## Execute a aplicação em modo de desenvolvimento
+$ npm run server
+
+## O servidor iniciará na porta:8080 - acesse <http://localhost:8080> 
+
+# Rotas
+
+**Página de Listagem**
+----
+
+localhost:8080/
+
+**Página de descrição**
+----
+
+localhost:8080/books
+

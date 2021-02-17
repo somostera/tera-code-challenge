@@ -20,7 +20,7 @@ const routes = [
     },
     {
         name:'new-book',
-        path:'/book/new',
+        path:'/books',
         component: BookForm
   
     }
