@@ -11,6 +11,7 @@ export default new Vuex.Store({
   strict: true,
   state: {
     book: {},
+    darkmode: false,
     logged: false,
     placeholder: 'Procure um livro',
     searchBook: '',
@@ -39,6 +40,10 @@ export default new Vuex.Store({
 
     UPDATE_SEARCH_BOOK(state, payload) {
       state.searchBook = payload
+    },
+
+    UPDATE_DARKMODE(state, payload) {
+      state.darkmode = payload
     }
   },
   actions: {
@@ -69,6 +74,7 @@ export default new Vuex.Store({
       context.commit('UPDATE_USER', {})
       localStorage.removeItem('token')
       context.commit('UPDATE_LOGIN', false)
+      context.commit('UPDATE_DARKMODE', false)
     },
 
     createBook(_, payload) {
@@ -113,6 +119,10 @@ export default new Vuex.Store({
 
     setSearch(context, payload) {
       context.commit('UPDATE_SEARCH_BOOK', payload)
+    },
+
+    setDarkmode(context, payload) {
+      context.commit('UPDATE_DARKMODE', payload)
     }
   }
 })

@@ -2,12 +2,13 @@
   <div>
     <header class="navbar container">
       <div class="left-side">
-        <button id="menu-mobile" @click="openNav()">
+        <button id="menu-mobile" @click="openNav()" v-if="logged">
           <img src="@/assets/menu-light.svg" />
         </button>
         <p class="nav-title">Livraria do cowboy</p>
       </div>
-      <p class="dark-mode">Dark mode</p>
+      <p class="dark-mode" v-if="!darkmode" @click="toggleTheme()">Dark mode</p>
+      <p class="dark-mode" v-else @click="toggleTheme()">Light mode</p>
     </header>
 
     <div id="mySidenav" class="sidenav">
@@ -25,6 +26,16 @@ export default {
   name: 'NavBar',
   data() {
     return {}
+  },
+
+  computed: {
+    logged() {
+      return this.$store.state.logged
+    },
+
+    darkmode() {
+      return this.$store.state.darkmode
+    }
   },
 
   methods: {
