@@ -129,6 +129,14 @@ export default {
                     this.book = res.data
                     this.errors = {}
                     this.bookExists = true
+                } else{
+                    this.bookExists = false
+                    this.book.description = ''
+                    this.book.author = ''
+                    this.book.description = ''
+                    this.book.category = ''
+                    this.book.cover_picture =  ''
+                    this.book.stock =  ''
                 }
             })
             .catch(err =>{
