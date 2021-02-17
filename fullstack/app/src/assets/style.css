@@ -1,11 +1,29 @@
+:root {
+  --navbar-color: #95d9da;
+  --background-color: #f1feff;
+  --font-color: #010202;
+}
+
+body.dark-theme {
+  --navbar-color: #121420;
+  --background-color: #1b2432;
+  --font-color: #ffffff;
+}
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   position: relative;
+  color: var(--font-color) !important;
 }
 body,
 html {
-    min-height: 100vh;
-    min-width: 99vw;
+  min-height: 100vh;
+  min-width: 99vw;
+  background: var(--background-color);
+  color: var(--font-color) !important;
+}
+
+.v-application {
+  background: transparent !important;
 }

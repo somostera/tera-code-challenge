@@ -18,7 +18,7 @@
     </div>
     <section>
       <ul>
-        <li :key="book.id" v-for="book of list">
+        <li :key="book.id" v-for="book of list" @click="view($event, book)">
           <img :src="book.coverPicture" :alt="book.name" />
           <h4>{{ book.name }}</h4>
           <span>{{ book.author }}</span>
@@ -77,7 +77,8 @@ export default {
     heartClicked(data) {
       data.liked = !data.liked;
     },
-    view(book) {
+    view($event, book) {
+      console.log(book.id);
       this.$router.push({ name: "book", params: { id: book.id } });
     },
     addNew() {
@@ -85,7 +86,6 @@ export default {
     },
     searchList() {
       books.search(this.search).then((result) => {
-        console.log(result.data);
         this.list = result.data;
       });
     },
@@ -106,11 +106,18 @@ section ul {
 section ul li {
   display: flex;
   flex-direction: column;
-
   align-items: flex-start;
   align-content: flex-start;
   justify-content: center;
+  transition: all 300ms ease;
+  padding: 5px;
+  cursor: pointer;
 }
+
+section ul li:hover {
+  background: #eee;
+}
+
 section ul li img {
   height: 250px;
   width: auto;

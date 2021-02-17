@@ -88,7 +88,17 @@ export default {
       ],
     };
   },
+  mounted() {
+    
+    if (this.$route.params && this.$route.params.id) {
+    this.init();
+    }
+  },
   methods: {
+    async init() {
+  let result = await books.get(this.$route.params.id);
+      this.model = result.data;
+    },
     async save() {
       if (this.hasInvalid()) return;
       await books.create(this.model);
