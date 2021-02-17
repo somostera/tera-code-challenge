@@ -1,5 +1,7 @@
 'use strict'
 
+const Book = use('App/Models/Book')
+
 const books = [
   {
     name: 'Pele Negra, Máscaras Brancas',
