@@ -57,6 +57,10 @@ export default {
       this.closeNav()
       this.$store.dispatch('clearBook')
       this.$router.push('/formulario').catch(() => {})
+    },
+
+    toggleTheme() {
+      this.$store.dispatch('setDarkmode', !this.darkmode)
     }
   }
 }
