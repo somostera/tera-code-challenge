@@ -27,12 +27,8 @@ class Theme {
     return this.darkmode;
   }
   async change() {
-    console.log("k");
     return await this.set(!this.darkmode);
   }
 }
-
-// const ThemeService = new Theme();
-// Object.freeze(ThemeService);
 
 export default new Theme();

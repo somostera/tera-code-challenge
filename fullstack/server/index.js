@@ -24,3 +24,6 @@ app.use("/api", routers);
 app.listen(PORT, () => {
   logger.info(`App started at ${PORT}`);
 });
+
+
+app.use(express.static(__dirname + '/public'));

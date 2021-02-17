@@ -23,7 +23,6 @@ export default {
       books.liked(this.book.id);
     },
     view($event, book) {
-      console.log(book.id);
       this.$router.push({ name: "book", params: { id: book.id } });
     },
   },
