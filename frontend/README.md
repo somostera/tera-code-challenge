@@ -10,6 +10,10 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 - Vue.js
 
+# Aplicação HEROKU
+
+https://frontend-books.herokuapp.com/
+
 # 🎲 Rodando o Front End no Desenvolvimento (servidor)
 
 ## Instale as dependências
@@ -31,4 +35,6 @@ localhost:8080/
 ----
 
 localhost:8080/books
+
+
 
