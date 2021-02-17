@@ -1,14 +1,14 @@
 <template>
-  <button class="btn-heart" @click="like">
+  <v-btn class="btn btn-heart" @click="like">
+    <v-icon>mdi-heart{{ book.liked ? "" : "-outline" }}</v-icon>
     <i class="fa-heart" :class="{ far: !liked, fas: liked }"></i>
-    {{ book.liked }}
-  </button>
+  </v-btn>
 </template>
 
 <script>
 export default {
   name: "HeartButton",
-  props: ["book", 'liked'],
+  props: ["book", "liked"],
   methods: {
     like() {
       this.$emit("click", this.book);
@@ -32,6 +32,8 @@ export default {
   right: 20px;
   appearance: none;
   outline: none;
+
+  z-index: 88;
 }
 i {
   color: #222;

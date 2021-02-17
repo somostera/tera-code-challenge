@@ -1,11 +1,53 @@
+:root {
+  --navbar-color: #95d9da;
+  --background-color: #f1feff;
+  --font-color: #010202;
+  --card-hover-color: #ddd;
+  --button-color:#4b4b4b
+  
+}
+
+body.dark-theme {
+  --navbar-color: #121420;
+  --background-color: #1b2432;
+  --font-color: #ffffff;
+  --card-hover-color: #222;
+}
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   position: relative;
+  color: var(--font-color) !important;
 }
 body,
 html {
-    min-height: 100vh;
-    min-width: 99vw;
+  min-height: 100vh;
+  min-width: 99vw;
+  background: var(--background-color);
+  color: var(--font-color) !important;
+}
+
+.v-application {
+  background: transparent !important;
+}
+
+/* VUETIFY */
+
+.v-list {
+  background: var(--background-color) !important;
+  color: var(--font-color) !important;
+}
+
+.v-list .v-list-item:hover {
+  background: var(--navbar-color) !important;
+}
+
+.v-application .v-label.primary--text,
+.v-application .v-icon.primary--text
+ {
+  color: var(--font-color) !important;
+}
+.v-btn__content {
+  color: white !important;
 }

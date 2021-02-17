@@ -8,10 +8,11 @@ Vue.use(Router);
 
 const routes = [];
 
-routes.push(createRouter("book", Book));
+routes.push(createRouter("book/:id", Book, "book"));
 routes.push(createRouter("", Books, "books"));
 
 const router = new Router({
+  mode: "history",
   routes,
 });
 
