@@ -25,18 +25,42 @@ class BookService extends Service {
           };
           break;
         case "inStock":
+          _params.custom = {
+            query: ` ${
+              options.name ? " AND " : " WHERE "
+            } ${new this.table().getColumn("stock")}  > 0`,
+          };
           break;
         case "best":
           _params.custom = {
-            query: ` ORDER BY ${new this.table().getColumn("name")} ASC`,
+            query: ` ORDER BY coalesce(array_length(${new this.table().getColumn(
+              "usersWhoLiked"
+            )}, 1), 0) DESC`,
           };
           break;
         case "liked":
+          _params.custom = {
+            query: ` ${
+              options.name ? " AND " : " WHERE "
+            } 'Me' = ANY (${new this.table().getColumn("usersWhoLiked")})`,
+          };
+
           break;
       }
     }
 
     return super.search(_options, _params);
+  }
+
+  async liked(id) {
+    let book = await super.get(id);
+    book.usersWhoLiked = book.usersWhoLiked || [];
+    if (book.usersWhoLiked.find((user) => user == "Me")) {
+      book.usersWhoLiked = book.usersWhoLiked.filter((user) => user != "Me");
+    } else {
+      book.usersWhoLiked.push("Me");
+    }
+    await super.update(book);
   }
 }
 

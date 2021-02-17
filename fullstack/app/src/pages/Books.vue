@@ -1,5 +1,10 @@
 <template>
   <div id="books">
+    <v-fab-transition>
+      <v-btn id="add-button" fab top absolute @click="addNew">
+        <v-icon>mdi-plus</v-icon>
+      </v-btn>
+    </v-fab-transition>
     <div id="filtros">
       <v-text-field
         v-model="search.name"
@@ -22,11 +27,6 @@
           <BookCard :book="book" />
         </v-col>
       </v-row>
-      <v-fab-transition>
-        <v-btn fab right bottom absolute @click="addNew">
-          <v-icon>mdi-plus</v-icon>
-        </v-btn>
-      </v-fab-transition>
     </section>
   </div>
 </template>
@@ -97,5 +97,13 @@ section ul {
 
 #filtros > * {
   max-width: 200px;
+}
+#add-button {
+  left: calc((100% - 56px) / 2);
+  z-index: 99;
+}
+
+#add-button i {
+  color: #444 !important;
 }
 </style>

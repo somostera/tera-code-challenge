@@ -32,7 +32,7 @@ class Service {
   async update(model) {
     let result = await this.repository.update(model);
     if (result.erro) throw new Error(result);
-    else return result.rows[0];
+    else return result.rows;
   }
 
   async delete(id) {

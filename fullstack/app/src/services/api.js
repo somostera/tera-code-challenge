@@ -18,6 +18,7 @@ const _books = {
   create: (data) => api.post("/book", data),
   delete: (id) => api.delete(`/book/${id}`),
   update: (data) => api.post(`/book/${data.id}`, data),
+  liked: (id) => api.put(`/book/liked/${id}`),
   get: (id) => api.get(`/book/${id}`),
 };
 

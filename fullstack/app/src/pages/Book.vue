@@ -62,7 +62,7 @@
       </v-textarea>
 
       <div class="form-footer">
-        <v-btn @click="remove">Deletar</v-btn>
+        <v-btn @click="remove" :disabled="!model.id">Deletar</v-btn>
 
         <v-btn type="submit">
           {{ model.id ? "Atualizar" : "Adicionar" }}
@@ -100,7 +100,11 @@ export default {
     },
     async save() {
       if (this.hasInvalid()) return;
-      await books.create(this.model);
+      if (this.model.id) {
+        await books.create(this.model);
+      } else {
+        await books.update(this.model);
+      }
       this.goToList();
     },
     hasInvalid() {
@@ -145,5 +149,14 @@ form {
 }
 .form-footer > button > span {
   color: white !important;
+}
+#history-nav > a {
+  text-decoration: none !important;
+  padding: 5px 15px;
+  transition: all 200ms ease;
+
+}
+#history-nav > a:hover {
+  background: var(--navbar-color);
 }
 </style>

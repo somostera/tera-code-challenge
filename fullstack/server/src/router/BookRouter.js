@@ -53,5 +53,10 @@ router.put("/:id", async (req, res) => {
   }
   return;
 });
+router.put("/liked/:id", async (req, res) => {
+  let id = req.params.id;
+  let result = await this.service.liked(id);
+  res.send(result);
+});
 
 module.exports = router;

@@ -20,7 +20,7 @@ export default {
   methods: {
     heartClicked() {
       this.book.liked = !this.book.liked;
-      books.update(this.book.id, this.book);
+      books.liked(this.book.id);
     },
     view($event, book) {
       console.log(book.id);

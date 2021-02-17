@@ -8,8 +8,17 @@ class Book extends Model {
       .addColumn("coverPicture", "COVER_PICTURE")
       .addColumn("category", "CATEGORY")
       .addColumn("stock", "STOCK")
-      .addColumn("usersWhoLiked", "USER_WHO_LIKED");
+      .addColumn("usersWhoLiked", "USERS_WHO_LIKED");
     this.setValues(args, fromDatabase);
+  }
+  get liked() {
+    //FAKE TO SEE IT ITS LIKED BY THE USER
+    return !!this.usersWhoLiked.find((user) => user == "Me");
+  }
+  toJSON() {
+    let json = super.toJSON();
+    json.liked = this.liked;
+    return json;
   }
 }
 

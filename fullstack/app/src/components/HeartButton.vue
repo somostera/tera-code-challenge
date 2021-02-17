@@ -2,7 +2,6 @@
   <v-btn class="btn btn-heart" @click="like">
     <v-icon>mdi-heart{{ book.liked ? "" : "-outline" }}</v-icon>
     <i class="fa-heart" :class="{ far: !liked, fas: liked }"></i>
-    {{ book.liked }}
   </v-btn>
 </template>
 
