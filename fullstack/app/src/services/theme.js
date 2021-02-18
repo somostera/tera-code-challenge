@@ -18,7 +18,11 @@ class Theme {
   async load() {
     let val = await SimpleStorage.get("darkmode");
     this.darkmode = val;
-    document.body.classList.toggle("dark-theme");
+    document.body.classList = [];
+    if( this.darkmode){
+      document.body.classList.add("dark-theme")
+
+    }
     return this.darkmode;
   }
   async set(newValue) {
