@@ -33,11 +33,11 @@ jobs:
     - run: cd fullstack
     - run: ls
     - run: cd fullstack && npm ci
-    - run: npm run prepare-project
-    - run: npm run build --if-present
+    - run: cd fullstack && npm run prepare-project
+    - run: cd fullstack && npm run build --if-present
     - uses: akhileshns/heroku-deploy@v3.8.9 # This is the action
       with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "livraria-do-cowboy" #Must be unique in Heroku
           heroku_email:  ${{secrets.HEROKU_EMAIL}}
-          appdir: "dist" # <- This will point to the api folder in your project
+          appdir: "fullstack/dist" # <- This will point to the api folder in your project
