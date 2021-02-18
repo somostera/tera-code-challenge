@@ -22,8 +22,14 @@
 Para testar localmente
 - `npm run start`
 
-Este comando rodará simultaniamente servidor e aplicação :P
+Este comando rodará simultaneamente servidor e aplicação :P
 
+Para executar somente o backend execute dentro da pasta fullstack
+- `npm run server`
+
+
+Para executar somente o frontend execute dentro da pasta fullstack
+- `npm run app`
 
 Aplicação disponivel em 
 > https://livraria-do-cowboy.herokuapp.com/
