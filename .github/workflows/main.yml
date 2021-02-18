@@ -30,6 +30,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - run: cd fullstack
     - run: npm ci
     - run: npm test      
     - run: npm run prepare-project
@@ -39,4 +40,4 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "livraria-do-cowboy" #Must be unique in Heroku
           heroku_email:  ${{secrets.HEROKU_EMAIL}}
-          appdir: "fullstack/dist" # <- This will point to the api folder in your project
+          appdir: "dist" # <- This will point to the api folder in your project
