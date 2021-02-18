@@ -1,8 +1,8 @@
 <template>
-  <v-btn class="btn btn-heart" @click="like">
+  <button class="btn-heart" @click="like" :class="{'text-red': liked  }">
     <v-icon>mdi-heart{{ book.liked ? "" : "-outline" }}</v-icon>
-    <i class="fa-heart" :class="{ far: !liked, fas: liked }"></i>
-  </v-btn>
+    <i class="fa-heart" :class="{ far: !liked, fas: liked}"></i>
+  </button>
 </template>
 
 <script>
@@ -37,5 +37,9 @@ export default {
 }
 i {
   color: #222;
+}
+.text-red ,
+.text-red i {
+  color: #c00 !important
 }
 </style>
