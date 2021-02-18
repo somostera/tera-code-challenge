@@ -31,7 +31,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: cd fullstack
-    - run: npm ci
+    - run: ls
+    - run: cd fullstack && npm ci
     - run: npm test      
     - run: npm run prepare-project
     - run: npm run build --if-present
