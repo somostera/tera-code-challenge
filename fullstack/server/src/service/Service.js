@@ -51,7 +51,8 @@ class Service {
   async search(options, params = {}) {
     Logger.info("search");
     try {
-      let result = await this.repository.search(options, params);
+      let result = await this.repository.search(options, params);      
+      Logger.debug(result);
       return result;
     } catch (err) {
       Logger.debug(err);
