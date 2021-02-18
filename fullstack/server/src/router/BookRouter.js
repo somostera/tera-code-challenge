@@ -1,7 +1,7 @@
 let router = require("express").Router();
 const BookService = require("../service/BookService");
 const ModelMiddleware = require("./middlware/ModelMiddleware");
-const Logger = require("../utils/utils")
+const Logger = require("../utils/logger")
 
 this.service = new BookService();
 
