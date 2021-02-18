@@ -13,6 +13,7 @@ class Service {
     return await this.repository.get(id);
   }
   async create(model) {
+    Logger.info("create",model);
     let result = await this.repository.create(model);
     if (result.erro) {
       let err = result;
@@ -30,25 +31,30 @@ class Service {
     } else return result.rows[0];
   }
   async update(model) {
+    Logger.info("update");
     let result = await this.repository.update(model);
     if (result.erro) throw new Error(result);
     else return result.rows;
   }
 
   async delete(id) {
+    Logger.info("delete");
     return await this.repository.delete(id);
   }
   async list() {
+    Logger.info("list");
     let result = await this.repository.list();
     result = result.map((item) => new this.table(item, true));
     return result;
   }
 
   async search(options, params = {}) {
+    Logger.info("search");
     let result = await this.repository.search(options, params);
     return result;
   }
   async paginate(options) {
+    Logger.info("");
     //TODO
   }
 }

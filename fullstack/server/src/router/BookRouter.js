@@ -1,10 +1,19 @@
 let router = require("express").Router();
 const BookService = require("../service/BookService");
 const ModelMiddleware = require("./middlware/ModelMiddleware");
+const Logger = require("../utils/utils")
 
 this.service = new BookService();
 
+var requestLogger = function (req, res, next) {
+  Logger.info(req.baseUrl);
+  next();
+};
+
+
+router.use(requestLogger);
 router.use(ModelMiddleware);
+
 router.post("/", async (req, res) => {
   let dto = req.body;
 
