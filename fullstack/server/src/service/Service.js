@@ -13,7 +13,7 @@ class Service {
     return await this.repository.get(id);
   }
   async create(model) {
-    Logger.info("create",model);
+    Logger.info("create", model);
     let result = await this.repository.create(model);
     if (result.erro) {
       let err = result;
@@ -50,8 +50,13 @@ class Service {
 
   async search(options, params = {}) {
     Logger.info("search");
-    let result = await this.repository.search(options, params);
-    return result;
+    try {
+      let result = await this.repository.search(options, params);
+      return result;
+    } catch (err) {
+      Logger.debug(err);
+      Logger.debug(JSON.stringify(err));
+    }
   }
   async paginate(options) {
     Logger.info("");
