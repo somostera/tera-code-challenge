@@ -1,7 +1,7 @@
 # Tera - Frontend Code Challenge 
 
 ## Apresentação
-- Olá meu nome é Obede Doreto, estou participando da seleção para o time de frontend da Tera, abaixo se encotra todos os passos para rodar ouma possível implementação do desafio.
+- Olá meu nome é Obede Doreto, estou participando da seleção para o time de frontend da Tera, abaixo se encontra todos os passos para rodar ouma possível implementação do desafio.
 
 ## Rodando a aplicação
 
