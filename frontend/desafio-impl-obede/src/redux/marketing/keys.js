@@ -1,0 +1,10 @@
+const keys = {  
+
+
+  UPDATE_PRODUCTS: 'UPDATE_PRODUCTS',
+  UPDATE_PRODUCT_DETAIL: 'UPDATE_PRODUCT_DETAIL',
+
+  LIKE_PRODUCT: 'LIKE_PRODUCT'
+}
+
+export default keys
