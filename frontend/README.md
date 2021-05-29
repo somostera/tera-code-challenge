@@ -1,89 +1,66 @@
-# Tera Code Challenge - FrontEnd
+# Tera Code Challange - FrontEnd
 
-Olá, bora pro desafio? :dancers:
+Desafio de montar uma aplicação simples de uma livraria.
 
-O nosso desafio proposto é uma aplicação de uma livraria, com o design da aplicação que mandamos no email.
+## :book: Sumário
 
-Vou separar a explicação em partes pra ficar mais fácil: **Integração**, **Funcionalidades do App**, **Funcionalidades por página**, **Avaliação** e **Como entregar**.
+-   [Dependências](https://github.com/gabrielsouzadev/tera-code-challenge/tree/main/frontend#gear-depend%C3%AAncias)
+-   [Guia de instalação](https://github.com/gabrielsouzadev/tera-code-challenge/tree/main/frontend#rocket-guia-de-instala%C3%A7%C3%A3o)
+    -   [Como instalar](https://github.com/gabrielsouzadev/tera-code-challenge/tree/main/frontend#como-instalar)
+    -   [Executando a aplicação](https://github.com/gabrielsouzadev/tera-code-challenge/tree/main/frontend#executando-a-aplica%C3%A7%C3%A3o)
+-   [Heroku](https://github.com/gabrielsouzadev/tera-code-challenge/tree/main/frontend#heroku)
 
+## :gear: Dependências
 
-## Integração
+-   [Node](https://nodejs.org/en/)
+-   [Yarn](https://yarnpkg.com/pt-BR/) ou [NPM](https://www.npmjs.com/)
 
-Liberamos uma API para que você possa consumir e ter acesso aos livros
+## :rocket: Guia de instalação
 
-[https://us-central1-tera-platform.cloudfunctions.net/url-tera-code-challenge](https://us-central1-tera-platform.cloudfunctions.net/url-tera-code-challenge)
+Partindo do principio que você já tenha instalado as dependências necessárias.
 
-Ela só aceita GET e retorna um Array de objetos, esse é o schema do objeto:
+### Como instalar
+
+Clone este repositório:
 
 ```
-{
-  "name": String,
-  "author": String,
-  "description": String, 
-  "cover_picture": String,
-  "category": String,
-  "stock": Integer,
-  "users_who_liked": Array<String>
-}
+git clone https://github.com/gabrielsouzadev/tera-code-challenge
 ```
 
-## Funcionalidades do App
+Entre na pasta e instale as dependências:
 
+```
+yarn install
+```
 
-Dark Mode, clicável ali na Navbar.
+### Executando a aplicação
 
-Curtir, o gerenciamento desse estado deve ser feito localmente.
+Iniciar a aplicação em modo de desenvolvimento:
 
+```
+yarn run serve
+```
 
-## Funcionalidades por Página
+Compilar e minificar para produção:
 
+```
+yarn run build
+```
 
-Temos só duas páginas neste desafio, página de Listagem, a de Descrição.
+Fazer a varredura do Lint nos arquivos:
 
+```
+yarn run lint
+```
 
-### Página de Listagem
+Realizar os testes unitários:
 
-Na tela de listagem temos as seguintes funcionalidades:
+```
+yarn run test:unit
+```
 
-- Listagem dos Livros
-- Pesquisa por Nome
-- Filtros de pesquisa:
-  - Melhores Avaliados (Com mais curtir)
-  - Em estoque
-  - Ordem Alfabética
-  - Livros curtidos (Os que você deu curtir)
-  - Por categoria* (abre outro input para pesquisar por nome da categoria)
-- Páginação da listagem
-- Curtir um livro (clique no coração)
+## :atom_symbol: Heroku
 
+Link para acessar o heroku do projeto
 
-### Página de Descrição
-
-Na tela de descrição temos as seguintes funcionalidades:
-
-- Botão de Voltar
-- Curtir um livro (clique no coração)
-
-
-## Avaliação
-
-A avaliação vai ser feita no todo do que for entregue, mas existem alguns pontos que vão chamar mais atenção.
-
-- Componentização
-  - A maneira em que as peças do sistema foram pensadas e abstraidas.
-- Organização do código
-  - Como você pensou e organizou seu código, desde a estrutura das pastas até o código escrito.
-- Resiliência da aplicação
-  - Não importa até onde você conseguiu chegar, o que importa é que o seu entregavel esteja funcionando sem quebrar e com qualidade.
-
-Apreciamos também:
-
-- Transições
-  - Deixe a livraria bonita, como se fosse sua :sunglasses:
-- Fidelidade com o Design proposto
-
-## Como entregar
-
-Pedimos para que você crie um Fork desse repositório e faça um pull request com o código e com um README.md descrevendo como rodar o projeto
-
-Desejamos boa sorte, e muito obrigado!
+[https://tera-books.herokuapp.com/](https://tera-books.herokuapp.com/)

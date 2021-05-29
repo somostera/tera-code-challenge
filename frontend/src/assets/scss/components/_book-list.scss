@@ -1,0 +1,42 @@
+.book-list {
+    margin-top: 35px;
+
+    @include respond(tablet) {
+        margin-top: 20px;
+    }
+
+    .book-list-total {
+        font-size: 16px;
+        margin-bottom: 35px;
+        color: var(--form-color);
+    }
+
+    .paginate-links {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        user-select: none;
+        font-size: 20px;
+        margin-bottom: 20px;
+        font-weight: 300;
+
+        li {
+            margin: 0 5px;
+            @include transition();
+
+            &:hover {
+                cursor: pointer;
+            }
+
+            &.disabled {
+                opacity: 0.5;
+            }
+
+            &.active {
+                font-weight: 500;
+            }
+        }
+    }
+}

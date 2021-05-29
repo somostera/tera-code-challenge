@@ -1,0 +1,21 @@
+@mixin box-shadow($a: 0px, $b: 0px, $c: 5px, $d: 3px) {
+    box-shadow: $a $b $c $d var(--box-shadow);
+}
+
+@mixin transition($time: 0.15s) {
+    transition: all ease $time;
+}
+
+@mixin respond($breakpoint) {
+    @if $breakpoint==tablet {
+        @media only screen and (max-width: 920px) {
+            @content;
+        }
+    }
+
+    @if $breakpoint==mobile {
+        @media only screen and (max-width: 480px) {
+            @content;
+        }
+    }
+}

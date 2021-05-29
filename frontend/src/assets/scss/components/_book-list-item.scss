@@ -1,0 +1,42 @@
+.book-list-item {
+    margin-bottom: 36px;
+    user-select: none;
+
+    .book-list-item-info {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+    }
+
+    .book-list-item-image {
+        max-width: 200px;
+        margin: 0 auto 20px auto;
+
+        img {
+            width: 200px;
+            height: 270px;
+            object-fit: cover;
+        }
+    }
+
+    .book-list-item-name {
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 20px;
+        margin-bottom: 5px;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    .book-list-item-like {
+        font-size: 25px;
+        margin-left: 10px;
+    }
+
+    .bi-heart-fill {
+        color: $like-color;
+    }
+}

@@ -1,0 +1,28 @@
+.header {
+    background-color: var(--header-background);
+    color: var(--header-color);
+    padding: $gutter 0;
+    @include box-shadow;
+
+    .header-change-theme {
+        user-select: none;
+        @include transition;
+
+        &:hover {
+            opacity: 0.8;
+            cursor: pointer;
+        }
+    }
+
+    h1 {
+        @include respond(tablet) {
+            font-size: 18px;
+        }
+    }
+
+    h4 {
+        @include respond(tablet) {
+            font-size: 16px;
+        }
+    }
+}

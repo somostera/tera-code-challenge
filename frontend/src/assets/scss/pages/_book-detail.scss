@@ -1,0 +1,14 @@
+.page-book-detail {
+    margin-top: 20px;
+
+    .back {
+        margin-bottom: 20px;
+        font-size: 18px;
+        color: var(--form-color);
+
+        &:hover {
+            cursor: pointer;
+            color: var(--primary);
+        }
+    }
+}

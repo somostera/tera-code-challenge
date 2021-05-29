@@ -1,0 +1,108 @@
+.form-selected {
+    background: var(--form-background);
+    width: auto;
+    min-height: 40px;
+    color: var(--form-color);
+    border: solid $border-width var(--border-color);
+    @include box-shadow(0px, 2px, 6px, -1px);
+    display: inline-flex;
+    align-items: center;
+    padding: 0 50px 0 15px;
+    position: relative;
+    margin-left: 10px;
+    min-width: 175px;
+
+    @include respond(tablet) {
+        margin: 0;
+        padding: 0;
+        min-width: 175px;
+        line-height: 1;
+    }
+
+    @include respond(mobile) {
+        min-width: 135px;
+    }
+
+    .selected {
+        display: flex;
+        align-items: center;
+        @include transition;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+
+        & > span {
+            margin-left: 10px;
+
+            @include respond(mobile) {
+                max-width: 80px;
+            }
+        }
+
+        .selected-icon {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 35px;
+            height: 40px;
+            border-left: solid $border-width var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    &:hover {
+        cursor: pointer;
+        user-select: none;
+    }
+}
+
+.form-selected .selected:after {
+    position: absolute;
+    content: '';
+    top: 22px;
+    right: 1em;
+    width: 0;
+    height: 0;
+    border: 5px solid transparent;
+    border-color: var(--form-background) transparent transparent transparent;
+}
+
+.form-selected .items {
+    color: $form-color;
+    overflow: hidden;
+    border: solid $border-width var(--border-color);
+    @include box-shadow(0px, 2px, 6px, -1px);
+    position: absolute;
+    top: 100%;
+    right: -1px;
+    z-index: 1;
+    background-color: var(--form-background);
+    padding: 10px 5px;
+    min-width: 200px;
+}
+
+.form-selected .items div {
+    cursor: pointer;
+    user-select: none;
+    border-bottom: solid $border-width var(--border-color);
+    padding-bottom: 4px;
+    margin-bottom: 10px;
+    color: var(--form-color);
+
+    &:last-of-type {
+        border-bottom: 0;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+}
+
+.form-selected .items div:hover {
+    color: var(--primary);
+}
+
+.selectHide {
+    display: none;
+}

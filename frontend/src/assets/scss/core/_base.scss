@@ -1,0 +1,34 @@
+body,
+html {
+    background: var(--body-background);
+    color: var(--body-color);
+    @include transition(0.25s);
+}
+
+#app {
+    font-family: $font-family-base;
+    font-weight: $font-weight-base;
+    font-size: $font-size-base;
+}
+
+img {
+    width: 100%;
+    max-width: 100%;
+}
+
+ul,
+li {
+    margin: 0;
+    padding: 0;
+}
+
+.no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+
+    > .col,
+    > [class*='col-'] {
+        padding-right: 0;
+        padding-left: 0;
+    }
+}

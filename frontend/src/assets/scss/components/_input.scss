@@ -1,0 +1,26 @@
+.form-input {
+    display: flex;
+
+    input {
+        border: 0;
+        appearance: none;
+        min-height: 40px;
+        padding: 0 15px;
+        width: 100%;
+        color: var(--form-color);
+        background-color: var(--form-background);
+        border: solid $border-width var(--border-color);
+        @include box-shadow(0px, 2px, 6px, -1px);
+        @include transition;
+
+        &::placeholder {
+            color: var(--form-color);
+            opacity: 1;
+        }
+
+        &:focus-visible {
+            border-color: var(--primary);
+            outline: 0px;
+        }
+    }
+}
