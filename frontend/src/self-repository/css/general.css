@@ -1,0 +1,112 @@
+@import url('../../bootstrap4/css/bootstrap.min.css');
+@import url('../../fa-icons-4/css/font-awesome.min.css');
+
+@import url('global.css');
+@import url('card.css');
+@import url('colors.css'); 
+@import url('text.css');
+@import url('dark.css');
+@import url('mobile.css');
+
+@media only screen and (min-device-width: 500px) {
+	#header {
+		padding: 10px 2% 8px 5%;
+		display: inline-flex;
+		background: #95d9da;
+		color: #eee;
+		width: 100%;
+	}
+	#theme-btn {
+		right: 5%; 
+		position: absolute; 
+		padding-top: 10px;
+		text-align: right;
+	}
+}
+
+.form-control {
+	border-radius: 1px;
+	height: 35px;
+	line-height: 35px;
+	font-size: 75%;
+}
+
+.form-control:read-only {
+	background: #fff;
+}
+
+.form-select {
+	border-radius: 1px;
+	height: 35px;
+	line-height: 34px;
+	padding: 0 0 0 8px;
+	border: 1px solid #d9d9d9;
+	color: #686868;
+	float: right;
+	width: 100%;
+	background: url(../../../src/img/arrowdown.png) no-repeat #fff;  
+	background-position: 97% 60%;   
+	background-size: 21px;
+	-webkit-appearance: none; 
+	-moz-appearance: none; 
+	appearance: none; 
+	list-style-type: none;
+	cursor: pointer;
+}
+
+.form-select li {
+	padding: 0.75%;
+	padding-left: 10px;
+	padding-top: 2px;
+	border-radius: 0;
+	border-bottom: 1px solid #ccc;
+	background: #fff;
+	box-shadow: 2px 2px 6px 0px #9da9a9;
+}
+
+.search-dd {
+	left: -15px; 
+	margin-left: -20%; 
+	font-size: 75%; 
+	position: absolute; 
+	z-index: 4; 
+	width: 120%;
+}
+
+section {
+	padding: 0% 2% 0% 5%;
+}
+
+.box-shadow {
+	box-shadow: 2px 2px 3px 0px #afb6b6;
+	border-radius: 1px;
+}
+
+.boxV {
+	color: #222;
+	padding-bottom: 10px;
+}
+
+.book span 	  { display: block; color: #444; }
+.book h6 	  { margin:0; }
+.book p		  { color: #444; }
+
+.book-lg h6	  { font-size: 185%;  }
+.book-lg span { line-height: 20px; font-size: 15px; }
+.book-lg p    { font-size: 12px; }
+.book-lg span i { font-size: 10px; }
+
+.book-md span { line-height: 13px; font-size: 75%; }
+
+.out-of-stock {
+	opacity: 1;
+	padding: 10px;
+	width: 80%; 
+	color: #fff; 
+	background: #000;
+	position: absolute; 
+	top: 50%; left: 50%; transform: translate(-50%, -50%);
+	font-size: 13px;
+	font-weight: 700;
+	text-align: center;
+}

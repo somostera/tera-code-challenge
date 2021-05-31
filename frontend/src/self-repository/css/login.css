@@ -1,0 +1,101 @@
+@media only screen and (min-device-width: 900px){
+	#loginBase{
+		width: 100vw;
+		height: 100vh;	
+		padding: -1px;
+		margin: 0;
+		z-index: 0;
+	}
+	#loginBody {
+		width: 30%; 
+		height: 80%;
+		min-width: 450px;
+		margin-left: 20vw;
+		z-index: 1;
+	}
+	#logoTop {
+		position: absolute; 
+		top: 10%;
+		transform:translate(-50%,0); 
+		z-index: 1;
+		height: 25%;
+		width: 25%;
+		min-width: 350px;
+	}
+	#loginForm {
+		position: absolute; 
+		top: 42%;
+		transform:translate(-50%,0); 
+		z-index: 1;
+		height: 25%;
+		width: 25%;
+		min-width: 350px;
+	}
+	#copyright {
+		position: absolute;
+		bottom: -85%;
+		margin-left: 10px;
+		color: #fff;
+		font-size: 75%;
+		font-style: italic;
+		width: 100%;
+		min-width: 350px;
+	}
+	#copyright2 {
+		position: absolute;
+		bottom: -100%;
+		margin-left: 10px;
+		color: #fff;
+		font-size: 75%;
+		font-style: italic;
+		width: 100%;
+		min-width: 350px;
+	}
+	#logoBottom {
+		position: absolute; 
+		bottom: 10%;
+		right: 0;
+		z-index: 1;
+		width: 14vw;
+		background: #fff;
+		border-radius: 45% 0 0 45% / 100% 0 0 100%;
+		padding: 25px;
+		padding-top: 2px;
+		padding-bottom: 2px;
+		padding-left: 45px;
+		border-top: 6px solid #fff;
+		border-bottom: 6px solid #fff;
+	}
+}
+
+@media only screen and (max-device-width: 900px){
+	#body {
+		background-color: #fff;
+	}
+	#loginBase {
+		display: none;
+	}
+	#loginBody {
+		position: absolute; 
+		left: 50%; 
+		top: 50%; 
+		transform:translate(-50%,-50%); 
+		width: 80%;
+	}
+	#altapf2 {
+		position: absolute; 
+		top: 20%; 
+		left: 50%; 
+		transform:translate(-50%,-50%); 
+		z-index: 1;
+		height: 225px;
+	}
+	#copyright {
+		font-size: 90%;
+		position: absolute; 
+		bottom: 10%; 
+		left: 50%; 
+		transform:translate(-50%,0%); 
+		width: 99%;
+	}
+}

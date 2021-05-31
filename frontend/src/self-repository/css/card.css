@@ -1,0 +1,54 @@
+.cHeader-left {
+	position: absolute;
+	left: 0;
+	padding-left: 14px;
+}
+.cHeader-right {
+	position: absolute;
+	right: 0;
+	padding-right: 14px;
+}
+.card {
+	width: 100%;
+	padding: 0;
+}
+.card:focus, .card-body:focus {
+	outline: none;
+}
+.card-header:hover {
+	cursor: pointer;
+}
+.card-header span {
+	width: 100%;
+}
+@media only screen and (max-device-width: 900px) {	
+	.card-body {
+		width: 100%;
+		z-index:3;
+		padding: 0;
+		padding-bottom: 10px;
+		padding-top: 10px;
+	}
+	.card-header {
+		width: 100%;
+		padding: 8px;
+		text-align: center;
+		font-size: 125%;
+		z-index:3;
+	}
+}
+@media only screen and (min-device-width: 900px) {
+	.card-body {
+		width: 100%;
+		z-index:3;
+		padding: 0;
+		padding-bottom: 3px;
+		padding-top: 3px;
+	}
+	.card-header {
+		width: 100%;
+		padding: 5px;
+		text-align: center;
+		z-index:3;
+	}	
+}

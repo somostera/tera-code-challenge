@@ -1,0 +1,19 @@
+.text-center	{text-align: center;}
+.text-right 	{text-align: right;}
+.text-left		{text-align: left;}
+.text-justify 	{text-align: justify;}
+
+.font-light 	{font-weight: 400;}
+.font-semibold 	{font-weight: 500;}
+.font-bold 		{font-weight: 600;}
+.font-heavy 	{font-weight: 700;}
+
+.font-xgg 	{font-size: 135%;}
+.font-xg 	{font-size: 125%;}
+.font-lg 	{font-size: 115%;}
+.font-mg 	{font-size: 110%;}
+.font-md 	{font-size: 105%;}
+.font-sm 	{font-size: 90%;}
+.font-xs 	{font-size: 85%;}
+.font-xsm 	{font-size: 68%;}
+.font-xss 	{font-size: 55%;}
