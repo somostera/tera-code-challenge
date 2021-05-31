@@ -2,7 +2,7 @@
     <div id="header">
 
         <b-container fluid>
-            <b-row class="justify-content-space-between align-items-baseline">
+            <b-row class="align-items-center">
                 <b-col>
                     <h1>Livraria do cowboy</h1>
                 </b-col>

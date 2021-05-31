@@ -1,8 +1,16 @@
 <template>
-  <div class="container">
-      <SearchFilter />
-      <SelectFilter />
-  </div>
+
+    <b-container class="padding-section">
+        <b-row class="justify-content-between">
+            <b-col cols="5">
+                <SearchFilter />
+            </b-col>
+            <b-col cols="5">
+                <SelectFilter />
+            </b-col>
+        </b-row>
+    </b-container>
+
 </template>
 
 <script>

@@ -1,1 +1,9 @@
-$body-bg: red;
+$body-bg: #f1ffffff;
+
+body {
+    background-color: $body-bg;
+}
+
+.padding-section {
+    padding: 30px 0;
+}

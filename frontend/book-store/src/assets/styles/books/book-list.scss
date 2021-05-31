@@ -1,0 +1,27 @@
+.book-list-item {
+    .book-list-item-cover--picture {
+        width: 180px;
+        
+        img{
+            object-fit: fill;
+            width: 180px;
+            height: 260px;
+        }
+    }
+
+    figcaption {
+        h6 {
+            margin: 0;
+        }
+        p {
+            font-size: 12px;
+        }
+        text-align: left;
+        padding: 10px 0;
+    }
+
+    .book-like-btn {
+        background-color: transparent;
+        border: 0px;
+    }
+}

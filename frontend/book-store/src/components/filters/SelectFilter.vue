@@ -6,6 +6,7 @@
       <option value="orderByEvaluation">Melhores Avaliados</option>
       <option value="orderByStock">Em Estoque</option>
       <option value="orderByAZ">Ordem Alfabética</option>
+      <option value="orderByMyLikedBook">Livros curtidos</option>
       <option value="orderByCategory">Por Categoria</option>
     </select>
   </div>
