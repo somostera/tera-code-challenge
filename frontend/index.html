@@ -1,0 +1,171 @@
+<!doctype html>
+<html>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+	<title> Livraria do Nevesky </title>
+	<head>
+		<script language="javascript" type="text/javascript" src="src/bootstrap4/jquery3.js"></script>
+		<script language="javascript" type="text/javascript" src="src/bootstrap4/popper.min.js"></script>
+		<script language="javascript" type="text/javascript" src="src/bootstrap4/js/bootstrap.js"></script>
+		<script language="javascript" type="text/javascript" src="src/bootstrap4/js/bootstrap.js"></script>
+		<script language="javascript" type="text/javascript" src="src/self-repository/js/general.js"></script>
+		<script language="javascript" type="text/javascript" src="src/vue/vue.js"></script>
+		<link rel="stylesheet" type="text/css" href="src/self-repository/css/general.css"/>
+	</head>
+	<body id="body" class="bg-blue dark"><div id="app"></div></body>
+	
+	
+	<!-- Inline Templates for Demo -->
+	<script  id="title-header" type="text/template">
+		<header id="header" class="box-shadow">
+			<h2>{{ title }}</h2>
+			<span id="theme-btn" v-on:click="switchThemes(theme)" style="cursor: pointer;">{{ theme }} Mode</span>
+		</header>
+	</script>
+	
+	<script id="grid-filters" 		type="text/template">
+		<div class="col-12 pr-0" style="width: 100%;">
+			<div class="row mb-2">
+				<div class="col-md-5 col-8 pr-0">
+					<input type="text" placeholder="Procure por um livro"
+						v-on:keyup="func(stext, 'name')" 
+						v-model	 ="stext" 
+						class		 ="form-control box-shadow" 
+					/>
+				</div>
+				<div class="col-md-2 col-4 order-md-3 pl-0">
+					<ul class="form-select box-shadow mb-0"
+						:href="target" 
+						data-toggle="collapse"
+					>	<input class="form-control" 
+							style="height: 33px; border:0; padding: 5px;" 
+							v-model="opt" readonly
+						/>
+						<div class="collapse box-shadow search-dd"  :id="id">
+							<li v-for="opt in options" 
+								v-on:click="sort(opt.text, opt.valor); func2(opt.valor);"
+								:value	 ="opt.valor" 
+							>{{ opt.text }}</li>
+						</div>
+					</ul>
+				</div>
+				<div class="col-md-3 offset-md-2 order-md-2 col-12 pr-md-1">
+					<input v-if="catg_v" type="text" placeholder="Nome da Categoria"
+						v-on:keyup="func(stextC, 'category')" 
+						v-model	 ="stextC"
+						class		 ="form-control box-shadow"
+					/>
+				</div>
+			</div>
+		</div>
+	</script>
+	
+	<script id="grid-sys"		type="text/template">
+		<section v-if="els != undefined" class="row boxV" style="width: 100%; padding-top: 1.6%;">
+			<template v-if="desc != null">
+				<grid-desc v-if="els[desc] != undefined" 
+					:back		="back"							:count_likes_="els[desc].count_likes"
+					:key		="els[desc].id"				:ind_="desc"
+					:func		="saveLike"						:liked_="els[desc].liked"
+					:title	="els[desc].name" 			:img="els[desc].cover_picture" 
+					:author	="els[desc].author" 			:category="els[desc].category"
+					:descript="els[desc].description"	:stock="parseInt(els[desc].stock)"
+				></grid-desc>
+			</template>
+			<template v-else>
+				<grid-filters ref="search" :func_2="sort" :func_="search" :stext_="stext" :options_="options" id="_search"></grid-filters>
+				<span class="col-12 pl-3 ml-1" style="padding-bottom: 0.75%; font-size: 75%"> Total: {{ len }} </span>
+				<section class="row" style="min-height: 66vh; margin-left: 1px; width: 100%;">
+					<template v-for="k in els_(page)">
+						<box-v v-if="k != undefined" 			:detail="viewBook"
+							:grid_class_="grid_class" 			:count_likes_="els[k].count_likes"
+							:key		="els[k].id"				:ind_="k"
+							:func		="saveLike"					:liked_="els[k].liked"
+							:title	="els[k].name" 			:img="els[k].cover_picture" 
+							:author	="els[k].author" 			:category="els[k].category"
+							:stock="parseInt(els[k].stock)"
+						></box-v>
+					</template>
+				</section>
+				<grid-footer :prev="prevPage" :next="nextPage" :navto="clickNum" :page_="page" :len_="len" :max_="max"></grid-footer>
+			</template>
+		</section>
+	</script>
+	
+	<script id="grid-footer" 		type="text/template">
+		<div class="col-12 col-md-12 text-center mt-1" style="cursor: pointer;">
+			<i class="fa fa-angle-left mr-2 font-md" 				v-on:click="prev"></i>
+			<span class="mr-2" v-for="i in Math.ceil(len/max)" v-on:click="navto(i-1)"><span class="font-heavy" v-if="page==i-1">{{ i }}</span><span v-else>{{ i }}</span></span>
+			<i class="fa fa-angle-right font-md" 					v-on:click="next"></i>
+		</div>
+	</script>
+	
+	<script id="box-v" 			type="text/template">
+		<div :class="grid_class">
+			<div style="text-align: center;" class="mb-3" v-on:click="detail(ind)">
+				<img style="height: 21.5vh;" :src="img" alt="image-here">
+			</div>
+			<div class="book book-md">
+				<h6 	>{{ title }}	</h6>
+				<span >{{ author }}		
+					<i v-on:click="func(ind); likeIt();" v-if="liked==false" class="fa fa-heart-o pr-4" 	style="float: right; transform: scale(1.6,1.7);"></i>
+					<i v-on:click="func(ind); likeIt();" v-else class="fa fa-heart text-danger pr-4" 		style="float: right; transform: scale(1.6,1.7);"></i>
+				</span>
+				<span >{{ category }}</span>
+			</div>
+		</div>
+	</script>
+	
+	<script id="grid-desc" 			type="text/template">
+		<div class="col-12">
+			<span class="font-bold" v-on:click="back"> < Voltar </span>
+			<div class="col-md-6 offset-md-3 col-12 mt-2 d-none d-sm-block">
+				<div class="book book-lg">
+					<div class="ml-2 float-right" style="background: #fff; height: 40vh; position: relative;">
+						<div v-if="stock == 0" class="out-of-stock" style="z-index: 3;">FORA DE ESTOQUE</div>
+						<img v-if="stock == 0" style="height: 100%; opacity: 0.5;" :src="img" alt="image-here"/>
+						<img v-else style="height: 40vh;" :src="img" alt="image-here"/>
+					</div>
+					<h6 class="text-left mb-2">{{ title }}	</h6>
+					<span >{{ author }}		
+						<i v-on:click="func(ind); likeIt();" v-if="liked==false" class="fa fa-heart-o pr-4" style="float: right; transform: scale(1.7,1.8);"></i>
+						<i v-on:click="func(ind); likeIt();" v-else class="fa fa-heart text-danger pr-4" 	style="float: right; transform: scale(1.7,1.8);"></i>
+					</span>
+					<span	class="mb-2">{{ category }}</span>
+					<span	v-if="stock > 0" class="mb-3">Em Estoque: {{ stock }}</span>
+					<span	v-else class="mb-3">Fora de Estoque</span>
+					<p class="text-justify">{{ descript }} </p>
+				</div>
+			</div>
+			<div class="col-md-6 offset-md-3 col-12 mt-2 d-block d-sm-none">
+				<div class="row book book-lg">
+					<h6  class="text-center col-12 mb-2">{{ title }}</h6>
+					<div class="col-12 pr-2 pl-2 ml-2 mb-2" style="background: #fff;">
+						<div v-if="stock == 0" class="out-of-stock" style="z-index: 3;">FORA DE ESTOQUE</div>
+						<img v-if="stock == 0" style="width: 100%; opacity: 0.5;" :src="img" alt="image-here"/>
+						<img v-else style="width: 100%;" :src="img" alt="image-here"/>
+						<i v-on:click="func(ind); likeIt();" v-if="liked==false" class="fa fa-heart-o float-heart" 	style="transform: scale(1.6,1.7);"></i>
+						<i v-on:click="func(ind); likeIt();" v-else class="fa fa-heart text-danger float-heart" 		style="transform: scale(1.6,1.7);"></i>
+					</div>
+					<div class="col-6 pl-4">
+						<span >{{ author }}	</span>
+						<span	>{{ category }}</span>
+					</div>
+					<div class="col-6">
+						<span  class="v-center mr-2" style="right: 0;" v-if="stock > 0">Em estoque: {{ stock }}</span><span v-else class="v-center mr-2" style="right: 0;">Fora de Estoque</span>
+					</div>
+					<p class="col-12 ml-2 mt-2 text-justify">{{ descript }} </p>
+				</div>
+			</div>
+		</div>
+	</script>
+
+	<script id="app-vue" 		type="text/template">
+		<div id="main" v-on:click="collapse('_search')">
+			<title-header :theme_="theme" :title_="title" ref="header"></title-header>
+			<grid-sys :arr="els" :opt="opts" ref="gallery" :grid="8"></grid-sys>
+		</div>
+	</script>
+	
+	<script type="text/javascript" src="src/library.js"></script>
+</html>
