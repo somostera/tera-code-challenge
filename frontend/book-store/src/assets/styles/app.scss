@@ -1,0 +1,9 @@
+@charset 'utf-8';
+
+// bootstrap
+@import '~bootstrap/dist/css/bootstrap.css';
+@import '~bootstrap-vue/dist/bootstrap-vue.css';
+
+//components
+@import '@/assets/styles/generals/generals.scss';
+@import '@/assets/styles/header/header.scss';
