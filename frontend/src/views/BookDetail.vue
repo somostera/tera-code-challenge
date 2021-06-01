@@ -1,6 +1,6 @@
 <template>
     <div class="page-book-detail">
-        <div class="container">
+        <div class="container-fluid">
             <span class="back" @click="$router.go(-1)"> &lt; Voltar</span>
             <BookListItemDetail :book="book" />
         </div>

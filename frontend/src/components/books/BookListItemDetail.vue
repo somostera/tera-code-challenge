@@ -6,7 +6,6 @@
                 :src="book.cover_picture"
                 :alt="book.name"
             />
-            <BookListItemLike class="book-detail-like image" :book="book" />
         </div>
 
         <div class="book-detail-title">{{ book.name }}</div>

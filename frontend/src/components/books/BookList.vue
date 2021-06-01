@@ -110,7 +110,10 @@ export default {
     watch: {
         filteredBooks() {
             setTimeout(() => {
-                if (this.$refs.paginator.lastPage != 0) {
+                if (
+                    this.$refs.paginator &&
+                    this.$refs.paginator.lastPage != 0
+                ) {
                     this.$refs.paginator.goToPage(1)
                 }
             }, 150)

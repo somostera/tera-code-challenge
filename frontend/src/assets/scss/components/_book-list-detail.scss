@@ -4,15 +4,16 @@
 
     .book-detail-title {
         font-weight: 500;
-        font-size: 42px;
-        line-height: 42px;
-        margin-bottom: 8px;
+        font-size: 36px;
+        line-height: 36px;
+        margin-bottom: 10px;
     }
 
     .book-detail-author,
     .book-detail-category,
     .book-detail-stock {
-        font-size: 22px;
+        font-size: 18px;
+        line-height: 1;
 
         @include respond(mobile) {
             font-size: 18px;
@@ -22,7 +23,7 @@
     }
 
     .book-detail-category {
-        margin-bottom: 8px;
+        margin-bottom: 10px;
     }
 
     .book-detail-stock {
@@ -35,8 +36,8 @@
     }
 
     .book-detail-description {
-        font-size: 18px;
-        line-height: 24px;
+        font-size: 15px;
+        line-height: 20px;
         font-weight: 300;
 
         @include respond(mobile) {
@@ -65,18 +66,19 @@
         font-size: 25px;
 
         @include respond(tablet) {
-            display: none;
+            margin-left: 12px;
         }
 
-        &.image {
-            display: none;
+        @include respond(mobile) {
+            position: absolute;
+            top: -57px;
+            right: 0;
+            padding-right: 20%;
+        }
 
-            @include respond(tablet) {
-                display: flex;
-                position: absolute;
-                bottom: 0;
-                right: 20px;
-            }
+        @include respond(xs) {
+            right: 10vw;
+            padding-right: 0;
         }
 
         .bi-heart-fill {
@@ -112,6 +114,7 @@
             align-items: center;
             justify-content: space-between;
             margin-bottom: 15px;
+            position: relative;
         }
     }
 }

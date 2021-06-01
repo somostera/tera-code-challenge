@@ -15,7 +15,7 @@
 @import './components/book-list-item';
 @import './components/book-list-filter';
 @import './components/book-list-detail';
-@import './components//book-list-image';
+@import './components/book-list-image';
 
 // Core
 @import './core/base';
@@ -29,6 +29,7 @@
 
 // Pages
 @import './pages/book-detail';
+@import './pages/book';
 
 // Themes
 @import './themes/light';

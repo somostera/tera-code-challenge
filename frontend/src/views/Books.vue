@@ -1,6 +1,6 @@
 <template>
     <div class="page-book">
-        <div class="container">
+        <div class="container-fluid">
             <BookList />
         </div>
     </div>

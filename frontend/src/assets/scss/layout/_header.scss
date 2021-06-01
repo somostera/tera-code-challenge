@@ -1,8 +1,12 @@
 .header {
     background-color: var(--header-background);
     color: var(--header-color);
-    padding: $gutter 0;
+    padding: $gutter 3.5%;
     @include box-shadow;
+
+    @include respond(mobile) {
+        padding: $gutter 0;
+    }
 
     .header-change-theme {
         user-select: none;

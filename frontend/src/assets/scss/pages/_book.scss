@@ -1,0 +1,7 @@
+.page-book {
+    padding: 0 3.5%;
+
+    @include respond(mobile) {
+        padding: 0;
+    }
+}

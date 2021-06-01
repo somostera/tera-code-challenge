@@ -1,11 +1,7 @@
 <template>
     <div class="book-list-item" @click="goToDetail">
         <div class="book-list-item-image">
-            <img
-                :src="book.cover_picture"
-                :alt="book.name"
-                onerror="this.src='https://newsroom.fmglobal.com/static/images/multimedia.png'"
-            />
+            <img :src="book.cover_picture" :alt="book.name" @error="noImage" />
         </div>
         <div class="book-list-item-info">
             <div>
@@ -40,6 +36,9 @@ export default {
         },
     },
     methods: {
+        noImage(e) {
+            e.target.src = require('@/assets/images/no_image.png')
+        },
         goToDetail() {
             this.$store.dispatch('booksModule/setBook', this.book)
             this.$router.push({

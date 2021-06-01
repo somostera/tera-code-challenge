@@ -1,5 +1,10 @@
 .page-book-detail {
     margin-top: 20px;
+    padding: 0 3.5%;
+
+    @include respond(mobile) {
+        padding: 0;
+    }
 
     .back {
         margin-bottom: 20px;

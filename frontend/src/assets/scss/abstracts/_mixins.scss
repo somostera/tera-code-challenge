@@ -18,4 +18,10 @@
             @content;
         }
     }
+
+    @if $breakpoint==xs {
+        @media only screen and (max-width: 360px) {
+            @content;
+        }
+    }
 }

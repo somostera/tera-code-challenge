@@ -1,6 +1,6 @@
 <template>
     <header class="header">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row align-items-center">
                 <div class="col">
                     <div
