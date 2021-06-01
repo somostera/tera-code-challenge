@@ -1,13 +1,9 @@
 <template>
-  <div id="app">
+  <div id="app" :class="{'dark-mode': darkMode}">
     <Header />
     <Filters />
     <router-view/>
-   <!--  <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/> -->
+    
   </div>
 </template>
 
@@ -17,6 +13,11 @@
   
 
 export default {
+  computed: {
+    darkMode() {
+      return this.$store.state.isDarkModeOn
+    }
+  },
   components: {
     Header,
     Filters,
@@ -33,6 +34,14 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background-color: #f1ffffff;
+  transition: background-color 0.4s ease-in-out, color 1s ease-in-out;
+}
+
+#app.dark-mode {
+  color: white;
+  background-color: #1B2432;
+  transition: background-color 0.4s ease-in-out, color 1s ease-in-out;
 }
 
 #nav {

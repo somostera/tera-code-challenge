@@ -25,3 +25,18 @@
         border: 0px;
     }
 }
+
+.dark-mode {
+    .book-like-btn-icon {
+        color: white;
+    }
+}
+
+.pagination {
+    .page-item {
+        margin: 0px 5px;
+    }
+    .page-item.active a {
+        font-weight: bold;
+    }
+}

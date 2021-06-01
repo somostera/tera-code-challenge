@@ -1,43 +1,30 @@
 <template>
-    <button class="book-like-btn" v-if="checkLikedBook(indexBook)" @click="clickedHeartAnimation(indexBook)">
-        <b-icon icon="heart-fill" variant="danger" :animation="likeAnimation" font-scale="1.5"></b-icon>
+    <button class="book-like-btn" v-if="checkLikedBook" @click="switchLikeBook(bookName)">
+        <b-icon icon="heart-fill" variant="danger" animation="" font-scale="1.5"></b-icon>
     </button>
-    <button class="book-like-btn" v-else @click="clickedHeartAnimation(indexBook)">
-        <b-icon icon="heart" font-scale="1.5"></b-icon>
+    <button class="book-like-btn" v-else @click="switchLikeBook(bookName)">
+        <b-icon icon="heart" font-scale="1.5" class="book-like-btn-icon"></b-icon>
     </button>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
-    props: ['indexBook'],
-    data() {
-        return {
-            isLikedAnimationOn: false,
-            myLikedBooks: [],
-        }
-    },
+    props: ['bookName'],
     methods: {
-        clickedHeartAnimation(i) {
-            if(this.myLikedBooks.includes(i)) {
-                this.myLikedBooks.splice(this.myLikedBooks.indexOf(i), 1);
-            } else {
-                this.isLikedAnimationOn = !this.isLikedAnimationOn;
-                this.myLikedBooks.push(i);
-                setTimeout(() => {
-                    this.isLikedAnimationOn = !this.isLikedAnimationOn;
-                },500)
-            }
-            console.log(this.myLikedBooks)
-            
-        },
-        checkLikedBook(i) {
-            return this.myLikedBooks.includes(i);
-        },
+        ...mapActions(['switchLikeBook']),
     },
     computed: {
-        likeAnimation() {
-            return this.isLikedAnimationOn ? 'throb' : '';
-        }
+        myLikedBooks() {
+            return this.$store.state.myLikedBooks
+        }, 
+        checkLikedBook() {
+            return this.$store.state.myLikedBooks.includes(this.bookName);
+        },
+        /* isLikedAnimationOn() {
+            return (this.$store.state.myLikedBooks.includes(this.bookName) && this.$store.state.isLikedAnimationOn) ? 'throb' : '';
+        } */
     },
 }
 </script>

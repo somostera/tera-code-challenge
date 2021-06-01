@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 export default {
     data() {
         return {
@@ -17,9 +18,11 @@ export default {
         }
     },
     methods: {
+        ...mapMutations(['switchDarkMode']),
         switchMode() {
             this.DarkModeActivated = !this.DarkModeActivated;
-             this.modeLabel = this.DarkModeActivated ? this.modes.light : this.modes.dark;
+            this.$store.dispatch('switchDarkMode', this.DarkModeActivated);
+            this.modeLabel = this.DarkModeActivated ? this.modes.light : this.modes.dark;
         }
     },
 }

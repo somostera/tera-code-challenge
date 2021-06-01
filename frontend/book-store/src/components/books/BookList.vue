@@ -1,19 +1,24 @@
 <template>
 
-    <b-container>
+    <b-container class="d-flex justify-content-between flex-direction-columns">
+        <b-row>
+            <b-col cols="12">
+                Total: {{books.length}}
+            </b-col>
+        </b-row>
         <b-row>
             <b-col v-for="(book, index) in paginated" :key="index" xl="3" cols="12" sm="12">
                  <article class="book-list-item">
                     <figure>
                         <b-row class="justify-content-around align-items-center">
-                            <b-col cols="12">
+                            <b-col cols="12" offset="2">
                                 <div class="book-list-item-cover--picture">
                                     <img :src="book.cover_picture" @error="imageLoadError" width="180px">
                                 </div>
                             </b-col>
                         </b-row>
-                        <b-row class="justify-content-between align-items-center">
-                            <b-col cols="8">
+                        <b-row class="justify-content-around align-items-center">
+                            <b-col cols="5">
                                 <figcaption>
                                     <h6>
                                         <strong>
@@ -26,23 +31,23 @@
                                     </p>
                                 </figcaption>
                             </b-col>
-                            <b-col cols="4">
-                                <LikeButton :index-book="index"></LikeButton>
+                            <b-col cols="2">
+                                <LikeButton :book-name="book.name"></LikeButton>
                             </b-col>
                         </b-row>
                     </figure>
                 </article>
             </b-col>
-            <b-col cols="12">
+            <b-col cols="12" class="d-flex justify-content-center">
                 <paginate
                     v-model="page"
-                    :page-count="(books.lenth / pageSize)"
+                    :page-count="(books.length / perPage)"
                     :page-range="3"
                     :margin-pages="2"
-                    :click-handler="paginating"
-                    :prev-text="'<'"
-                    :next-text="'>'"
+                    :prev-text="' < '"
+                    :next-text="' > '"
                     :container-class="'pagination'"
+                    :hide-prev-next="true"
                     :page-class="'page-item'">
                 </paginate>
             </b-col>
@@ -51,7 +56,6 @@
 </template>
 
 <script>
-import axios from 'axios';
 import LikeButton from '@/components/buttons/LikeButton';
 
 export default {
@@ -60,36 +64,25 @@ export default {
     },
     data() {
         return {
-            books: [],
             page: 1,
-            pageSize: 8,
+            perPage: 8,
         }
     },
     methods: {
         imageLoadError(e) {
             e.target.src = "https://bulma.io/images/placeholders/480x640.png";
         },
-        paginating(pageNum) {
-            console.log(pageNum)
-        }
     },
     computed: {
-        indexStart() {
-            return (this.page - 1) * this.pageSize;
-        },
-        indexEnd() {
-            return this.indexStart + this.pageSize;
+        books() {
+            return this.$store.state.books
         },
         paginated() {
-            return this.books.slice(this.indexStart, this.indexEnd);
-        }
+            return this.books.slice((this.page - 1) * this.perPage, this.page * this.perPage);
+        },
     },
-
     mounted() {
-        axios.get('https://us-central1-tera-platform.cloudfunctions.net/url-tera-code-challenge')
-        .then(response => (
-            this.books = response.data
-        ))
+       this.$store.dispatch('getBooks');
     }
 }
 </script>
