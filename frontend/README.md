@@ -6,6 +6,10 @@ How Execute
   3. inside Extension Choose Folder 'frontend'
   4. Start Web Server
   5. Open default url: http://127.0.0.1:8887
+  
+  or 
+  
+  1. access http://renovel.empresarial.ws/vueApp/
 
 Obs
   -- without package/module manager
