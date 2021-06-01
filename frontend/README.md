@@ -1,8 +1,13 @@
 # Tera Code Challenge - FrontEnd
 
-Initiate
-  1. click index.html
+How Execute
+  1. Add 'Web Server For Chrome' chrome extension.
+  2. Download files
+  3. inside Extension Choose Folder 'frontend'
+  4. Start Web Server
+  5. Open default url: http://127.0.0.1:8887
 
-Using
-  1. Inline Template for a Demo
-  2. without package/module manager
+Obs
+  -- without package/module manager
+  -- without Node
+  -- using httpVueLoader
