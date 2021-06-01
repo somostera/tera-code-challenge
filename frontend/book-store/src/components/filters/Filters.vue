@@ -1,14 +1,12 @@
 <template>
 
     <b-container class="padding-section">
-        <b-row class="justify-content-between">
-            <b-col cols="5">
-                <SearchFilter />
-            </b-col>
-            <b-col cols="5">
-                <SelectFilter />
-            </b-col>
-        </b-row>
+        <b-col cols="4" class="d-flex justify-content-start">
+            <SearchFilter />
+        </b-col>
+        <b-col cols="6" class="d-flex justify-content-end">
+            <SelectFilter />
+        </b-col>
     </b-container>
 
 </template>

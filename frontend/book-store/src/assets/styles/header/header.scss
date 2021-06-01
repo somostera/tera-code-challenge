@@ -6,7 +6,18 @@
     
     h1 {
         color: #fff;
+        font-weight: 400;
         font-size: 2rem;
+        text-align:left;
+    }
+
+    #dark-mode-btn {
+        background-color: transparent;
+        border: 0px;
+        color: white;
+        font-size: 20px;
+        font-weight: 400;
+        text-decoration: none;
     }
 }
 

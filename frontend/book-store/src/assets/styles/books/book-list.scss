@@ -1,11 +1,14 @@
+.total-books-counter {
+    padding: 15px 0;
+}
 .book-list-item {
     .book-list-item-cover--picture {
         width: 180px;
         
         img{
             object-fit: fill;
-            width: 180px;
-            height: 260px;
+            width: 130px;
+            height: 180px;
         }
     }
 
@@ -33,10 +36,44 @@
 }
 
 .pagination {
+    padding: 15px 0;
+    li {
+        a {
+            font-size: 19px;
+            font-weight: lighter;
+        }
+    }
     .page-item {
         margin: 0px 5px;
+
     }
-    .page-item.active a {
-        font-weight: bold;
+    .page-item.active {
+        a {
+            font-weight: bold;
+        }
+    }
+}
+
+.book-details {
+    padding: 15px 0;
+    .book-details-item {
+        p{
+            font-weight: lighter;
+            color: black;
+            text-align: left;
+        }
+        img {
+            float: right;
+            width: 250px;
+            margin: -64px 0px auto 20px;
+        }
+    
+        .book-details-item-title {
+            display: block;
+            max-width: 295px;
+            font-weight: 400;
+            font-size: 2rem;
+            color:black;
+        }
     }
 }

@@ -27,13 +27,3 @@ export default {
     },
 }
 </script>
-
-<style scoped>
-    #dark-mode-btn {
-        background-color: transparent;
-        border: 0px;
-        color: white;
-        font-size: 20px;
-        text-decoration: none;
-    }
-</style>

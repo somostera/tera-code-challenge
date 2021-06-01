@@ -1,5 +1,8 @@
 export const SWITCH_DARK_MODE = 'SWITCH_DARK_MODE'
+
 export const SET_BOOK_LIST = 'SET_BOOK_LIST'
 export const LIKE_ANIMATION = 'LIKE_ANIMATION'
 export const LIKE_BOOK = 'LIKE_BOOK'
 export const DISLIKE_BOOK = 'DISLIKE_BOOK'
+
+export const SEARCH_FILTER = 'SEARCH_FILTER'

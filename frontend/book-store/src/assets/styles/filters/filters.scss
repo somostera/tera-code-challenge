@@ -1,0 +1,26 @@
+.filter-search {
+    border-radius: 0px;
+    border:0px;
+    box-shadow: -0.5px 1.5px 3px 0.5px rgba(0,0,0,0.2);
+    padding:5px 20px;
+    width: 100%;
+    font-weight: lighter;
+    color: black;
+}
+.filter-select {
+    border-radius: 0px;
+    border:0px;
+    box-shadow: -0.5px 1.5px 3px 0.5px rgba(0,0,0,0.2);
+    padding:5px 20px;
+    width: 100%;
+    font-weight: lighter;
+    color: black;
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
+    background-color: white;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAYFBMVEX///8AAADm5uZQUFDk5OTo6OhSUlJLS0tISEhUVFRhYWFBQUE1NTXs7OxFRUUZGRkmJiadnZ2CgoLFxcURERG3t7cLCwtqamrCwsLa2tqPj4+WlpZeXl6lpaV1dXUWFhbc0qhLAAADz0lEQVR4nO3d61LiQBAF4AyIAgIKLOpe1Pd/y6XlMgkzaZLJXLpT5/sZUppTZ9JN1Va5VQUAAAAAAAAAAAAAAAAAAAAAAAAAAACg0Gy7fF5Nd/vSzxHFfjddPS+369ql9dKc/ToUe65YDm+XMMtrxr2peS/5dBEs62HOZ/LDNGzKPuFAm2aYD7q2NjempZ9ygOltmLXvopmXfs5gcyfLoqp+Oxf1tuiWZcxD9cdz1TyVftYgT74ofz3Fao3oDXg8pm/e6woPqu+IHr1U/uv6xo3/LB5VL22f6GqxpUHq8F/bR6pW/6Y1xbL6bP1MUYutDRrz6X6lqdHyLra+g+bnS80X87GOFpkGzY5uYD5XsRf9e/Dk++eOCRdRfotcQDM73fOgOSJ3RI9fSs/YiLIPKjdkbEDFLXZrkLDvotylwTY4ad6rssXuDRK2RZnvIjtFJ+796lrs1yBRthfZgJ4GiaoW+zdIFEUMC6ho3PQdMpaSFkMbJCpWf59F71LQ4pAGifh3MfwdvBDe4tAGiejVH7LoXYJbjNEgERsxVkCx42b4kLFEthivQSJw9Q9b9C5xLcZtkAh7F2O+gxeiWozfIBG0+uMsepeYFlMFFBMxXUAh4ybFkLEEtJhmyFgz7ufnWP3sop/F+A2FW0zdIGFbTP0udvkH0OEKtpijQVJs9adcE02FIuYLeCfiY9zfdZUzYJHVn3bRu9hxk6LFXEPGyrw08qyJpqwtPmZvkGRssUSDJFuLZRokmfZi3jXRlCViyYBZVj97RJMHzLD6cy96V+JxU27IWEmXRqk10ZSwxdLv4EWyFmU0SBK1KKVBwrYYuhfZPZi1QZJg9Zdd9K7oq1/SET2JPG7kDBkraovyGiQRW5TYIInWoswGSaQWpTZIorQot0ESYfXLWvSuwatf2qJ3DTyoso/oyaBxI3nIWANa1NAgCW5RR4MksEUtDZKgFvU0SAJa1NQg6b36pS96V88W5S96FxtxcXMze0RFNkh6HFRdQ8bq3KK2IWNxfwumtjTYBtfMzxegU4sLtQ0StsXTu8hOUeENkrst6m6QsBN1wQcUPEXr2IgsJQHDI6oJGBpRUcA746aFiiFjsUvDS8GaaOrborIGSb8W1TVI+rSosEHSfaKqmqJ1XSOqDdg1ouKA3SKqDthl3CgdMta9paFyTTTxLapvkHAtjqBB0t6i8iFjtU3U0QRsiziigP6IowroiziygG7E0QU8Lo3XWr7XkayJG9trwG3pR0nm8D5fzb/0/69ZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOn8BwNRIuKfCMAFAAAAAElFTkSuQmCC');
+	background-repeat: no-repeat, repeat;
+	background-position: right .7em top 50%, 0 0;
+	background-size: .65em auto, 100%;
+}

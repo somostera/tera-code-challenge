@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import axios from 'axios';
 
 import { SWITCH_DARK_MODE, SET_BOOK_LIST, LIKE_BOOK, 
-         DISLIKE_BOOK, LIKE_ANIMATION} from './mutation-types'
+  DISLIKE_BOOK, LIKE_ANIMATION, SEARCH_FILTER} from './mutation-types'
 
 
 Vue.use(Vuex)
@@ -14,6 +14,7 @@ export default new Vuex.Store({
     books: [],
     myLikedBooks: [],
     isLikedAnimationOn: false,
+    searchField: ''
   },
   mutations: {
     [SWITCH_DARK_MODE] (state, payload) {
@@ -24,13 +25,17 @@ export default new Vuex.Store({
     },
     [LIKE_BOOK] (state, payload) {
       state.myLikedBooks.push(payload);
-      console.log(state.myLikedBooks)
     },
     [DISLIKE_BOOK] (state, payload) {
       state.myLikedBooks.splice(state.myLikedBooks.indexOf(payload), 1);
     },
     [LIKE_ANIMATION] (state) {
       state.isLikedAnimationOn = !state.isLikedAnimationOn;
+    },
+    [SEARCH_FILTER] (state) {
+      state.books = state.books.filter((book) => {
+        book.name.toLowerCase() == this.searchField.toLowerCase()
+      });
     },
   },
   actions: {
@@ -53,8 +58,9 @@ export default new Vuex.Store({
           commit('LIKE_ANIMATION')
         },500)
       }
-    }
+    },
+    searchFilter({ commit }, payload) {
+      commit('SEARCH_FILTER', payload)
+    },
   },
-  modules: {
-  }
 })

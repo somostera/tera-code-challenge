@@ -1,15 +1,15 @@
 <template>
 
-    <b-container class="d-flex justify-content-between flex-direction-columns">
+    <b-container>
         <b-row>
-            <b-col cols="12">
+            <b-col cols="12" class="d-flex justify-content-left total-books-counter">
                 Total: {{books.length}}
             </b-col>
-        </b-row>
-        <b-row>
             <b-col v-for="(book, index) in paginated" :key="index" xl="3" cols="12" sm="12">
+
                  <article class="book-list-item">
                     <figure>
+                        <router-link :to="'book/'+index">
                         <b-row class="justify-content-around align-items-center">
                             <b-col cols="12" offset="2">
                                 <div class="book-list-item-cover--picture">
@@ -17,6 +17,7 @@
                                 </div>
                             </b-col>
                         </b-row>
+                        </router-link>
                         <b-row class="justify-content-around align-items-center">
                             <b-col cols="5">
                                 <figcaption>

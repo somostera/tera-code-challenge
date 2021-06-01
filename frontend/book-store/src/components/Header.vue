@@ -1,16 +1,14 @@
 <template>
     <div id="header">
 
-        <b-container fluid>
-            <b-row class="align-items-center">
-                <b-col>
+        <b-container>
+                <b-col cols="10">
                     <h1>Livraria do cowboy</h1>
                 </b-col>
-                <b-col>
+                <b-col cols="2">
                 <DarkModeButton />
 
                 </b-col>
-            </b-row>
         </b-container>
     </div>
 </template>
