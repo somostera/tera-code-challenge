@@ -1,8 +1,9 @@
 <template>
   <div id="app" :class="{'dark-mode': darkMode}">
     <Header />
-    <router-view/>
-    
+    <transition name="slide-fade">
+      <router-view />
+    </transition>
   </div>
 </template>
 

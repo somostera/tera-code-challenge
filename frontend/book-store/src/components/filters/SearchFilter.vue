@@ -4,13 +4,19 @@
 
 <script>
 export default {
+  data() {
+    return {
+      nameFilter: 'name',
+    }
+  },
   computed: {
     searchFieldValue: {
       get() {
-        return this.$store.state.searchField
+        return this.$store.state.filters.searchField
       },
       set(value) {
-        this.$store.state.searchField = value
+        this.$store.state.filters.activatedFilter = this.nameFilter
+        this.$store.state.filters.searchField = value
       }
     },
 

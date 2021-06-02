@@ -1,30 +1,54 @@
 <template>
-    <div>
-      <input v-if="byCategorySelected" type="text" name="" id="">
-      <select class="filter-select" name="" id="" v-model="selectFilter">
-        <option value="">Filtrar</option>
-        <option value="orderByEvaluation">Melhores Avaliados</option>
-        <option value="orderByStock">Em Estoque</option>
-        <option value="orderByAZ">Ordem Alfabética</option>
-        <option value="orderByMyLikedBook">Livros curtidos</option>
-        <option value="orderByCategory">Por Categoria</option>
-      </select>
-    </div>
+    <b-row>
+      <b-col cols="6" v-if="openInputCategory">
+        <input class="filter-search" v-model="searchCategoryFieldValue" placeholder="Nome da categoria" type="text">
+      </b-col>
+      <b-col :cols="openInputCategory ? '6' : '12'">
+        <select class="filter-select" name="" id="" v-model="searchSelecteFieldValue">
+          <option value="">Filtros</option>
+          <option value="orderByEvaluation">Melhores Avaliados</option>
+          <option value="orderByStock">Em Estoque</option>
+          <option value="orderByAZ">Ordem Alfabética</option>
+          <option value="orderByMyLikedBook">Livros curtidos</option>
+          <option value="orderByCategory">Por Categoria</option>
+        </select>
+      </b-col>
+    </b-row>
 </template>
 
 <script>
+
 export default {
   data() {
     return {
-      selectFilter: '',
-      byCategorySelected: false
+      categoryFilter: 'category',
+      selectFilter: 'select',
     }
   },
-  watch: {
-    selectFilter(value) {
-      this.byCategorySelected = value == 'orderByCategory' ? true : false;
+  computed: {
+
+    searchCategoryFieldValue: {
+      get() {
+        return this.$store.state.filters.searchCategoryField
+      },
+      set(value) {
+        this.$store.state.filters.activatedFilter = this.categoryFilter
+        this.$store.state.filters.searchCategoryField = value
+      }
+    },
+    searchSelecteFieldValue: {
+      get() {
+        return this.$store.state.filters.searchSelectField
+      },
+      set(value) {
+        this.$store.state.filters.activatedFilter = this.selectFilter
+        this.$store.state.filters.searchSelectField = value
+      }
+    },
+    openInputCategory() {
+      return  this.searchSelecteFieldValue == 'orderByCategory' ? true : false;
     }
-  }
+  },
 }
 </script>
 

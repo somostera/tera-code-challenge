@@ -3,9 +3,9 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
-import Paginate from 'vuejs-paginate'
+import VuePaginate from 'vue-paginate'
 
-Vue.component('paginate', Paginate)
+Vue.use(VuePaginate)
 Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)
 
