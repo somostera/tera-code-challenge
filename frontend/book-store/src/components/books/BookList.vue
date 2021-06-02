@@ -17,7 +17,7 @@
                     :list="filtered"
                     >
                 
-                        <b-col v-for="(book, index) in paginated('items')" :key="index" xl="3" cols="3" sm="12">
+                        <b-col v-for="(book, index) in paginated('items')" :key="index" xl="3" sm="12">
 
                             <article class="book-list-item">
                                 <figure>
@@ -159,7 +159,6 @@ export default {
     mounted() {
        this.$store.dispatch('getBooks');
        this.$store.dispatch('getLikes');
-
     }
 }
 </script>

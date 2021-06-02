@@ -22,11 +22,11 @@
         text-align: left;
         padding: 10px 0;
     }
+}
 
-    .book-like-btn {
-        background-color: transparent;
-        border: 0px;
-    }
+.book-like-btn {
+    background-color: transparent;
+    border: 0px;
 }
 
 ul.paginate-links {
@@ -74,8 +74,9 @@ ul.paginate-links {
         }
     
         .book-details-item-title {
+            text-align: left;
             display: block;
-            max-width: 295px;
+            width: 471px;
             font-weight: 400;
             font-size: 2rem;
             color:black;

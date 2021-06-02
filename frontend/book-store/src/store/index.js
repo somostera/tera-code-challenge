@@ -11,6 +11,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     isDarkModeOn: false,
+    lastOpenedBook: null,
     books: [],
     myLikedBooks: [],
     isLikedAnimationOn: false,
@@ -55,6 +56,15 @@ export default new Vuex.Store({
             state.myLikedBooks = JSON.parse(localStorage.getItem('myLikedBooks'));
           } catch (e) {
             localStorage.removeItem('myLikedBooks');
+          }
+        }
+    },
+    getLastOpenedBook({state}) {
+      if (localStorage.getItem('lastOpenedBook')) {
+          try {
+            state.myLikedBooks = JSON.parse(localStorage.getItem('lastOpenedBook'));
+          } catch (e) {
+            localStorage.removeItem('lastOpenedBook');
           }
         }
     },
