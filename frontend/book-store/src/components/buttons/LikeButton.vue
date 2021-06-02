@@ -22,9 +22,6 @@ export default {
         checkLikedBook() {
             return this.$store.state.myLikedBooks.includes(this.bookName);
         },
-        /* isLikedAnimationOn() {
-            return (this.$store.state.myLikedBooks.includes(this.bookName) && this.$store.state.isLikedAnimationOn) ? 'throb' : '';
-        } */
     },
 }
 </script>

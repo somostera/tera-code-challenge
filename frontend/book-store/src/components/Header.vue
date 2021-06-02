@@ -1,13 +1,11 @@
 <template>
     <div id="header">
-
-        <b-container>
+        <b-container class="d-flex justfy-content-between align-items-center">
                 <b-col cols="10">
                     <h1>Livraria do cowboy</h1>
                 </b-col>
-                <b-col cols="2">
-                <DarkModeButton />
-
+                <b-col cols="2" class="container-dark-btn">
+                    <DarkModeButton />
                 </b-col>
         </b-container>
     </div>
