@@ -10,7 +10,19 @@ How Execute
   or 
   
   1. access http://renovel.empresarial.ws/vueApp/
-
+  
+Apache Router Configuration
+	'/vueApp' is a base directory instead '/'
+	
+	<IfModule mod_rewrite.c>
+	  RewriteEngine On
+	  RewriteBase /vueApp
+	  RewriteRule ^vueApp/index\.html$ - [L]
+	  RewriteCond %{REQUEST_FILENAME} !-f
+	  RewriteCond %{REQUEST_FILENAME} !-d
+	  RewriteRule . /vueApp/index.html [L]
+	</IfModule>
+	
 Obs
   -- without package/module manager
   -- without Node
