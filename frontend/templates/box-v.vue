@@ -1,7 +1,7 @@
 <template>
 	<div :class="grid_class">
-		<div style="text-align: center;" class="mb-3" v-on:click="detail(ind)">
-			<img style="height: 21.5vh;" :src="img" alt="image-here">
+		<div style="text-align: center;" class="mb-3">
+			<router-link :to="{ name: 'book', params: { id_: ind }}"><img style="height: 21.5vh;" :src="img" alt="image-here"></router-link>
 		</div>
 		<div class="book book-md">
 			<h6 	>{{ title }}	</h6>

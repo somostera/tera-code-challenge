@@ -1,35 +1,22 @@
 <template>
 	<section v-if="els != undefined" class="row boxV" style="width: 100%; padding-top: 1.6%;">
-		<template v-if="desc != null">
-			<grid-desc v-if="els[desc] != undefined" 
-				:back		="back"							:count_likes_="els[desc].count_likes"
-				:key		="els[desc].id"				:ind_="desc"
-				:func		="saveLike"						:liked_="els[desc].liked"
-				:title	="els[desc].name" 			:img="els[desc].cover_picture" 
-				:author	="els[desc].author" 			:category="els[desc].category"
-				:descript="els[desc].description"	:stock="parseInt(els[desc].stock)"
-			></grid-desc>
-		</template>
-		<template v-else>
-			<grid-filters ref="search" :func_2="sort" :func_="search" :stext_="stext" :options_="options" id="_search"></grid-filters>
-			<span class="col-12 pl-3 ml-1" style="padding-bottom: 0.75%; font-size: 75%"> Total: {{ len }} </span>
-			<section class="row" style="min-height: 66vh; margin-left: 1px; width: 100%;">
-				<template v-for="k in els_(page)">
-					<box-v v-if="k != undefined" 			:detail="viewBook"
-						:grid_class_="grid_class" 			:count_likes_="els[k].count_likes"
-						:key		="els[k].id"				:ind_="k"
-						:func		="saveLike"					:liked_="els[k].liked"
-						:title	="els[k].name" 			:img="els[k].cover_picture" 
-						:author	="els[k].author" 			:category="els[k].category"
-						:stock="parseInt(els[k].stock)"
-					></box-v>
-				</template>
-			</section>
-			<grid-footer :prev="prevPage" :next="nextPage" :navto="clickNum" :page_="page" :len_="len" :max_="max"></grid-footer>
-		</template>
+		<grid-filters ref="search" :func_2="sort" :func_="search" :stext_="stext" :options_="options" id="_search"></grid-filters>
+		<span class="col-12 pl-3 ml-1" style="padding-bottom: 0.75%; font-size: 75%"> Total: {{ len }} </span>
+		<section class="row" style="min-height: 66vh; margin-left: 1px; width: 100%;">
+			<template v-for="k in els_(page)">
+				<box-v v-if="k != undefined" 			:detail="viewBook"
+					:grid_class_="grid_class" 			:count_likes_="els[k].count_likes"
+					:key		="els[k].id"				:ind_="k"
+					:func		="saveLike"					:liked_="els[k].liked"
+					:title	="els[k].name" 			:img="els[k].cover_picture" 
+					:author	="els[k].author" 			:category="els[k].category"
+					:stock="parseInt(els[k].stock)"
+				></box-v>
+			</template>
+		</section>
+		<grid-footer :prev="prevPage" :next="nextPage" :navto="clickNum" :page_="page" :len_="len" :max_="max"></grid-footer>
 	</section>
 </template>
-
 
 <script>
 	module.exports = {
@@ -49,7 +36,6 @@
 		components: {
 			'gridFilters': httpVueLoader('templates/grid-filters.vue'),
 			'gridFooter' : httpVueLoader('templates/grid-footer.vue'),
-			'gridDesc'   : httpVueLoader('templates/grid-desc.vue'),
 			'boxV'		 : httpVueLoader('templates/box-v.vue')
 		},
 		methods  : {
