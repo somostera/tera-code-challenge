@@ -87,6 +87,10 @@ section {
 	padding-bottom: 10px;
 }
 
+.boxV a {
+	color: #222;
+}
+
 .book span 	  { display: block; color: #444; }
 .book h6 	  { margin:0; }
 .book p		  { color: #444; }

@@ -1,7 +1,7 @@
 <template>
 	<div id="main" v-on:click="collapse('_search')">
 		<title-header :theme_="theme" :title_="title" ref="header"></title-header>
-		<router-view :arr="els" :opt="opts" :grid="8"></router-view>
+		<router-view :arr="els" :opt="opts" :grid="8" class="mt-2"></router-view>
 	</div>
 </template>
 <script>
