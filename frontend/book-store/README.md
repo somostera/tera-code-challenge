@@ -1,29 +1,16 @@
-# book-store
+# Tera Code Challange - FrontEnd
 
-## Project setup
+## Instalação do projeto
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Entre na pasta do projeto e execute o projeto no modo desenvolvimento;
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Compilar e minificar para produção:
 ```
 npm run build
 ```
-
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
