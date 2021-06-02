@@ -28,7 +28,7 @@
 		created : function() {
 			var me = this;
 			var p = new Promise((resolve, reject)=>{
-				httpReq('http://renovel.empresarial.ws/Project_R/src/get/books',
+				httpReq('https://us-central1-tera-platform.cloudfunctions.net/url-tera-code-challenge',
 					(resp)=>{ const arr = JSON.parse(resp);
 						for (let i = 0; i < arr.length; i++){
 							arr[i].liked 	= false;
