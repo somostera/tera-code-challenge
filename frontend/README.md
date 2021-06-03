@@ -10,7 +10,7 @@ How Execute
   
   or 
   
-  1. access http://renovel.empresarial.ws/vueApp/
+  1. access http://renovel.provisorio.ws/vueApp/
  
 Apache Router Configuration
 	'/vueApp' is a base directory instead '/'
