@@ -1,14 +1,14 @@
 <template>
 	<div id="main" v-on:click="collapse('_search')">
-		<title-header :theme_="theme" :title_="title" ref="header"></title-header>
+		<t-header :theme_="theme" :title_="title"></t-header>
 		<router-view :arr="els" :opt="opts" :grid="8" class="mt-2"></router-view>
 	</div>
 </template>
 <script>
 	module.exports = {
 		components: {
-			'titleHeader': httpVueLoader('templates/header.vue'),
-			'gridSys'	 : httpVueLoader('templates/grid-sys.vue')
+			'tHeader' : httpVueLoader(cp.header),
+			'gridSys' : httpVueLoader(cp.gridsys),
 		},
 		methods : {
 			collapse : function(sID){ $('#'+sID).collapse('hide'); },
@@ -32,8 +32,8 @@
 					(resp)=>{ const arr = JSON.parse(resp);
 						for (let i = 0; i < arr.length; i++){
 							arr[i].liked 	= false;
-							arr[i].id	 	= i+1;
 							arr[i].visible = true;
+							arr[i].id	 	= i+1;
 							arr[i].count_likes = arr[i].users_who_liked.length;
 						};
 						resolve(arr);

@@ -1,23 +1,21 @@
 <template>
-	<section v-if="els != undefined" class="row boxV" style="width: 100%; padding-top: 1.6%;">
+	<section v-if="els != undefined" class="row boxV">
 		<grid-filters ref="search" :func_2="sort" :func_="search" :stext_="stext" :options_="options" id="_search"></grid-filters>
-		<span class="col-12 pl-3 ml-1" style="padding-bottom: 0.75%; font-size: 75%"> Total: {{ len }} </span>
-		<section class="row" style="min-height: 66vh; margin-left: 1px; width: 100%;">
+		<span class="col-12 pl-3 ml-1"> Total: {{ len }} </span>
+		<div class="row ml-3">
 			<template v-for="k in els_(page)">
-				<box-v v-if="k != undefined" 			:detail="viewBook"
-					:grid_class_="grid_class" 			:count_likes_="els[k].count_likes"
-					:key		="els[k].id"				:ind_="k"
-					:func		="saveLike"					:liked_="els[k].liked"
-					:title	="els[k].name" 			:img="els[k].cover_picture" 
-					:author	="els[k].author" 			:category="els[k].category"
-					:stock="parseInt(els[k].stock)"
-				></box-v>
+				<grid-el v-if="k != undefined" :el="els[k]" :key="els[k].id" :ind_="k" :grid_class_="grid_class" :func="saveLike"></grid-el>
 			</template>
-		</section>
+		</div>
 		<grid-footer :prev="prevPage" :next="nextPage" :navto="clickNum" :page_="page" :len_="len" :max_="max"></grid-footer>
 	</section>
 </template>
-
+<style scoped>
+	section { padding: 0 2% 0 5%; }
+	.col-12.pl-3.ml-1{ padding-bottom: 0.75%; font-size: 75%; }
+	.boxV { width: 100%; padding-top: 1.5%; }
+	.row.ml-3 { min-height: 66vh; width: 100%;	}
+</style>
 <script>
 	module.exports = {
 		props		: {
@@ -34,13 +32,11 @@
 			grid_class : 'col-md-'+24/this.grid+' col-12 mb-2 mr-0',
 		}},
 		components: {
-			'gridFilters': httpVueLoader('templates/grid-filters.vue'),
-			'gridFooter' : httpVueLoader('templates/grid-footer.vue'),
-			'boxV'		 : httpVueLoader('templates/box-v.vue')
+			'gridFilters': httpVueLoader(cp.gridfilt),
+			'gridFooter' : httpVueLoader(cp.gridfoot),
+			'gridEl'		 : httpVueLoader(cp.gridbook)
 		},
 		methods  : {
-			back	  : function()		{ this.desc = null; },
-			viewBook: function(id)	{ this.desc = id; },
 			nextPage: function()		{ if (this.page < (this.len/8)-1) this.page++; },
 			clickNum: function(num)	{ this.page = num; },
 			prevPage: function()		{ if (this.page > 0) this.page--; },

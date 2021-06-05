@@ -13,17 +13,20 @@ How Execute
   1. access http://renovel.provisorio.ws/vueApp/
  
 Apache Router Configuration
-	'/vueApp' is a base directory instead '/'
 	<IfModule mod_rewrite.c>
 	  RewriteEngine On
-	  RewriteBase /vueApp
-	  RewriteRule ^vueApp/index\.html$ - [L]
+	  RewriteBase /
+	  RewriteRule ^index\.html$ - [L]
 	  RewriteCond %{REQUEST_FILENAME} !-f
 	  RewriteCond %{REQUEST_FILENAME} !-d
-	  RewriteRule . /vueApp/index.html [L]
+	  RewriteRule . /index.html [L]
 	</IfModule>
-	
+
 Obs
-  -- without package/module manager
-  -- without Node
-  -- using httpVueLoader
+	- without package/module manager
+	- without Node
+	- using httpVueLoader 
+	- routes.js	-> Router Configuration
+	- dirs.js	-> Files Directory 
+	- app.js		-> Main Configuration and fetch Data
+

@@ -47,6 +47,7 @@ body {
 
 .invisible2 {display: none;}
 .visible2 	{display: inherit;}
+
 .hide2 		{display: none !important;}
 .chartsBox	{display: inline-flex; padding: 1px !important; height: 47vh;}
 
@@ -94,83 +95,6 @@ body {
 		height: 39vh;
 		padding: 1px;
 	}
-	.left-menu {
-		padding-top: 180px;
-		z-index: 99;
-	}
-	.left-menu:hover .box-vIcon{
-		margin-top: 4px;
-	}
-	.left-menu .perfil {
-		border-radius: 500px;
-		height: 28px !important;
-	}
-	.left-menu:hover .perfil {
-		border-radius: 500px;
-		height: 80px !important;
-	}
-	.left-menu:hover .box-vIcon i {
-		margin-left: 10%;
-		transform: translate(-50%,0);
-		-ms-transform: translate(-50%,0); /* IE 9 */
-		-webkit-transform: translate(-50%,0); /* Safari and Chrome */
-		-o-transform: translate(-50%,0);
-	}
-	.left-menu:hover .box-vIcon .fa-chevron-right {
-		position: absolute;
-		transform: translate(0,10px);
-		-ms-transform: translate(0,10px);
-		-webkit-transform: translate(0,10px);
-		-o-transform: translate(0,10px);
-		right: 16px;
-	}
-	.left-menu .logo-bottom {
-		position: absolute;
-		bottom: 0px; 
-		width: 179px; 
-		padding-left: 25px; 
-		padding-right: 36px; 
-		padding-bottom: 2px; 
-		padding-top: 2.5px;
-		border-radius: 0px 0px 0px 0px; 
-	}
-	#limitL {position: absolute; bottom: 12vh;}
-	#limit  {position: absolute; bottom: 9vh;}
-	.left-menu:hover .box-vIcon span {
-		position: absolute;
-		transform: translate(0,2px);
-		-ms-transform: translate(0,2px);
-		-webkit-transform: translate(0,2px);
-		-o-transform: translate(0,2px);
-		left: 23%;
-		text-align: left;
-		width: 180px;
-		font-weight: 500;
-	}
-	.left-menu:hover .box-vIcon:hover {
-		background-color: #eee;
-		cursor: pointer;
-		color: #000 !important;
-		font-weight: 600;
-	}
-	.left-menu:hover .invisible2{
-		display: inline !important;
-	}
-	.left-menu:hover .visible2{
-		display: none !important;
-	}
-	.left-menu:hover {
-		z-index: 2;
-		width: 180px !important;
-	}
-	#left-bar {
-		width: 45px;
-		position: fixed;
-		left: 0;
-		height: 100%;
-		box-shadow: 0px 0px 6px 0px #444;
-		z-index: 99;
-	}
 	#right-bar {
 		width: 45px;
 		position: fixed;
@@ -193,7 +117,6 @@ body {
 		max-height: 42px;
 		border-top: 1px solid #999;
 	}
-	.body-with-leftBar		{padding-left: 46px; padding-right: 2px; margin-left: 0px;}
 	.body-with-rightBar		{margin-right: 46px;}
 	.body-with-topMenu		{margin-top: 46px;}
 	.body-with-bottomMenu	{padding-bottom: 42px; padding-top: 1px; margin-right: 0px;}
@@ -223,88 +146,12 @@ body {
 		padding: 0px !important;
 		margin: 0px !important;
 	}
-	.left-menu {
-		width: 100% !important;
-		padding-top: 170px;
-		z-index: 1;
-		font-size: 120%;
-	}
-	#left-bar {
-		width: 100vw;
-		position: fixed;
-		left: 0;
-		height: 100%;
-		box-shadow: 0px 0px 6px 0px #444;
-		z-index: 1;
-		font-size: 107%;
-	}
-	.left-menu .box-vIcon{
-		margin-top: 0px !important;
-		margin-bottom: 7px !important;
-		transform: translate(0,2px);
-		-ms-transform: translate(0,2px);
-		-webkit-transform: translate(0,2px);
-		-o-transform: translate(0,2px);
-		background-color: #fff;
-		cursor: pointer;
-		color: #000 !important;
-		font-weight: 600;
-		padding-top: 13px;
-		padding-bottom: 13px;
-	}
-	.left-menu .perfil {
-		border-radius: 200px;
-		height: 81px !important;
-	}
-	.left-menu .box-vIcon i {
-		margin-left: 10%;
-		transform: translate(-50%,0);
-		-ms-transform: translate(-50%,0); /* IE 9 */
-		-webkit-transform: translate(-50%,0); /* Safari and Chrome */
-		-o-transform: translate(-50%,0);
-	}
-	.left-menu .box-vIcon .fa-chevron-right {
-		position: absolute;
-		transform: translate(0,10px);
-		-ms-transform: translate(0,10px);
-		-webkit-transform: translate(0,10px);
-		-o-transform: translate(0,10px);
-		right: 10%;
-	}
-	.left-menu .logo-bottom {
-		display: none;
-		position: absolute;
-		bottom: 0px; 
-		width: 100%;
-		height: 0 !important;
-		padding-left: 0px; 
-		padding-right: 0px; 
-		padding-bottom: 0px; 
-		padding-top: 0px;
-		border-radius: 0px 0px 0px 0px; 
-	}
-	#limitL {position: absolute; bottom: 6vh;}
-	#limit  {position: absolute; bottom: 3vh;}
-	.left-menu .box-vIcon span {
-		position: absolute;
-		transform: translate(0,2px);
-		-ms-transform: translate(0,2px);
-		-webkit-transform: translate(0,2px);
-		-o-transform: translate(0,2px);
-		left: 19%;
-		text-align: left;
-		width: 180px;
-		font-weight: 500;
-	}
-	.left-menu .invisible2	{display: inline !important;}
-	.left-menu .visible2	{display: none !important;}
 	#nome 		{top: 90px !important; font-weight: 400 !important;}
 	#navegacao	{display: none !important;}
 	.desktop3 	{display: none;}
 	.desktop2 	{display: none !important;}
 	#right-bar 	{display: none;}
 	#top-menu 	{display: none;}
-	#left-bar:hover, #left-bar:active {display: inherit;}
 }
 
 @media only screen and (max-device-width: 900px) and (orientation: landscape) {

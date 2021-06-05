@@ -1,10 +1,6 @@
-.dark {
-	background: #182432;
-}
-
-.dark #header {
-	background: #111420;
-}
+.dark { background: #182432; }
+.dark #header { background: #111420; }
+.dark .b-primary{ background: #111420; box-shadow: 0px 0px 6px 0px #222;}
 
 .dark .form-control{
 	background: #403f4c;

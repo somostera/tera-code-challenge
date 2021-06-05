@@ -1,5 +1,5 @@
 const routes = [
-  { path: '/'	  		 , name:'home', component: httpVueLoader('templates/grid-sys.vue') 	 },
+  { path: '/'	  		 , name:'home', component: httpVueLoader('templates/grid-sys.vue') },
   { path: '/book/:id_', name:'book', component: httpVueLoader('templates/book-view.vue'), props: true  },
 ];
 const router = new VueRouter({

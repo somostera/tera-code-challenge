@@ -5,7 +5,6 @@
 		<i class="fa fa-angle-right font-md" 					v-on:click="next"></i>
 	</div>
 </template>
-
 <script>
 	module.exports = {
 		props    : {
