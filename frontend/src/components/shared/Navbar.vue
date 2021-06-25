@@ -1,9 +1,9 @@
 <template>
   <div>
     <v-toolbar color="primary">
-      <v-toolbar-title>Livraria do Cowboy</v-toolbar-title>
+      <v-toolbar-title class="ml-8 title">Livraria do Cowboy</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn text @click="toggleTheme">{{ theme }} mode</v-btn>
+      <v-btn text @click="toggleTheme" color="white">{{ theme }} mode</v-btn>
     </v-toolbar>
   </div>
 </template>
@@ -35,4 +35,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.title {
+  color: white;
+}
+</style>

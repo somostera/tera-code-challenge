@@ -3,9 +3,10 @@ import colors from 'vuetify/lib/util/colors';
 
 export const theme = {
   light: {
-    primary: colors.cyan.lighten4,
+    primary: colors.cyan.lighten3,
     secondary: colors.shades.white,
     background: colors.cyan.lighten5,
+    anchor: colors.grey.darken4,
   },
   dark: {
     primary: colors.shades.black,

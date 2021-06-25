@@ -8,10 +8,14 @@ export default new Vuex.Store({
   state: {
     useDarkTheme: false,
     books: [],
+    currentUser: 'Paula',
   },
   getters: {
+    // TODO separate into module.
     getBooks: (state) => state.books,
+    getBooksAmount: (state) => state.books.length,
     useDarkTheme: (state) => state.useDarkTheme,
+    getUser: (state) => state.currentUser,
   },
   mutations: {
     updateBooks: (state, payload) => {

@@ -1,4 +1,6 @@
 <template>
+  <!-- Use v-theme-provider so we don't have to manually add dark prop
+      whenever we change the theme -->
   <v-theme-provider root>
     <v-app>
       <navbar></navbar>
@@ -29,7 +31,7 @@ export default {
   },
   async created() {
     // Setup app
-    // await this.fetchBooks();
+    await this.fetchBooks();
   },
 };
 </script>
