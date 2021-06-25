@@ -29,7 +29,6 @@ export default new Vuex.Store({
     fetchBooks: async ({ commit }) => {
       const response = await API.get('/');
       const { data } = response;
-      console.log(data);
       commit('updateBooks', data);
     },
     toggleTheme: ({ commit }) => {

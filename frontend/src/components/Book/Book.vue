@@ -1,25 +1,24 @@
 <template>
   <div v-if="hasBook">
-    <v-col cols="3">
-      <v-row justify="center" align="center">
-        <v-col cols="4">
-          <img :src="book.cover_picture" alt="book.name" width="150" height="200" />
-        </v-col>
-      </v-row>
-      <v-row justify="space-between">
-        <v-col cols="10">
-          <router-link :to="{ path: `/${bookSlug}` }"
-            ><span class="text-h6">{{ book.name }}</span></router-link
-          >
-          <p class="mb-0 text-body-2">{{ book.author }}</p>
-          <p class="mb-0 text-body-2">{{ book.category }}</p>
-        </v-col>
-        <v-col cols="1">
-          <v-icon v-if="!userLiked">mdi-heart-outline</v-icon>
-          <v-icon v-else color="red">mdi-heart</v-icon>
-        </v-col>
-      </v-row>
-    </v-col>
+    <v-row justify="center" align="center">
+      <v-col cols="8">
+        <img :src="book.cover_picture" :alt="book.name" width="150" height="200" />
+      </v-col>
+    </v-row>
+    <v-row justify="space-evenly">
+      <v-col cols="10" sm="8" md="9">
+        <router-link :to="{ path: `/${bookSlug}` }"
+          ><span class="text-h6">{{ book.name }}</span></router-link
+        >
+        <p class="mb-0 text-body-2">{{ book.author }}</p>
+        <p class="mb-0 text-body-2">{{ book.category }}</p>
+      </v-col>
+      <v-spacer></v-spacer>
+      <v-col cols="2" sm="4" md="1">
+        <v-icon v-if="!userLiked">mdi-heart-outline</v-icon>
+        <v-icon v-else color="red">mdi-heart</v-icon>
+      </v-col>
+    </v-row>
   </div>
 </template>
 
@@ -28,39 +27,27 @@ import { mapGetters } from 'vuex';
 
 export default {
   name: 'book',
-  // props: {
-  //   book: { type: Object, required: true },
-  // },
-  data: () => ({
-    book: {},
-  }),
+  props: {
+    book: { type: Object, required: true },
+  },
   computed: {
     ...mapGetters(['getBooks', 'getUser']),
     hasBook() {
       return Object.keys(this.book).length !== 0;
     },
     userLiked() {
-      if (!this.hasBook) return '';
-      const liked = this.book.users_who_liked.indexOf(this.getUser) !== -1;
-      console.log(liked);
-      return liked;
+      if (!this.hasBook) return false;
+      const whoLiked = this.book.users_who_liked;
+      if (Array.isArray(whoLiked)) {
+        const liked = whoLiked.indexOf(this.getUser) !== -1;
+        return liked;
+      }
+      return false;
     },
     bookSlug() {
       const noSpecial = this.removeSpecials(this.book.name);
       const slug = noSpecial.split(' ').join('-');
       return slug;
-    },
-  },
-  mounted() {
-    if (this.getBooks.length > 0) {
-      // eslint-disable-next-line prefer-destructuring
-      this.book = this.getBooks[0];
-    }
-  },
-  watch: {
-    getBooks() {
-      // eslint-disable-next-line prefer-destructuring
-      this.book = this.getBooks[0];
     },
   },
   methods: {

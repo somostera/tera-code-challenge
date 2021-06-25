@@ -10,8 +10,13 @@
       <v-col cols="1">Filtros</v-col>
     </v-row>
     <v-row>
-      <v-col>
-        <Book></Book>
+      <v-col cols="12">
+        <BookList :list="books" class="mb-16"></BookList>
+        <v-pagination
+          class="hide-mobile"
+          :length="numberOfPages"
+          v-model="currentPage"
+        ></v-pagination>
       </v-col>
     </v-row>
   </v-container>
@@ -19,13 +24,56 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import Book from '@/components/Book/Book.vue';
+import BookList from '@/components/Book/BookList.vue';
 
 export default {
   name: 'library',
-  components: { Book },
+  components: { BookList },
+  data: () => ({
+    currentPage: 1,
+    maxPerPage: 8,
+    books: [],
+  }),
   computed: {
-    ...mapGetters(['getBooksAmount']),
+    ...mapGetters(['getBooks', 'getBooksAmount']),
+    numberOfPages() {
+      return this.getBooksAmount / this.maxPerPage;
+    },
+  },
+  mounted() {
+    if (this.getBooks.length > 0) {
+      this.books = this.createBookList();
+    }
+  },
+  watch: {
+    getBooks() {
+      this.books = this.createBookList();
+    },
+    currentPage() {
+      this.books = this.createBookList();
+    },
+    isMobile() {
+      const isMobile = window.matchMedia('(max-width: 768px)');
+      return isMobile.matches;
+    },
+  },
+  methods: {
+    createBookList() {
+      // According to mockups, mobile uses infinite scroll.
+      if (this.isMobile) return this.getBooks;
+      const begin = this.maxPerPage * (this.currentPage - 1);
+      const end = this.maxPerPage * this.currentPage;
+      const slice = this.getBooks.slice(begin, end);
+      return slice;
+    },
   },
 };
 </script>
+
+<style scoped>
+@media screen and (max-width: 768px) {
+  .hide-mobile {
+    display: none;
+  }
+}
+</style>
