@@ -1,16 +1,13 @@
 <template>
   <v-container fluid class="px-12 py-6">
     <v-row class="mt-6 ml-6">
-      <v-col cols="2">
-        <p>Procure por um livro</p>
-        <span>Total: {{ getBooksAmount }} </span>
+      <v-col cols="12">
+        <book-filters :availableBooks.sync="availableBooks"></book-filters>
       </v-col>
-      <v-spacer></v-spacer>
-      <v-col cols="2">Nome da categoria</v-col>
-      <v-col cols="1">Filtros</v-col>
     </v-row>
     <v-row>
       <v-col cols="12">
+        <span>Total: {{ booksAmount }} </span>
         <BookList :list="books" class="mb-16"></BookList>
         <v-pagination
           class="hide-mobile"
@@ -25,45 +22,66 @@
 <script>
 import { mapGetters } from 'vuex';
 import BookList from '@/components/Book/BookList.vue';
+import BookFilters from '@/components/Book/BookFilters.vue';
 
 export default {
   name: 'library',
-  components: { BookList },
+  components: { BookList, BookFilters },
   data: () => ({
     currentPage: 1,
     maxPerPage: 8,
     books: [],
+    availableBooks: [],
+    numberOfPages: 0,
   }),
   computed: {
-    ...mapGetters(['getBooks', 'getBooksAmount']),
-    numberOfPages() {
-      return this.getBooksAmount / this.maxPerPage;
+    ...mapGetters(['getBooks']),
+    booksAmount() {
+      return this.getBooks.length;
     },
+  },
+  created() {
+    this.$on('filtered-books', this.filterBooks);
   },
   mounted() {
     if (this.getBooks.length > 0) {
-      this.books = this.createBookList();
+      this.availableBooks = this.getBooks;
+      this.numberOfPages = this.availableBooks.length / this.maxPerPage;
+      this.books = this.createBookList(this.availableBooks);
     }
   },
   watch: {
-    getBooks() {
-      this.books = this.createBookList();
+    getBooks(books) {
+      // First render
+      this.availableBooks = books;
+      this.numberOfPages = books.length / this.maxPerPage;
+      this.books = this.createBookList(books);
     },
     currentPage() {
-      this.books = this.createBookList();
+      // Update page: change the displayed books to a slice of the available books.
+      this.books = this.createBookList(this.availableBooks);
     },
     isMobile() {
       const isMobile = window.matchMedia('(max-width: 768px)');
       return isMobile.matches;
     },
+    availableBooks(newer) {
+      // First render, do nothing.
+      // if (previous.length === 0) return;
+      // // Book list length didn't change, do nothing.
+      // if (newer.length === previous.length) return;
+      // Re-calculate number of pages to match filter.
+      this.numberOfPages = Math.ceil(newer.length / this.maxPerPage);
+      this.books = this.createBookList(this.availableBooks);
+    },
   },
   methods: {
-    createBookList() {
+    createBookList(books) {
       // According to mockups, mobile uses infinite scroll.
-      if (this.isMobile) return this.getBooks;
+      if (this.isMobile) return books;
       const begin = this.maxPerPage * (this.currentPage - 1);
       const end = this.maxPerPage * this.currentPage;
-      const slice = this.getBooks.slice(begin, end);
+      const slice = books.slice(begin, end);
       return slice;
     },
   },

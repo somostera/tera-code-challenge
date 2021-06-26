@@ -15,7 +15,7 @@
       </v-col>
       <v-spacer></v-spacer>
       <v-col cols="2" sm="4" md="1">
-        <v-icon v-if="!userLiked">mdi-heart-outline</v-icon>
+        <v-icon v-if="!userLiked" @click="like">mdi-heart-outline</v-icon>
         <v-icon v-else color="red">mdi-heart</v-icon>
       </v-col>
     </v-row>
@@ -63,6 +63,9 @@ export default {
         }
       }
       return res;
+    },
+    like() {
+      this.book.users_who_liked.push(this.getUser);
     },
   },
 };
