@@ -34,5 +34,9 @@ export default new Vuex.Store({
     toggleTheme: ({ commit }) => {
       commit('updateTheme');
     },
+    likeBook: ({ commit }, payload) => {
+      const { books } = payload;
+      commit('updateBooks', books);
+    },
   },
 });

@@ -25,11 +25,9 @@ export default {
 
   watch: {
     getBooks(books) {
-      if (!this.book) {
-        const { name } = this.$route.params;
-        // eslint-disable-next-line prefer-destructuring
-        this.book = books.filter((b) => b.name === name)[0];
-      }
+      const { name } = this.$route.params;
+      // eslint-disable-next-line prefer-destructuring
+      this.book = books.filter((b) => b.name === name)[0];
     },
   },
 };

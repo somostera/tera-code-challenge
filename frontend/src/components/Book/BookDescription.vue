@@ -26,20 +26,7 @@
         <p class="mb-0">{{ book.category || '' }}</p>
         <p class="mb-4">{{ stockTitle }}</p>
         <div class="tight mr-12">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis facilis commodi quidem
-          deleniti numquam doloribus veniam nulla sit ratione voluptatibus, odio perspiciatis quia
-          error expedita, velit modi praesentium consequatur nobis. Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Veritatis facilis commodi quidem deleniti numquam doloribus
-          veniam nulla sit ratione voluptatibus, odio perspiciatis quia error expedita, velit modi
-          praesentium consequatur nobis. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Veritatis facilis commodi quidem deleniti numquam doloribus veniam nulla sit ratione
-          voluptatibus, odio perspiciatis quia error expedita, velit modi praesentium consequatur
-          nobis.Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis facilis commodi
-          quidem deleniti numquam doloribus veniam nulla sit ratione voluptatibus, odio perspiciatis
-          quia error expedita, velit modi praesentium consequatur nobis. Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Veritatis facilis commodi quidem deleniti numquam doloribus
-          veniam nulla sit ratione voluptatibus, odio perspiciatis quia error expedita, velit modi
-          praesentium consequatur nobis.
+          {{ book.description }}
         </div>
       </section>
     </div>
@@ -47,13 +34,12 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import BookMixin from '@/mixins/Book.mixin';
 
 export default {
   name: 'book-description',
-  props: { book: { required: true } },
+  mixins: [BookMixin],
   computed: {
-    ...mapGetters(['getBooks', 'getUser']),
     outOfStock() {
       if (!this.book) return '';
       const { stock } = this.book;
@@ -67,26 +53,10 @@ export default {
       }
       return 'Fora de estoque';
     },
-    hasBook() {
-      return Object.keys(this.book).length !== 0;
-    },
-    hasUserLiked() {
-      if (!this.hasBook) return false;
-      const whoLiked = this.book.users_who_liked;
-      if (Array.isArray(whoLiked)) {
-        const liked = whoLiked.indexOf(this.getUser) !== -1;
-        return liked;
-      }
-      return false;
-    },
   },
   methods: {
     goBack() {
       this.$router.push({ path: '/' });
-    },
-    like() {
-      const bookIndex = this.getBooks.findIndex((b) => b.name === this.book.name);
-      this.getBooks[bookIndex].users_who_liked.push(this.getUser);
     },
   },
 };

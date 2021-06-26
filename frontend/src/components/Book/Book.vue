@@ -15,7 +15,7 @@
       </v-col>
       <v-spacer></v-spacer>
       <v-col cols="2" sm="4" md="1">
-        <v-icon v-if="!userLiked" @click="like">mdi-heart-outline</v-icon>
+        <v-icon v-if="!hasUserLiked" @click="like">mdi-heart-outline</v-icon>
         <v-icon v-else color="red">mdi-heart</v-icon>
       </v-col>
     </v-row>
@@ -23,34 +23,14 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import BookMixin from '@/mixins/Book.mixin';
 
 export default {
   name: 'book',
   props: {
     book: { type: Object, required: true },
   },
-  computed: {
-    ...mapGetters(['getBooks', 'getUser']),
-    hasBook() {
-      return Object.keys(this.book).length !== 0;
-    },
-    userLiked() {
-      if (!this.hasBook) return false;
-      const whoLiked = this.book.users_who_liked;
-      if (Array.isArray(whoLiked)) {
-        const liked = whoLiked.indexOf(this.getUser) !== -1;
-        return liked;
-      }
-      return false;
-    },
-  },
-  methods: {
-    like() {
-      const bookIndex = this.getBooks.findIndex((b) => b.name === this.book.name);
-      this.getBooks[bookIndex].users_who_liked.push(this.getUser);
-    },
-  },
+  mixins: [BookMixin],
 };
 </script>
 
