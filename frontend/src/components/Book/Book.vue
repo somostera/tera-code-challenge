@@ -7,7 +7,7 @@
     </v-row>
     <v-row justify="space-evenly">
       <v-col cols="10" sm="8" md="9">
-        <router-link :to="{ path: `/${bookSlug}` }"
+        <router-link :to="{ path: `/${book.name}` }"
           ><span class="text-h6">{{ book.name }}</span></router-link
         >
         <p class="mb-0 text-body-2">{{ book.author }}</p>

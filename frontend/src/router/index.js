@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Library from '../views/Library.vue';
+import BookInfo from '../views/BookInfo.vue';
 
 Vue.use(VueRouter);
 
@@ -11,12 +12,12 @@ const routes = [
     component: Library,
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+    // Can't use slug because we wouldn't be able to fetch the book again.
+    // So we pass the name of the book as a param and fetch it
+    // from the (Vuex) stored books inside the component.
+    path: '/:name',
+    name: 'Book information',
+    component: BookInfo,
   },
 ];
 
