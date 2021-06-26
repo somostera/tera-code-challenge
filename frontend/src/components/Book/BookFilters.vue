@@ -1,30 +1,26 @@
 <template>
   <div>
     <v-row>
-      <v-col cols="3">
+      <v-col cols="7" sm="7" md="4">
         <v-text-field solo label="Procure por um livro" v-model="bookName"></v-text-field>
       </v-col>
       <v-spacer></v-spacer>
-      <v-col cols="5">
-        <v-row>
-          <v-col cols="6">
-            <v-text-field
-              v-if="isFilterCategory"
-              solo
-              label="Nome da categoria"
-              v-model="category"
-            ></v-text-field>
-          </v-col>
-          <v-col cols="6">
-            <v-select
-              solo
-              placeholder="Filtros"
-              :items="filterList"
-              v-model="selectedFilter"
-              @change="applyFilter(selectedFilter)"
-            ></v-select>
-          </v-col>
-        </v-row>
+      <v-col cols="5" sm="5" md="2" order="2" order-md="3">
+        <v-select
+          solo
+          placeholder="Filtros"
+          :items="filterList"
+          v-model="selectedFilter"
+          @change="applyFilter(selectedFilter)"
+        ></v-select>
+      </v-col>
+      <v-col cols="12" md="4" order="3" order-md="2">
+        <v-text-field
+          v-if="isFilterCategory"
+          solo
+          label="Nome da categoria"
+          v-model="category"
+        ></v-text-field>
       </v-col>
     </v-row>
   </div>
