@@ -1,7 +1,7 @@
 //Carregando os dados dos livros
 import {useEffect} from "react";
 import HttpStatus from "../../../utils/HttpStatus";
-import TeraApi from "../../../services/TeraApi";
+import TeraApi from "../../../services/api/TeraApi";
 
 export default function useFetchBooks (setBooksStatus, setBooks, setFilteredBooks) {
 

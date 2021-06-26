@@ -4,7 +4,14 @@ import Button from "../button/Button";
 
 export default function Slider(props) {
 
-    const [active, setActive] = useState(false);
+    const [active, setActive] = useState(props.active !== undefined ? props.active : false);
+
+    //Efeito para abrir/fechar o Slider caso ele seja controlado por um componente pai
+    useEffect(() => {
+        if (props.active !== undefined) {
+            setActive(props.active);
+        }
+    }, [props.active])
 
     //Efeito que esconde a barra de rolagem ao ativar o Slider
     useEffect(() => {
@@ -14,8 +21,11 @@ export default function Slider(props) {
 
     }, [active])
 
+    //Habilita ou desabilita o Slider
+    //Caso ele seja controlado pelo elemento pai, é necessário usar o props.setActive ao invés do setActive local
     function toggleActive() {
-        setActive(prevState => !prevState)
+        if (props.setActive !== undefined) props.setActive(prevActive => !prevActive);
+        else setActive(prevState => !prevState);
     }
 
     return (

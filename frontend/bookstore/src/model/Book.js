@@ -9,6 +9,7 @@ class Book {
         this.description = description;
         this.stock = stock;
         this.likes = likes;
+        this.liked = false;
     }
 }
 

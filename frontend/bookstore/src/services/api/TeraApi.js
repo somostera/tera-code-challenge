@@ -1,6 +1,9 @@
-import Book from "../model/Book";
+import Book from "../../model/Book";
 
 const TeraApi = {
+    /**
+     * @return {Promise<Book[]>}
+     */
     getBooks: async function () {
         // const response = await fetch(process.env.REACT_APP_BOOKSTORE_API_URL);
         // const data = await response.json();

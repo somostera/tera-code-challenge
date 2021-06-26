@@ -1,7 +1,8 @@
-import cloneDeep from "lodash.clonedeep";
-import "./BookFilters.css";
+import {useState} from "react";
 import Button from "../../../../components/button/Button";
-import {useState, useEffect} from "react";
+import "./BookFilters.css";
+import OrderTypes from "../../../../services/bookFilter/dto/OrderTypes";
+import OtherFilterTypes from "../../../../services/bookFilter/dto/OtherFilterTypes";
 
 export default function BookFilters(props) {
 
@@ -17,16 +18,22 @@ export default function BookFilters(props) {
         if (categories.length) filters.categories = categories;
         if (others.length) filters.others = others;
 
-        if (Object.keys(filters).length) {
-            console.log('aplicarFiltros')
-        }
+        props.applyFilters(filters);
     }
 
+    /**
+     * Remove ou adiciona uma ordenação
+     * @param {String} orderType
+     */
     function toggleOrder(orderType) {
         if (orderType === order) setOrder(null);
         else setOrder(orderType);
     }
 
+    /**
+     * Remove ou adiciona uma categoria na filtragem
+     * @param {String} categoryType
+     */
     function toggleCategories(categoryType) {
         setCategories(prevCategories => {
 
@@ -43,6 +50,10 @@ export default function BookFilters(props) {
         })
     }
 
+    /**
+     * Remove ou adiciona um filtro geral na filtragem
+     * @param {String} otherType
+     */
     function toggleOther(otherType) {
         setOthers(prevOthers => {
 
@@ -63,6 +74,7 @@ export default function BookFilters(props) {
         setOrder(null);
         setCategories([]);
         setOthers([]);
+        props.applyFilters({});
     }
 
     return (
@@ -71,14 +83,14 @@ export default function BookFilters(props) {
                 <h3>Ordenar por</h3>
                 <div className="BookFilters__sub__section">
                     <Button
-                        onClick={() => toggleOrder('most_liked')}
-                        type={order === 'most_liked' ? 'primary' : 'secondary'}
+                        onClick={() => toggleOrder(OrderTypes.MOST_LIKED)}
+                        type={order === OrderTypes.MOST_LIKED ? 'primary' : 'secondary'}
                     >
                         Melhores avaliados
                     </Button>
                     <Button
-                        onClick={() => toggleOrder('alphabetical')}
-                        type={order === 'alphabetical' ? 'primary' : 'secondary'}
+                        onClick={() => toggleOrder(OrderTypes.ALPHABETICAL)}
+                        type={order === OrderTypes.ALPHABETICAL ? 'primary' : 'secondary'}
                     >
                         Ordem alfabética
                     </Button>
@@ -86,31 +98,33 @@ export default function BookFilters(props) {
             </section>
             <section className="BookFilters__section">
                 <h3>Filtrar por</h3>
-                <div className="BookFilters__sub__section">
-                    <h4>Categorias</h4>
-                    <div>
-                        {props.categories.map(category =>
-                            <Button
-                                key={category}
-                                onClick={() => toggleCategories(category)}
-                                type={categories.includes(category) ? 'primary' : 'secondary'}
-                            >
-                                {category}
-                            </Button>)}
+                {props.categories.length > 0 && (
+                    <div className="BookFilters__sub__section">
+                        <h4>Categorias</h4>
+                        <div>
+                            {props.categories.map(category =>
+                                <Button
+                                    key={category}
+                                    onClick={() => toggleCategories(category)}
+                                    type={categories.includes(category) ? 'primary' : 'secondary'}
+                                >
+                                    {category}
+                                </Button>)}
+                        </div>
                     </div>
-                </div>
+                )}
                 <div className="BookFilters__sub__section">
                     <h4>Outros</h4>
                     <div>
                         <Button
-                            onClick={() => toggleOther('in_stock')}
-                            type={others.includes('in_stock') ? 'primary' : 'secondary'}
+                            onClick={() => toggleOther(OtherFilterTypes.IN_STOCK)}
+                            type={others.includes(OtherFilterTypes.IN_STOCK) ? 'primary' : 'secondary'}
                         >
                             Em estoque
                         </Button>
                         <Button
-                            onClick={() => toggleOther('liked')}
-                            type={others.includes('liked') ? 'primary' : 'secondary'}
+                            onClick={() => toggleOther(OtherFilterTypes.LIKED)}
+                            type={others.includes(OtherFilterTypes.LIKED) ? 'primary' : 'secondary'}
                         >
                             Curtidos por você
                         </Button>

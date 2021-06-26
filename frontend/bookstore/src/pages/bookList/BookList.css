@@ -30,3 +30,12 @@
     flex: 1;
     margin-right: var(--small-space);
 }
+
+.BookList__slider_text_container {
+    display: flex;
+    align-items: center;
+}
+
+.BookList__slider_text {
+    margin-left: var(--extra-small-space);
+}

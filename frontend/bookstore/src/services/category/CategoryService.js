@@ -1,7 +1,7 @@
-const Categories = {
+const CategoryService = {
     /**
      * @param {Book[]} books
-     * @returns {String[]}
+     * @returns {string[]}
      */
     getUniqueCategoriesFromBooks: function (books) {
         //Um Set é um conjunto de valores únicos
@@ -9,4 +9,4 @@ const Categories = {
     }
 }
 
-export default Categories;
+export default CategoryService;
