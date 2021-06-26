@@ -10,6 +10,9 @@ export default function Button(props) {
         case 'primary':
             classType = 'Button--primary';
             break;
+        case 'icon':
+            classType = 'Button--icon';
+            break;
         default:
             classType = 'Button--secondary'
     }

@@ -6,6 +6,7 @@
     left: 0;
     right: 0;
     bottom: 0;
+    animation: fadeIn ease-out .3s;
 }
 
 @media (min-width: 768px) {

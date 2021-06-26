@@ -20,6 +20,9 @@
 
 .BookItem__info {
     line-height: 1.2;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
 }
 
 .BookItem__info h2 {

@@ -1,4 +1,5 @@
 .Button {
+    cursor: pointer;
     padding: calc(var(--small-space) / 2);
     border: 1px solid var(--secondary-border-color);
     border-radius: var(--extra-small-radius);
@@ -6,10 +7,20 @@
     box-shadow: var(--light-box-shadow);
 }
 
+.Button:is(:hover, :focus, :active) {
+    filter: brightness(90%)
+}
+
 .Button--primary {
     background-color: var(--primary-color);
     color: var(--inverted-text-color);
     border-color: var(--primary-color);
+}
+
+.Button--icon {
+    background: transparent;
+    border-color: transparent;
+    box-shadow: unset;
 }
 
 .Button--primary--outlined {
