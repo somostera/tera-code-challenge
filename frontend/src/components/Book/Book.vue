@@ -52,6 +52,9 @@ export default {
   },
   methods: {
     removeSpecials(str) {
+      // Credits to https://stackoverflow.com/a/26482552/15316680
+      // Regex was deleting UTF-8 characters. This could cause problems
+      // with encoding on the slugs.
       const lower = str.toLowerCase();
       const upper = str.toUpperCase();
 

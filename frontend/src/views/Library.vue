@@ -66,11 +66,6 @@ export default {
       return isMobile.matches;
     },
     availableBooks(newer) {
-      // First render, do nothing.
-      // if (previous.length === 0) return;
-      // // Book list length didn't change, do nothing.
-      // if (newer.length === previous.length) return;
-      // Re-calculate number of pages to match filter.
       this.numberOfPages = Math.ceil(newer.length / this.maxPerPage);
       this.books = this.createBookList(this.availableBooks);
     },
