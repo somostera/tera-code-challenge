@@ -1,0 +1,15 @@
+.BookstoreNav {
+    display: flex;
+    justify-content: center;
+    padding: var(--small-space);
+}
+
+.BookstoreNav h1 {
+    font-weight: 400;
+}
+
+.BookstoreNav__logo_strong {
+    padding: 5px;
+    font-weight: 900;
+    font-size: 120%;
+}

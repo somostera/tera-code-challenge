@@ -1,0 +1,20 @@
+.BookList {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.BookList__item {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .BookList__item {
+        width: 33%;
+    }
+}
+
+@media (min-width: 992px) {
+    .BookList__item {
+        width: 25%;
+    }
+}
