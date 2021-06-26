@@ -12,7 +12,11 @@ export default function Nav() {
     }
 
     useEffect(() => {
-
+        if (nightMode) {
+            document.querySelector('html').classList.add('Nightmode')
+        } else {
+            document.querySelector('html').classList.remove('Nightmode')
+        }
     }, [nightMode])
 
     return (
