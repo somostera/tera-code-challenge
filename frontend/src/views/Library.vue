@@ -41,9 +41,6 @@ export default {
       return this.availableBooks.length;
     },
   },
-  created() {
-    this.$on('filtered-books', this.filterBooks);
-  },
   mounted() {
     if (this.getBooks.length > 0) {
       this.availableBooks = this.getBooks;
