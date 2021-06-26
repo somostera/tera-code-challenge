@@ -38,7 +38,7 @@ export default {
   computed: {
     ...mapGetters(['getBooks']),
     booksAmount() {
-      return this.getBooks.length;
+      return this.availableBooks.length;
     },
   },
   created() {
