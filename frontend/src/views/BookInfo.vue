@@ -12,19 +12,24 @@ export default {
   name: 'book-info',
   components: { BookDescription },
   data: () => ({
-    book: null,
+    book: {},
   }),
   computed: {
     ...mapGetters(['getBooks']),
   },
+  mounted() {
+    const { name } = this.$route.params;
+    // eslint-disable-next-line prefer-destructuring
+    this.book = this.getBooks.filter((b) => b.name === name)[0];
+  },
+
   watch: {
     getBooks(books) {
-      const { name } = this.$route.params;
-      console.log(name);
-      console.log(books);
-      // eslint-disable-next-line prefer-destructuring
-      this.book = books.filter((b) => b.name === name)[0];
-      console.log(this.book);
+      if (!this.book) {
+        const { name } = this.$route.params;
+        // eslint-disable-next-line prefer-destructuring
+        this.book = books.filter((b) => b.name === name)[0];
+      }
     },
   },
 };

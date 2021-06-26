@@ -5,7 +5,7 @@
         <img :src="book.cover_picture" :alt="book.name" width="150" height="200" />
       </v-col>
     </v-row>
-    <v-row justify="space-evenly">
+    <v-row>
       <v-col cols="10" sm="8" md="9">
         <router-link :to="{ path: `/${book.name}` }"
           ><span class="text-h6">{{ book.name }}</span></router-link
@@ -44,31 +44,11 @@ export default {
       }
       return false;
     },
-    bookSlug() {
-      const noSpecial = this.removeSpecials(this.book.name);
-      const slug = noSpecial.split(' ').join('-');
-      return slug;
-    },
   },
   methods: {
-    removeSpecials(str) {
-      // Credits to https://stackoverflow.com/a/26482552/15316680
-      // Regex was deleting UTF-8 characters. This could cause problems
-      // with encoding on the slugs.
-      const lower = str.toLowerCase();
-      const upper = str.toUpperCase();
-
-      let res = '';
-      // eslint-disable-next-line no-plusplus
-      for (let i = 0; i < lower.length; i++) {
-        if (lower[i] !== upper[i] || lower[i].trim() === '') {
-          res += lower[i];
-        }
-      }
-      return res;
-    },
     like() {
-      this.book.users_who_liked.push(this.getUser);
+      const bookIndex = this.getBooks.findIndex((b) => b.name === this.book.name);
+      this.getBooks[bookIndex].users_who_liked.push(this.getUser);
     },
   },
 };

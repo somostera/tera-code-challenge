@@ -103,7 +103,12 @@ export default {
       });
     },
     byLiked(books) {
-      return books.filter((b) => b.users_who_liked.indexOf(this.getUser) !== -1);
+      return books.filter((b) => {
+        if (Array.isArray(b.users_who_liked)) {
+          return b.users_who_liked.indexOf(this.getUser) !== -1;
+        }
+        return false;
+      });
     },
     // These two functions can't be converted into a single one because we'd need a parameter
     // to indicate which function to run, a.k.a flag argument, which is also a code smell sometimes.

@@ -5,8 +5,9 @@
     <v-app>
       <navbar></navbar>
       <v-main :style="{ 'background-color': backgroundColor }">
-        <v-card> </v-card>
-        <router-view />
+        <transition name="fade-slide">
+          <router-view />
+        </transition>
       </v-main>
     </v-app>
   </v-theme-provider>
@@ -35,3 +36,16 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.fade-slide-enter,
+.fade-slide-leave-to {
+  opacity: 0;
+  transform: translateX(-200px);
+}
+
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+  transition: all 0.4s ease-in;
+}
+</style>

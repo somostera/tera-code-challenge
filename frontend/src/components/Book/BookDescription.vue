@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="px-10 py-6">
+  <v-container v-if="hasBook" fluid class="px-10 py-6">
     <div @click="goBack" class="mb-8">
       <v-icon>
         mdi-arrow-left
@@ -20,7 +20,7 @@
         </div>
         <div class="row around between mt-2">
           <p class="font-weight-medium author">{{ book.author || '' }}</p>
-          <v-icon v-if="!userLiked" @click="like">mdi-heart-outline</v-icon>
+          <v-icon v-if="!hasUserLiked" @click="like">mdi-heart-outline</v-icon>
           <v-icon v-else color="red">mdi-heart</v-icon>
         </div>
         <p class="mb-0">{{ book.category || '' }}</p>
@@ -67,9 +67,17 @@ export default {
       }
       return 'Fora de estoque';
     },
+    hasBook() {
+      return Object.keys(this.book).length !== 0;
+    },
     hasUserLiked() {
-      if (!this.book) return false;
-      return this.getBooks.users_who_liked.indexOf(this.getUser) !== -1;
+      if (!this.hasBook) return false;
+      const whoLiked = this.book.users_who_liked;
+      if (Array.isArray(whoLiked)) {
+        const liked = whoLiked.indexOf(this.getUser) !== -1;
+        return liked;
+      }
+      return false;
     },
   },
   methods: {
@@ -77,7 +85,8 @@ export default {
       this.$router.push({ path: '/' });
     },
     like() {
-      this.book.users_who_liked.push(this.getUser);
+      const bookIndex = this.getBooks.findIndex((b) => b.name === this.book.name);
+      this.getBooks[bookIndex].users_who_liked.push(this.getUser);
     },
   },
 };
