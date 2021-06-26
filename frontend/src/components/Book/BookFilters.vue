@@ -26,11 +26,14 @@
 </template>
 
 <script>
+/* eslint-disable prefer-const */
 import { mapGetters } from 'vuex';
+import StorageMixin from '@/mixins/Storage.mixin';
 
 export default {
   name: 'filters',
   props: ['availableBooks'],
+  mixins: [StorageMixin],
   data: () => ({
     filtersMap: {
       'Melhores avaliados': 'byRating',
@@ -111,12 +114,25 @@ export default {
       });
     },
     byLiked(books) {
-      return books.filter((b) => {
+      let vuexLiked = books.filter((b) => {
         if (Array.isArray(b.users_who_liked)) {
           return b.users_who_liked.indexOf(this.getUser) !== -1;
         }
         return false;
       });
+      const storageLiked = this.getStorage('liked-books');
+      this.addLikedFromStorage(vuexLiked, storageLiked);
+      return vuexLiked;
+    },
+    addLikedFromStorage(baseArray, likedBooks) {
+      const likedNames = baseArray.map((b) => b.name);
+      // eslint-disable-next-line no-restricted-syntax
+      for (let name of likedBooks) {
+        if (likedNames.indexOf(name) === -1) {
+          const index = this.getBooks.findIndex((b) => b.name === name);
+          baseArray.push(this.getBooks[index]);
+        }
+      }
     },
     // These two functions can't be converted into a single one because we'd need a parameter
     // to indicate which function to run, a.k.a flag argument, which is also a code smell sometimes.

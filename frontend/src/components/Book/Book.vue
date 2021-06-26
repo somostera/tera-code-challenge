@@ -15,18 +15,22 @@
       </v-col>
       <v-spacer></v-spacer>
       <v-col cols="2" sm="4" md="1">
-        <v-icon v-if="!hasUserLiked" @click="like">mdi-heart-outline</v-icon>
-        <v-icon v-else color="red">mdi-heart</v-icon>
+        <!-- Show red heart if user liked of empty heart if not -->
+        <like-button :book="book"></like-button>
+        <!-- <v-icon v-if="!hasUserLiked" @click="like">mdi-heart-outline</v-icon>
+        <v-icon v-else color="red">mdi-heart</v-icon> -->
       </v-col>
     </v-row>
   </div>
 </template>
 
 <script>
+import LikeButton from '@/components/Interactions/Like';
 import BookMixin from '@/mixins/Book.mixin';
 
 export default {
   name: 'book',
+  components: { LikeButton },
   props: {
     book: { type: Object, required: true },
   },

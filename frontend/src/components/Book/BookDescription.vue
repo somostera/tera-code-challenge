@@ -1,4 +1,5 @@
 <template>
+  <!-- Saves a render try if book hasn't been fetched yet -->
   <div class="centered" v-if="hasBook">
     <section class="smaller">
       <h1 class="text-md-h4 text-sm-h6">{{ book.name || '' }}</h1>
@@ -13,8 +14,7 @@
       </div>
       <div class="row around between mt-2">
         <p class="font-weight-medium author">{{ book.author || '' }}</p>
-        <v-icon v-if="!hasUserLiked" @click="like">mdi-heart-outline</v-icon>
-        <v-icon v-else color="red">mdi-heart</v-icon>
+        <like-button :book="book"></like-button>
       </div>
       <p class="mb-0">{{ book.category || '' }}</p>
       <p class="mb-4">{{ stockTitle }}</p>
@@ -27,10 +27,12 @@
 
 <script>
 import BookMixin from '@/mixins/Book.mixin';
+import LikeButton from '@/components/Interactions/Like';
 
 export default {
   name: 'book-description',
   mixins: [BookMixin],
+  components: { LikeButton },
   computed: {
     outOfStock() {
       if (!this.book) return '';

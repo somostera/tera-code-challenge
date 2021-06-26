@@ -1,9 +1,12 @@
 <template>
   <!-- Use v-theme-provider so we don't have to manually add dark prop
       whenever we change the theme -->
+  <!-- Tried to implement dark mode using a custom directive
+  but I think vuetify just overrides it all. Leaving it with theme-provider so it's cleaner. -->
   <v-theme-provider root>
     <v-app>
       <navbar></navbar>
+      <!-- Change background based on if dark theme is on or not -->
       <v-main :style="{ 'background-color': backgroundColor }">
         <transition name="fade-slide">
           <router-view />

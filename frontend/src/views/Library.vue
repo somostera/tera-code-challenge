@@ -2,6 +2,7 @@
   <v-container fluid class="px-12 py-6">
     <v-row class="mt-6 ml-6">
       <v-col cols="12">
+        <!-- Reveice available books from child after filter has been applied.  -->
         <book-filters :availableBooks.sync="availableBooks"></book-filters>
       </v-col>
     </v-row>
@@ -9,6 +10,7 @@
       <v-col cols="12">
         <span>Total: {{ booksAmount }} </span>
         <BookList :list="books" class="mb-16"></BookList>
+        <!-- According to mock-up, mobile uses infinite scroll -->
         <v-pagination
           class="hide-mobile"
           :length="numberOfPages"
@@ -33,7 +35,7 @@ export default {
     numberOfPages: 0,
     books: [],
     availableBooks: [],
-    changingAvailable: false,
+    changingAvailable: false, // Lock for not running currentPage watcher.
   }),
   computed: {
     ...mapGetters(['getBooks']),
@@ -78,6 +80,7 @@ export default {
     createBookList(books) {
       // According to mockups, mobile uses infinite scroll.
       if (this.isMobile) return books;
+      // Get a slice of the new page.
       const begin = this.maxPerPage * (this.currentPage - 1);
       const end = this.maxPerPage * this.currentPage;
       const slice = books.slice(begin, end);
