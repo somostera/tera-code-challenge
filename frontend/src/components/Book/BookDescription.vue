@@ -1,36 +1,28 @@
 <template>
-  <v-container v-if="hasBook" fluid class="px-10 py-6">
-    <div @click="goBack" class="mb-8">
-      <v-icon>
-        mdi-arrow-left
-      </v-icon>
-      Voltar
-    </div>
-    <div class="centered">
-      <section class="smaller">
-        <h1 class="text-md-h4 text-sm-h6">{{ book.name || '' }}</h1>
-        <div class="relative">
-          <img
-            :src="book.cover_picture"
-            :alt="book.name"
-            class="book-image"
-            :class="outOfStock ? 'overlay' : ''"
-          />
-          <div v-if="outOfStock" class="stock">FORA DE ESTOQUE</div>
-        </div>
-        <div class="row around between mt-2">
-          <p class="font-weight-medium author">{{ book.author || '' }}</p>
-          <v-icon v-if="!hasUserLiked" @click="like">mdi-heart-outline</v-icon>
-          <v-icon v-else color="red">mdi-heart</v-icon>
-        </div>
-        <p class="mb-0">{{ book.category || '' }}</p>
-        <p class="mb-4">{{ stockTitle }}</p>
-        <div class="tight mr-12">
-          {{ book.description }}
-        </div>
-      </section>
-    </div>
-  </v-container>
+  <div class="centered" v-if="hasBook">
+    <section class="smaller">
+      <h1 class="text-md-h4 text-sm-h6">{{ book.name || '' }}</h1>
+      <div class="relative">
+        <img
+          :src="book.cover_picture"
+          :alt="book.name"
+          class="book-image"
+          :class="outOfStock ? 'overlay' : ''"
+        />
+        <div v-if="outOfStock" class="stock">FORA DE ESTOQUE</div>
+      </div>
+      <div class="row around between mt-2">
+        <p class="font-weight-medium author">{{ book.author || '' }}</p>
+        <v-icon v-if="!hasUserLiked" @click="like">mdi-heart-outline</v-icon>
+        <v-icon v-else color="red">mdi-heart</v-icon>
+      </div>
+      <p class="mb-0">{{ book.category || '' }}</p>
+      <p class="mb-4">{{ stockTitle }}</p>
+      <div class="tight mr-12">
+        {{ book.description }}
+      </div>
+    </section>
+  </div>
 </template>
 
 <script>
@@ -52,11 +44,6 @@ export default {
         return `Em estoque: ${stock} unidades`;
       }
       return 'Fora de estoque';
-    },
-  },
-  methods: {
-    goBack() {
-      this.$router.push({ path: '/' });
     },
   },
 };
@@ -97,6 +84,11 @@ export default {
 
 .overlay {
   filter: opacity(0.6);
+}
+@media screen and (min-width: 2560px) {
+  .smaller {
+    width: 30%;
+  }
 }
 @media screen and (min-width: 769px) {
   .book-image {
