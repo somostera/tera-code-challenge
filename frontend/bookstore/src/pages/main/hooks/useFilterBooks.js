@@ -7,5 +7,5 @@ export default function useFilterBooks (setFilteredBooks, activeFilters, books) 
         //Copiando o array de livros para poder realizar filtragens sem quebrar a imutabilidade
         let newBooks = cloneDeep(books);
         setFilteredBooks(BookFilterService.applyOrderAndFilter(activeFilters, newBooks));
-    }, [activeFilters])
+    }, [activeFilters, books])
 }

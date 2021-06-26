@@ -14,8 +14,8 @@ const BookFilterService = {
         switch (orderType) {
             case OrderTypes.MOST_LIKED:
                 sortFunc = function (bookA, bookB) {
-                    if (bookA.likes > bookB.likes) return 1;
-                    else if (bookA.likes < bookB.likes) return -1;
+                    if (bookA.likes > bookB.likes) return -1;
+                    else if (bookA.likes < bookB.likes) return 1;
                     else return 0;
                 }
                 break;

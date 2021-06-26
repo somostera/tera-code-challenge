@@ -4,6 +4,7 @@ import useFetchBooks from "../main/hooks/useFetchBooks";
 import useFilterBooks from "../main/hooks/useFilterBooks";
 import HttpStatus from "../../utils/HttpStatus";
 import CategoryService from "../../services/category/CategoryService";
+import cloneDeep from "lodash.clonedeep";
 //Components
 import BookItem from "./components/bookItem/BookItem";
 import Input from "../../components/input/Input";
@@ -13,6 +14,8 @@ import Tag from "../../components/tag/Tag";
 //Styles
 import './BookList.css';
 import Icon from "../../components/icon/Icon";
+import OrderTypes from "../../services/bookFilter/dto/OrderTypes";
+import BookFilterService from "../../services/bookFilter/BookFilterService";
 
 function FilterButtonText(props) {
 
@@ -61,6 +64,22 @@ export default function BookList(props) {
         }
     }
 
+    /**
+     * @param {Book} updatedBook
+     */
+    function likeBook(updatedBook) {
+
+        //Atualizando o contador de likes do livro imutavelmente
+        const newBooks = cloneDeep(books);
+
+        let book = newBooks.find(book => book.id === updatedBook.id);
+        book.liked = !book.liked;
+        if (book.liked) book.likes += 1;
+        else book.likes -= 1;
+
+        setBooks(newBooks);
+    }
+
     //Hook para buscar os livros da API
     useFetchBooks(setBooksStatus, setBooks, setFilteredBooks);
     //Hook que filtra/ordena a lista de livros ao alterar os filtros ativos
@@ -76,7 +95,9 @@ export default function BookList(props) {
                     <BookFilters applyFilters={applyFilters} categories={categories}/>
                 </Slider>
             </div>
-            {filteredBooks.map(book => <div key={book.id} className="BookList__item"><BookItem book={book}/></div>)}
+            {filteredBooks.map(book => <div key={book.id} className="BookList__item">
+                <BookItem likeBook={likeBook} book={book}/>
+            </div>)}
         </section>
     )
 }

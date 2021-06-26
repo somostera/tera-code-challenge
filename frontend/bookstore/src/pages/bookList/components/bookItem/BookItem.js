@@ -14,7 +14,7 @@ export default function BookItem(props) {
                     <h3>{props.book.author}</h3>
                     <h3>{props.book.category}</h3>
                 </div>
-                <Button type="icon"><Icon type={props.book.liked ? 'favorite' : 'favorite_border'}/></Button>
+                <Button type="icon" onClick={() => props.likeBook(props.book)}><Icon type={props.book.liked ? 'favorite' : 'favorite_border'}/></Button>
             </div>
         </div>
     )

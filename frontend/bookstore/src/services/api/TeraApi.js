@@ -20,7 +20,7 @@ const TeraApi = {
             obj.cover_picture,
             obj.description,
             obj.stock,
-            obj.users_who_liked.length
+            Array.isArray(obj.users_who_liked) ? obj.users_who_liked.length : 0
         ))
     }
 }
