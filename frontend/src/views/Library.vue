@@ -74,7 +74,6 @@ export default {
       // Go back to first page;
       this.currentPage = 1;
       this.books = this.createBookList(newer);
-      console.log(this.books);
       this.changingAvailable = false;
     },
   },
@@ -84,7 +83,6 @@ export default {
       if (this.isMobile) return books;
       const begin = this.maxPerPage * (this.currentPage - 1);
       const end = this.maxPerPage * this.currentPage;
-      console.log(begin, end);
       const slice = books.slice(begin, end);
       return slice;
     },

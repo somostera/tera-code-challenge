@@ -11,7 +11,6 @@
           placeholder="Filtros"
           :items="filterList"
           v-model="selectedFilter"
-          @change="applyFilter(selectedFilter, availableBooks)"
         ></v-select>
       </v-col>
       <v-col cols="12" md="4" order="3" order-md="2">
@@ -57,13 +56,23 @@ export default {
     },
   },
   watch: {
+    selectedFilter(filter) {
+      if (this.bookName.length > 0) {
+        const books = this.applyFilter(filter, this.getBooks);
+        this.applyFilter('byBookName', books);
+        return;
+      }
+      this.applyFilter(filter, this.getBooks);
+    },
     bookName(name) {
       // Re-apply current filter
       if (name.length === 0 && this.selectedFilter.length > 0) {
         this.applyFilter(this.selectedFilter, this.getBooks);
-        return;
+      } else if (this.selectedFilter.length === 0) {
+        this.applyFilter('byBookName', this.getBooks);
+      } else {
+        this.applyFilter('byBookName', this.availableBooks);
       }
-      this.applyFilter('byBookName', this.availableBooks);
     },
     category(cat) {
       if (cat.length === 0 && this.selectedFilter.length > 0) {
@@ -79,8 +88,10 @@ export default {
       if (this.waitForInput) return;
       const fn = this.filtersMap[filter] || filter;
       const filteredBooks = this[fn](books);
-      console.log(filteredBooks);
+      // console.log(filteredBooks);
       this.$emit('update:availableBooks', filteredBooks);
+      // eslint-disable-next-line consistent-return
+      return filteredBooks;
     },
     byRating(books) {
       return books.sort((a, b) => {
