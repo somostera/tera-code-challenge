@@ -32,9 +32,7 @@ export default {
       const books = [...this.getBooks];
       const bookIndex = books.findIndex((b) => b.name === this.book.name);
       const whoLiked = this.getBooks[bookIndex].users_who_liked;
-      console.log({ whoLiked });
       const removed = whoLiked.filter((user) => user !== this.getUser);
-      console.log({ removed });
       this.getBooks[bookIndex].users_who_liked = removed;
       this.setBooks({ books: this.getBooks });
       this.removeFromStorage(this.getBooks[bookIndex]);
