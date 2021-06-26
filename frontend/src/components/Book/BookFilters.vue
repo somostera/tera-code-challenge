@@ -11,7 +11,7 @@
           placeholder="Filtros"
           :items="filterList"
           v-model="selectedFilter"
-          @change="applyFilter(selectedFilter)"
+          @change="applyFilter(selectedFilter, availableBooks)"
         ></v-select>
       </v-col>
       <v-col cols="12" md="4" order="3" order-md="2">
@@ -60,24 +60,26 @@ export default {
     bookName(name) {
       // Re-apply current filter
       if (name.length === 0 && this.selectedFilter.length > 0) {
-        this.$emit('update:availableBooks', this.getBooks);
+        this.applyFilter(this.selectedFilter, this.getBooks);
+        return;
       }
-      this.applyFilter('byBookName');
+      this.applyFilter('byBookName', this.availableBooks);
     },
     category(cat) {
       if (cat.length === 0 && this.selectedFilter.length > 0) {
         this.$emit('update:availableBooks', this.getBooks);
+        return;
       }
-      this.applyFilter('byCategory');
+      this.applyFilter('byCategory', this.availableBooks);
     },
   },
   methods: {
-    applyFilter(filter) {
+    applyFilter(filter, books) {
       // Chosen filter needs extra info to run, do nothing
       if (this.waitForInput) return;
-      // Call
       const fn = this.filtersMap[filter] || filter;
-      const filteredBooks = this[fn](this.getBooks);
+      const filteredBooks = this[fn](books);
+      console.log(filteredBooks);
       this.$emit('update:availableBooks', filteredBooks);
     },
     byRating(books) {
