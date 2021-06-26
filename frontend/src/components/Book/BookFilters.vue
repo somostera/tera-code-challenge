@@ -60,7 +60,7 @@ export default {
     bookName(name) {
       // Re-apply current filter
       if (name.length === 0 && this.selectedFilter.length > 0) {
-        this.applyFilter(this.selectedFilter);
+        this.$emit('update:availableBooks', this.getBooks);
       }
       this.applyFilter('byBookName');
     },
@@ -78,7 +78,6 @@ export default {
       // Call
       const fn = this.filtersMap[filter] || filter;
       const filteredBooks = this[fn](this.getBooks);
-      console.log(filteredBooks);
       this.$emit('update:availableBooks', filteredBooks);
     },
     byRating(books) {

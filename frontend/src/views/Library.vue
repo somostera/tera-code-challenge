@@ -30,9 +30,10 @@ export default {
   data: () => ({
     currentPage: 1,
     maxPerPage: 8,
+    numberOfPages: 0,
     books: [],
     availableBooks: [],
-    numberOfPages: 0,
+    changingAvailable: false,
   }),
   computed: {
     ...mapGetters(['getBooks']),
@@ -58,16 +59,23 @@ export default {
       this.books = this.createBookList(books);
     },
     currentPage() {
-      // Update page: change the displayed books to a slice of the available books.
-      this.books = this.createBookList(this.availableBooks);
+      if (!this.chagingAvailable) {
+        // When changing pages, also change the displayed books to a slice of the available books.
+        this.books = this.createBookList(this.availableBooks);
+      }
     },
     isMobile() {
       const isMobile = window.matchMedia('(max-width: 768px)');
       return isMobile.matches;
     },
     availableBooks(newer) {
+      this.changingAvailable = true;
       this.numberOfPages = Math.ceil(newer.length / this.maxPerPage);
-      this.books = this.createBookList(this.availableBooks);
+      // Go back to first page;
+      this.currentPage = 1;
+      this.books = this.createBookList(newer);
+      console.log(this.books);
+      this.changingAvailable = false;
     },
   },
   methods: {
@@ -76,6 +84,7 @@ export default {
       if (this.isMobile) return books;
       const begin = this.maxPerPage * (this.currentPage - 1);
       const end = this.maxPerPage * this.currentPage;
+      console.log(begin, end);
       const slice = books.slice(begin, end);
       return slice;
     },
