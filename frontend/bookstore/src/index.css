@@ -1,10 +1,16 @@
 :root {
+  --extra-small-space: .5rem;
   --small-space: 1rem;
   --medium-space: 2rem;
   --large-space: 3rem;
 
+  --extra-small-radius: 5px;
   --small-radius: 30px;
   --medium-radius: 50px;
+}
+
+body, html {
+  height: 100%;
 }
 
 body {

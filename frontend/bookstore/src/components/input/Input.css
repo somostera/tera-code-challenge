@@ -1,0 +1,7 @@
+.Input {
+    padding: calc(var(--small-space) / 2);
+    border: 1px solid var(--secondary-border-color);
+    border-radius: var(--extra-small-radius);
+    background: var(--secondary-background-color);
+    box-shadow: var(--light-box-shadow);
+}

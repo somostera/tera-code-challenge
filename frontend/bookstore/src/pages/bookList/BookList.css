@@ -18,3 +18,15 @@
         width: 25%;
     }
 }
+
+.BookList__search__filter__container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: var(--medium-space);
+}
+
+.BookList__search__filter__container input {
+    flex: 1;
+    margin-right: var(--small-space);
+}

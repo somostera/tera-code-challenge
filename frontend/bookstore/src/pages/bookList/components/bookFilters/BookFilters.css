@@ -1,0 +1,17 @@
+.BookFilters {
+    padding: var(--medium-space);
+}
+
+.BookFilters button {
+    margin-right: var(--extra-small-space);
+    margin-bottom: var(--extra-small-space);
+}
+
+.BookFilters__section:not(:last-child) {
+    margin-bottom: var(--large-space);
+}
+
+.BookFilters__sub__section {
+    font-weight: normal;
+    color: var(--secondary-text-color);
+}

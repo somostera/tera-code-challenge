@@ -1,0 +1,17 @@
+.Button {
+    padding: calc(var(--small-space) / 2);
+    border: 1px solid var(--secondary-border-color);
+    border-radius: var(--extra-small-radius);
+    background: var(--secondary-color);
+    box-shadow: var(--light-box-shadow);
+}
+
+.Button--primary {
+    background-color: var(--primary-color);
+    color: var(--inverted-text-color);
+    border-color: var(--primary-color);
+}
+
+.Button--primary--outlined {
+    background-color: unset;
+}
