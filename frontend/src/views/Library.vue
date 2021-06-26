@@ -14,6 +14,7 @@
         <v-pagination
           class="hide-mobile"
           :length="numberOfPages"
+          :total-visible="4"
           v-model="currentPage"
         ></v-pagination>
       </v-col>
