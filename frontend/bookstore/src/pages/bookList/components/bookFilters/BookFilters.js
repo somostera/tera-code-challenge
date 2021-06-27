@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import OrderTypes from "../../../../services/bookFilter/types/OrderTypes";
 import OtherFilterTypes from "../../../../services/bookFilter/types/OtherFilterTypes";
 import Button from "../../../../components/button/Button";
@@ -9,6 +9,13 @@ export default function BookFilters(props) {
     const [order, setOrder] = useState(null);
     const [categories, setCategories] = useState([]);
     const [others, setOthers] = useState([]);
+
+    useEffect(() => {
+        const defaultFilters = props.defaultFilters;
+        if (defaultFilters.order) setOrder(defaultFilters.order);
+        if (Array.isArray(defaultFilters.categories) && defaultFilters.length) setCategories(defaultFilters.categories);
+        if (Array.isArray(defaultFilters.others) && defaultFilters.length) setOthers(defaultFilters.others);
+    }, [props.activeFilters])
 
     function applyFilters() {
 

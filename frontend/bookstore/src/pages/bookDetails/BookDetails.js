@@ -23,7 +23,9 @@ export default function BookDetails(props) {
             return (
                 <>
                     <h1 className="BookDetails__title">{book.name}</h1>
-                    <FallbackImage className="BookDetails__img" src={book.image} alt={book.name}/>
+                    <div className="BookDetails__img__container">
+                        <FallbackImage className="BookDetails__img" src={book.image} alt={book.name}/>
+                    </div>
                     <div className="BookDetails__info__container">
                         <div className="BookDetails__author">
                             <h2>{book.author}</h2>

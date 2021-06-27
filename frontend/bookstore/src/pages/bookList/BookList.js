@@ -15,6 +15,7 @@ import Tag from "../../components/tag/Tag";
 import Icon from "../../components/icon/Icon";
 //Styles
 import './BookList.css';
+import useCacheFilters from "../main/hooks/useCacheFilters";
 
 function FilterButtonText(props) {
 
@@ -85,6 +86,8 @@ export default function BookList(props) {
     useFetchBooks(setBooksStatus, setBooks, setFilteredBooks);
     //Hook que filtra/ordena a lista de livros ao alterar os filtros ativos
     useFilterBooks(setFilteredBooks, activeFilters, books);
+    //Hook que armazena e aplica os filtros no cache
+    useCacheFilters(activeFilters, setActiveFilters);
 
     return (
         <section className="BookList">
@@ -93,7 +96,7 @@ export default function BookList(props) {
                        placeholder="Pesquise pelo título ou autor"/>
                 <Slider title={<FilterButtonText activeFilters={activeFilters}/>} active={sliderActive}
                         setActive={setSliderActive}>
-                    <BookFilters applyFilters={applyFilters} categories={categories}/>
+                    <BookFilters defaultFilters={activeFilters} applyFilters={applyFilters} categories={categories}/>
                 </Slider>
             </div>
             {filteredBooks.map(book => <div key={book.id} className="BookList__item">

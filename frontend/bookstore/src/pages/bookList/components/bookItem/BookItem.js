@@ -18,7 +18,7 @@ export default function BookItem(props) {
             </div>
             <div className="BookItem__info">
                 <div className="BookItem__info_text">
-                    <h2><Link to={`/book/${props.book.id}`}>{props.book.name} - Likes: {props.book.likes}</Link></h2>
+                    <h2><Link to={`/book/${props.book.id}`}>{props.book.name}</Link></h2>
                     <h3>{props.book.author}</h3>
                     <h3>{props.book.category}</h3>
                 </div>
