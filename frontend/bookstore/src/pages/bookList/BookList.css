@@ -23,12 +23,12 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: var(--medium-space);
+    padding: var(--medium-size);
 }
 
 .BookList__search__filter__container input {
     flex: 1;
-    margin-right: var(--small-space);
+    margin-right: var(--smal-size);
 }
 
 .BookList__slider_text_container {
@@ -37,5 +37,5 @@
 }
 
 .BookList__slider_text {
-    margin-left: var(--extra-small-space);
+    margin-left: var(--extra-small-size);
 }

@@ -2,7 +2,7 @@
     display: flex;
     flex-flow: column;
     justify-content: center;
-    padding: var(--medium-space);
+    padding: var(--medium-size);
 }
 
 .BookItem__containerImage {
@@ -26,7 +26,7 @@
 }
 
 .BookItem__info h2 {
-    margin-bottom: calc(var(--small-space) / 2);
+    margin-bottom: calc(var(--smal-size) / 2);
     font-size: 1.2rem;
 }
 

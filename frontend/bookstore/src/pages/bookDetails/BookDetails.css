@@ -1,17 +1,21 @@
 .BookDetails__breadcrumb_container {
-    padding: var(--small-space);
+    padding: var(--smal-size);
 }
 
 .BookDetails__content {
-    padding-right: var(--small-space);
-    padding-left: var(--small-space);
-    padding-bottom: var(--small-space);
+    padding-right: var(--smal-size);
+    padding-left: var(--smal-size);
+    padding-bottom: var(--smal-size);
 }
 
 .BookDetails__title {
     display: inline-block;
     margin-top: 0;
-    margin-bottom: var(--small-space);
+    margin-bottom: var(--smal-size);
+}
+
+.BookDetails__img__container {
+    position: relative;
 }
 
 .BookDetails__img {
@@ -23,7 +27,7 @@
     display: flex;
     flex-flow: row;
     justify-content: space-between;
-    margin-top: var(--small-space);
+    margin-top: var(--smal-size);
 }
 
 .BookDetails__author h2 {
@@ -36,7 +40,7 @@
 }
 
 .BookDetails__author h2, .BookDetails__stock span {
-    font-size: calc(var(--large-space) / 2)
+    font-size: calc(var(--large-size) / 2)
 }
 
 .BookDetails__description {
@@ -56,8 +60,8 @@
 
     .BookDetails__img__container {
         float: right;
-        margin-left: var(--small-space);
-        margin-bottom: var(--small-space);
+        margin-left: var(--smal-size);
+        margin-bottom: var(--smal-size);
     }
 
     .BookDetails__img {

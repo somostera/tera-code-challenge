@@ -22,7 +22,7 @@
 }
 
 .Slider__header {
-    padding: var(--medium-space);
+    padding: var(--medium-size);
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid var(--secondary-border-color);

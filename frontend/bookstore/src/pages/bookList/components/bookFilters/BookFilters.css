@@ -1,14 +1,14 @@
 .BookFilters {
-    padding: var(--medium-space);
+    padding: var(--medium-size);
 }
 
 .BookFilters button {
-    margin-right: var(--extra-small-space);
-    margin-bottom: var(--extra-small-space);
+    margin-right: var(--extra-small-size);
+    margin-bottom: var(--extra-small-size);
 }
 
 .BookFilters__section:not(:last-child) {
-    margin-bottom: var(--large-space);
+    margin-bottom: var(--large-size);
 }
 
 .BookFilters__sub__section {

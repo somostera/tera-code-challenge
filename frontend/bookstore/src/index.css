@@ -1,8 +1,8 @@
 :root {
-  --extra-small-space: .5rem;
-  --small-space: 1rem;
-  --medium-space: 2rem;
-  --large-space: 3rem;
+  --extra-small-size: .5rem;
+  --smal-size: 1rem;
+  --medium-size: 2rem;
+  --large-size: 3rem;
 
   --extra-small-radius: 5px;
   --small-radius: 30px;

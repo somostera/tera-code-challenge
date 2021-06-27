@@ -1,5 +1,5 @@
 .Status {
-    padding: var(--large-space);
+    padding: var(--large-size);
     display: flex;
     flex-flow: column;
     align-items: center;

@@ -1,6 +1,6 @@
 .Button {
     cursor: pointer;
-    padding: calc(var(--small-space) / 2);
+    padding: calc(var(--smal-size) / 2);
     border: 1px solid var(--secondary-border-color);
     border-radius: var(--extra-small-radius);
     background: var(--secondary-color);
