@@ -10,6 +10,7 @@ export default function BookFilters(props) {
     const [categories, setCategories] = useState([]);
     const [others, setOthers] = useState([]);
 
+    //Efeito que carrega os filtros padrão
     useEffect(() => {
         const defaultFilters = props.defaultFilters;
         if (defaultFilters.order) setOrder(defaultFilters.order);
@@ -46,16 +47,12 @@ export default function BookFilters(props) {
 
             let newCategories = [...prevCategories];
 
-            console.log(newCategories);
-
             //Adicionando ou removendo a categoria das categorias selecionadas
             if (newCategories.includes(categoryType)) {
                 newCategories = newCategories.filter(category => category !== categoryType);
             } else {
                 newCategories.push(categoryType);
             }
-
-            console.log(newCategories);
 
             return newCategories;
         })

@@ -17,7 +17,7 @@ export default function Slider(props) {
     useEffect(() => {
 
         if (active) document.body.style.overflowY = 'hidden';
-        else document.body.style.overflowY = 'auto';
+        else document.body.style.overflowY = 'scroll';
 
     }, [active])
 

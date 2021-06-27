@@ -23,6 +23,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: var(--text-color);
   background: var(--background-color);
+  overflow-y: scroll;
 }
 
 main {

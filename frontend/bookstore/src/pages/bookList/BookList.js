@@ -2,6 +2,7 @@
 import {useState, useMemo} from "react";
 import useFetchBooks from "./hooks/useFetchBooks";
 import useFilterBooks from "./hooks/useFilterBooks";
+import useCacheFilters from "./hooks/useCacheFilters";
 import HttpStatus from "../../utils/HttpStatus";
 import CategoryService from "../../services/category/CategoryService";
 import cloneDeep from "lodash.clonedeep";
@@ -13,16 +14,16 @@ import Slider from "../../components/slider/Slider";
 import BookFilters from "./components/bookFilters/BookFilters";
 import Tag from "../../components/tag/Tag";
 import Icon from "../../components/icon/Icon";
+import EmptyStatus from "./components/emptyStatus/EmptyStatus";
 //Styles
 import './BookList.css';
-import useCacheFilters from "./hooks/useCacheFilters";
 
 function FilterButtonText(props) {
 
     let activeFiltersLength = 0;
 
-    if (props.activeFilters.categories && props.activeFilters.categories.length) activeFiltersLength +=1;
-    if (props.activeFilters.others && props.activeFilters.others.length) activeFiltersLength +=1;
+    if (props.activeFilters.categories && props.activeFilters.categories.length) activeFiltersLength += 1;
+    if (props.activeFilters.others && props.activeFilters.others.length) activeFiltersLength += 1;
 
     return <span className="BookList__slider_text_container">
         {activeFiltersLength > 0
@@ -106,9 +107,11 @@ export default function BookList(props) {
                     <BookFilters defaultFilters={activeFilters} applyFilters={applyFilters} categories={categories}/>
                 </Slider>
             </div>
-            {filteredBooks.map(book => <div key={book.id} className="BookList__item">
-                <BookItem likeBook={likeBook} book={book}/>
-            </div>)}
+            {filteredBooks.length
+                ? filteredBooks.map(book => <div key={book.id} className="BookList__item">
+                    <BookItem likeBook={likeBook} book={book}/>
+                </div>)
+                : <EmptyStatus title="Nenhum livro encontrado" text="Tente utilizar outros filtros"/>}
         </section>
     )
 }

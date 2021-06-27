@@ -106,7 +106,7 @@ const BookFilterService = {
             books = this.orderBooks(filters.order, books);
         }
 
-        if (Object.keys(filters).length) {
+        if (filters.categories || filters.others || filters.searchTerm) {
             books = this.filterBooks(filters, books);
         }
 

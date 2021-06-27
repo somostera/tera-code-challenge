@@ -4,11 +4,10 @@ import Book from "../../model/Book";
 let bookCache = [];
 
 /**
- *  Serviço com métodos para manipular os livros da API
+ * Serviço com métodos para manipular os livros da API
  *
  * Teoricamente deveria ser feito em um backend, mas para efeitos de demonstração é feito em memória
- *
- * @type {{getBooks: ((function(): Promise<Book[]>)), getBook: ((function((int|string)): Promise<Book|null>)), saveBookList: (function((Book[])): void)}}
+ * @type {{getBooks: ((function(): Promise<Book[]>)|*), getBook: ((function((int|string)): Promise<Book|null>)|*), saveBookList: TeraApi.saveBookList, updateBook: TeraApi.updateBook}}
  */
 const TeraApi = {
     /**
