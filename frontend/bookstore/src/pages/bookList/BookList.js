@@ -19,10 +19,10 @@ import useCacheFilters from "./hooks/useCacheFilters";
 
 function FilterButtonText(props) {
 
-    let activeFiltersLength = Object.keys(props.activeFilters).length;
+    let activeFiltersLength = 0;
 
-    //Desconsiderando o filtro por nome da contagem
-    if (props.activeFilters.searchTerm !== undefined) activeFiltersLength -= 1;
+    if (props.activeFilters.categories && props.activeFilters.categories.length) activeFiltersLength +=1;
+    if (props.activeFilters.others && props.activeFilters.others.length) activeFiltersLength +=1;
 
     return <span className="BookList__slider_text_container">
         {activeFiltersLength > 0

@@ -21,9 +21,9 @@ export default function BookFilters(props) {
 
         let filters = {};
 
-        if (order) filters.order = order;
-        if (categories.length) filters.categories = categories;
-        if (others.length) filters.others = others;
+        filters.order = order;
+        filters.categories = categories;
+        filters.others = others;
 
         props.applyFilters(filters);
     }
@@ -46,12 +46,16 @@ export default function BookFilters(props) {
 
             let newCategories = [...prevCategories];
 
+            console.log(newCategories);
+
             //Adicionando ou removendo a categoria das categorias selecionadas
             if (newCategories.includes(categoryType)) {
                 newCategories = newCategories.filter(category => category !== categoryType);
             } else {
                 newCategories.push(categoryType);
             }
+
+            console.log(newCategories);
 
             return newCategories;
         })
