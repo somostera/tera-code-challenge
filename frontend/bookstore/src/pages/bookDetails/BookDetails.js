@@ -5,8 +5,8 @@ import NotFound from "../../components/fetchStatus/notFound/NotFound";
 import RequestError from "../../components/fetchStatus/requestError/RequestError";
 import Breadcrumb from "../../components/breadcrumb/Breadcrumb";
 import FallbackImage from "../../components/fallbackImage/FallbackImage";
+import OutOfStockOverlay from "./components/OutOfStockOverlay";
 import './BookDetails.css';
-
 
 export default function BookDetails(props) {
 
@@ -25,6 +25,7 @@ export default function BookDetails(props) {
                     <h1 className="BookDetails__title">{book.name}</h1>
                     <div className="BookDetails__img__container">
                         <FallbackImage className="BookDetails__img" src={book.image} alt={book.name}/>
+                        {book.stock === 0 && <OutOfStockOverlay/>}
                     </div>
                     <div className="BookDetails__info__container">
                         <div className="BookDetails__author">
