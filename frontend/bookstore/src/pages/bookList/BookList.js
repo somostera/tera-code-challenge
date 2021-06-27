@@ -15,9 +15,10 @@ import BookFilters from "./components/bookFilters/BookFilters";
 import Tag from "../../components/tag/Tag";
 import Icon from "../../components/icon/Icon";
 import EmptyStatus from "./components/emptyStatus/EmptyStatus";
+import RequestError from "../../components/fetchStatus/requestError/RequestError";
+import Pagination from "./components/pagination/Pagination";
 //Styles
 import './BookList.css';
-import Pagination from "./components/pagination/Pagination";
 
 function FilterButtonText(props) {
 
@@ -108,6 +109,8 @@ export default function BookList(props) {
     //Hook que armazena e aplica os filtros no cache
     useCacheFilters(activeFilters, setActiveFilters, setSearchTerm);
 
+    const booksToShow = filteredBooks !== null && filteredBooks !== undefined && filteredBooks.list.length > 0;
+
     return (
         <section className="BookList">
             <div className="BookList__search__filter__container">
@@ -118,20 +121,22 @@ export default function BookList(props) {
                     <BookFilters defaultFilters={activeFilters} applyFilters={applyFilters} categories={categories}/>
                 </Slider>
             </div>
-            {filteredBooks !== null && filteredBooks !== undefined && filteredBooks.list.length
-                ? <>
-                    {filteredBooks.list.map(book => <div key={book.id} className="BookList__item">
-                        <BookItem likeBook={likeBook} book={book}/>
-                    </div>)}
-                    <Pagination
-                        onSetPage={setCurrentPage}
-                        initialPage={activeFilters.pageNumber}
-                        contentLength={filteredBooks.totalCount}
-                        pageLength={8}
-                        maxPageButtons={5}
-                    />
-                </>
-                : <EmptyStatus title="Nenhum livro encontrado" text="Tente utilizar outros filtros"/>}
+            {HttpStatus.done(booksStatus) && booksToShow &&
+            <>
+                {filteredBooks.list.map(book => <div key={book.id} className="BookList__item">
+                    <BookItem likeBook={likeBook} book={book}/>
+                </div>)}
+                <Pagination
+                    onSetPage={setCurrentPage}
+                    initialPage={activeFilters.pageNumber}
+                    contentLength={filteredBooks.totalCount}
+                    pageLength={8}
+                    maxPageButtons={5}
+                />
+            </>}
+            {HttpStatus.done(booksStatus) === true && !booksToShow && <EmptyStatus title="Nenhum livro encontrado" text="Tente utilizar outros filtros"/>}
+            {HttpStatus.waiting(booksStatus) === true && <span className="BookList__loading">Carregando...</span>}
+            {HttpStatus.anyError(booksStatus) === true && <RequestError/>}
         </section>
     )
 }

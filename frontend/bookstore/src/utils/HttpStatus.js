@@ -3,13 +3,14 @@ const HttpStatus = {
     WAITING: 1,
     ON_REQUEST_ERROR: 2,
     requestError: function (HttpStatus) {
+        console.log(HttpStatus)
         return HttpStatus === this.ON_REQUEST_ERROR || (HttpStatus >= 400 && HttpStatus < 500);
     },
     serverError: function (HttpStatus) {
         return HttpStatus >= 500 && HttpStatus < 600;
     },
     anyError: function (HttpStatus) {
-        return this.requestError(HttpStatus) | this.serverError(HttpStatus);
+        return this.requestError(HttpStatus) || this.serverError(HttpStatus);
     },
     waiting: function (HttpStatus) {
         if (Array.isArray(HttpStatus)) return HttpStatus.some(status => status === this.WAITING)
