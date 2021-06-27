@@ -4,7 +4,7 @@ Aplicação web feita em ReactJS e CRA (Create React App).
 
 ## Disponível em
 
-###[https://bookstore-vmt.herokuapp.com/](https://bookstore-vmt.herokuapp.com/)
+[https://bookstore-vmt.herokuapp.com/](https://bookstore-vmt.herokuapp.com/)
 
 ## Comandos para rodar projeto
 
