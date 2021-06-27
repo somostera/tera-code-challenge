@@ -5,6 +5,7 @@ import useFilterBooks from "../main/hooks/useFilterBooks";
 import HttpStatus from "../../utils/HttpStatus";
 import CategoryService from "../../services/category/CategoryService";
 import cloneDeep from "lodash.clonedeep";
+import TeraApi from "../../services/api/TeraApi";
 //Components
 import BookItem from "./components/bookItem/BookItem";
 import Input from "../../components/input/Input";
@@ -14,7 +15,6 @@ import Tag from "../../components/tag/Tag";
 import Icon from "../../components/icon/Icon";
 //Styles
 import './BookList.css';
-
 
 function FilterButtonText(props) {
 
@@ -77,6 +77,8 @@ export default function BookList(props) {
         else book.likes -= 1;
 
         setBooks(newBooks);
+
+        TeraApi.saveBookList(newBooks);
     }
 
     //Hook para buscar os livros da API
