@@ -16,7 +16,7 @@ const TeraApi = {
      * @param {boolean} useMockData
      * @return {Promise<Book[]>}
      */
-    getBooks: async function (useMockData = true) {
+    getBooks: async function (useMockData = false) {
 
         if (bookCache.length) return bookCache;
 
@@ -53,11 +53,11 @@ const TeraApi = {
      * @param {boolean} useMockData
      * @return {Promise<Book|null>}
      */
-    getBook: async function (id, useMockData = true) {
+    getBook: async function (id, useMockData = false) {
         if (typeof id === 'string') {
             id = parseInt(id);
         }
-        const books = await this.getBooks();
+        const books = await this.getBooks(useMockData);
         const book = books.find(book => book.id === id);
         if (book !== undefined) return book;
         return null;
