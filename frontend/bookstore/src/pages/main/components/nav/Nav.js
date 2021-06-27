@@ -14,10 +14,16 @@ export default function Nav() {
 
     //Efeito que ativa/desativa o modo noturno
     useEffect(() => {
+
+        let metaTag = document.getElementById('meta-tag-theme-color');
+        let htmlTag = document.querySelector('html');
+
         if (nightMode) {
-            document.querySelector('html').classList.add('Nightmode')
+            htmlTag.classList.add('Nightmode');
+            metaTag.setAttribute('content', '#323232');
         } else {
-            document.querySelector('html').classList.remove('Nightmode')
+            htmlTag.classList.remove('Nightmode');
+            metaTag.setAttribute('content', '#F7F7F7');
         }
     }, [nightMode])
 
