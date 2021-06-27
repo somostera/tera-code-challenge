@@ -1,6 +1,7 @@
 import OrderTypes from "./types/OrderTypes";
 import StringUtils from "../../utils/StringUtils";
 import OtherFilterTypes from "./types/OtherFilterTypes";
+import FilteredListDTO from "./dto/FilteredListDTO";
 
 const BookFilterService = {
     /**
@@ -98,7 +99,7 @@ const BookFilterService = {
      * Aplica os filtros e ordena a lista de livros
      * @param {Object} filters
      * @param {Book[]} books
-     * @return {Book[]}
+     * @return {FilteredListDTO}
      */
     applyOrderAndFilter: function (filters, books) {
 
@@ -110,7 +111,16 @@ const BookFilterService = {
             books = this.filterBooks(filters, books);
         }
 
-        return books;
+        const totalCount = books.length;
+
+        if (filters.pageNumber) {
+            let pageSize = filters.pageSize ? filters.pageSize : 8;
+            let sliceStart = filters.pageNumber > 1 ? ((filters.pageNumber - 1) * pageSize) : 0;
+            let slideEnd = sliceStart + pageSize;
+            books = books.slice(sliceStart, slideEnd);
+        }
+
+        return new FilteredListDTO(books, totalCount);
     }
 }
 

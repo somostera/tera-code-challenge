@@ -1,0 +1,13 @@
+.Pagination {
+    padding: var(--medium-size);
+    margin-bottom: var(--large-size);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.Pagination .Button {
+    font-weight: bolder;
+    margin-right: var(--extra-small-size);
+}

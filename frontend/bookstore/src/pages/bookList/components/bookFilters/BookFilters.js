@@ -25,6 +25,7 @@ export default function BookFilters(props) {
         filters.order = order;
         filters.categories = categories;
         filters.others = others;
+        filters.pageNumber = 1;
 
         props.applyFilters(filters);
     }

@@ -17,6 +17,7 @@ import Icon from "../../components/icon/Icon";
 import EmptyStatus from "./components/emptyStatus/EmptyStatus";
 //Styles
 import './BookList.css';
+import Pagination from "./components/pagination/Pagination";
 
 function FilterButtonText(props) {
 
@@ -34,11 +35,12 @@ function FilterButtonText(props) {
 
 export default function BookList(props) {
 
-    const [books, setBooks] = useState([]);
-    const [filteredBooks, setFilteredBooks] = useState([]);
     const [booksStatus, setBooksStatus] = useState(HttpStatus.NOT_STARTED);
+    const [books, setBooks] = useState([]);
+    const [filteredBooks, setFilteredBooks] = useState(null);
+
     const [sliderActive, setSliderActive] = useState(false);
-    const [activeFilters, setActiveFilters] = useState({});
+    const [activeFilters, setActiveFilters] = useState({pageNumber: 1});
     const [searchTerm, setSearchTerm] = useState('');
 
     //Extraindo as categorias dos livros para criar uma filtragem com melhor usabilidade
@@ -48,12 +50,15 @@ export default function BookList(props) {
      * @param {Object} filters
      */
     function applyFilters(filters) {
+
         //Fecha o Slider ao aplicar/resetar os filtros
         setSliderActive(false);
 
         //Checando se algum filtro foi informado
         if (Object.keys(filters).length)
-            setActiveFilters(prevFilters => ({...prevFilters, ...filters}));
+            setActiveFilters(prevFilters => {
+                return {...prevFilters, ...filters}
+            });
 
         //Caso contrário sete os filtros ativos para em branco
         else {
@@ -62,7 +67,9 @@ export default function BookList(props) {
             if (activeFilters.searchTerm && activeFilters.searchTerm.length)
                 newActiveFilters.searchTerm = activeFilters.searchTerm;
 
-            setActiveFilters(newActiveFilters)
+            newActiveFilters.pageNumber = 1;
+
+            setActiveFilters(newActiveFilters);
         }
     }
 
@@ -87,7 +94,11 @@ export default function BookList(props) {
     function onInput(event) {
         const value = event.target.value;
         setSearchTerm(value);
-        applyFilters({searchTerm: event.target.value.replace(/^\s+/gi, '')});
+        applyFilters({searchTerm: event.target.value.replace(/^\s+/gi, ''), pageNumber: 1});
+    }
+
+    function setCurrentPage(pageNumber) {
+        applyFilters({pageNumber: pageNumber})
     }
 
     //Hook para buscar os livros da API
@@ -107,10 +118,18 @@ export default function BookList(props) {
                     <BookFilters defaultFilters={activeFilters} applyFilters={applyFilters} categories={categories}/>
                 </Slider>
             </div>
-            {filteredBooks.length
-                ? filteredBooks.map(book => <div key={book.id} className="BookList__item">
-                    <BookItem likeBook={likeBook} book={book}/>
-                </div>)
+            {filteredBooks !== null && filteredBooks !== undefined && filteredBooks.list.length
+                ? <>
+                    {filteredBooks.list.map(book => <div key={book.id} className="BookList__item">
+                        <BookItem likeBook={likeBook} book={book}/>
+                    </div>)}
+                    <Pagination
+                        onSetPage={setCurrentPage}
+                        initialPage={activeFilters.pageNumber}
+                        contentLength={filteredBooks.totalCount} p
+                        ageLength={8}
+                    />
+                </>
                 : <EmptyStatus title="Nenhum livro encontrado" text="Tente utilizar outros filtros"/>}
         </section>
     )
