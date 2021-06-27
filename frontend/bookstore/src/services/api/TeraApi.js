@@ -22,6 +22,19 @@ const TeraApi = {
             obj.stock,
             Array.isArray(obj.users_who_liked) ? obj.users_who_liked.length : 0
         ))
+    },
+
+    /**
+     * Busca um livro pelo id
+     * @param {number} id
+     * @return {Promise<Book|null>}
+     */
+    getBook: async function (id) {
+        id = parseInt(id);
+        const books = await this.getBooks();
+        const book = books.find(book => book.id === id);
+        if (book !== undefined) return book;
+        return null;
     }
 }
 

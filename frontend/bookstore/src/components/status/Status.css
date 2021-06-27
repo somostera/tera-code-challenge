@@ -8,6 +8,7 @@
 }
 
 .Status__img {
-    max-width: 100%;
+    width: 100%;
+    max-width: 450px;
     height: auto;
 }
