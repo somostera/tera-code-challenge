@@ -1,18 +1,31 @@
 import "./Main.css";
-import {BrowserRouter, Route} from "react-router-dom";
+import {HashRouter, Route, Switch, Redirect} from "react-router-dom";
 import Nav from "./components/nav/Nav";
 import BookList from "../bookList/BookList";
+import BookDetails from "../bookDetails/BookDetails";
+import NotFound from "../notFound/NotFound";
 
-function Main () {
+function Main() {
 
     return (
         <main>
-            <Nav/>
-            <BrowserRouter>
-                <Route path="/">
-                    <BookList/>
-                </Route>
-            </BrowserRouter>
+            <HashRouter>
+                <Nav/>
+                <Switch>
+                    <Route exact path="/">
+                        <Redirect to="list"/>
+                    </Route>
+                    <Route path="/book/:book_id">
+                        <BookDetails/>
+                    </Route>
+                    <Route path="/list">
+                        <BookList/>
+                    </Route>
+                    <Route>
+                        <NotFound/>
+                    </Route>
+                </Switch>
+            </HashRouter>
         </main>
     )
 }

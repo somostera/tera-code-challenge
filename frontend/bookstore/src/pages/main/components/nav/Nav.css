@@ -5,6 +5,11 @@
     padding: var(--small-space);
 }
 
+.BookstoreNav a {
+    text-decoration: none;
+    color: inherit;
+}
+
 .BookstoreNav h1 {
     font-weight: 300;
 }
