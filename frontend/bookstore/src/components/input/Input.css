@@ -4,4 +4,5 @@
     border-radius: var(--extra-small-radius);
     background: var(--secondary-background-color);
     box-shadow: var(--light-box-shadow);
+    color: var(--text-color);
 }

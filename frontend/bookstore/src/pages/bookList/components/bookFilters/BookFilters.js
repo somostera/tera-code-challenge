@@ -13,9 +13,9 @@ export default function BookFilters(props) {
     useEffect(() => {
         const defaultFilters = props.defaultFilters;
         if (defaultFilters.order) setOrder(defaultFilters.order);
-        if (Array.isArray(defaultFilters.categories) && defaultFilters.length) setCategories(defaultFilters.categories);
-        if (Array.isArray(defaultFilters.others) && defaultFilters.length) setOthers(defaultFilters.others);
-    }, [props.activeFilters])
+        if (Array.isArray(defaultFilters.categories) && defaultFilters.categories.length) setCategories(defaultFilters.categories);
+        if (Array.isArray(defaultFilters.others) && defaultFilters.others.length) setOthers(defaultFilters.others);
+    }, [props.defaultFilters])
 
     function applyFilters() {
 
