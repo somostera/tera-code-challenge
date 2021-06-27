@@ -38,6 +38,7 @@ export default function BookList(props) {
     const [booksStatus, setBooksStatus] = useState(HttpStatus.NOT_STARTED);
     const [sliderActive, setSliderActive] = useState(false);
     const [activeFilters, setActiveFilters] = useState({});
+    const [searchTerm, setSearchTerm] = useState('');
 
     //Extraindo as categorias dos livros para criar uma filtragem com melhor usabilidade
     const categories = useMemo(() => CategoryService.getUniqueCategoriesFromBooks(books), [books]);
@@ -82,17 +83,23 @@ export default function BookList(props) {
         TeraApi.saveBookList(newBooks);
     }
 
+    function onInput(event) {
+        const value = event.target.value;
+        setSearchTerm(value);
+        applyFilters({searchTerm: event.target.value.replace(/^\s+/gi, '')});
+    }
+
     //Hook para buscar os livros da API
     useFetchBooks(setBooksStatus, setBooks, setFilteredBooks);
     //Hook que filtra/ordena a lista de livros ao alterar os filtros ativos
     useFilterBooks(setFilteredBooks, activeFilters, books);
     //Hook que armazena e aplica os filtros no cache
-    useCacheFilters(activeFilters, setActiveFilters);
+    useCacheFilters(activeFilters, setActiveFilters, setSearchTerm);
 
     return (
         <section className="BookList">
             <div className="BookList__search__filter__container">
-                <Input onInput={event => applyFilters({searchTerm: event.target.value})}
+                <Input onInput={onInput} value={searchTerm}
                        placeholder="Pesquise pelo título ou autor"/>
                 <Slider title={<FilterButtonText activeFilters={activeFilters}/>} active={sliderActive}
                         setActive={setSliderActive}>
