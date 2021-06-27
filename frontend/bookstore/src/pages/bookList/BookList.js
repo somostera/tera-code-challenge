@@ -11,11 +11,10 @@ import Input from "../../components/input/Input";
 import Slider from "../../components/slider/Slider";
 import BookFilters from "./components/bookFilters/BookFilters";
 import Tag from "../../components/tag/Tag";
+import Icon from "../../components/icon/Icon";
 //Styles
 import './BookList.css';
-import Icon from "../../components/icon/Icon";
-import OrderTypes from "../../services/bookFilter/dto/OrderTypes";
-import BookFilterService from "../../services/bookFilter/BookFilterService";
+
 
 function FilterButtonText(props) {
 
@@ -46,7 +45,7 @@ export default function BookList(props) {
      * @param {Object} filters
      */
     function applyFilters(filters) {
-        //Feche o Slider ao aplicar/resetar os filtros
+        //Fecha o Slider ao aplicar/resetar os filtros
         setSliderActive(false);
 
         //Checando se algum filtro foi informado

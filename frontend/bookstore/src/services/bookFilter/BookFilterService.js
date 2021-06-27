@@ -1,6 +1,6 @@
-import OrderTypes from "./dto/OrderTypes";
+import OrderTypes from "./types/OrderTypes";
 import StringUtils from "../../utils/StringUtils";
-import OtherFilterTypes from "./dto/OtherFilterTypes";
+import OtherFilterTypes from "./types/OtherFilterTypes";
 
 const BookFilterService = {
     /**

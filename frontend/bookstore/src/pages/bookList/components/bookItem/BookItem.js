@@ -1,6 +1,6 @@
-import "./BookItem.css";
 import Button from "../../../../components/button/Button";
 import Icon from "../../../../components/icon/Icon";
+import "./BookItem.css";
 
 export default function BookItem(props) {
     return (

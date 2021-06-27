@@ -1,8 +1,8 @@
 import {useState} from "react";
+import OrderTypes from "../../../../services/bookFilter/types/OrderTypes";
+import OtherFilterTypes from "../../../../services/bookFilter/types/OtherFilterTypes";
 import Button from "../../../../components/button/Button";
 import "./BookFilters.css";
-import OrderTypes from "../../../../services/bookFilter/dto/OrderTypes";
-import OtherFilterTypes from "../../../../services/bookFilter/dto/OtherFilterTypes";
 
 export default function BookFilters(props) {
 

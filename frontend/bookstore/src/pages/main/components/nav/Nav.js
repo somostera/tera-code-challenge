@@ -11,6 +11,7 @@ export default function Nav() {
         setNightMode(prevNightMode => !prevNightMode);
     }
 
+    //Efeito que ativa/desativa o modo noturno
     useEffect(() => {
         if (nightMode) {
             document.querySelector('html').classList.add('Nightmode')
