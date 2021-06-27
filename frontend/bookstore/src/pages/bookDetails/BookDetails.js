@@ -1,10 +1,12 @@
-import {useState, useEffect} from "react";
+import {useState} from "react";
 import HttpStatus from "../../utils/HttpStatus";
+import useFetchBook from "./hooks/useFetchBook";
 import NotFound from "../../components/fetchStatus/notFound/NotFound";
 import RequestError from "../../components/fetchStatus/requestError/RequestError";
 import Breadcrumb from "../../components/breadcrumb/Breadcrumb";
-import useFetchBook from "./hooks/useFetchBook";
+import FallbackImage from "../../components/fallbackImage/FallbackImage";
 import './BookDetails.css';
+
 
 export default function BookDetails(props) {
 
@@ -21,7 +23,7 @@ export default function BookDetails(props) {
             return (
                 <>
                     <h1 className="BookDetails__title">{book.name}</h1>
-                    <img className="BookDetails__img" src={book.image} alt={book.name}/>
+                    <FallbackImage className="BookDetails__img" src={book.image} alt={book.name}/>
                     <div className="BookDetails__info__container">
                         <div className="BookDetails__author">
                             <h2>{book.author}</h2>
