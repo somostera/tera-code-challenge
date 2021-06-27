@@ -3,7 +3,6 @@ const HttpStatus = {
     WAITING: 1,
     ON_REQUEST_ERROR: 2,
     requestError: function (HttpStatus) {
-        console.log(HttpStatus)
         return HttpStatus === this.ON_REQUEST_ERROR || (HttpStatus >= 400 && HttpStatus < 500);
     },
     serverError: function (HttpStatus) {
