@@ -30,7 +30,7 @@ export default function Slider(props) {
 
     return (
         <div className="Slider">
-            <Button onClick={toggleActive}>{props.title ? props.title : 'Slider'}</Button>
+            <Button onClick={toggleActive}>{props.btnText ? props.btnText : 'Slider'}</Button>
             <div className={`Slider__content ${active ? 'Slider__content--show' : ''}`}>
                 <header className="Slider__header">
                     <h2 className="Slider__header_title">{props.title}</h2>

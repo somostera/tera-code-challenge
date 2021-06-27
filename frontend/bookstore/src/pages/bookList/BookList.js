@@ -116,8 +116,11 @@ export default function BookList(props) {
             <div className="BookList__search__filter__container">
                 <Input onInput={onInput} value={searchTerm}
                        placeholder="Pesquise pelo título ou autor"/>
-                <Slider title={<FilterButtonText activeFilters={activeFilters}/>} active={sliderActive}
-                        setActive={setSliderActive}>
+                <Slider
+                    title={<span><Tag><Icon type="filter_alt"/></Tag> Filtros</span>}
+                    btnText={<FilterButtonText activeFilters={activeFilters}/>} active={sliderActive}
+                    setActive={setSliderActive}
+                >
                     <BookFilters defaultFilters={activeFilters} applyFilters={applyFilters} categories={categories}/>
                 </Slider>
             </div>
@@ -134,7 +137,8 @@ export default function BookList(props) {
                     maxPageButtons={5}
                 />
             </>}
-            {HttpStatus.done(booksStatus) === true && !booksToShow && <EmptyStatus title="Nenhum livro encontrado" text="Tente utilizar outros filtros"/>}
+            {HttpStatus.done(booksStatus) === true && !booksToShow &&
+            <EmptyStatus title="Nenhum livro encontrado" text="Tente utilizar outros filtros"/>}
             {HttpStatus.waiting(booksStatus) === true && <span className="BookList__loading">Carregando...</span>}
             {HttpStatus.anyError(booksStatus) === true && <RequestError/>}
         </section>
