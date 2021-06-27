@@ -10,6 +10,7 @@ export default function useCacheFilters (activeFilters, setActiveFilters)
         }
     }, [])
 
+    //Armazena os filtros no cache toda vez que são alterados
     useEffect(() => {
         sessionStorage.setItem('filters', JSON.stringify(activeFilters));
     }, [activeFilters]);

@@ -62,6 +62,21 @@ const TeraApi = {
      */
     saveBookList: function (bookList) {
         bookCache = cloneDeep(bookList);
+    },
+
+    /**
+     * Atualiza o livro no cache
+     * @param {Book} book
+     */
+    updateBook: function (book) {
+        const updatedBook = cloneDeep(book);
+        for (let i = 0; i < bookCache.length; i++) {
+            let currentBook = bookCache[i];
+            if (currentBook.id === updatedBook.id) {
+                bookCache[i] = updatedBook;
+                break;
+            }
+        }
     }
 }
 
