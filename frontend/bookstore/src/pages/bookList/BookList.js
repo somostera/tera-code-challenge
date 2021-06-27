@@ -1,7 +1,7 @@
 //Libs/Services
 import {useState, useMemo} from "react";
-import useFetchBooks from "../main/hooks/useFetchBooks";
-import useFilterBooks from "../main/hooks/useFilterBooks";
+import useFetchBooks from "./hooks/useFetchBooks";
+import useFilterBooks from "./hooks/useFilterBooks";
 import HttpStatus from "../../utils/HttpStatus";
 import CategoryService from "../../services/category/CategoryService";
 import cloneDeep from "lodash.clonedeep";
@@ -15,7 +15,7 @@ import Tag from "../../components/tag/Tag";
 import Icon from "../../components/icon/Icon";
 //Styles
 import './BookList.css';
-import useCacheFilters from "../main/hooks/useCacheFilters";
+import useCacheFilters from "./hooks/useCacheFilters";
 
 function FilterButtonText(props) {
 
