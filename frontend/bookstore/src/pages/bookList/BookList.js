@@ -126,8 +126,9 @@ export default function BookList(props) {
                     <Pagination
                         onSetPage={setCurrentPage}
                         initialPage={activeFilters.pageNumber}
-                        contentLength={filteredBooks.totalCount} p
-                        ageLength={8}
+                        contentLength={filteredBooks.totalCount}
+                        pageLength={8}
+                        maxPageButtons={5}
                     />
                 </>
                 : <EmptyStatus title="Nenhum livro encontrado" text="Tente utilizar outros filtros"/>}

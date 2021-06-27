@@ -111,8 +111,11 @@ const BookFilterService = {
             books = this.filterBooks(filters, books);
         }
 
+        //Salvando a quantidade livros antes da paginação
+        //Necessário para contar a quantidade de paginas que existe
         const totalCount = books.length;
 
+        //Aplicando a paginação
         if (filters.pageNumber) {
             let pageSize = filters.pageSize ? filters.pageSize : 8;
             let sliceStart = filters.pageNumber > 1 ? ((filters.pageNumber - 1) * pageSize) : 0;

@@ -8,6 +8,16 @@
 }
 
 .Pagination .Button {
+    width: var(--medium-size);
+}
+
+.Pagination :is(.Button, .Pagination__sep) {
     font-weight: bolder;
     margin-right: var(--extra-small-size);
+}
+
+.Pagination__sep {
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
 }
