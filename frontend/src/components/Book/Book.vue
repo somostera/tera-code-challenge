@@ -15,10 +15,7 @@
       </v-col>
       <v-spacer></v-spacer>
       <v-col cols="2" sm="4" md="1">
-        <!-- Show red heart if user liked of empty heart if not -->
         <like-button :book="book"></like-button>
-        <!-- <v-icon v-if="!hasUserLiked" @click="like">mdi-heart-outline</v-icon>
-        <v-icon v-else color="red">mdi-heart</v-icon> -->
       </v-col>
     </v-row>
   </div>

@@ -91,7 +91,6 @@ export default {
       if (this.waitForInput) return;
       const fn = this.filtersMap[filter] || filter;
       const filteredBooks = this[fn](books);
-      // console.log(filteredBooks);
       this.$emit('update:availableBooks', filteredBooks);
       // eslint-disable-next-line consistent-return
       return filteredBooks;

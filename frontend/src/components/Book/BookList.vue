@@ -9,16 +9,12 @@
 </template>
 
 <script>
-// import { mapGetters } from 'vuex';
 import Book from '@/components/Book/Book';
 
 export default {
   name: 'book-list',
   components: { Book },
   props: { list: { type: Array } },
-  mounted() {
-    // console.log(this.list);
-  },
 };
 </script>
 
