@@ -6,28 +6,24 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-col cols="10" sm="8" md="9">
-        <router-link :to="{ path: `/${book.name}` }"
-          ><span class="text-h6">{{ book.name }}</span></router-link
-        >
-        <p class="mb-0 text-body-2">{{ book.author }}</p>
-        <p class="mb-0 text-body-2">{{ book.category }}</p>
-      </v-col>
-      <v-spacer></v-spacer>
-      <v-col cols="2" sm="4" md="1">
-        <like-button :book="book"></like-button>
+      <v-col cols="8" sm="10" justify="start">
+        <router-link :to="{ path: `/${book.name}` }">
+          <div class="text-h6">{{ book.name }}</div>
+        </router-link>
+        <book-details :book="book"></book-details>
       </v-col>
     </v-row>
   </div>
 </template>
 
 <script>
-import LikeButton from '@/components/Interactions/Like';
+// import LikeButton from '@/components/Interactions/Like';
 import BookMixin from '@/mixins/Book.mixin';
+import BookDetails from './BookDetails.vue';
 
 export default {
   name: 'book',
-  components: { LikeButton },
+  components: { BookDetails },
   props: {
     book: { type: Object, required: true },
   },
