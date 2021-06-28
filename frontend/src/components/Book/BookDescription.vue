@@ -13,7 +13,7 @@
         <div v-if="outOfStock" class="stock">FORA DE ESTOQUE</div>
       </div>
       <v-row class="mt-2 mb-1">
-        <v-col class="pl-md-0">
+        <v-col class="pl-0 ml-2 pl-sm-0 ml-md-0">
           <book-details :book="book" :textClass="'text-body-1'"></book-details>
         </v-col>
       </v-row>
