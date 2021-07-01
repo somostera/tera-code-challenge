@@ -17,6 +17,5 @@ $ npm install
 $ npm start
 ```  
 
-View the website at: http://localhost:3000
-API at: http://localhost:3003
+View the website at: https://tera-fullstack-challenge.herokuapp.com/
 
