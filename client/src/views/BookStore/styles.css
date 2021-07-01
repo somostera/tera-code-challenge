@@ -1,0 +1,17 @@
+.bg-content {
+  background: lightcyan;
+}
+
+.dark-mode {
+  background: #010101;
+}
+
+.bookName {
+  font-size: large;
+  font-weight: 700;
+}
+
+.author {
+  font-size: small;
+  font-weight: 500;
+}
