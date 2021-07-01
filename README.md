@@ -1,5 +1,21 @@
-# Tera Code Challenge
+[![Express Logo](https://i.cloudup.com/zfY6lL7eFa-3000x3000.png)](http://expressjs.com/)
 
-Olá, bora pro desafio? :dancers:
+  Install dependencies:
+  
+```bash
+$ npm install
+```
 
-Entra na pasta do desafio a ser feito (lembra da vaga que você se aplicou 👀) e brilha! ✨✨✨
+```bash
+cd client
+$ npm install
+```
+
+  Start the server:
+
+```bash
+$ npm start
+```  
+
+View the website at: https://tera-fullstack-challenge.herokuapp.com/
+
