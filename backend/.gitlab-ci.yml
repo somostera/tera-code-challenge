@@ -1,0 +1,29 @@
+stages:
+  - prepare
+  - deploy
+
+before_staging:
+  stage: prepare
+  tags:
+    - staging
+  only:
+    - master
+  script:
+    - cd /applications/test-tera/backend
+    - git fetch
+    - git checkout master
+    - git reset --hard
+    - git pull origin master
+
+after_staging:
+  stage: deploy
+  tags:
+    - staging
+  only:
+    - master
+  script:
+    - cd /applications/test-tera/backend
+    - echo "DB" > "$(pwd)ormconfig.json"
+    - npm i
+    - npm run build --prod
+    - sudo systemctl restart test-tera-backend.service
