@@ -1,0 +1,32 @@
+body {background-color: #f1ffff;}
+.container {
+  margin: 20px 40px;
+}
+.right {
+  text-align: right;
+}
+.arrow_down {
+  transform: rotate( 180deg );
+  width: 20px;
+}
+.pulldown_box {
+  position: relative;
+  text-align: right;
+  /* border: 1px solid black; */
+}
+.pulldown_button {
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 0 5px 1px lightgrey, inset 0 0 2px 1px lightgrey;
+  border-color: white;
+  padding: 3px 20px;
+  font-size: 11px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: auto;
+  margin: auto;
+  width: 20px;
+  z-index: 2;
+}
