@@ -1,32 +1,226 @@
-body {background-color: #f1ffff;}
+/** Common */
+body {
+  background-color: #f1ffff;
+}
+img {
+  object-fit: contain;
+}
+
 .container {
   margin: 20px 40px;
 }
 .right {
   text-align: right;
 }
+.center {
+  text-align: center;
+}
+.clickable {
+  cursor: pointer;
+}
+
+/** Common parts */
 .arrow_down {
   transform: rotate( 180deg );
   width: 20px;
 }
-.pulldown_box {
+.input_area {
   position: relative;
   text-align: right;
+  display: grid;
+  grid-template-columns: 40% 40%;
+  grid-column-gap: 20%
   /* border: 1px solid black; */
 }
-.pulldown_button {
+.input_area_subgrid {
+  position: relative;
+  text-align: right;
+  display: grid;
+  grid-template-columns: 58% 38%;
+  grid-column-gap: 4%
+  /* border: 1px solid black; */
+}
+
+/** List Page */
+img.cover_picture {
+  width: 48%;
+  height: 160px;
+}
+.book_item_rows {
+  display: grid;
+  /* grid-template-rows: 200px 100px; */
+  grid-template-columns:  20% 20% 20% 20%;
+  grid-column-gap: 5%;
+  grid-row-gap: 1rem;
+  text-align: center;
+}
+
+.book_item {
+  align-items: center;
+}
+
+
+.text {
+  font-size: 14px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.heartImg {
+  overflow: visible;
+}
+.name_row_grid {
+  display: grid;
+  grid-template-columns: 80% 20%;
+}
+.name_text {
+  text-align: left;
+  font-size: 16px;
+  font-weight: 500;
+  padding-left: 20px;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.book_detail {
+  text-align: left;
+  font-size: 10px;
+  padding-left: 20px;
+}
+
+/** Pagenation */
+ul.pagination {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+ul.pagination li {display: inline;}
+ul.pagination li a {
+  color: #333333;
+  float: left;
+  padding: 8px 4px;
+  text-decoration: none;
+}
+ul.pagination li a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+ul.pagination li a:hover:not(.active) {background-color: #ddd;}
+.activePage {
+  font-weight: 900;
+}
+
+/** Detail */
+.detailContainer {
+  width: 50vw;
+  text-align: left;
+  margin: auto;
+}
+.detail_img {
+  float: right;
+  width: 200px;
+  height: auto;
+  margin: 20px;
+}
+.detail_title {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+.detail_book_detail {
+  font-size: 16px;
+}
+.detail_book_stock {
+  margin-top: 0.3rem;
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+}
+.detail_heart {
+  float: right;
+  margin-right: 20px;
+}
+.detail_description {
+  font-size: 12px;
+}
+.imageBox {
+  float: right;
+}
+.imgText {
+  position: relative;
+  display: flex;
+}
+.imgMask {
+  width: 200px;
+  min-height: 300px;
+  height: 300px;
+  background-color:rgba( 255, 255, 255, 0.55 );
   position: absolute;
-  background-color: white;
-  box-shadow: 0 0 5px 1px lightgrey, inset 0 0 2px 1px lightgrey;
-  border-color: white;
-  padding: 3px 20px;
-  font-size: 11px;
+  top: 10px;
+  right: 20px;
+  z-index: 1;
+}
+.imgText p {
+  /*background-color: rgba( 204, 255, 204, 0.55 );*/
+  background-color: #555555;
+  text-align: center;
+  width: 150px;
+  height: 18px;
+  padding: 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
   position: absolute;
-  right: 0;
+  color: white;
+  z-index: 2;
   top: 0;
   bottom: 0;
-  height: auto;
+  right: 0;
+  left: 0;
   margin: auto;
-  width: 20px;
-  z-index: 2;
+}
+@media screen and (max-width: 38em) {
+  .container {
+    margin: 5px 20px;
+  }
+  .book_item_rows {
+    display: grid;
+    /* grid-template-rows: 200px 100px; */
+    grid-template-columns:  100%;
+    grid-column-gap: 5%;
+    grid-row-gap: 1rem;
+    text-align: center;
+  }
+  .input_area {
+    position: relative;
+    text-align: right;
+    display: grid;
+    grid-template-columns: 100%;
+    /* border: 1px solid black; */
+  }
+  .detailContainer {
+    width: 90vw;
+    text-align: left;
+    margin: auto;
+  }
+  .adjustContainer {
+    display: flex;
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+  .imageBox {
+    float: none;
+  }
+  .detail_img {
+    float: none;
+    width: 80vw;
+    height: auto;
+    margin: auto;
+  }
+  .imgMask {
+    width: 85vw;
+    height: 100%;
+  }
+  .imgText p {
+    width: 80%;
+  }
 }

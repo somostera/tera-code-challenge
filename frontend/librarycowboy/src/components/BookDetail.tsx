@@ -1,46 +1,111 @@
-import React, { useState } from 'react'
-import { Book } from '../types/Types'
- 
-type Props = {
-    setBooks: React.Dispatch<React.SetStateAction<Book[]>>
-    books: Book[]
-}
- 
-const BookDetail: React.FC<Props> = ({ setBooks, books }) => {
-    const [ inputTitle, setInputTitle ] = useState<string>('')
-    const [ count, setCount ] = useState<number>(books.length + 1)
- 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setInputTitle(e.target.value)
+import { useContext} from 'react'
+import '../App.css';
+import { Book } from '../types/Types';
+//import { flexbox } from '@material-ui/system'
+import MyAppBar from './MyAppBar'
+import { useLocation, useHistory } from "react-router-dom";
+import HeartSVGObj from './HeartSVGObj'
+import {Img} from 'react-image'
+import NoImage from '../assets/no-image.png';
+import { BookContext } from "../App";
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+  body: { 
+    backgroundColor: theme.palette.primary.light,
+    color: theme.palette.text.primary,
+    minHeight: '100vh',
+    height: 'auto'
+  },
+  typography: {
+    h4: {
+      fontSize: '1.2rem',
+      '@media (min-width:600px)': {
+        fontSize: '1.5rem',
+      },
+      [theme.breakpoints.up('md')]: {
+        fontSize: '3rem',
+      },
     }
- 
-    const handleSubmit = () => {
-        setCount(count + 1)
-         
-        const newBook: Book = {
-            id: count,
-            title: inputTitle,
-            done: false
-        }
-         
-        setBooks([newBook, ...books])
+  }
+}));
+
+const DetailPage = () => {
+  interface stateType {
+    book: Book
+  }
+  const { state } = useLocation<stateType>()
+  const history = useHistory()
+  const book = state.book;
+  const { likeList, setLikeList } = useContext(BookContext)
+
+  const updateContext = (e: React.SyntheticEvent, book: Book) => {
+    let bookName = book.name
+    e.stopPropagation()
+    let index = likeList.indexOf(bookName)
+    if( index > -1) {
+      likeList.splice(index, 1)
+    } else {
+      likeList.push(bookName)
     }
- 
-    return (
-        <div>
-            <div className="inputForm">
-                <div className="inner">
-                    <input
-                        type="text"
-                        className="input"
-                        value={inputTitle}
-                        onChange={handleInputChange}
-                    />
-                    <button onClick={handleSubmit} className="btn is-primary">Adicionar</button>
-                </div>
+    setLikeList(likeList.slice())
+  }
+
+  const heartColor = (bookName: string) => {
+    if(likeList.indexOf(bookName) > -1) {
+      return "red"
+    } else {
+      return "transparent"
+    }
+  }
+
+  const classes = useStyles();
+  return (
+    <div className={classes.body}>
+      <MyAppBar/>
+
+      <div className="container">
+        <div className="clickable" onClick={history.goBack}>&lt; Voltar</div>
+        <div className="detailContainer">
+        <div className="adjustContainer">
+
+          <div className="imageBox">
+            <div className={book.stock === 0 ? "imgText" : ""}>
+              <div className={book.stock === 0 ? "imgMask" : ""}></div>
+              {book.stock === 0 ? <p>FORA DE ESTOQUE</p> : null }
+              <Img 
+                src={[book.cover_picture, NoImage]} 
+                alt={book.name} 
+                title={book.name} 
+                className="detail_img" />
             </div>
+          </div>
+          <h1 className="detail_title">{book.name}</h1>
+          </div>
+
+          <div className="detail_book_detail">{book.author}
+          <div className="detail_heart" onClick={(e) => updateContext(e, book)}>
+            <HeartSVGObj fillColor={heartColor(book.name)} />
+          </div>
+          </div>
+          <div className="detail_book_detail">{book.category}</div>
+          
+          <div className="detail_book_stock">
+            {
+              book.stock > 0 ? <div>Em estoque: {book.stock} unidades</div>
+              :
+              <div>Fora de estoque</div>
+            }
+            
+          </div>
+          
+          <div className="detail_description">
+            {book.description}
+          </div>
         </div>
-    )
+      </div>
+    </div>
+  )
 }
- 
-export default BookDetail
+
+export default DetailPage;

@@ -1,146 +1,106 @@
-import React, { useState, useEffect } from 'react'
-import './App.css';
-import { Book } from './types/Types';
-import BookDetail from './components/BookDetail'
-import BookList from './components/BookList'
-import BookService from './services/BookService'
-import { AppBar, Toolbar, Typography, Button, Grid, Input, FormControl, InputAdornment, TextField } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import Arrow from './assets/arrow_gray.svg'
+import { createContext, useState } from "react";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import HomePage from "./components/HomePage";
+import Detail from "./components/BookDetail";
+import { ThemeProvider, createTheme  } from '@material-ui/core/styles';
 
-const initialState: Book[] = []
+export const BookContext = createContext({} as {
+  likeList: string[]
+  setLikeList: React.Dispatch<React.SetStateAction<string[]>>
+})
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    background: '#95d9da',
-    border: 0,
-    color: 'white',
-    height: 'auto',
-    padding: '5px',
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
-  buttonLabel: {
-    fontSize: '1.2rem',
-    textTransform: 'none',
-  },
-  select: {
-    color: "white",
-  },
-  input: {
-    backgroundColor: "white",
-    margin: "10px",
-    boxShadow: "0 0 5px 1px lightgrey, inset 0 0 2px 1px lightgrey",
-    borderColor: 'white',
-    padding: "3px 0 3px 20px",
-    fontSize: "11px"
-  },
-  inputFont: {
-    fontSize: "11px"
-  },
-  pulldownButton: {
-    borderLeft: "2px solid lightgrey",
-    height: "36px",
-    width: "20px",
-    margin: "0",
-    padding: "0"
-  }
-}))
+export const ModeContext = createContext({} as {
+  darkMode: boolean
+  setDarkMode: React.Dispatch<React.SetStateAction<boolean>>
+})
 
-//const [books, setBooks] = useState<Array<Book>>([]);
+const themeLight = createTheme({
+  typography: {
+    fontFamily: [
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+    ].join(','),
+    h4: {
+      fontSize: '1.2rem',
+      '@media (min-width:600px)': {
+        fontSize: '1.5rem',
+      },
+    }
+  },
+  palette: {
+    text: {
+      primary: "#000",
+      secondary: "#fff"
+    },
+    primary: {
+      light: '#f1ffff',
+      main: '#95d9da',
+      dark: '#002884',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#ffffff',
+      main: '#f1ffff',
+      dark: '#ba000d',
+      contrastText: '#000',
+    },
+  },
+});
+
+const themeDark = createTheme({
+  typography: {
+    fontFamily: [
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+    ].join(','),
+    h4: {
+      fontSize: '1.2rem',
+      '@media (min-width:600px)': {
+        fontSize: '1.5rem',
+      },
+    },
+  },
+  palette: {
+    text: {
+      primary: "#fff",
+      secondary: "#000"
+    },
+    primary: {
+      light: '#1b2432',
+      main: '#121420',
+      dark: '#002884',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#403f4c',
+      main: '#f1ffff',
+      dark: '#ba000d',
+      contrastText: '#000',
+    },
+  },
+});
 
 const App = () => {
-  useEffect(() => {
-    retrieveBooks();
-  }, []);
-
-  const retrieveBooks = () => {
-    BookService.getAll()
-    .then(response => {
-      setBooks(response.data)
-      console.log(response.data)
-    })
-    .catch(e => {
-      console.log(e)
-    });
-  }
-
-  const handleChange = (e: { target: { value: string; }; }) => {
-    setSearch(e.target.value);
-  };
-
-
-  const [books, setBooks] = useState(initialState)
-  const [count, setCount] = useState(0)
-  const [search, setSearch]: [string, (search: string) => void] = React.useState("");
-  const classes = useStyles()
+  const [likeList, setLikeList] = useState<string[]>([])
+  const [darkMode, setDarkMode] = useState(false)
   return (
-    <div>
-      <AppBar position="static" className={classes.root}>
-        <Toolbar>
-          <Typography variant="h4" className={classes.title}>
-            Livraria do cowboy
-          </Typography>
-          <Button color="inherit" className={classes.buttonLabel}>Dark mode</Button>
-        </Toolbar>
-      </AppBar>
-      <div className="container">
-        <Grid container spacing={10}>
-          <Grid item xs={8} lg={4}>
-            <FormControl fullWidth>
-              <Input 
-                type="text" 
-                onChange={handleChange}
-                className={classes.input}
-                placeholder="Procure por um livro"
-                disableUnderline={true}
-              />
-            </FormControl>
-          </Grid>
-          <Grid item xs={4} lg={8}>
-            <div className="pulldown_box">
-              <TextField 
-                //select={false}
-                //onChange={handleChange}
-                className={classes.input}
-                placeholder="Filtros"
-                //underlineStyle={{display: 'none'}}
-                //disableUnderline={true}
-                InputProps={{
-                  classes: {
-                    input: classes.inputFont,
-                  },
-                  disableUnderline: true,
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <Button
-                        variant="text"
-                        disableElevation
-                        className={classes.pulldownButton}
-                        >
-                        <img src={Arrow} className="arrow_down"></img>
-                      </Button>
-                    </InputAdornment>
-                  )
-                }}
-              />
-            </div>
-          </Grid>
-          <Grid item xs={12}>
-            <BookList setBooks={setBooks} books={books} />
-          </Grid>
-        </Grid>
-      </div>
-      
-      <BookDetail setBooks={setBooks} books={books} />
-      
-    </div>
-  )
+    <BrowserRouter>
+      <Switch>
+        <ModeContext.Provider value={{ darkMode, setDarkMode }}>
+          <BookContext.Provider value={{ likeList, setLikeList }}>
+            <ThemeProvider theme={darkMode ? themeDark : themeLight}>
+              <Route path="/" exact component={HomePage} />
+              <Route path="/detail" exact component={Detail} />
+              <Redirect to="/" />
+            </ThemeProvider>
+          </BookContext.Provider>
+        </ModeContext.Provider>
+      </Switch>
+    </BrowserRouter>
+  );
 }
-
 export default App;
