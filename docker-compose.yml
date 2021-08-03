@@ -1,0 +1,15 @@
+version: '3'
+services:
+  app: 
+    image: myvue:1.0
+    command: yarn run serve
+    ports:
+      - 8080:8080
+    volumes:
+      - .:/usr/app/
+  
+  deps: 
+    image: myvue:1.0
+    command: yarn install
+    volumes:
+      - .:/usr/app/
