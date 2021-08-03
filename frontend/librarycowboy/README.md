@@ -9,5 +9,7 @@ Para rodar em ambiente local
 3. Execute command embaixo na pasta de 1.
 
 cd tera-code-challenge/frontend/librarycowboy
+
 npm install
+
 npm run start
