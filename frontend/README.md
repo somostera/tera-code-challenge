@@ -32,3 +32,6 @@ $ npm install
 4- Execute a aplicação 🚀:<br>
 $ npm run serve
 
+5- Execute a aplicação 🚀:<br>
+Abra seu navegador e digite: http://localhost:8080/
+
