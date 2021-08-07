@@ -24,7 +24,7 @@ Siga os passos abaixo e vamos lá:
 $ git clone https://github.com/lucasbarque/tera-code-challenge.git
 
 2- Entre na pasta do projeto:<br>
-$ cd tera-code-challenge
+$ cd tera-code-challenge/frontend
 
 3- Instale as dependências:<br>
 $ npm install
