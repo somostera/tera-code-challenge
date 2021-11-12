@@ -1,0 +1,58 @@
+html, body {
+  height:100%;
+}
+
+@font-face {
+  src: url('../fonts/NotoSans-Regular.ttf'),
+  url('../fonts/NotoSans.woff2') format('woff2');
+  font-family: 'Noto Sans';
+  font-weight: normal;
+}
+
+body {
+  color: var(--color-dark-gray);
+  min-width: 700px;
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+/* Customize website's scrollbar like Mac OS
+Not supports in Firefox and IE */
+
+/* total width */
+body::-webkit-scrollbar {
+  background-color:#fff;
+  width:16px
+}
+
+/* background of the scrollbar except button or resizer */
+body::-webkit-scrollbar-track {
+  background-color:#fff
+}
+
+/* scrollbar itself */
+body::-webkit-scrollbar-thumb {
+  background-color:#babac0;
+  border-radius:16px;
+  border:4px solid #fff
+}
+
+/* set button(top and bottom of the scrollbar) */
+body::-webkit-scrollbar-button {display:none}
+
+.recharts-default-tooltip {
+  border-radius: var(--border-radius-component);
+  box-shadow: var(--elevation-medium);
+  border: none !important;
+}
