@@ -1,0 +1,42 @@
+@import "../../styles/helpers.less";
+
+.grid {
+  display: grid;
+  gap: 40px;
+  .largeDesktop({
+    gap: 25px;
+  });
+}
+
+.grid-template-columns {
+  grid-template-columns: repeat(4, 423px);
+  .largeDesktop({
+    grid-template-columns: repeat(3, 423px);
+  });
+  .tablet({
+    grid-template-columns: repeat(2, 423px);
+  });
+  .mobile({
+    grid-template-columns: repeat(1, 423px);
+  });
+  .mobileL({
+    grid-template-columns: repeat(1, 100%);
+  });
+}
+
+.grid-template-rows {
+  grid-template-rows: 380px;
+}
+
+.grid-total {
+  padding: 30px 0;
+  span {
+    font-family: "Rubik", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+
+    color: #6c6c6c;
+  }
+}

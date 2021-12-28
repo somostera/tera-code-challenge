@@ -1,0 +1,55 @@
+@import "../../styles/helpers.less";
+
+.book {
+  width: 423px;
+  height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  &-cover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 196px;
+      height: 257px;
+    }
+  }
+  &-description {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 40px;
+    p {
+      font-family: "Rubik", sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 24px;
+      line-height: 28px;
+      margin: 0;
+      padding-top: 20px;
+    }
+    span {
+      font-family: "Rubik", sans-serif;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 17px;
+    }
+    &-details {
+      display: flex;
+      flex-direction: column;
+    }
+    &-like {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-right: 30px;
+    }
+  }
+}

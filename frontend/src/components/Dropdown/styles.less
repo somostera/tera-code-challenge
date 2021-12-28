@@ -1,0 +1,97 @@
+@import "../../styles/helpers.less";
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: absolute;
+  right: 90px;
+  display: inline-block;
+  &__wrapper {
+    padding-left: 27px;
+    cursor: pointer;
+    min-width: 200px;
+    /*  */
+    width: 205px;
+    height: 48px;
+
+    background: #ffffff;
+    border: 1px solid #d0d0d0;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.25);
+
+    .typography("Poppins", 16px, 500, normal, 32px,#11142d);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .mobileS({
+        font-size: 14px;       
+      });
+  }
+
+  /* Dropdown Content (Hidden by Default) */
+  &__content {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    right: 0px;
+
+    z-index: 1;
+
+    width: 271px;
+    height: 240px;
+
+    background: #ffffff;
+    border: 1px solid #d0d0d0;
+    box-sizing: border-box;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.25);
+
+    p {
+      /* padding: 12px 32px; */
+      height: 46px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      text-transform: capitalize;
+      .typography("Inter", 14px, 500 , normal,  16px, #808191);
+      border-bottom: 1px solid #d0d0d0;
+      margin: 0;
+      padding-left: 11px;
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:hover {
+        background-color: #ddd;
+      }
+    }
+  }
+
+  /* Dropdown Button */
+  &__button {
+    height: 12px;
+    width: 12px;
+    &:hover,
+    &:focus {
+      border-color: #7c7e80;
+    }
+
+    &__container {
+      border: 1px solid #d0d0d0;
+      height: 48px;
+      width: 43px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {
+  display: block;
+}
+.rotateIcon {
+  transform: rotate(180deg);
+}
