@@ -1,0 +1,48 @@
+.extraLargeDesktopm(@rules:{}) {
+  @media screen and (min-width: 1600px) {
+    @rules();
+  }
+}
+.largeDesktop(@rules:{}) {
+  @media screen and (max-width: 1599px) {
+    @rules();
+  }
+}
+.laptopL(@rules:{}) {
+  @media screen and (max-width: 1440px) {
+    @rules();
+  }
+}
+.tablet(@rules:{}) {
+  @media screen and (max-width: 1024px) and (min-width: 768px) {
+    @rules();
+  }
+}
+.mobile(@rules:{}) {
+  @media screen and (max-width: 767px) {
+    @rules();
+  }
+}
+.mobileL(@rules:{}) {
+  @media screen and (max-width: 425px) {
+    @rules();
+  }
+}
+.mobileM(@rules:{}) {
+  @media screen and (max-width: 375px) {
+    @rules();
+  }
+}
+.mobileS(@rules:{}) {
+  @media screen and (max-width: 320px) {
+    @rules();
+  }
+}
+
+.typography(@font, @size, @wheight, @styles:normal, @line-height, @color) {
+  font-family: @font, sans-serif;
+  font-weight: @wheight;
+  font-size: @size;
+  line-height: @line-height;
+  color: @color;
+}
