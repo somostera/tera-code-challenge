@@ -1,0 +1,60 @@
+.detail-book {
+  width: 100%;
+  height: auto;
+
+  &-cover {
+    img {
+      width: 319px;
+      height: 418px;
+      float: right;
+    }
+  }
+  &-container {
+    width: 835px;
+  }
+  &-description {
+    /* width: 835px;
+    height: calc(418px + 227px); */
+
+    &-name {
+      font-family: "Rubik", sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 50px;
+      line-height: 59px;
+
+      color: #000000;
+    }
+    &-author-like {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &-summary {
+      padding-top: 19px;
+      p {
+        font-family: "Roboto", sans-serif;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 18px;
+        line-height: 21px;
+        color: #000000;
+        margin: 0;
+      }
+    }
+    &-text {
+      font-family: "Rubik", sans-serif;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 24px;
+      line-height: 28px;
+
+      color: #000000;
+      margin: 0;
+      &:last-child {
+        padding: 5px 0;
+      }
+    }
+  }
+}
