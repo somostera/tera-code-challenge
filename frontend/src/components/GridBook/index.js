@@ -6,7 +6,7 @@ import { filterByInputSearch } from "../../utils/filter";
 const GridBook = ({ filterBy, inputSearch, inputCategorySearch }) => {
   const [bookies, setBookies] = useState([]);
   const [orderedBookies, setOrderedBookies] = useState([]);
-  const [bookiesIsLiked, setBookiesIsLiked] = useState([]);
+
   const [searchBookies, setSearchBookies] = useState([]);
 
   const API_URL =
@@ -72,15 +72,7 @@ const GridBook = ({ filterBy, inputSearch, inputCategorySearch }) => {
       </div>
       <div className="grid grid-template-columns">
         {orderedBookies.map((book, index) => {
-          return (
-            <Book
-              data={book}
-              id={book.name}
-              key={index}
-              bookiesIsLiked={bookiesIsLiked}
-              setBookiesIsLiked={setBookiesIsLiked}
-            />
-          );
+          return <Book book={book} id={book.name} key={index} />;
         })}
       </div>
     </>

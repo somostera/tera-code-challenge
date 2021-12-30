@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
-import Layout from "../../components/Layout";
+import React, { useState } from "react";
+
 import SubHeader from "../../components/SubHeader";
 import GridBook from "../../components/GridBook";
-import Dropdown from "../../components/Dropdown";
+
 import {
-  sortByHigher,
   filterByCategory,
   sortByStock,
   sortByLikes,

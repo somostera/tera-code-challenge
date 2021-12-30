@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import ThemeTogglerButton from "../TogglerThemeButton";
 import { ThemeContext } from "../../contexts/theme-context";
 import Dropdown from "../../components/Dropdown";
 import "./styles.less";
@@ -13,8 +12,7 @@ const SubHeader = ({
   setInputCategorySearch,
   filterBy,
 }) => {
-  const { theme, toggleTheme } = useContext(ThemeContext);
-  console.log(theme, toggleTheme, "header");
+  const { theme } = useContext(ThemeContext);
 
   const handleChange = (event) => {
     setInputSearch(event.target.value);
