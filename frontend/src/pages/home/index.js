@@ -33,16 +33,24 @@ const Home = () => {
   ]);
   const [filterBy, setFilterBy] = useState(undefined);
   const [inputSearch, setInputSearch] = useState("");
+  const [inputCategorySearch, setInputCategorySearch] = useState("");
 
   return (
     <div>
       <SubHeader
         optionsFilter={optionsFilter}
         setFilterBy={setFilterBy}
+        filterBy={filterBy}
         setInputSearch={setInputSearch}
         inputSearch={inputSearch}
+        setInputCategorySearch={setInputCategorySearch}
+        inputCategorySearch={inputCategorySearch}
       />
-      <GridBook filterBy={filterBy} inputSearch={inputSearch} />
+      <GridBook
+        filterBy={filterBy}
+        inputSearch={inputSearch}
+        inputCategorySearch={inputCategorySearch}
+      />
     </div>
   );
 };

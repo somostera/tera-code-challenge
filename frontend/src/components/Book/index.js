@@ -1,25 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./styles.less";
 import { useNavigate } from "react-router-dom";
 import { BOOK } from "../../routes/paths";
+import { ThemeContext } from "../../contexts/theme-context";
 
-const Book = ({ data, id, setBookiesILiked, bookiesILiked }) => {
+const Book = ({ data, id, setBookiesIsLiked, bookiesIsLiked }) => {
   const navigate = useNavigate();
   const { author, category, cover_picture, name } = data;
   const [isLiked, setIsLiked] = useState(false);
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   const handleLiked = () => {
     setIsLiked((prevState) => !prevState);
-    //setTimeout(() => { this.control.doUpdate(); }, 10);
+    setBookiesIsLiked([...bookiesIsLiked, name]);
+    setTimeout(bookiesIsLiked.find((book) => console.log(book)));
   };
-
-  useEffect(() => {
-    if (isLiked) {
-      const res = bookiesILiked.find((book) => book.name === name);
-      console.log(res);
-      console.log("2", isLiked);
-    }
-  }, [bookiesILiked, isLiked, name]);
+  // console.log(bookiesIsLiked, isLiked);
 
   return (
     <div className="book">
@@ -42,6 +38,12 @@ const Book = ({ data, id, setBookiesILiked, bookiesILiked }) => {
             <img
               src={"icons/full-heart.svg"}
               alt="descurtir"
+              onClick={handleLiked}
+            />
+          ) : theme.name === "dark" ? (
+            <img
+              src={"icons/heart-dark.svg"}
+              alt="curtir"
               onClick={handleLiked}
             />
           ) : (

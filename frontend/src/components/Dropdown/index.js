@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles.less";
 
-const Dropdown = ({ options, title, setFilterBy }) => {
+const Dropdown = ({ options, title, setFilterBy, filterBy }) => {
   /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
   const toggleDropdown = () => {
@@ -12,6 +12,7 @@ toggle between hiding and showing the dropdown content */
   const itemSelected = (e, item) => {
     setFilterBy(item);
   };
+  console.log(filterBy);
 
   // Close the dropdown menu if the user clicks outside of it
   window.onclick = function (event) {
@@ -32,7 +33,8 @@ toggle between hiding and showing the dropdown content */
   return (
     <div className="dropdown">
       <div className="dropdown__wrapper">
-        {title}
+        <span>{filterBy === undefined ? title : filterBy.option}</span>
+
         <div
           className="dropdown__button__container"
           onClick={() => toggleDropdown()}

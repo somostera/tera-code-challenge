@@ -2,12 +2,32 @@ import { options } from "less";
 import React from "react";
 
 export const filterByCategory = (items, category) => {
-  const results = items.filter((item) =>
-    item.category.toLowerCase().startsWith(category.toLowerCase())
-  );
+  let results = items;
+  if (category) {
+    results = items.filter((item) =>
+      item.category.toLowerCase().startsWith(category.toLowerCase())
+    );
+  }
+
   console.log(results);
   return results;
 };
+export const filterByInputSearch = (items, search) => {
+  let results = items;
+  if (search) {
+    results = items.filter(
+      (item) =>
+        item.category.toLowerCase().startsWith(search.toLowerCase()) ||
+        item.name.toLowerCase().startsWith(search.toLowerCase()) ||
+        item.author.toLowerCase().startsWith(search.toLowerCase()) ||
+        item.author.toLowerCase().startsWith(search.toLowerCase())
+    );
+  }
+
+  console.log(results);
+  return results;
+};
+
 /* export const filterByIsLiked= (items) => {
     return items.filter((item) => item.category === category);
   }; */

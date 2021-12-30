@@ -9,11 +9,18 @@ const SubHeader = ({
   setFilterBy,
   inputSearch,
   setInputSearch,
+  inputCategorySearch,
+  setInputCategorySearch,
+  filterBy,
 }) => {
   const { theme, toggleTheme } = useContext(ThemeContext);
   console.log(theme, toggleTheme, "header");
+
   const handleChange = (event) => {
     setInputSearch(event.target.value);
+  };
+  const handleChangeCategory = (event) => {
+    setInputCategorySearch(event.target.value);
   };
 
   return (
@@ -30,11 +37,29 @@ const SubHeader = ({
         name="search"
         placeholder="Procure por um livro"
       />
-      <Dropdown
-        options={optionsFilter}
-        title={"Filtros"}
-        setFilterBy={setFilterBy}
-      />
+      <div style={{ display: "flex", flexDirection: "column" }}>
+        <Dropdown
+          options={optionsFilter}
+          title={"Filtros"}
+          setFilterBy={setFilterBy}
+          filterBy={filterBy}
+        />
+        {filterBy?.sortBy === "category" ? (
+          <input
+            type="text"
+            onChange={handleChangeCategory}
+            value={inputCategorySearch}
+            name="category-search"
+            placeholder="Nome da Categoria"
+            style={{
+              width: "271px",
+              position: "absolute",
+              top: "195px",
+              right: " 90px",
+            }}
+          />
+        ) : null}
+      </div>
     </div>
   );
 };

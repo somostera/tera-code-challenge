@@ -1,20 +1,96 @@
 .detail-book {
   width: 100%;
   height: auto;
+  button {
+    border: none;
+    background: transparent;
+    font-family: "Rubik", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    padding-top: 11px;
+    cursor: pointer;
+  }
 
+  &-cover-empty {
+    position: relative;
+    overflow: hidden;
+    width: 319px;
+    height: 418px;
+    float: right;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    &:after {
+      content: "FORA DE ESTOQUE";
+      z-index: 2;
+      width: 258px;
+      height: 70px;
+      background: #4b4b4b;
+      box-shadow: 0px 5px 6px 3px rgba(0, 0, 0, 0.25);
+      padding: 20px 15px;
+      position: relative;
+      top: 50%;
+      left: calc(calc(319px - 258px) / 2);
+
+      font-family: "Rubik", sans-serif;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 28px;
+      text-align: center;
+      color: #ffffff;
+    }
+
+    span {
+      width: 258px;
+      height: 70px;
+      background: #4b4b4b;
+      box-shadow: 0px 5px 6px 3px rgba(0, 0, 0, 0.25);
+      padding: 20px 15px;
+      position: relative;
+      top: 50%;
+      left: calc(calc(319px - 258px) / 2);
+
+      z-index: 2;
+      font-family: "Rubik", sans-serif;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 28px;
+      text-align: center;
+      color: #ffffff;
+    }
+  }
   &-cover {
+    position: relative;
+    overflow: hidden;
+    width: 319px;
+    height: 418px;
+    float: right;
+
+    span {
+      display: none;
+    }
     img {
-      width: 319px;
-      height: 418px;
-      float: right;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: auto;
     }
   }
   &-container {
     width: 835px;
+    margin: 0 auto;
   }
   &-description {
     /* width: 835px;
     height: calc(418px + 227px); */
+    &-container {
+      width: 500px;
+      padding-right: 20px;
+    }
 
     &-name {
       font-family: "Rubik", sans-serif;
