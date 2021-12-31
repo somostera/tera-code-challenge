@@ -29,6 +29,7 @@ const SubHeader = ({
       }}
     >
       <input
+        className="input-search"
         type="text"
         onChange={handleChange}
         value={inputSearch}
@@ -45,16 +46,11 @@ const SubHeader = ({
         {filterBy?.sortBy === "category" ? (
           <input
             type="text"
+            className="input-category"
             onChange={handleChangeCategory}
             value={inputCategorySearch}
             name="category-search"
             placeholder="Nome da Categoria"
-            style={{
-              width: "271px",
-              position: "absolute",
-              top: "195px",
-              right: " 90px",
-            }}
           />
         ) : null}
       </div>

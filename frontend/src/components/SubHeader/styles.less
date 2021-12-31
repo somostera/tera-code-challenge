@@ -1,29 +1,59 @@
+@import "../../styles/helpers.less";
+
+.inputStyle() {
+  height: 48px;
+  background: #ffffff;
+  border: 1px solid #d0d0d0;
+  box-sizing: border-box;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.25);
+
+  font-family: "Rubik", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  color: #6c6c6c;
+  &:focus-visible {
+    border-color: transparent;
+    outline: none;
+  }
+}
+
 .sub-header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding-top: 47px;
+  .mobileMM({
+    flex-direction: column;
+  });
 
-  input {
+  .input-search {
     width: 613px;
-    height: 48px;
 
-    background: #ffffff;
-    border: 1px solid #d0d0d0;
-    box-sizing: border-box;
-    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.25);
-
-    font-family: "Rubik", sans-serif;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 18px;
-    line-height: 21px;
-    color: #6c6c6c;
-
+    .inputStyle();
     padding-left: 27px;
-    &:focus-visible {
-      border-color: transparent;
-      outline: none;
-    }
+
+    .tablet ({
+      width: 300px;
+    });;
+    .mobile({
+      width: 265px;
+    });
+    .mobileMM({
+      width: 100%
+    });
+  }
+  .input-category {
+    width: 271px;
+    position: absolute;
+    top: 195px;
+    right: 90px;
+    .inputStyle();
+
+    .mobile({
+      width: 490px;
+      right: 20px;
+    });
   }
 }

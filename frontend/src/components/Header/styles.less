@@ -1,6 +1,6 @@
+@import "../../styles/helpers.less";
 .header {
   height: 100px;
-
   background: #95d9da;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   display: flex;
@@ -8,6 +8,9 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 90px;
+  .mobile({
+    padding: 0 20px;
+  });
   span {
     font-family: "Rubik", sans-serif;
     font-style: normal;
@@ -15,6 +18,10 @@
     font-size: 50px;
     line-height: 59px;
     color: #fcf7f8;
+    .mobile ({
+      font-size: 23px;
+      line-height: 27px;
+    });;
   }
   &-toggle-button {
     border: none;
@@ -26,5 +33,9 @@
     text-transform: capitalize;
     height: auto;
     cursor: pointer;
+    .mobile({
+      font-size: 20px;
+      line-height: 24px;
+    });
   }
 }

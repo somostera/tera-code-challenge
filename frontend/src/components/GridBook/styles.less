@@ -3,20 +3,26 @@
 .grid {
   display: grid;
   gap: 40px;
-  .largeDesktop({
+  .desktop({
     gap: 25px;
   });
+  &-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
-.grid-template-columns {
+.grid-columns {
   grid-template-columns: repeat(4, 423px);
-  .largeDesktop({
+
+  .desktop({
     grid-template-columns: repeat(3, 423px);
   });
-  .tablet({
+  .tabletL({
     grid-template-columns: repeat(2, 423px);
   });
-  .mobile({
+  .tablet({
     grid-template-columns: repeat(1, 423px);
   });
   .mobileL({
@@ -39,4 +45,7 @@
 
     color: #6c6c6c;
   }
+  .mobile({
+    padding: 68px 0 30px;
+  });
 }

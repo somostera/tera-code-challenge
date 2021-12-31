@@ -70,10 +70,12 @@ const GridBook = ({ filterBy, inputSearch, inputCategorySearch }) => {
       <div className="grid-total">
         <span>Total: {orderedBookies.length}</span>
       </div>
-      <div className="grid grid-template-columns">
-        {orderedBookies.map((book, index) => {
-          return <Book book={book} id={book.name} key={index} />;
-        })}
+      <div className="grid-container">
+        <div className="grid grid-columns">
+          {orderedBookies.map((book, index) => {
+            return <Book book={book} id={book.name} key={index} />;
+          })}
+        </div>
       </div>
     </>
   );

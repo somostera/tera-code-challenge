@@ -1,6 +1,10 @@
+@import "../../styles/helpers.less";
 .layout {
   &-body {
     min-height: 100vh;
     padding: 0 90px;
+    .mobile({
+      padding: 0 20px;
+    });
   }
 }

@@ -104,17 +104,17 @@ const Book = ({ book, id, isBookDetail }) => {
                 </div>
               </div>
 
-              {book.stock === 0 ? null : (
-                <p
-                  style={{
-                    backgroundColor: theme.background.body,
-                    color: theme.color.body,
-                  }}
-                  className="detail-book-description-text"
-                >
-                  Em estoque: {book.stock} unidades
-                </p>
-              )}
+              <p
+                style={{
+                  backgroundColor: theme.background.body,
+                  color: theme.color.body,
+                }}
+                className="detail-book-description-text"
+              >
+                {book.stock === 0
+                  ? "Fora de estoque"
+                  : `Em estoque: ${book.stock} unidades`}
+              </p>
             </div>
 
             <div className="detail-book-description-summary">

@@ -1,20 +1,20 @@
 .extraLargeDesktopm(@rules:{}) {
-  @media screen and (min-width: 1600px) {
+  @media screen and (min-width: 1601px) {
     @rules();
   }
 }
-.largeDesktop(@rules:{}) {
-  @media screen and (max-width: 1599px) {
+.desktop(@rules:{}) {
+  @media screen and (max-width: 1600px) {
     @rules();
   }
 }
-.laptopL(@rules:{}) {
-  @media screen and (max-width: 1440px) {
+.tabletL(@rules:{}) {
+  @media screen and (max-width: 1200px) {
     @rules();
   }
 }
 .tablet(@rules:{}) {
-  @media screen and (max-width: 1024px) and (min-width: 768px) {
+  @media screen and (max-width: 1023px) {
     @rules();
   }
 }
@@ -24,7 +24,12 @@
   }
 }
 .mobileL(@rules:{}) {
-  @media screen and (max-width: 425px) {
+  @media screen and (max-width: 523px) {
+    @rules();
+  }
+}
+.mobileMM(@rules:{}) {
+  @media screen and (max-width: 500px) {
     @rules();
   }
 }

@@ -1,6 +1,9 @@
+@import "../../styles/helpers.less";
+
 .detail-book {
   width: 100%;
   height: auto;
+
   button {
     border: none;
     background: transparent;
@@ -10,6 +13,10 @@
     font-size: 24px;
     padding-top: 11px;
     cursor: pointer;
+    .mobile({
+      font-size: 20px;
+line-height: 24px;
+    });
   }
 
   &-cover-empty {
@@ -83,6 +90,13 @@
   &-container {
     width: 835px;
     margin: 0 auto;
+    .tablet({
+      width: 100%;
+    });
+    .mobile({
+      display: flex;
+      flex-direction: column;
+    });
   }
   &-description {
     /* width: 835px;
@@ -95,6 +109,9 @@
     &-container {
       width: 500px;
       padding-right: 20px;
+      .tablet({
+        width: 100%;
+      });
     }
 
     &-name {
@@ -103,8 +120,10 @@
       font-weight: normal;
       font-size: 50px;
       line-height: 59px;
-
-      color: #000000;
+      .tablet({
+        font-size: 30px;
+        line-height: 30px;
+      });
     }
     &-author-like {
       display: flex;
