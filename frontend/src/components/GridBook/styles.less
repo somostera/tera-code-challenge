@@ -1,0 +1,92 @@
+@import "../../styles/helpers.less";
+
+.grid {
+  display: grid;
+  gap: 40px;
+  .desktop({
+    gap: 25px;
+  });
+  &-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.grid-columns {
+  grid-template-columns: repeat(4, 423px);
+
+  .desktop({
+    grid-template-columns: repeat(3, 423px);
+  });
+  .tabletL({
+    grid-template-columns: repeat(2, 423px);
+  });
+  .tablet({
+    grid-template-columns: repeat(1, 423px);
+  });
+  .mobileL({
+    grid-template-columns: repeat(1, 100%);
+  });
+}
+
+.grid-template-rows {
+  grid-template-rows: 380px;
+}
+
+.grid-total {
+  padding: 30px 0;
+  span {
+    font-family: "Rubik", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+
+    color: #6c6c6c;
+  }
+  .mobile({
+    padding: 68px 0 30px;
+  });
+}
+.font_pagination() {
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 28px;
+
+  color: #000000;
+}
+
+.pagination {
+  &-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+
+    .ant-pagination-item-active a {
+      color: #000000;
+    }
+
+    .ant-pagination-prev .ant-pagination-item-link,
+    .ant-pagination-next .ant-pagination-item-link {
+      border: none;
+      background: transparent;
+      .font_pagination();
+      &::selection {
+        font-weight: bold;
+      }
+    }
+    .ant-pagination-item {
+      .font_pagination();
+      border: none;
+      background: transparent;
+      &::selection {
+        font-weight: bold;
+      }
+    }
+  }
+}
