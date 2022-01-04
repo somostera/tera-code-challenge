@@ -49,3 +49,44 @@
     padding: 68px 0 30px;
   });
 }
+.font_pagination() {
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 28px;
+
+  color: #000000;
+}
+
+.pagination {
+  &-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+
+    .ant-pagination-item-active a {
+      color: #000000;
+    }
+
+    .ant-pagination-prev .ant-pagination-item-link,
+    .ant-pagination-next .ant-pagination-item-link {
+      border: none;
+      background: transparent;
+      .font_pagination();
+      &::selection {
+        font-weight: bold;
+      }
+    }
+    .ant-pagination-item {
+      .font_pagination();
+      border: none;
+      background: transparent;
+      &::selection {
+        font-weight: bold;
+      }
+    }
+  }
+}
