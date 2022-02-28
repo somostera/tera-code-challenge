@@ -1,0 +1,72 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.card-container {
+  width: 423px;
+  height: 380px;
+
+  display: block;
+  text-align: center;
+  background: #f1ffff;
+}
+
+.card-imagem {
+  align-items: center;
+  display: block;
+}
+
+.btn-image-card {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.imagem {
+  width: 196px;
+  height: 257px;
+  cursor: pointer;
+}
+
+.text-card {
+  text-align: left;
+  margin-top: 23px;
+  padding: 0 19px;
+}
+
+.title-card {
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 28px;
+
+  color: #000000;
+}
+
+.subtitle-card {
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 17px;
+
+  color: #000000;
+}
+
+.subtext-content {
+  display: flex;
+}
+
+.subtext {
+  display: block;
+  margin-right: 194px;
+}
+
+.likeIcon {
+  width: 24px;
+  height: 22px;
+
+  cursor: pointer;
+}
