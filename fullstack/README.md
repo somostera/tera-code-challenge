@@ -2,7 +2,7 @@
 
 Olá, bora pro desafio? :dancers:
 
-O nosso desafio proposto é uma aplicação de uma livraria, composto de uma API, um FrontEnd e um banco de dados, usando o design da aplicação que está aqui no repositório. A stack deve ser Nodejs e Vuejs. 
+O nosso desafio proposto é uma aplicação de uma livraria, composto de uma API, um FrontEnd e um banco de dados, usando o design da aplicação que está aqui no repositório. A stack deve ser Nodejs e NextJS. 
 
 O teste precisa estar hospedado em algum lugar (ex: Firebase, Heroku, Github Hosting, etc...).
 
