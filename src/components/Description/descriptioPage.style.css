@@ -1,0 +1,67 @@
+.btn-back {
+  width: 177px;
+  height: 18px;
+  margin-top: 27px;
+  margin-left: 88px;
+
+  background-color: transparent;
+  text-decoration: none;
+  border: none;
+
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 28px;
+
+  align-items: center;
+  display: flex;
+  cursor: pointer;
+  color: #6c6c6c;
+}
+
+.description-content {
+  margin: 63px 400px;
+  display: block;
+}
+
+.text-content-description {
+  display: flex;
+}
+
+.text-description {
+  margin-right: 270px;
+}
+
+.description-text {
+  display: inline-flex;
+}
+
+.image-desc {
+  width: 319px;
+  height: 418px;
+  float: right;
+  padding: 0 0 13px 33px;
+  margin: 0px 10px 10px 0;
+}
+
+@media screen and (max-width: 523px) {
+  .description-content {
+    margin: 46px 26px;
+  }
+
+  .btn-back {
+    width: 83px;
+    height: 26px;
+
+    margin-top: 10px;
+    margin-left: 25px;
+
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .description-text {
+    display: block;
+  }
+}
