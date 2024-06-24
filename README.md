@@ -1,5 +1,8 @@
 # Tera Code Challenge
 
-Olá, bora pro desafio? :dancers:
+Url de prod: https://tera-library-app-web.vercel.app/
 
-Entra na pasta do desafio a ser feito (lembra da vaga que você se aplicou 👀) e brilha! ✨✨✨
+
+Url do repositorio front end: https://github.com/TChinasso/tera-library-app-web
+
+Url do repositorio back end: https://github.com/TChinasso/tera-library-api
