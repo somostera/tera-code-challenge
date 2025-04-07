@@ -36,7 +36,7 @@ export default function CoursesPage() {
         <select
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-          className='flex-1 border border-gray-300 bg-white text-gray-700 px-4 py-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition'
+          className='border border-gray-300 bg-white text-gray-700 dark:border-zinc-700 dark:bg-gray-900 dark:text-gray-100 px-4 py-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition'
         >
           <option value=''>Todas as categorias</option>
           <option value='Design'>Design</option>
@@ -48,7 +48,7 @@ export default function CoursesPage() {
         <select
           value={level}
           onChange={(e) => setLevel(e.target.value)}
-          className='flex-1 border border-gray-300 bg-white text-gray-700 px-4 py-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition'
+          className='border border-gray-300 bg-white text-gray-700 dark:border-zinc-700 dark:bg-gray-900 dark:text-gray-100 px-4 py-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition'
         >
           <option value=''>Todos os níveis</option>
           <option value='iniciante'>Iniciante</option>
@@ -60,7 +60,7 @@ export default function CoursesPage() {
       {loading ? (
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
           {[...Array(9)].map((_, i) => (
-            <div key={i} className='p-4  rounded-2xl shadow-md bg-white'>
+            <div key={i} className='p-4  rounded-2xl shadow-md bg-white dark:bg-gray-900' >
               <Skeleton height={24} width='60%' className='mb-4' />
               <Skeleton height={16} width='90%' className='mb-2' />
               <Skeleton height={16} width='80%' />

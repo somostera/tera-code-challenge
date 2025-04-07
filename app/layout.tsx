@@ -1,9 +1,15 @@
+// app/layout.tsx
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+
 import { CoursesProvider } from "@/context/SearchContext";
+
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+
+import { ThemeProvider } from "@/providers/Theme";
+
+import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,17 +32,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <CoursesProvider>
-          <div className='min-h-screen flex flex-col bg-gray-50 text-gray-800'>
-            <Navbar />
-            <main className='flex-1'>{children}</main>
-            <Footer />
-          </div>
-        </CoursesProvider>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <CoursesProvider>
+            <div className="min-h-screen flex flex-col bg-gray-50 text-gray-800 dark:bg-gray-950 dark:text-gray-100 transition-colors duration-300">
+              <Navbar />
+              <main className="flex-1">{children}</main>
+              <Footer />
+            </div>
+          </CoursesProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

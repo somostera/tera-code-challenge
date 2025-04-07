@@ -6,13 +6,13 @@ import { motion } from "framer-motion";
 export default function NotFound() {
   return (
     <motion.div
-      className='flex flex-col items-center justify-center h-screen text-center px-4'
+      className="flex flex-col items-center justify-center h-screen text-center px-4 bg-white dark:bg-gray-900"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
       <motion.h1
-        className='text-7xl font-extrabold text-blue-600'
+        className="text-7xl font-extrabold text-blue-600 dark:text-blue-400"
         initial={{ scale: 0.8 }}
         animate={{ scale: 1 }}
         transition={{ delay: 0.2 }}
@@ -21,7 +21,7 @@ export default function NotFound() {
       </motion.h1>
 
       <motion.p
-        className='text-2xl mt-4 text-gray-800'
+        className="text-2xl mt-4 text-gray-800 dark:text-white"
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.3 }}
@@ -30,7 +30,7 @@ export default function NotFound() {
       </motion.p>
 
       <motion.p
-        className='text-gray-500 mt-2 max-w-md'
+        className="text-gray-500 dark:text-gray-400 mt-2 max-w-md"
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.4 }}
@@ -45,8 +45,8 @@ export default function NotFound() {
         transition={{ delay: 0.5 }}
       >
         <Link
-          href='/'
-          className='mt-6 inline-block px-6 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition'
+          href="/"
+          className="mt-6 inline-block px-6 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition"
         >
           Voltar para o início
         </Link>
