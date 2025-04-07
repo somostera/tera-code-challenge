@@ -8,7 +8,7 @@ export default function Navbar() {
 
   return (
     <header className='bg-white shadow-md py-4 px-6 flex flex-col md:flex-row md:items-center justify-between gap-4'>
-      <Link href={"/courses"} className='text-2xl font-bold'>
+      <Link href={"/"} className='text-2xl font-bold' data-cy="back-to-home">
         Plataforma de Cursos
       </Link>
       <input

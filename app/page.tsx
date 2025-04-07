@@ -1,38 +1,84 @@
-import React from "react";
-import CourseList from "@/components/List";
-import { getCourses } from "@/actions/getCourses";
+"use client";
 
-export default async function CoursesPage() {
-  const data = await getCourses();
+import CourseCard from "@/components/Card/Course";
+import { useCourses } from "@/context/SearchContext";
+import { motion } from "framer-motion";
+
+export default function CoursesPage() {
+  const { filteredCourses, category, setCategory, level, setLevel } =
+    useCourses();
 
   return (
-    <div className='min-h-screen flex flex-col bg-gray-50 text-gray-800'>
-      <header className='bg-white shadow-md py-4 px-6 flex items-center justify-between'>
-        <h1 className='text-2xl font-bold'>Plataforma de Cursos</h1>
-        <nav className='space-x-4 text-sm'>
-          <a href='#' className='hover:underline'>
-            Início
-          </a>
-          <a href='#' className='hover:underline'>
-            Cursos
-          </a>
-          <a href='#' className='hover:underline'>
-            Contato
-          </a>
-        </nav>
-      </header>
+    <motion.main
+      className='p-6'
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.4 }}
+    >
+      <motion.div
+        className='flex flex-wrap gap-4 mb-6'
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.4 }}
+      >
+        <select
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          className='w-full max-w-xs border border-gray-300 bg-white text-gray-700 px-4 py-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition'
+        >
+          <option value=''>Todas as categorias</option>
+          <option value='Design'>Design</option>
+          <option value='Desenvolvimento'>Desenvolvimento</option>
+          <option value='Produto'>Produto</option>
+          <option value='Dados'>Dados</option>
+        </select>
 
-      <main className='flex-1'>
-        <section className='max-w-7xl mx-auto py-8 px-6'>
-          <h2 className='text-3xl font-semibold mb-6'>Nossos Cursos</h2>
-          <CourseList courses={data.courses} />
-        </section>
-      </main>
+        <select
+          value={level}
+          onChange={(e) => setLevel(e.target.value)}
+          className='w-full max-w-xs border border-gray-300 bg-white text-gray-700 px-4 py-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition'
+        >
+          <option value=''>Todos os níveis</option>
+          <option value='iniciante'>Iniciante</option>
+          <option value='intermediario'>Intermediário</option>
+          <option value='avancado'>Avançado</option>
+        </select>
+      </motion.div>
 
-      <footer className='bg-white border-t text-sm text-center text-gray-500 py-4 mt-8'>
-        © {new Date().getFullYear()} Plataforma de Cursos. Todos os direitos
-        reservados.
-      </footer>
-    </div>
+      {filteredCourses.length === 0 ? (
+        <p
+          className='text-center text-gray-500 text-lg mt-10'
+          data-cy='no-courses-message'
+        >
+          Nenhum curso encontrado.
+        </p>
+      ) : (
+        <motion.div
+          className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'
+          initial='hidden'
+          animate='visible'
+          variants={{
+            hidden: {},
+            visible: {
+              transition: {
+                staggerChildren: 0.1,
+              },
+            },
+          }}
+        >
+          {filteredCourses.map((course) => (
+            <motion.div
+              key={course.id}
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 },
+              }}
+            >
+              <CourseCard course={course} data-cy='course-card' />
+            </motion.div>
+          ))}
+        </motion.div>
+      )}
+    </motion.main>
   );
 }
