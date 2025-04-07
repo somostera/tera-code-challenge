@@ -4,6 +4,9 @@
 
 Projeto desenvolvido com **Next.js 15** que exibe um catálogo de cursos com filtros, visualização de detalhes e interações modernas com animações.
 
+🔗 Acesse o site online:
+👉 https://tera-code-challenge.vercel.app/
+
 ## 🚀 Tecnologias Utilizadas
 
 - **Next.js 15**: Framework React com suporte a SSR e Server Actions.
