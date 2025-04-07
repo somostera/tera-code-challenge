@@ -1,24 +1,32 @@
 "use client";
 
 import CourseCard from "@/components/Card/Course";
-import { useCourses } from "@/context/SearchContext";
+import { useCoursesStore } from "@/store/Courses";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 export default function CoursesPage() {
-  const { filteredCourses, category, setCategory, level, setLevel } =
-    useCourses();
+  const {
+    filteredCourses,
+    category,
+    setCategory,
+    level,
+    setLevel,
+    fetchCourses,
+  } = useCoursesStore();
+
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
+    const loadData = async () => {
+      await fetchCourses();
       setLoading(false);
-    }, 1500);
+    };
 
-    return () => clearTimeout(timeout);
-  }, []);
+    loadData();
+  }, [fetchCourses]);
 
   return (
     <motion.main
@@ -60,7 +68,10 @@ export default function CoursesPage() {
       {loading ? (
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
           {[...Array(9)].map((_, i) => (
-            <div key={i} className='p-4  rounded-2xl shadow-md bg-white dark:bg-gray-900' >
+            <div
+              key={i}
+              className='p-4 rounded-2xl shadow-md bg-white dark:bg-gray-900'
+            >
               <Skeleton height={24} width='60%' className='mb-4' />
               <Skeleton height={16} width='90%' className='mb-2' />
               <Skeleton height={16} width='80%' />

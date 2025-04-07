@@ -1,12 +1,9 @@
 import Navbar from "@/components/Navbar";
-import { CoursesProvider } from "@/context/SearchContext";
 
 describe("<Navbar />", () => {
   it("renders and interacts correctly", () => {
     cy.mount(
-      <CoursesProvider>
         <Navbar />
-      </CoursesProvider>
     );
 
     cy.get("[data-cy=back-to-home]")

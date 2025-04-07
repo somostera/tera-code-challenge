@@ -1,8 +1,6 @@
-// app/layout.tsx
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
-import { CoursesProvider } from "@/context/SearchContext";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -37,13 +35,11 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <CoursesProvider>
             <div className="min-h-screen flex flex-col bg-gray-50 text-gray-800 dark:bg-gray-950 dark:text-gray-100 transition-colors duration-300">
               <Navbar />
               <main className="flex-1">{children}</main>
               <Footer />
             </div>
-          </CoursesProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -1,12 +1,13 @@
 "use client";
 
-import { useCourses } from "@/context/SearchContext";
+
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import { useCoursesStore } from "@/store/Courses";
 
 export default function Navbar() {
-  const { search, setSearch } = useCourses();
+  const { search, setSearch } = useCoursesStore();
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
