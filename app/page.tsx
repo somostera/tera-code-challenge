@@ -3,10 +3,22 @@
 import CourseCard from "@/components/Card/Course";
 import { useCourses } from "@/context/SearchContext";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 export default function CoursesPage() {
   const { filteredCourses, category, setCategory, level, setLevel } =
     useCourses();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setLoading(false);
+    }, 1500);
+
+    return () => clearTimeout(timeout);
+  }, []);
 
   return (
     <motion.main
@@ -45,7 +57,17 @@ export default function CoursesPage() {
         </select>
       </motion.div>
 
-      {filteredCourses.length === 0 ? (
+      {loading ? (
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
+          {[...Array(12)].map((_, i) => (
+            <div key={i} className='p-4 border rounded-lg shadow-sm'>
+              <Skeleton height={30} width={`40%`} className='mb-4' />
+              <Skeleton height={20} width={`80%`} className='mb-2' />
+              <Skeleton height={20} width={`10%`} />
+            </div>
+          ))}
+        </div>
+      ) : filteredCourses.length === 0 ? (
         <p
           className='text-center text-gray-500 text-lg mt-10'
           data-cy='no-courses-message'
