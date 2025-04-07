@@ -1,313 +1,36 @@
-# Tera Code Challenge
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Objetivo
+## Getting Started
 
-Desenvolver uma aplicação web simples que demonstre suas habilidades com Next.js, React Server Components, Server Actions e gerenciamento de estado no cliente.
+First, run the development server:
 
-## Requisitos
-
-### Tecnologias Obrigatórias
-- [Next.js (v15+, App router)](https://nextjs.org/)
-- [React Server Components](https://react.dev/reference/rsc/server-components#server-components-with-a-server)
-- [Server Actions](https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations)
-- [Tailwind CSS (v4+)](https://tailwindcss.com/)
-- Uma library de state management à sua escolha
-
-### Funcionalidades
-
-#### 1. Página Principal - Catálogo de Cursos
-- Criar uma página principal que exiba um catálogo de cursos utilizando SSR
-- Os dados devem ser do JSON fornecido ao final deste documento
-- A página deve mostrar os cursos em cards com:
-  - Título do curso
-  - Descrição curta
-  - Categoria
-  - Nível de dificuldade
-
-#### 2. Funcionalidade de Filtros (Estado Client-Side)
-- Implementar filtros para os cursos por:
-  - Categoria (todas categorias disponíveis no JSON)
-  - Nível de dificuldade (iniciante, intermediário, avançado)
-- Os filtros devem ser gerenciados com estado client-side
-- A filtragem deve acontecer sem recarregar a página
-
-#### 3. Detalhe do Curso
-- Ao clicar em um curso, exibir uma página de detalhes com:
-  - Todas as informações do curso
-  - Lista de módulos
-  - Botão para "Matricular-se" chamando uma Server Action apropriada (a action não precisa fazer nada, apenas retornar sucesso)
-
-#### 4. Bônus (opcional)
-- Utilizar framer-motion para animações ou transições
-
-## Critérios de Avaliação
-
-Seu projeto será avaliado com base nos seguintes critérios:
-
-1. **Qualidade do código**
-   - Clean code, legibilidade e organização
-   - Componentização adequada
-   - Tipos apropriados (TypeScript é um diferencial)
-   - Ser executado sem erros depois de `npm install` e `npm run dev`
-
-2. **Uso correto das tecnologias**
-   - Implementação adequada de Server Components e Server Actions
-   - Uso apropriado de Client Components apenas onde necessário
-   - Gerenciamento eficiente de estado client-side
-
-3. **Experiência do usuário**
-   - Interface visual agradável e responsiva
-   - Feedback ao usuário durante carregamentos e ações
-
-4. **Performance**
-   - Otimização de renderização
-   - Carregamento eficiente de dados
-
-## Entrega
-
-- Crie um fork deste repositório no GitHub
-- Ao final, abra um PR atualizando este README com:
-  - Instruções para executar o projeto
-  - Escolhas técnicas e justificativas
-  - Desafios enfrentados e soluções aplicadas
-- O prazo para entrega é de 5 dias corridos
-
-## Dicas
-
-- Foque primeiro na funcionalidade principal antes de adicionar recursos extras ou estilizações
-- Utilize as documentações fornecidas acima para entender bem Server Components e Server Actions
-- Considere a experiência do usuário, mesmo sendo um teste técnico
-- Não se preocupe com autenticação ou persistência de dados além do que foi solicitado
-
-Boa sorte! Estamos ansiosos para ver sua solução.
-
-----
-
-### Dados
-
-```json
-{
-  "courses": [
-    {
-      "id": 1,
-      "title": "UX Design Fundamentals",
-      "short_description": "Aprenda os fundamentos de UX Design e crie experiências incríveis",
-      "full_description": "Este curso aborda os princípios fundamentais de User Experience Design, desde pesquisa com usuários até prototipagem. Você aprenderá metodologias práticas para criar produtos digitais centrados no usuário.",
-      "category": "Design",
-      "level": "iniciante",
-      "duration_hours": 20,
-      "modules": [
-        {
-          "title": "Introdução ao UX Design",
-          "lessons": 4
-        },
-        {
-          "title": "Pesquisa com Usuários",
-          "lessons": 5
-        },
-        {
-          "title": "Prototipagem e Testes",
-          "lessons": 6
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "title": "React Avançado",
-      "short_description": "Domine conceitos avançados de React e construa aplicações complexas",
-      "full_description": "Este curso aprofunda os conceitos avançados do React, incluindo hooks personalizados, context API, otimização de performance e integração com APIs externas. Ideal para quem já conhece os fundamentos e quer se tornar um especialista.",
-      "category": "Desenvolvimento",
-      "level": "avancado",
-      "duration_hours": 30,
-      "modules": [
-        {
-          "title": "Hooks Avançados",
-          "lessons": 7
-        },
-        {
-          "title": "Gerenciamento de Estado",
-          "lessons": 8
-        },
-        {
-          "title": "Performance e Otimização",
-          "lessons": 6
-        },
-        {
-          "title": "Testes e Deployment",
-          "lessons": 5
-        }
-      ]
-    },
-    {
-      "id": 3,
-      "title": "Product Management 101",
-      "short_description": "Inicie sua carreira em gestão de produtos digitais",
-      "full_description": "Este curso introdutório à Gestão de Produtos aborda desde a definição de visão e estratégia até metodologias ágeis para execução. Ideal para quem quer iniciar na carreira ou profissionais que desejam formalizar seus conhecimentos.",
-      "category": "Produto",
-      "level": "iniciante",
-      "duration_hours": 25,
-      "modules": [
-        {
-          "title": "Fundamentos de Produto",
-          "lessons": 5
-        },
-        {
-          "title": "Descoberta e Validação",
-          "lessons": 6
-        },
-        {
-          "title": "Métricas e Analytics",
-          "lessons": 4
-        },
-        {
-          "title": "Execução e Delivery",
-          "lessons": 5
-        }
-      ]
-    },
-    {
-      "id": 4,
-      "title": "Data Science para Produto",
-      "short_description": "Use dados para tomar melhores decisões de produto",
-      "full_description": "Este curso ensina como utilizar ciência de dados para embasar decisões de produto. Desde análise exploratória até testes A/B e modelos preditivos, você aprenderá a extrair insights valiosos de dados para criar produtos melhores.",
-      "category": "Dados",
-      "level": "intermediario",
-      "duration_hours": 35,
-      "modules": [
-        {
-          "title": "Fundamentos de Análise de Dados",
-          "lessons": 6
-        },
-        {
-          "title": "Métricas para Produto",
-          "lessons": 5
-        },
-        {
-          "title": "Testes A/B",
-          "lessons": 7
-        },
-        {
-          "title": "Modelos Preditivos",
-          "lessons": 8
-        }
-      ]
-    },
-    {
-      "id": 5,
-      "title": "IA Generativa para Designers",
-      "short_description": "Aprenda a usar IA para potencializar seu trabalho de design",
-      "full_description": "Este curso explora como designers podem utilizar Inteligência Artificial generativa para amplificar sua criatividade e produtividade. Desde ferramentas de geração de imagens até assistentes de design, você aprenderá a incorporar IA no seu fluxo de trabalho.",
-      "category": "Design",
-      "level": "intermediario",
-      "duration_hours": 18,
-      "modules": [
-        {
-          "title": "Fundamentos de IA Generativa",
-          "lessons": 4
-        },
-        {
-          "title": "Ferramentas de IA para Design",
-          "lessons": 6
-        },
-        {
-          "title": "Prompts e Direção Criativa",
-          "lessons": 5
-        },
-        {
-          "title": "Integrando IA no Fluxo de Trabalho",
-          "lessons": 3
-        }
-      ]
-    },
-    {
-      "id": 6,
-      "title": "Full-Stack JavaScript",
-      "short_description": "Desenvolva aplicações completas com JavaScript",
-      "full_description": "Este curso abrangente ensina desenvolvimento full-stack com JavaScript, desde o front-end com React até back-end com Node.js. Você aprenderá a construir aplicações completas, incluindo autenticação, banco de dados e deployment.",
-      "category": "Desenvolvimento",
-      "level": "intermediario",
-      "duration_hours": 45,
-      "modules": [
-        {
-          "title": "Front-end com React",
-          "lessons": 10
-        },
-        {
-          "title": "Back-end com Node.js",
-          "lessons": 12
-        },
-        {
-          "title": "Bancos de Dados",
-          "lessons": 8
-        },
-        {
-          "title": "Autenticação e Segurança",
-          "lessons": 6
-        },
-        {
-          "title": "Deployment e DevOps",
-          "lessons": 5
-        }
-      ]
-    },
-    {
-      "id": 7,
-      "title": "Product Leadership",
-      "short_description": "Desenvolva habilidades de liderança em produto",
-      "full_description": "Este curso avançado aborda os desafios e estratégias de liderança em produto. Desde gestão de times e stakeholders até definição de visão de longo prazo e estratégia de produto, ideal para PMs experientes que buscam papéis de liderança.",
-      "category": "Produto",
-      "level": "avancado",
-      "duration_hours": 30,
-      "modules": [
-        {
-          "title": "Liderança e Gestão de Times",
-          "lessons": 7
-        },
-        {
-          "title": "Estratégia e Visão de Produto",
-          "lessons": 8
-        },
-        {
-          "title": "Relacionamento com Stakeholders",
-          "lessons": 5
-        },
-        {
-          "title": "Métricas e OKRs",
-          "lessons": 6
-        },
-        {
-          "title": "Cultura de Produto",
-          "lessons": 4
-        }
-      ]
-    },
-    {
-      "id": 8,
-      "title": "Análise de Dados com Python",
-      "short_description": "Aprenda a analisar e visualizar dados com Python",
-      "full_description": "Este curso ensina análise e visualização de dados utilizando Python e suas principais bibliotecas. Desde manipulação de dados com Pandas até visualizações com Matplotlib e análises estatísticas, você aprenderá a extrair insights valiosos de conjuntos de dados complexos.",
-      "category": "Dados",
-      "level": "iniciante",
-      "duration_hours": 28,
-      "modules": [
-        {
-          "title": "Introdução ao Python para Dados",
-          "lessons": 6
-        },
-        {
-          "title": "Manipulação de Dados com Pandas",
-          "lessons": 8
-        },
-        {
-          "title": "Visualização com Matplotlib e Seaborn",
-          "lessons": 7
-        },
-        {
-          "title": "Análise Estatística Básica",
-          "lessons": 5
-        }
-      ]
-    }
-  ]
-}
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
