@@ -22,13 +22,13 @@ export default function CoursesPage() {
 
   return (
     <motion.main
-      className='p-6'
+      className='p-6 max-w-7xl mx-auto'
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.4 }}
     >
       <motion.div
-        className='flex flex-wrap gap-4 mb-6'
+        className='flex flex-col sm:flex-row gap-4 mb-8'
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.4 }}
@@ -36,7 +36,7 @@ export default function CoursesPage() {
         <select
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-          className='w-full max-w-xs border border-gray-300 bg-white text-gray-700 px-4 py-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition'
+          className='flex-1 border border-gray-300 bg-white text-gray-700 px-4 py-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition'
         >
           <option value=''>Todas as categorias</option>
           <option value='Design'>Design</option>
@@ -48,7 +48,7 @@ export default function CoursesPage() {
         <select
           value={level}
           onChange={(e) => setLevel(e.target.value)}
-          className='w-full max-w-xs border border-gray-300 bg-white text-gray-700 px-4 py-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition'
+          className='flex-1 border border-gray-300 bg-white text-gray-700 px-4 py-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition'
         >
           <option value=''>Todos os níveis</option>
           <option value='iniciante'>Iniciante</option>
@@ -59,17 +59,17 @@ export default function CoursesPage() {
 
       {loading ? (
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
-          {[...Array(12)].map((_, i) => (
-            <div key={i} className='p-4 border rounded-lg shadow-sm'>
-              <Skeleton height={30} width={`40%`} className='mb-4' />
-              <Skeleton height={20} width={`80%`} className='mb-2' />
-              <Skeleton height={20} width={`10%`} />
+          {[...Array(9)].map((_, i) => (
+            <div key={i} className='p-4  rounded-2xl shadow-md bg-white'>
+              <Skeleton height={24} width='60%' className='mb-4' />
+              <Skeleton height={16} width='90%' className='mb-2' />
+              <Skeleton height={16} width='80%' />
             </div>
           ))}
         </div>
       ) : filteredCourses.length === 0 ? (
         <p
-          className='text-center text-gray-500 text-lg mt-10'
+          className='text-center text-gray-500 text-lg mt-12'
           data-cy='no-courses-message'
         >
           Nenhum curso encontrado.
@@ -82,9 +82,7 @@ export default function CoursesPage() {
           variants={{
             hidden: {},
             visible: {
-              transition: {
-                staggerChildren: 0.1,
-              },
+              transition: { staggerChildren: 0.1 },
             },
           }}
         >
@@ -96,7 +94,7 @@ export default function CoursesPage() {
                 visible: { opacity: 1, y: 0 },
               }}
             >
-              <CourseCard course={course} data-cy='course-card' />
+              <CourseCard course={course} />
             </motion.div>
           ))}
         </motion.div>

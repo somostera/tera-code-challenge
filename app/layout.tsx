@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { CoursesProvider } from "@/context/SearchContext";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,10 +34,7 @@ export default function RootLayout({
           <div className='min-h-screen flex flex-col bg-gray-50 text-gray-800'>
             <Navbar />
             <main className='flex-1'>{children}</main>
-            <footer className='bg-white border-t text-sm text-center text-gray-500 py-4 mt-8'>
-              © {new Date().getFullYear()} Plataforma de Cursos. Todos os
-              direitos reservados.
-            </footer>
+            <Footer />
           </div>
         </CoursesProvider>
       </body>
