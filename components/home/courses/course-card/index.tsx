@@ -1,13 +1,18 @@
+"use client";
+import { motion } from "framer-motion";
 import Image from "next/image";
 
 interface CourseCardProps {
   course: Course;
+  index: number;
 }
 
-export default function CourseCard({ course }: CourseCardProps) {
+export default function CourseCard({ course, index }: CourseCardProps) {
   return (
-    <div
-      key={course.id}
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.6 + index / 10, ease: "linear" }}
       className="bg-white rounded-xl shadow-sm p-6 hover:shadow-md hover:scale-102 transition"
     >
       <Image
@@ -67,6 +72,6 @@ export default function CourseCard({ course }: CourseCardProps) {
         </div>
       </div>
       <p className="text-md text-gray-500 mt-2">{course.short_description}</p>
-    </div>
+    </motion.div>
   );
 }

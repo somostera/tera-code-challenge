@@ -8,13 +8,11 @@ export default function Courses() {
 
   return (
     <div className="py-10">
-      <div className="flex items-center py-6 gap-7">
-        <CoursesFilter />
-      </div>
+      <CoursesFilter />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7">
         {!courses?.loading &&
-          courses?.data?.map((course) => (
-            <CourseCard course={course} key={course.id} />
+          courses?.data?.map((course, index) => (
+            <CourseCard course={course} key={course.id} index={index} />
           ))}
       </div>
     </div>
