@@ -54,6 +54,9 @@ export function CoursePanel({ coursePromise }: CoursePanelProps) {
           </li>
         ))}
       </ul>
+      <button className="bg-action mt-5 block cursor-pointer px-6 py-3 text-center font-extrabold text-black uppercase">
+        Matricular-se
+      </button>
     </>
   );
 }

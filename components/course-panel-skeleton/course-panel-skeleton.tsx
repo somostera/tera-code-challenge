@@ -46,6 +46,9 @@ export function CoursePanelSkeleton() {
           </span>
         </li>
       </ul>
+      <button className="bg-gray text-gray mt-5 block cursor-pointer px-6 py-3 text-center font-extrabold uppercase">
+        Matricular-se
+      </button>
     </>
   );
 }
