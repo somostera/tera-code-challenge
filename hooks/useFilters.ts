@@ -22,8 +22,11 @@ export const useFilters = () => {
 
   useEffect(() => {
     fetchCategories();
+  }, [fetchCategories]);
+
+  useEffect(() => {
     fetchLevels();
-  }, []);
+  }, [fetchLevels]);
 
   return {
     categories,
