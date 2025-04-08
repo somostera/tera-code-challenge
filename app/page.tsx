@@ -2,11 +2,25 @@ import Courses from "@/components/home/courses";
 
 export default function Home() {
   return (
-    <div className="container mx-auto p-4">
-      <div className="bg-[#1E1E3F] text-white font-sans flex items-center justify-center py-50">
-        <div className="max-w-md mx-auto">Cursos</div>
+    <div className="max-w font-sans">
+      <div
+        className="bg-amber-50 flex items-center justify-center py-30"
+        style={{
+          backgroundImage: "url(/images/banner.jpg)",
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+        }}
+      >
+        <div className="mx-auto text-center">
+          <h2 className="text-blue-950 text-[48px] font-semibold">
+            Explore Nossos Cursos
+          </h2>
+          <p className="text-sm text-gray-600">Lorem Ipsum</p>
+        </div>
       </div>
-      <Courses />
+      <div className="container mx-auto">
+        <Courses />
+      </div>
     </div>
   );
 }

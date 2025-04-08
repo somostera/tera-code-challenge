@@ -44,7 +44,7 @@ const Select = ({ options, value, label, onChange }: SelectProps) => {
       <button
         onClick={() => setIsOpen(!isOpen)}
         type="button"
-        className="inline-flex justify-between w-full capitalize rounded-md shadow-sm px-5 py-4 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition"
+        className="cursor-pointer inline-flex justify-between w-full capitalize rounded-md shadow-sm px-5 py-4 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition"
         aria-haspopup="true"
         aria-expanded={isOpen}
       >
@@ -53,7 +53,7 @@ const Select = ({ options, value, label, onChange }: SelectProps) => {
           className="-mr-1 ml-2 h-5 w-5"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
-          fill="currentColor"
+          fill="var(--color-gray-400)"
           aria-hidden="true"
         >
           <path
@@ -69,7 +69,7 @@ const Select = ({ options, value, label, onChange }: SelectProps) => {
           <div className="px-2 py-3">
             <button
               onClick={() => handleOptionClick("")}
-              className="block w-full text-left px-4 py-2 text-sm text-gray-700 rounded-md hover:bg-emerald-500 hover:text-white transition"
+              className="cursor-pointer block w-full text-left px-4 py-2 text-sm text-gray-700 rounded-md hover:bg-emerald-500 hover:text-white transition"
             >
               All
             </button>
@@ -77,7 +77,7 @@ const Select = ({ options, value, label, onChange }: SelectProps) => {
               <button
                 key={option}
                 onClick={() => handleOptionClick(option)}
-                className="block w-full text-left px-4 py-2 text-sm text-gray-700 rounded-md capitalize hover:bg-emerald-500 hover:text-white transition"
+                className="cursor-pointer block w-full text-left px-4 py-2 text-sm text-gray-700 rounded-md capitalize hover:bg-emerald-500 hover:text-white transition"
               >
                 {option}
               </button>
