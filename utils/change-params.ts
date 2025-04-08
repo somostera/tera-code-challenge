@@ -1,4 +1,4 @@
-export const redirectWithoutRefresh = (
+export const changeParams = (
   queryParams: Record<string, string | number | boolean>
 ) => {
   const queryString = Object.entries(queryParams)
