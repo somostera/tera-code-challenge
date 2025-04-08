@@ -11,7 +11,7 @@ export default function CoursesFilter() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1, ease: "linear" }}
-      className="flex items-center py-6 gap-7"
+      className="flex items-center pb-6 gap-7"
     >
       {!!categories?.data?.length && (
         <Select

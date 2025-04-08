@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <div className="max-w font-sans">
       <div
-        className="bg-amber-50 flex items-center justify-center py-30"
+        className="bg-amber-50 flex items-center justify-center py-40"
         style={{
           backgroundImage: "url(/images/banner.jpg)",
           backgroundPosition: "center",

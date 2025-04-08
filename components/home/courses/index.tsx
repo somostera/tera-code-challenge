@@ -7,7 +7,7 @@ export default function Courses() {
   const { courses } = useCourses();
 
   return (
-    <div className="py-10">
+    <div className="py-20">
       <CoursesFilter />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7">
         {!courses?.loading &&
