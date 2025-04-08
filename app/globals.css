@@ -6,6 +6,7 @@
   --action: hsl(113 98% 75%);
   --white: hsl(0, 0%, 100%);
   --gray: hsl(0, 0%, 63%);
+  --purple: hsl(246, 50%, 47%);
 }
 
 @theme inline {
@@ -14,5 +15,6 @@
   --color-action: var(--action);
   --color-white: var(--white);
   --color-gray: var(--gray);
+  --color-purple: var(--purple);
   --font-anton: var(--font-anton);
 }
