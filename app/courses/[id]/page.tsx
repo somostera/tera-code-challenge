@@ -1,15 +1,32 @@
 import { CoursePanel } from "@/components/course-panel";
-import { CoursePanelSkeleton } from "@/components/course-panel-skeleton";
 import { Header } from "@/components/header";
 import { getCourseById } from "@/services/get-course-by-id";
 import Image from "next/image";
-import { Suspense } from "react";
+import { notFound } from "next/navigation";
 
 type CoursePageProps = { params: Promise<{ id: string }> };
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  const { course } = await getCourseById(Number(id));
+
+  return {
+    title: course.title,
+    description: course.full_description,
+  };
+}
+
 export default async function CoursePage({ params }: CoursePageProps) {
   const { id } = await params;
-  const response = getCourseById(Number(id));
+  const { course } = await getCourseById(Number(id));
+
+  if (!course) {
+    notFound();
+  }
 
   return (
     <>
@@ -17,9 +34,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
       <main>
         <section className="mx-auto my-10 grid w-[90%] max-w-[1000px] grid-cols-1 gap-3 md:grid-cols-2">
           <section className="order-2 md:order-1">
-            <Suspense fallback={<CoursePanelSkeleton />}>
-              <CoursePanel coursePromise={response} />
-            </Suspense>
+            <CoursePanel course={course} />
           </section>
           <section className="order-1 md:order-2">
             <Image

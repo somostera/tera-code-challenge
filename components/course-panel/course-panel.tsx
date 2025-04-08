@@ -1,13 +1,10 @@
-import { GetCourseByIdResponse } from "@/services/get-course-by-id";
-import { use } from "react";
+import { ICourse } from "@/models/course";
 
 export type CoursePanelProps = {
-  coursePromise: Promise<GetCourseByIdResponse>;
+  course: ICourse;
 };
 
-export function CoursePanel({ coursePromise }: CoursePanelProps) {
-  const { course } = use(coursePromise);
-
+export function CoursePanel({ course }: CoursePanelProps) {
   function formatHours(hours: number) {
     const formatter = new Intl.NumberFormat("pt-BR", {
       style: "unit",
