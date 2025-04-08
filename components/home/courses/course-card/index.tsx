@@ -14,21 +14,21 @@ export default function CourseCard({ course }: CourseCardProps) {
         width={200}
         height={100}
       />
-      <div className="flex items-center">
-        <span className="text-gray-700 capitalize text-sm px-3 py-1 rounded-md bg-gray-100 mr-2">
+      <div className="flex items-center gap-2">
+        <span className="text-white capitalize text-sm px-3 py-1 rounded-md bg-emerald-500">
           {course.category}
         </span>
-        <span className="text-gray-700 capitalize text-sm px-3 py-1 rounded-md bg-gray-100">
+        <span className="text-white capitalize text-sm px-3 py-1 rounded-md bg-emerald-500">
           {course.level}
         </span>
       </div>
       <h3 className="text-xl font-semibold mt-4 cursor-pointer hover:text-emerald-500 transition-colors">
         {course.title}
       </h3>
-      <div className="flex items-center py-2">
-        <div className="flex items-center mr-4">
+      <div className="flex items-center py-2 gap-4">
+        <div className="flex items-center gap-1">
           <svg
-            className="w-4 h-4 mr-1"
+            className="w-4 h-4"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="none"
@@ -43,9 +43,9 @@ export default function CourseCard({ course }: CourseCardProps) {
           </svg>
           <span className="text-gray-500">4 lessons</span>
         </div>
-        <div className="flex items-center mr-4">
+        <div className="flex items-center gap-1">
           <svg
-            className="w-4 h-4 mr-1"
+            className="w-4 h-4"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="none"

@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState, useTransition } from "react";
 
 export const useCourses = () => {
   const searchParams = useSearchParams();
-  const [isLoading, startTransition] = useTransition();
+  const [isCoursesLoading, startCoursesTransition] = useTransition();
   const [data, setData] = useState<Course[] | null>(null);
 
   const category = useMemo(
@@ -14,21 +14,21 @@ export const useCourses = () => {
 
   const level = useMemo(() => searchParams.get("level") || "", [searchParams]);
 
-  const handleFetch = async (filter: Filter) => {
-    startTransition(async () => {
+  const handleFetchCourses = async (filter: Filter) => {
+    startCoursesTransition(async () => {
       const result = await fetchCourses(filter);
       setData(result);
     });
   };
 
   useEffect(() => {
-    handleFetch({ category, level });
+    handleFetchCourses({ category, level });
   }, [category, level]);
 
   return {
-    handleFetch,
+    handleFetchCourses,
     data,
-    isLoading,
+    isCoursesLoading,
     category,
     level,
   };

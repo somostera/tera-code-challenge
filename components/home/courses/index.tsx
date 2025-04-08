@@ -1,26 +1,20 @@
 "use client";
-import { changeParams } from "@/utils/change-params";
-import CourseCard from "./course-card";
 import { useCourses } from "@/hooks/useCourses";
+import CoursesFilter from "@/components/home/courses/courses-filter";
+import CourseCard from "@/components/home/courses/course-card";
 
 export default function Courses() {
-  const { data, isLoading, category, level } = useCourses();
-
-  if (isLoading) return null;
+  const { data, isCoursesLoading, category, level } = useCourses();
 
   return (
-    <>
-      <button onClick={() => changeParams({ category: "Design", level })}>
-        Design
-      </button>
-      <button onClick={() => changeParams({ category, level: "iniciante" })}>
-        iniciante
-      </button>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 py-25">
-        {data?.map((course) => (
-          <CourseCard course={course} key={course.id} />
-        ))}
+    <div className="py-10">
+      <div className="flex items-center py-6 gap-7">
+        <CoursesFilter category={category} level={level} />
       </div>
-    </>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+        {!isCoursesLoading &&
+          data?.map((course) => <CourseCard course={course} key={course.id} />)}
+      </div>
+    </div>
   );
 }
