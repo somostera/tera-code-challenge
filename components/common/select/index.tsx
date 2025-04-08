@@ -77,7 +77,7 @@ const Select = ({ options, value, label, onChange }: SelectProps) => {
               <button
                 key={option}
                 onClick={() => handleOptionClick(option)}
-                className="block w-full text-left px-4 py-2 text-sm text-gray-700 rounded-md hover:bg-emerald-500 hover:text-white transition"
+                className="block w-full text-left px-4 py-2 text-sm text-gray-700 rounded-md capitalize hover:bg-emerald-500 hover:text-white transition"
               >
                 {option}
               </button>
