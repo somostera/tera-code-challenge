@@ -1,33 +1,10 @@
 "use client";
-import { useEffect, useMemo, useState, useTransition } from "react";
-import fetchCourses from "@/actions/courses";
 import { redirectWithoutRefresh } from "@/utils/redirect";
 import CourseCard from "./course-card";
-import { useSearchParams } from "next/navigation";
+import { useCourses } from "@/hooks/useCourses";
 
 export default function Courses() {
-  const searchParams = useSearchParams();
-
-  const [isLoading, startTransition] = useTransition();
-  const [data, setData] = useState<Course[] | null>(null);
-
-  const category = useMemo(
-    () => searchParams.get("category") || "",
-    [searchParams]
-  );
-  const level = useMemo(() => searchParams.get("level") || "", [searchParams]);
-  console.log(category);
-
-  const handleFetch = async (filter: Filter) => {
-    startTransition(async () => {
-      const result = await fetchCourses(filter);
-      setData(result);
-    });
-  };
-
-  useEffect(() => {
-    handleFetch({ category, level });
-  }, [category, level]);
+  const { data, isLoading, category, level } = useCourses();
 
   if (isLoading) return null;
 
