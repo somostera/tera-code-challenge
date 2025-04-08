@@ -11,7 +11,13 @@ export function Card({ course }: CardProps) {
       className="hover:bg-black-hover focus:bg-black-hover flex min-h-[420px] w-full max-w-[320px] flex-grow cursor-pointer grid-rows-[auto_auto_auto] flex-col justify-between bg-black p-4 text-white transition duration-300 ease-in-out hover:shadow-2xl focus:shadow-2xl"
     >
       <div className="my-2.5 flex max-h-[120px] justify-center">
-        <Image src="/design-icon.webp" alt="" width={120} height={120} />
+        <Image
+          src="/design-icon.webp"
+          alt=""
+          width={120}
+          height={120}
+          priority
+        />
       </div>
       <div className="">
         <h2 className="font-anton text-center text-2xl uppercase md:text-3xl">

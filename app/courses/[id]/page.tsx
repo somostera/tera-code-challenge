@@ -22,7 +22,13 @@ export default async function CoursePage({ params }: CoursePageProps) {
             </Suspense>
           </section>
           <section className="order-1 md:order-2">
-            <Image src="/course-banner.jpg" alt="" width={1280} height={853} />
+            <Image
+              src="/course-banner.jpg"
+              alt=""
+              width={1280}
+              height={853}
+              priority
+            />
           </section>
         </section>
       </main>
