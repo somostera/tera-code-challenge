@@ -1,7 +1,7 @@
+import { CourseContentWrapper } from "@/components/course-content-wrapper";
 import { CoursePanel } from "@/components/course-panel";
 import { Header } from "@/components/header";
 import { getCourseById } from "@/services/get-course-by-id";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 
 type CoursePageProps = { params: Promise<{ id: string }> };
@@ -32,20 +32,9 @@ export default async function CoursePage({ params }: CoursePageProps) {
     <>
       <Header />
       <main>
-        <section className="mx-auto my-10 grid w-[90%] max-w-[1000px] grid-cols-1 gap-3 md:grid-cols-2">
-          <section className="order-2 md:order-1">
-            <CoursePanel course={course} />
-          </section>
-          <section className="order-1 md:order-2">
-            <Image
-              src="/course-banner.jpg"
-              alt=""
-              width={1280}
-              height={853}
-              priority
-            />
-          </section>
-        </section>
+        <CourseContentWrapper>
+          <CoursePanel course={course} />
+        </CourseContentWrapper>
       </main>
     </>
   );
