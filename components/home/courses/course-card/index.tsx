@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 interface CourseCardProps {
   course: Course;
@@ -30,9 +31,11 @@ export default function CourseCard({ course, index }: CourseCardProps) {
           {course.level}
         </span>
       </div>
-      <h3 className="text-lg font-semibold mt-4 cursor-pointer hover:text-emerald-500 transition-colors">
-        {course.title}
-      </h3>
+      <Link href={`/course/${course.id}`}>
+        <h3 className="text-lg font-semibold mt-4 cursor-pointer hover:text-emerald-500 transition-colors">
+          {course.title}
+        </h3>
+      </Link>
       <div className="flex items-center py-2 gap-4">
         <div className="flex items-center gap-1">
           <svg
