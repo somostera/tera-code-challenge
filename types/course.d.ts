@@ -1,3 +1,7 @@
+type Category = string;
+
+type Level = string;
+
 interface Module {
   title: string;
   lessons: number;
@@ -8,8 +12,8 @@ interface Course {
   title: string;
   short_description: string;
   full_description: string;
-  category: string;
-  level: string;
+  category: Category;
+  level: Level;
   duration_hours: number;
   modules: Moduleee[];
 }

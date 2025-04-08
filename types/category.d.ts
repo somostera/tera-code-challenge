@@ -1,1 +1,0 @@
-type Category = string;
