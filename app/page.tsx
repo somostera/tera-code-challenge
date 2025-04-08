@@ -1,10 +1,13 @@
 import { CardList } from "@/components/card-list";
 import { Header } from "@/components/header";
 import { SearchForm } from "@/components/search-form";
+import { CoursesProvider } from "@/contexts/courses";
+import { getCourses } from "@/services/get-courses";
 
 export default async function Home() {
+  const { courses } = await getCourses();
   return (
-    <>
+    <CoursesProvider courses={courses}>
       <Header>
         <SearchForm />
       </Header>
@@ -14,6 +17,6 @@ export default async function Home() {
         </h1>
         <CardList />
       </main>
-    </>
+    </CoursesProvider>
   );
 }
