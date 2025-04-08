@@ -1,40 +1,35 @@
-import fetchCategories from "@/actions/categories";
-import fetchLevels from "@/actions/levels";
+import { useFilterStore } from "@/store/filter-store";
 import { changeParams } from "@/utils/change-params";
-import { useEffect, useState, useTransition } from "react";
+import { useEffect } from "react";
 
 export const useFilters = () => {
-  const [isCategoriesLoading, startCategoriesTransition] = useTransition();
-  const [isLevelsLoading, startLevelsTransition] = useTransition();
-  const [categories, setCategories] = useState<Category[] | null>(null);
-  const [levels, setLevels] = useState<Level[] | null>(null);
+  const {
+    category,
+    level,
+    categories,
+    levels,
+    setCategory,
+    setLevel,
+    fetchCategories,
+    fetchLevels,
+  } = useFilterStore();
 
-  const handleFetchCategories = async () => {
-    startCategoriesTransition(async () => {
-      const result = await fetchCategories();
-      setCategories(result);
-    });
+  const handleFilter = (newFilter: Filter) => {
+    setCategory(newFilter.category);
+    setLevel(newFilter.level);
+    changeParams({ category: newFilter.category, level: newFilter.level });
   };
-
-  const handleFetchLevels = async () => {
-    startLevelsTransition(async () => {
-      const result = await fetchLevels();
-      setLevels(result);
-    });
-  };
-
-  const handleFilter = (newFilter: Filter) => changeParams({ ...newFilter });
 
   useEffect(() => {
-    handleFetchCategories();
-    handleFetchLevels();
+    fetchCategories();
+    fetchLevels();
   }, []);
 
   return {
     categories,
     levels,
-    isCategoriesLoading,
-    isLevelsLoading,
+    category,
+    level,
     handleFilter,
   };
 };

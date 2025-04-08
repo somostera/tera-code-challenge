@@ -44,7 +44,7 @@ const Select = ({ options, value, label, onChange }: SelectProps) => {
       <button
         onClick={() => setIsOpen(!isOpen)}
         type="button"
-        className="inline-flex justify-between w-full rounded-md shadow-sm px-5 py-4 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition"
+        className="inline-flex justify-between w-full capitalize rounded-md shadow-sm px-5 py-4 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition"
         aria-haspopup="true"
         aria-expanded={isOpen}
       >

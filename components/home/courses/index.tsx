@@ -4,12 +4,12 @@ import CoursesFilter from "@/components/home/courses/courses-filter";
 import CourseCard from "@/components/home/courses/course-card";
 
 export default function Courses() {
-  const { data, isCoursesLoading, category, level } = useCourses();
+  const { data, isCoursesLoading } = useCourses();
 
   return (
     <div className="py-10">
       <div className="flex items-center py-6 gap-7">
-        <CoursesFilter category={category} level={level} />
+        <CoursesFilter />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
         {!isCoursesLoading &&

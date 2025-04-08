@@ -2,19 +2,14 @@
 import Select from "@/components/common/select";
 import { useFilters } from "@/hooks/useFilters";
 
-interface CoursesFilterProps {
-  category: Category;
-  level: Level;
-}
-
-export default function CoursesFilter({ category, level }: CoursesFilterProps) {
-  const { categories, levels, handleFilter } = useFilters();
+export default function CoursesFilter() {
+  const { categories, levels, category, level, handleFilter } = useFilters();
 
   return (
     <>
-      {!!categories?.length && (
+      {!!categories?.data?.length && (
         <Select
-          options={categories}
+          options={categories.data}
           value={category}
           label="CATEGORIA"
           onChange={(option: string) =>
@@ -22,9 +17,9 @@ export default function CoursesFilter({ category, level }: CoursesFilterProps) {
           }
         />
       )}
-      {!!levels?.length && (
+      {!!levels?.data?.length && (
         <Select
-          options={levels}
+          options={levels.data}
           value={level}
           label="DIFICULDADE"
           onChange={(option: string) =>
