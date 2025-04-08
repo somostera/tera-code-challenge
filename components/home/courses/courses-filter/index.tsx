@@ -16,7 +16,7 @@ export default function CoursesFilter({ category, level }: CoursesFilterProps) {
         <Select
           options={categories}
           value={category}
-          label="CATEGORY"
+          label="CATEGORIA"
           onChange={(option: string) =>
             handleFilter({ category: option, level })
           }
@@ -26,7 +26,7 @@ export default function CoursesFilter({ category, level }: CoursesFilterProps) {
         <Select
           options={levels}
           value={level}
-          label="LEVEL"
+          label="DIFICULDADE"
           onChange={(option: string) =>
             handleFilter({ category, level: option })
           }

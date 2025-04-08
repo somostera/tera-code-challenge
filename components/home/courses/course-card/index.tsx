@@ -41,7 +41,7 @@ export default function CourseCard({ course }: CourseCardProps) {
               strokeLinejoin="round"
             />
           </svg>
-          <span className="text-gray-500">4 lessons</span>
+          <span className="text-gray-500">4 aulas</span>
         </div>
         <div className="flex items-center gap-1">
           <svg
@@ -58,7 +58,7 @@ export default function CourseCard({ course }: CourseCardProps) {
               strokeLinejoin="round"
             />
           </svg>
-          <span className="text-gray-500">{course.duration_hours}h</span>
+          <span className="text-gray-500">{course.duration_hours} horas</span>
         </div>
       </div>
       <p className="text-md text-gray-500 mt-2">{course.short_description}</p>
