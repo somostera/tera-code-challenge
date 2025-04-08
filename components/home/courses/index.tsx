@@ -4,7 +4,7 @@ import CoursesFilter from "@/components/home/courses/courses-filter";
 import CourseCard from "@/components/home/courses/course-card";
 
 export default function Courses() {
-  const { data, isCoursesLoading } = useCourses();
+  const { courses } = useCourses();
 
   return (
     <div className="py-10">
@@ -12,8 +12,10 @@ export default function Courses() {
         <CoursesFilter />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
-        {!isCoursesLoading &&
-          data?.map((course) => <CourseCard course={course} key={course.id} />)}
+        {!courses?.loading &&
+          courses?.data?.map((course) => (
+            <CourseCard course={course} key={course.id} />
+          ))}
       </div>
     </div>
   );

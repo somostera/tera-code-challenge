@@ -1,28 +1,16 @@
-import fetchCourses from "@/actions/courses";
+import { useCoursesStore } from "@/store/courses-store";
 import { useFilterStore } from "@/store/filter-store";
-import { useEffect, useState, useTransition } from "react";
+import { useEffect } from "react";
 
 export const useCourses = () => {
   const { category, level } = useFilterStore();
-  const [isCoursesLoading, startCoursesTransition] = useTransition();
-  const [data, setData] = useState<Course[] | null>(null);
-
-  const handleFetchCourses = async (filter: Filter) => {
-    startCoursesTransition(async () => {
-      const result = await fetchCourses(filter);
-      setData(result);
-    });
-  };
+  const { courses, fetchCourses } = useCoursesStore();
 
   useEffect(() => {
-    handleFetchCourses({ category, level });
+    fetchCourses({ category, level });
   }, [category, level]);
 
   return {
-    handleFetchCourses,
-    data,
-    isCoursesLoading,
-    category,
-    level,
+    courses,
   };
 };
