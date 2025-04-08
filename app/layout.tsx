@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import { Anton } from "next/font/google";
 import "./globals.css";
 
-const anton = Anton({ variable: "--font-anton", weight: ["400"] });
+const anton = Anton({
+  variable: "--font-anton",
+  weight: ["400"],
+  subsets: ["latin", "latin-ext"],
+});
 
 export const metadata: Metadata = {
   title: "Tera Code Challange",
