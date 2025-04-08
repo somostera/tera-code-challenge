@@ -15,7 +15,9 @@ export type PayloadAction =
       type: "set_courses";
       payload: { courses: ICourse[] };
     }
-  | { type: "set_search"; payload: { search: string } };
+  | { type: "set_search"; payload: { search: string } }
+  | { type: "set_category_filter"; payload: { category: string } }
+  | { type: "set_level_filter"; payload: { level: string } };
 
 export type CoursesProviderProps = {
   courses: ICourse[];
