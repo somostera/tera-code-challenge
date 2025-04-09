@@ -3,7 +3,7 @@ import { useCourses } from "@/hooks/useCourses";
 import CoursesFilter from "@/components/home/courses/courses-filter";
 import CourseCard from "@/components/home/courses/course-card";
 
-export default function Courses() {
+const Courses = () => {
   const { courses } = useCourses();
 
   return (
@@ -17,4 +17,6 @@ export default function Courses() {
       </div>
     </div>
   );
-}
+};
+
+export default Courses;

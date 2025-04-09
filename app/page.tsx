@@ -1,13 +1,13 @@
 import Courses from "@/components/home/courses";
 
-export default function Home() {
+const Home = () => {
   return (
     <div className="max-w font-sans">
       <div
         className="bg-amber-50 flex items-center justify-center py-40"
         style={{
           backgroundImage: "url(/images/banner.jpg)",
-          backgroundPosition: "center",
+          backgroundPosition: "right",
           backgroundSize: "cover",
         }}
       >
@@ -18,9 +18,11 @@ export default function Home() {
           <p className="text-sm text-gray-600">Lorem Ipsum</p>
         </div>
       </div>
-      <div className="container mx-auto">
+      <div className="container mx-auto px-5">
         <Courses />
       </div>
     </div>
   );
-}
+};
+
+export default Home;

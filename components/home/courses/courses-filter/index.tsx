@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Select from "@/components/common/select";
 import { useFilters } from "@/hooks/useFilters";
 
-export default function CoursesFilter() {
+const CoursesFilter = () => {
   const { categories, levels, category, level, handleFilter } = useFilters();
 
   return (
@@ -11,7 +11,7 @@ export default function CoursesFilter() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1, ease: "linear" }}
-      className="flex items-center pb-6 gap-7"
+      className="flex items-center flex-wrap pb-6 gap-7"
     >
       {!!categories?.data?.length && (
         <Select
@@ -35,4 +35,6 @@ export default function CoursesFilter() {
       )}
     </motion.div>
   );
-}
+};
+
+export default CoursesFilter;
