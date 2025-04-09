@@ -1,4 +1,5 @@
 "use server";
+
 import coursesData from "@/data/courses.json";
 
 export default async function fetchLevels() {

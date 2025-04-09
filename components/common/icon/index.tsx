@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 
 interface IconProps extends React.SVGProps<SVGSVGElement> {
@@ -188,6 +186,15 @@ const icons = {
   fullArrowLeft: (
     <path
       d="M4 12H20M4 12L8 8M4 12L8 16"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  ),
+  checkDouble: (
+    <path
+      d="M4 14L9 19L20 8M6 8.88889L9.07692 12L16 5"
       stroke="currentColor"
       strokeWidth="1.5"
       strokeLinecap="round"

@@ -1,5 +1,7 @@
 "use client";
+
 import Icon from "@/components/common/icon";
+import { getLessonsNumber } from "@/utils/get-lessons-number";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -40,7 +42,9 @@ const CourseCard = ({ course, index }: CourseCardProps) => {
       <div className="flex items-center py-2 gap-4">
         <div className="flex items-center gap-1">
           <Icon name="lessons" className="w-4 h-4 text-emerald-500" />
-          <span className="text-gray-500 text-xs">4 aulas</span>
+          <span className="text-gray-500 text-xs">
+            {getLessonsNumber(course)} aulas
+          </span>
         </div>
         <div className="flex items-center gap-1">
           <Icon name="timer" className="w-4 h-4 text-emerald-500" />

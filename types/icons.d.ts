@@ -7,4 +7,5 @@ type Icon =
   | "mail"
   | "address"
   | "emptyFolder"
-  | "fullArrowLeft";
+  | "fullArrowLeft"
+  | "checkDouble";

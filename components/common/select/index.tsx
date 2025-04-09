@@ -1,4 +1,5 @@
 "use client";
+
 import { useState, useRef, useEffect } from "react";
 import Icon from "@/components/common/icon";
 
@@ -52,14 +53,14 @@ const Select = ({ options, value, label, onChange }: SelectProps) => {
         {value || "Padrão"}
         <Icon
           name="arrowDown"
-          className="h-5 w-5 text-gray-400"
+          className="h-5 w-5"
           fill="var(--color-gray-400)"
           viewBox="0 0 20 20"
         />
       </button>
 
       {isOpen && (
-        <div className="absolute mt-2 w-full rounded-md shadow-lg bg-white focus:outline-none">
+        <div className="absolute mt-2 w-full rounded-md shadow-lg bg-white focus:outline-none z-50">
           <div className="px-2 py-3">
             <button
               onClick={() => handleOptionClick("")}
