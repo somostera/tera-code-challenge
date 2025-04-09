@@ -1,3 +1,6 @@
+import Icon from "@/components/common/icon";
+import Link from "next/link";
+
 interface CourseBannerProps {
   course: Course;
 }
@@ -13,6 +16,12 @@ const CourseBanner = ({ course }: CourseBannerProps) => {
       }}
     >
       <div className="container mx-auto">
+        <div className="mb-15">
+          <Link href="/" className="flex items-center gap-2">
+            <Icon name="fullArrowLeft" className="w-4 h-4 text-blue-950" />
+            <span className="text-blue-950 font-semibold text-sm">Voltar</span>
+          </Link>
+        </div>
         <div className="mb-6">
           <span className="text-white capitalize text-sm font-semibold px-3 py-1 rounded-md bg-emerald-600">
             {course.category}

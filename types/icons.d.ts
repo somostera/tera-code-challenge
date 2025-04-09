@@ -6,4 +6,5 @@ type Icon =
   | "phone"
   | "mail"
   | "address"
-  | "emptyFolder";
+  | "emptyFolder"
+  | "fullArrowLeft";
