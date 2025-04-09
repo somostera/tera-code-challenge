@@ -7,7 +7,7 @@ export const useCourses = () => {
   const searchParams = useSearchParams();
 
   const { category, level } = useFilterStore();
-  const { courses, fetchCourses } = useCoursesStore();
+  const { courses, fetchCourses, resetCourses } = useCoursesStore();
 
   const handleFetchCourses = useCallback(() => {
     const validateCategory = (searchParams.get("category") || "") === category;
@@ -17,6 +17,14 @@ export const useCourses = () => {
       fetchCourses({ category, level });
     }
   }, [category, level, fetchCourses, searchParams]);
+
+  const handleResetCourses = useCallback(() => {
+    resetCourses();
+  }, [resetCourses]);
+
+  useEffect(() => {
+    handleResetCourses();
+  }, [handleResetCourses]);
 
   useEffect(() => {
     handleFetchCourses();

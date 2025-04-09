@@ -12,7 +12,11 @@ const Placeholder = () => (
   </div>
 );
 
-const CoursesFilter = () => {
+interface CoursesFilterProps {
+  loading: boolean;
+}
+
+const CoursesFilter = ({ loading }: CoursesFilterProps) => {
   const { categories, levels, category, level, handleFilter } = useFilters();
 
   return (
@@ -28,6 +32,7 @@ const CoursesFilter = () => {
         <Select
           options={categories.data}
           value={category}
+          disabled={loading}
           label="CATEGORIA"
           onChange={(option: string) =>
             handleFilter({ category: option, level })
@@ -40,6 +45,7 @@ const CoursesFilter = () => {
         <Select
           options={levels.data}
           value={level}
+          disabled={loading}
           label="DIFICULDADE"
           onChange={(option: string) =>
             handleFilter({ category, level: option })

@@ -35,7 +35,7 @@ const Courses = () => {
 
   return (
     <div className="py-20">
-      <CoursesFilter />
+      <CoursesFilter loading={courses.loading} />
       {courses.error ? (
         <Error />
       ) : (

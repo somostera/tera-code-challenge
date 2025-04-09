@@ -8,6 +8,7 @@ interface CoursesState {
     error: boolean;
   };
   fetchCourses: (filter: Filter) => Promise<void>;
+  resetCourses: () => void;
 }
 
 export const useCoursesStore = create<CoursesState>((set) => ({
@@ -28,5 +29,14 @@ export const useCoursesStore = create<CoursesState>((set) => ({
         courses: { data: result, loading: false, error: !result.length },
       });
     }, 1500);
+  },
+  resetCourses: () => {
+    set({
+      courses: {
+        data: null,
+        loading: false,
+        error: false,
+      },
+    });
   },
 }));
