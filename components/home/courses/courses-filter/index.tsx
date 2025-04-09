@@ -19,7 +19,7 @@ const CoursesFilter = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1, ease: "linear" }}
-      className="flex items-center flex-wrap pb-6 gap-7"
+      className="flex items-center justify-center md:justify-start flex-wrap pb-6 gap-7"
     >
       {categories.loading || !categories?.data?.length ? (
         <Placeholder />

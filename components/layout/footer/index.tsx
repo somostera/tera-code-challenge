@@ -33,8 +33,8 @@ const ContactItem = ({ label, icon }: ContactItemProps) => (
 
 const Footer = () => {
   return (
-    <div className="bg-amber-50 p-20">
-      <div className="container">
+    <div className="bg-amber-50 py-20 px-5">
+      <div className="container mx-auto px-5">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7">
           <div className="px-3">
             <Icon
