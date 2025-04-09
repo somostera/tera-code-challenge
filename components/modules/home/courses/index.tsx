@@ -1,8 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
 import { useCourses } from "@/hooks/useCourses";
-import CoursesFilter from "@/components/home/courses/courses-filter";
-import CourseCard from "@/components/home/courses/course-card";
+import CoursesFilter from "@/components/modules/home/courses/courses-filter";
+import CourseCard from "@/components/modules/home/courses/course-card";
 import Skeleton from "@/components/common/skeleton";
 import Icon from "@/components/common/icon";
 

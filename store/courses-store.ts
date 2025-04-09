@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import fetchCourses from "@/actions/courses";
+import { fetchCourses } from "@/actions/courses";
 
 interface CoursesState {
   courses: {

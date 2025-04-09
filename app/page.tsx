@@ -1,7 +1,7 @@
-import HomeBanner from "@/components/home/banner";
-import Courses from "@/components/home/courses";
+import HomeBanner from "@/components/modules/home/banner";
+import Courses from "@/components/modules/home/courses";
 
-const Home = () => {
+const HomePage = () => {
   return (
     <div className="max-w font-sans">
       <HomeBanner />
@@ -12,4 +12,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;
