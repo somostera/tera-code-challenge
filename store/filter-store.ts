@@ -39,13 +39,17 @@ export const useFilterStore = create<FilterState>((set) => ({
 
     const result = await fetchCategories();
 
-    set({ categories: { data: result, loading: false } });
+    setTimeout(() => {
+      set({ categories: { data: result, loading: false } });
+    }, 1500);
   },
   fetchLevels: async () => {
     set((state) => ({ levels: { ...state.levels, loading: true } }));
 
     const result = await fetchLevels();
 
-    set({ levels: { data: result, loading: false } });
+    setTimeout(() => {
+      set({ levels: { data: result, loading: false } });
+    }, 1500);
   },
 }));

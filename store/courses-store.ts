@@ -19,6 +19,8 @@ export const useCoursesStore = create<CoursesState>((set) => ({
 
     const result = await fetchCourses(filter);
 
-    set({ courses: { data: result, loading: false } });
+    setTimeout(() => {
+      set({ courses: { data: result, loading: false } });
+    }, 1500);
   },
 }));

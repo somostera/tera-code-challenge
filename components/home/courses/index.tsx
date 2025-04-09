@@ -1,7 +1,25 @@
 "use client";
+import { motion } from "framer-motion";
 import { useCourses } from "@/hooks/useCourses";
 import CoursesFilter from "@/components/home/courses/courses-filter";
 import CourseCard from "@/components/home/courses/course-card";
+import Skeleton from "@/components/common/skeleton";
+
+const Placeholder = ({ index }: { index: number }) => (
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 0.6 + index / 10, ease: "linear" }}
+    className="bg-white rounded-xl shadow-sm p-6 hover:shadow-md hover:scale-102 transition"
+  >
+    <Skeleton className="h-35 w-[100%] mb-2" />
+    <Skeleton className="h-4 w-20 mb-2" />
+    <Skeleton className="h-7 w-[90%] mb-2" />
+    <Skeleton className="h-4 w-20 mb-2" />
+    <Skeleton className="h-4 w-[100%] mb-2" />
+    <Skeleton className="h-4 w-[55%] mb-2" />
+  </motion.div>
+);
 
 const Courses = () => {
   const { courses } = useCourses();
@@ -10,10 +28,13 @@ const Courses = () => {
     <div className="py-20">
       <CoursesFilter />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7">
-        {!courses?.loading &&
-          courses?.data?.map((course, index) => (
-            <CourseCard course={course} key={course.id} index={index} />
-          ))}
+        {courses.loading || !courses?.data?.length
+          ? [1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
+              <Placeholder key={item} index={item} />
+            ))
+          : courses?.data?.map((course, index) => (
+              <CourseCard course={course} key={course.id} index={index} />
+            ))}
       </div>
     </div>
   );
