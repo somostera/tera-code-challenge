@@ -18,5 +18,16 @@ describe('Course Detail Page', () => {
       cy.url().should('eq', Cypress.config().baseUrl + '/');
       cy.get('[data-cy=course-card]').should('exist');
     });
+
+    it('should allow enrolling in the course', () => {
+      cy.get('[data-cy=enrol-button]')
+        .should('exist')
+        .and('be.visible')
+        .click();
+  
+      cy.on('window:alert', (text) => {
+        expect(text).to.contain('Matrícula realizada com sucesso!');
+      });
+    });
   });
   

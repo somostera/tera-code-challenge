@@ -1,17 +1,23 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { getCourses } from "@/actions/getCourses";
-import { notFound, useParams } from "next/navigation";
-import { useEffect, useState } from "react";
-import { Course, Module } from "@/types";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
+import { motion } from 'framer-motion';
+import { getCourses } from '@/actions/getCourses';
+import { notFound, useParams } from 'next/navigation';
+import { useEffect, useState, useTransition } from 'react';
+import { Course, Module } from '@/types';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
+import { enrol } from '@/actions/enrol';
+
 
 export default function CourseDetailPage() {
   const { id } = useParams();
   const [course, setCourse] = useState<Course | null>(null);
   const [loading, setLoading] = useState(true);
+  const [isPending, startTransition] = useTransition();
+
+  // Simula o ID do usuário logado
+  const userId = 123;
 
   useEffect(() => {
     async function fetchData() {
@@ -25,9 +31,21 @@ export default function CourseDetailPage() {
     fetchData();
   }, [id]);
 
+  function handleMatricula() {
+    startTransition(() => {
+      enrol(Number(id), userId).then((res) => {
+        if (res.success) {
+          alert(res.message);
+        } else {
+          alert('Erro ao matricular-se.');
+        }
+      });
+    });
+  }
+
   return (
     <motion.div
-      className='max-w-4xl mx-auto px-4 py-10  min-h-screen'
+      className='max-w-4xl mx-auto px-4 py-10 min-h-screen'
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
@@ -79,7 +97,7 @@ export default function CourseDetailPage() {
         transition={{ delay: 0.8 }}
       >
         <h2 className='text-xl font-semibold text-gray-800 dark:text-white mb-4'>
-          {loading ? <Skeleton width={160} /> : "Conteúdo do Curso"}
+          {loading ? <Skeleton width={160} /> : 'Conteúdo do Curso'}
         </h2>
 
         <ul className='list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300'>
@@ -101,6 +119,24 @@ export default function CourseDetailPage() {
               ))}
         </ul>
       </motion.div>
+
+      {!loading && (
+        <motion.div
+          className='mt-10 flex justify-center'
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 1 }}
+        >
+          <button
+            className='px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold rounded-xl transition duration-300 shadow-md disabled:opacity-50'
+            onClick={handleMatricula}
+            disabled={isPending}
+            data-cy='enrol-button'
+          >
+            {isPending ? 'Matriculando...' : 'Matricule-se'}
+          </button>
+        </motion.div>
+      )}
     </motion.div>
   );
 }
