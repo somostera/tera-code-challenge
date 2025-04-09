@@ -5,4 +5,5 @@ type Icon =
   | "logoColor"
   | "phone"
   | "mail"
-  | "address";
+  | "address"
+  | "emptyFolder";

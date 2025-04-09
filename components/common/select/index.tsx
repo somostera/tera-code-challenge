@@ -65,7 +65,7 @@ const Select = ({ options, value, label, onChange }: SelectProps) => {
               onClick={() => handleOptionClick("")}
               className="cursor-pointer block w-full text-left px-4 py-2 text-sm text-gray-700 rounded-md hover:bg-emerald-500 hover:text-white transition"
             >
-              All
+              Padrão
             </button>
             {options.map((option) => (
               <button

@@ -15,7 +15,7 @@ const CourseCard = ({ course, index }: CourseCardProps) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 + index / 10, ease: "linear" }}
-      className="bg-white rounded-xl shadow-sm p-6 hover:shadow-md hover:scale-102 transition"
+      className="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition"
     >
       <Image
         src="/images/course.png"
