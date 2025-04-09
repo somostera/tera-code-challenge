@@ -18,7 +18,7 @@ const EnrollCourse = ({ course }: EnrollCourseProps) => {
     <>
       <div className="bg-white rounded-xl shadow-lg overflow-hidden lg:mt-[-300px]">
         <Image
-          src="/images/course.png"
+          src={`/images/courses/${course.id}.jpg`}
           alt={course.title}
           className="w-full"
           width={200}

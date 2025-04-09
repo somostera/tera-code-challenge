@@ -20,7 +20,7 @@ const CourseCard = ({ course, index }: CourseCardProps) => {
       className="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition"
     >
       <Image
-        src="/images/course.png"
+        src={`/images/courses/${course.id}.jpg`}
         alt={course.title}
         className="w-full mb-4 rounded-lg"
         width={200}
