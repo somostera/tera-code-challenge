@@ -1,4 +1,6 @@
 import { ICourse } from "@/models/course";
+import { Enroll } from "@/components/enroll";
+import { pluralize } from "@/utils/pluralize";
 
 export type CoursePanelProps = {
   course: ICourse;
@@ -13,12 +15,6 @@ export function CoursePanel({ course }: CoursePanelProps) {
     });
 
     return formatter.format(hours);
-  }
-
-  function plurarize(count: number, singular: string, plural: string) {
-    const pluralRules = new Intl.PluralRules("pt-BR");
-    const category = pluralRules.select(count);
-    return category === "one" ? `${count} ${singular}` : `${count} ${plural}`;
   }
 
   return (
@@ -46,14 +42,14 @@ export function CoursePanel({ course }: CoursePanelProps) {
           <li key={module.title}>
             <p>
               {module.title}:{" "}
-              <strong>{plurarize(module.lessons, "Aula", "Aulas")}</strong>
+              <strong>
+                {module.lessons} {pluralize(module.lessons, "Aula", "Aulas")}
+              </strong>
             </p>
           </li>
         ))}
       </ul>
-      <button className="bg-action mt-5 block cursor-pointer px-6 py-3 text-center font-extrabold text-black uppercase">
-        Matricular-se
-      </button>
+      <Enroll />
     </>
   );
 }
