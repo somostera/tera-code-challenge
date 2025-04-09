@@ -17,7 +17,7 @@ export function CoursePanelSkeleton() {
       <h1 className="font-anton text-gray bg-gray mt-1 mb-5 inline-block text-left text-2xl font-extrabold md:text-4xl">
         Lorem ipsum dolor
       </h1>
-      <p className="text-[16px]">
+      <p className="text-[18px]">
         <span className="text-gray bg-gray">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste dolorem,
         </span>

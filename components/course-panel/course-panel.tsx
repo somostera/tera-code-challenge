@@ -35,7 +35,7 @@ export function CoursePanel({ course }: CoursePanelProps) {
       <h1 className="font-anton mt-1 mb-5 text-left text-2xl font-extrabold md:text-4xl">
         {course.title}
       </h1>
-      <p className="text-[16px]">{course.full_description}</p>
+      <p className="text-[18px]">{course.full_description}</p>
       <h2 className="font-anton mt-5 text-2xl text-black">Módulos</h2>
       <ul>
         {course.modules.map((module) => (

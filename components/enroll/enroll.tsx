@@ -20,7 +20,7 @@ export function Enroll() {
         </button>
       </form>
 
-      <p className="mt-5" aria-live="polite">
+      <p className="mt-5 text-[18px]" aria-live="polite">
         <strong>{state.enrolled_count}</strong>{" "}
         {`${pluralize(state.enrolled_count, "Pessoa", "Pessoas")} já se ${pluralize(state.enrolled_count, "matriculou", "matricularam")} para
         este curso`}
