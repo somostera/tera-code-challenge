@@ -1,6 +1,7 @@
 import { CourseContentWrapper } from "@/components/course-content-wrapper";
 import { CoursePanel } from "@/components/course-panel";
 import { Header } from "@/components/header";
+import { MainLandmark } from "@/components/main-landmark";
 import { getCourseById } from "@/services/get-course-by-id";
 import { notFound } from "next/navigation";
 
@@ -31,11 +32,11 @@ export default async function CoursePage({ params }: CoursePageProps) {
   return (
     <>
       <Header />
-      <main>
+      <MainLandmark>
         <CourseContentWrapper>
           <CoursePanel course={course} />
         </CourseContentWrapper>
-      </main>
+      </MainLandmark>
     </>
   );
 }

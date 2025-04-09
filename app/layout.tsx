@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Anton } from "next/font/google";
 import "./globals.css";
+import { SkipLink } from "@/components/skip-link";
 
 const anton = Anton({
   variable: "--font-anton",
@@ -20,7 +21,10 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={`${anton.variable} antialiased`}>{children}</body>
+      <body className={`${anton.variable} antialiased`}>
+        <SkipLink />
+        {children}
+      </body>
     </html>
   );
 }
