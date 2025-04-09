@@ -1,6 +1,7 @@
 describe('Courses Page', () => {
   beforeEach(() => {
     cy.visit('/');
+    cy.wait(1000);
   });
 
   it('should render filter dropdowns', () => {
