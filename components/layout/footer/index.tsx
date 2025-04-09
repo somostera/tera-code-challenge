@@ -43,7 +43,8 @@ const Footer = () => {
               viewBox="0 0 422 116"
             />
             <p className="text-md text-gray-500 mt-3">
-              We support programs that create advancement for people
+              A melhor plataforma para aprender e se desenvolver com cursos
+              online em diversas áreas
             </p>
           </div>
           <div className="px-3">
