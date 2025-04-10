@@ -75,6 +75,7 @@ const EnrollCourse = ({ course }: EnrollCourseProps) => {
             </span>
           </div>
           <button
+            data-cy="enroll"
             onClick={handleEnrollCourse}
             disabled={loading}
             className={`${
