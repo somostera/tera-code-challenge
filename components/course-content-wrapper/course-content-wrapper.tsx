@@ -7,7 +7,7 @@ export function CourseContentWrapper({ children }: PropsWithChildren) {
       <section className="order-2 md:order-1">{children}</section>
       <section className="order-1 md:order-2">
         <Image
-          src="/course-banner.jpg"
+          src="/course-banner.webp"
           alt=""
           width={1280}
           height={853}
