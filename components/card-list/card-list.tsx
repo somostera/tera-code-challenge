@@ -18,7 +18,14 @@ export function CardList() {
     <section className="mx-auto w-[90%]">
       <div className="grid w-full grid-cols-[1fr] place-content-center place-items-center gap-5 p-2.5 md:grid-cols-[300px_300px] lg:grid-cols-[320px_320px_320px]">
         {courses.map((course) => (
-          <Card key={course.id} course={course} />
+          <Card
+            key={course.id}
+            id={course.id}
+            title={course.title}
+            description={course.short_description}
+            category={course.category}
+            level={course.level}
+          />
         ))}
       </div>
     </section>
