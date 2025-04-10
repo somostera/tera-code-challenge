@@ -1,9 +1,8 @@
 import { coursesData } from "@/mocks/courses";
 
-export async function GET(
-  _: Request,
-  { params }: { params: Promise<{ id?: string[] }> }
-) {
+type GetRouteParams = { params: Promise<{ id?: string[] }> };
+
+export async function GET(_: Request, { params }: GetRouteParams) {
   const { id: [courseId] = [] } = await params;
 
   if (courseId) {
