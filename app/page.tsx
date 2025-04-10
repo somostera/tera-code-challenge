@@ -5,10 +5,22 @@ import { SearchForm } from "@/components/search-form";
 import { CoursesProvider } from "@/contexts/courses";
 import { getCourses } from "@/services/get-courses";
 
-export default async function Home() {
+type HomePageProps = {
+  params: Promise<undefined>;
+  searchParams: Promise<{ [key: string]: string }>;
+};
+
+export default async function Home({ searchParams }: HomePageProps) {
+  const { category = "", level = "", search = "" } = await searchParams;
+
   const { courses } = await getCourses();
   return (
-    <CoursesProvider courses={courses}>
+    <CoursesProvider
+      courses={courses}
+      initialCategory={category}
+      initialLevel={level}
+      initialSearch={search}
+    >
       <Header>
         <SearchForm />
       </Header>

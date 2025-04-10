@@ -7,7 +7,12 @@ beforeEach(() => jest.restoreAllMocks());
 
 test("should return fallback ui if there are no courses", () => {
   render(
-    <CoursesProvider courses={[]}>
+    <CoursesProvider
+      courses={[]}
+      initialSearch=""
+      initialCategory=""
+      initialLevel=""
+    >
       <CardList />
     </CoursesProvider>
   );
@@ -44,7 +49,12 @@ test("should render a list of cards if there are courses", () => {
   ];
 
   render(
-    <CoursesProvider courses={coursesMock}>
+    <CoursesProvider
+      courses={coursesMock}
+      initialSearch=""
+      initialCategory=""
+      initialLevel=""
+    >
       <CardList />
     </CoursesProvider>
   );

@@ -9,6 +9,7 @@ import {
   type Dispatch,
 } from "react";
 import { coursesReducer } from "@/contexts/courses-reducer";
+import { pipeFilters } from "@/utils/pipe-filters";
 
 export type PayloadAction =
   | {
@@ -21,6 +22,9 @@ export type PayloadAction =
 
 export type CoursesProviderProps = {
   courses: ICourse[];
+  initialCategory: string;
+  initialLevel: string;
+  initialSearch: string;
 };
 
 export type CoursesProviderState = {
@@ -44,14 +48,22 @@ export const CoursesDispatchContext = createContext<Dispatch<PayloadAction>>(
 
 export function CoursesProvider({
   courses,
+  initialCategory,
+  initialLevel,
+  initialSearch,
   children,
 }: PropsWithChildren<CoursesProviderProps>) {
   const [state, dispatch] = useReducer(coursesReducer, {
     initialCourses: courses,
-    filteredCourses: courses,
-    filterByCategory: "",
-    filterByLevel: "",
-    search: "",
+    filteredCourses: pipeFilters(
+      courses,
+      initialSearch,
+      initialCategory,
+      initialLevel
+    ),
+    filterByCategory: initialCategory,
+    filterByLevel: initialLevel,
+    search: initialSearch,
   });
 
   return (

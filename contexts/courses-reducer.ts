@@ -1,5 +1,5 @@
-import { ICourse } from "@/models/course";
 import { CoursesProviderState, PayloadAction } from "./courses";
+import { pipeFilters } from "@/utils/pipe-filters";
 
 export function coursesReducer(
   state: CoursesProviderState,
@@ -53,22 +53,4 @@ export function coursesReducer(
       return { ...state };
     }
   }
-}
-
-function pipeFilters(
-  initialCourses: ICourse[],
-  search: string,
-  category: string,
-  level: string
-) {
-  return initialCourses
-    .filter((course) =>
-      course.title.toLocaleLowerCase().includes(search.toLowerCase())
-    )
-    .filter((course) =>
-      course.category.toLowerCase().includes(category.toLowerCase())
-    )
-    .filter((course) =>
-      course.level.toLowerCase().includes(level.toLowerCase())
-    );
 }

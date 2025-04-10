@@ -1,10 +1,14 @@
 "use client";
 
 import { useContextDispatch } from "@/contexts/courses";
+import { updateSearchParamsWithoutReload } from "@/utils/update-search-params-without-reload";
+import { usePathname, useSearchParams } from "next/navigation";
 import { FormEvent, useRef } from "react";
 
 export function SearchForm() {
   const inputValue = useRef<HTMLInputElement>(null);
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
   const dispatch = useContextDispatch();
 
   const selectCategories = [
@@ -32,6 +36,12 @@ export function SearchForm() {
       type: "set_search",
       payload: { search: inputValue.current.value },
     });
+
+    updateSearchParamsWithoutReload(pathname, {
+      search: inputValue.current.value,
+      category: searchParams.get("category") ?? "",
+      level: searchParams.get("level") ?? "",
+    });
   }
 
   function handleChangeCategory(e: React.ChangeEvent<HTMLSelectElement>) {
@@ -39,10 +49,20 @@ export function SearchForm() {
       type: "set_category_filter",
       payload: { category: e.target.value },
     });
+    updateSearchParamsWithoutReload(pathname, {
+      search: searchParams.get("search") ?? "",
+      category: e.target.value,
+      level: searchParams.get("level") ?? "",
+    });
   }
 
   function handleChangeLevel(e: React.ChangeEvent<HTMLSelectElement>) {
     dispatch({ type: "set_level_filter", payload: { level: e.target.value } });
+    updateSearchParamsWithoutReload(pathname, {
+      search: searchParams.get("search") ?? "",
+      category: searchParams.get("category") ?? "",
+      level: e.target.value,
+    });
   }
   return (
     <form onSubmit={handleSubmit} id="home-form">
@@ -50,6 +70,7 @@ export function SearchForm() {
         <div className="flex">
           <input
             ref={inputValue}
+            defaultValue={searchParams.get("search") ?? ""}
             type="text"
             role="searchbox"
             placeholder="Curso"
@@ -73,6 +94,7 @@ export function SearchForm() {
             id="categories"
             className="w-full bg-white p-3 font-extrabold"
             onChange={handleChangeCategory}
+            defaultValue={searchParams.get("category") ?? ""}
           >
             {selectCategories.map(({ label, value }) => (
               <option value={value} key={value} className="font-normal">
@@ -94,6 +116,7 @@ export function SearchForm() {
             id="level"
             className="w-full bg-white p-3 font-extrabold"
             onChange={handleChangeLevel}
+            defaultValue={searchParams.get("level") ?? ""}
           >
             {selectLevels.map(({ label, value }) => (
               <option value={value} key={value} className="font-normal">
