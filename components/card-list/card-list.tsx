@@ -15,10 +15,12 @@ export function CardList() {
   }
 
   return (
-    <section className="mx-auto grid max-w-9/12 grid-cols-[auto] place-content-center gap-5 p-2.5 md:grid-cols-[300px_300px] lg:grid-cols-[320px_320px_320px]">
-      {courses.map((course) => (
-        <Card key={course.id} course={course} />
-      ))}
+    <section className="mx-auto w-[90%]">
+      <div className="grid w-full grid-cols-[1fr] place-content-center place-items-center gap-5 p-2.5 md:grid-cols-[300px_300px] lg:grid-cols-[320px_320px_320px]">
+        {courses.map((course) => (
+          <Card key={course.id} course={course} />
+        ))}
+      </div>
     </section>
   );
 }
