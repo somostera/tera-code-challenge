@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { getCourses } from '@/actions/getCourses';
-import { notFound, useParams } from 'next/navigation';
-import { useEffect, useState, useTransition } from 'react';
-import { Course, Module } from '@/types';
-import Skeleton from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css';
-import { enrol } from '@/actions/enrol';
-
+import { motion } from "framer-motion";
+import { getCourses } from "@/actions/getCourses";
+import { notFound, useParams } from "next/navigation";
+import { useEffect, useState, useTransition } from "react";
+import { Course, Module } from "@/types";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+import { enrol } from "@/actions/enrol";
+import { toast } from "react-toastify";
 
 export default function CourseDetailPage() {
   const { id } = useParams();
@@ -21,23 +21,27 @@ export default function CourseDetailPage() {
 
   useEffect(() => {
     async function fetchData() {
-      const { courses } = await getCourses();
-      const found = courses.find((c: Course) => c.id === Number(id));
-      if (!found) return notFound();
-      setCourse(found);
-      setLoading(false);
+      try {
+        const { courses } = await getCourses();
+        const found = courses.find((c: Course) => c.id === Number(id));
+        if (!found) return notFound();
+        setCourse(found);
+        setLoading(false);
+      } catch {
+        throw new Error("Erro ao buscar curso");
+      }
     }
 
     fetchData();
   }, [id]);
 
-  function handleMatricula() {
+  function handleEnrol() {
     startTransition(() => {
       enrol(Number(id), userId).then((res) => {
         if (res.success) {
-          alert(res.message);
+          toast.success(res.message);
         } else {
-          alert('Erro ao matricular-se.');
+          toast.error("Erro ao matricular-se.");
         }
       });
     });
@@ -97,7 +101,7 @@ export default function CourseDetailPage() {
         transition={{ delay: 0.8 }}
       >
         <h2 className='text-xl font-semibold text-gray-800 dark:text-white mb-4'>
-          {loading ? <Skeleton width={160} /> : 'Conteúdo do Curso'}
+          {loading ? <Skeleton width={160} /> : "Conteúdo do Curso"}
         </h2>
 
         <ul className='list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300'>
@@ -129,11 +133,11 @@ export default function CourseDetailPage() {
         >
           <button
             className='px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold rounded-xl transition duration-300 shadow-md disabled:opacity-50'
-            onClick={handleMatricula}
+            onClick={handleEnrol}
             disabled={isPending}
             data-cy='enrol-button'
           >
-            {isPending ? 'Matriculando...' : 'Matricule-se'}
+            {isPending ? "Matriculando..." : "Matricule-se"}
           </button>
         </motion.div>
       )}
