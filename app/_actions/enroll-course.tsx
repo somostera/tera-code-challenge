@@ -1,8 +1,10 @@
 "use server";
 
-export async function enrollCourseAction(previousState: {
+export type EnrolledCountState = {
   enrolled_count: number;
-}) {
+};
+
+export async function enrollCourseAction(previousState: EnrolledCountState) {
   await wait(3000);
 
   return { enrolled_count: previousState.enrolled_count + 1 };

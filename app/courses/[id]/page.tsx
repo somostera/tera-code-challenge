@@ -7,11 +7,7 @@ import { notFound } from "next/navigation";
 
 type CoursePageProps = { params: Promise<{ id: string }> };
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
+export async function generateMetadata({ params }: CoursePageProps) {
   const { id } = await params;
   const { course } = await getCourseById(Number(id));
 
