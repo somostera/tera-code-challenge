@@ -1,22 +1,13 @@
 import { ICourse } from "@/models/course";
 import { Enroll } from "@/components/enroll";
 import { pluralize } from "@/utils/pluralize";
+import { formatHours } from "@/utils/format-hours";
 
 export type CoursePanelProps = {
   course: ICourse;
 };
 
 export function CoursePanel({ course }: CoursePanelProps) {
-  function formatHours(hours: number) {
-    const formatter = new Intl.NumberFormat("pt-BR", {
-      style: "unit",
-      unit: "hour",
-      unitDisplay: "long",
-    });
-
-    return formatter.format(hours);
-  }
-
   return (
     <>
       <div className="flex w-full flex-wrap gap-3">
