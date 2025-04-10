@@ -34,6 +34,7 @@ const CoursesFilter = ({ loading }: CoursesFilterProps) => {
           value={category}
           disabled={loading}
           label="CATEGORIA"
+          dataCy="category"
           onChange={(option: string) =>
             handleFilter({ category: option, level })
           }
@@ -47,6 +48,7 @@ const CoursesFilter = ({ loading }: CoursesFilterProps) => {
           value={level}
           disabled={loading}
           label="DIFICULDADE"
+          dataCy="level"
           onChange={(option: string) =>
             handleFilter({ category, level: option })
           }

@@ -9,9 +9,17 @@ interface SelectProps {
   label: string;
   disabled?: boolean;
   onChange: (value: string) => void;
+  dataCy?: string;
 }
 
-const Select = ({ options, value, label, disabled, onChange }: SelectProps) => {
+const Select = ({
+  options,
+  value,
+  label,
+  disabled,
+  onChange,
+  dataCy,
+}: SelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const selectRef = useRef<HTMLDivElement>(null);
 
@@ -57,6 +65,7 @@ const Select = ({ options, value, label, disabled, onChange }: SelectProps) => {
         } inline-flex justify-between w-full capitalize rounded-md shadow-sm px-5 py-4 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition`}
         aria-haspopup="true"
         aria-expanded={isOpen}
+        data-cy={dataCy}
       >
         {getLabelByValue(value) || "Padrão"}
         <Icon
