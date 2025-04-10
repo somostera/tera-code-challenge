@@ -3,7 +3,7 @@ import coursesData from "../../data/courses.json";
 const loadingTime = 1500;
 const course = coursesData.courses.find((course) => course.id === 1) as Course;
 
-describe("Home page tests", () => {
+describe("Course page tests", () => {
   beforeEach(() => {
     cy.visit("/course/1");
   });
