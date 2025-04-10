@@ -8,7 +8,7 @@ const Navbar = () => {
         <Link href="/">
           <Icon
             name="logoColor"
-            className="h-10 w-40 cursor-pointer"
+            className="h-8 w-30 cursor-pointer"
             viewBox="0 0 422 116"
           />
         </Link>
