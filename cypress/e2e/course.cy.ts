@@ -13,7 +13,7 @@ describe("Course page tests", () => {
     cy.contains(course.category).should("be.visible");
   });
 
-  it("should test category filter dropdown", () => {
+  it("should test enroll course", () => {
     const enrollSelectBtn = cy.get("button[data-cy='enroll']");
     enrollSelectBtn.click();
 
