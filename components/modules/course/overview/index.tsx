@@ -16,7 +16,9 @@ const OverviewCourse = async ({ course }: OverviewCourseProps) => {
         {course.modules.map((module, index) => (
           <details key={index} className="group border-b border-gray-200">
             <summary className="flex justify-between items-center py-4 cursor-pointer text-gray-800 text-md font-semibold bg-gray-50 px-5">
-              <span>{module.title}</span>
+              <span>
+                {index + 1}. {module.title}
+              </span>
               <Icon
                 name="arrowDown"
                 className="w-5 h-5 transition-transform duration-300 group-open:rotate-180"
