@@ -1,6 +1,6 @@
+import "./globals.css";
 import type { Metadata } from "next";
 import { Anton } from "next/font/google";
-import "./globals.css";
 import { SkipLink } from "@/components/skip-link";
 
 const anton = Anton({
