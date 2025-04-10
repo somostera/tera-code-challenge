@@ -60,3 +60,17 @@
 - Para validar padrões no código durante o commit, é utilizado o `lint-staged`, que está configurado no arquivo `.lintstagedrc.js`. Ele executa as rotinas de formatação com `prettier`, validação do TypeScript e execução das configurações de `lint` do NEXT.
 - A formatação com `prettier` também possui um plugin adicional para o tailwind, garantindo que todas as estilizações com tailwind sigam o mesmo padrão, facilitando assim a leitura e escrita de novos estilos.
 - Antes do push, é executada a rotina de testes da aplicação, que foi escrita utilizando React Testing Library e Jest.
+
+## Executando o Projeto
+
+```
+git clone https://github.com/JeanSilva999/tera-code-challenge.git
+npm install
+
+# Modo de desenvolvimento
+npm run dev
+
+# Build de produção
+npm run build
+npm run start
+```
