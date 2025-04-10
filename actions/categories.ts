@@ -13,7 +13,11 @@ export default async function fetchCategories() {
     categoriesSet.add(course.category);
   });
 
-  const uniqueCategories = Array.from(categoriesSet);
+  const uniqueCategories = Array.from(categoriesSet).sort();
+  const formattedCategories = uniqueCategories.map((category) => ({
+    label: category,
+    value: category.toLowerCase(),
+  }));
 
-  return uniqueCategories.sort();
+  return formattedCategories;
 }

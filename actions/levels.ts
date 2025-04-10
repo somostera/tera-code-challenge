@@ -1,5 +1,6 @@
 "use server";
 
+import { LEVELS } from "@/constants/levels";
 import coursesData from "@/data/courses.json";
 
 export default async function fetchLevels() {
@@ -13,7 +14,11 @@ export default async function fetchLevels() {
     levelsSet.add(course.level);
   });
 
-  const uniqueLevels = Array.from(levelsSet);
+  const uniqueLevels = Array.from(levelsSet).sort();
+  const formattedLevels = uniqueLevels.map((level) => ({
+    label: LEVELS[level],
+    value: level,
+  }));
 
-  return uniqueLevels.sort();
+  return formattedLevels;
 }

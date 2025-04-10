@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import Icon from "@/components/common/icon";
 
 interface SelectProps {
-  options: string[];
+  options: { label: string; value: string }[];
   value: string;
   label: string;
   disabled?: boolean;
@@ -18,6 +18,10 @@ const Select = ({ options, value, label, disabled, onChange }: SelectProps) => {
   const handleOptionClick = (option: string) => {
     onChange(option);
     setIsOpen(false);
+  };
+
+  const getLabelByValue = (value: string) => {
+    return options.find((option) => option.value === value)?.label;
   };
 
   useEffect(() => {
@@ -54,7 +58,7 @@ const Select = ({ options, value, label, disabled, onChange }: SelectProps) => {
         aria-haspopup="true"
         aria-expanded={isOpen}
       >
-        {value || "Padrão"}
+        {getLabelByValue(value) || "Padrão"}
         <Icon
           name="arrowDown"
           className="h-5 w-5"
@@ -74,11 +78,11 @@ const Select = ({ options, value, label, disabled, onChange }: SelectProps) => {
             </button>
             {options.map((option) => (
               <button
-                key={option}
-                onClick={() => handleOptionClick(option)}
+                key={option.value}
+                onClick={() => handleOptionClick(option?.value)}
                 className="cursor-pointer block w-full text-left px-4 py-2 text-sm text-gray-700 rounded-md capitalize hover:bg-emerald-500 hover:text-white transition"
               >
-                {option}
+                {option.label}
               </button>
             ))}
           </div>

@@ -1,5 +1,6 @@
 import { useCoursesStore } from "@/store/courses-store";
 import { useFilterStore } from "@/store/filter-store";
+import { capitalize } from "@/utils/capitalize";
 import { useSearchParams } from "next/navigation";
 import { useCallback, useEffect } from "react";
 
@@ -14,7 +15,7 @@ export const useCourses = () => {
     const validateLevel = (searchParams.get("level") || "") === level;
 
     if (validateCategory && validateLevel) {
-      fetchCourses({ category, level });
+      fetchCourses({ category: capitalize(category), level });
     }
   }, [category, level, fetchCourses, searchParams]);
 

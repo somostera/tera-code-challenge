@@ -1,6 +1,7 @@
 "use client";
 
 import Icon from "@/components/common/icon";
+import { LEVELS } from "@/constants/levels";
 import { getLessonsNumber } from "@/utils/get-lessons-number";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -27,11 +28,11 @@ const CourseCard = ({ course, index }: CourseCardProps) => {
         height={100}
       />
       <div className="flex items-center gap-2">
-        <span className="text-emerald-600 capitalize text-xs px-3 py-1 rounded-md bg-emerald-50">
+        <span className="text-emerald-600 text-xs px-3 py-1 rounded-md bg-emerald-50">
           {course.category}
         </span>
-        <span className="text-emerald-600 capitalize text-xs px-3 py-1 rounded-md bg-emerald-50">
-          {course.level}
+        <span className="text-emerald-600 text-xs px-3 py-1 rounded-md bg-emerald-50">
+          {LEVELS[course.level]}
         </span>
       </div>
       <Link href={`/course/${course.id}`}>

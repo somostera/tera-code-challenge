@@ -1,4 +1,4 @@
 interface Filter {
-  category: string;
-  level: string;
+  category: Category;
+  level: Level;
 }

@@ -6,11 +6,11 @@ interface FilterState {
   category: string;
   level: string;
   categories: {
-    data: Category[] | null;
+    data: { label: string; value: string }[] | null;
     loading: boolean;
   };
   levels: {
-    data: Level[] | null;
+    data: { label: string; value: string }[] | null;
     loading: boolean;
   };
   setCategory: (category: string) => void;

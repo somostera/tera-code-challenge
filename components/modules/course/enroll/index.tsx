@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useEnroll } from "@/hooks/useEnroll";
+import { LEVELS } from "@/constants/levels";
 
 interface EnrollCourseProps {
   course: Course;
@@ -70,7 +71,7 @@ const EnrollCourse = ({ course }: EnrollCourseProps) => {
               </span>
             </div>
             <span className="text-gray-500 text-md capitalize">
-              {course.level}
+              {LEVELS[course.level]}
             </span>
           </div>
           <button
