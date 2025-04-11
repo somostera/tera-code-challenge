@@ -97,6 +97,26 @@ Este projeto foi desenvolvido como parte de um processo seletivo. O desafio cons
 
 ---
 
+## ⚙️ Como executar os testes
+
+1. Para executar os testes unitários:
+
+```bash
+npm test
+```
+
+2. Para executar os testes end-to-end:
+
+```bash
+# Executar o projeto
+npm run dev
+
+# Abrir a interface do Cypress
+npm run cypress
+```
+
+---
+
 ## ✅ Escolhas Técnicas e Justificativas
 
 - Zustand foi escolhido pela familiaridade, escalabilidade e ótima integração Client Components sem depender de um provider.
