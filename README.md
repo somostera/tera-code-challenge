@@ -78,21 +78,18 @@ Este projeto foi desenvolvido como parte de um processo seletivo. O desafio cons
    ```bash
    git clone https://github.com/romaopedro199/courses-nextjs-app.git
    cd courses-nextjs-app
-
    ```
 
 2. Instale as dependências:
 
    ```bash
    npm install
-
    ```
 
 3. Execute o projeto:
 
    ```bash
    npm run dev
-
    ```
 
 4. Acesse no navegador:
