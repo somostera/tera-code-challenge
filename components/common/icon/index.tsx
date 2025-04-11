@@ -201,6 +201,15 @@ const icons = {
       strokeLinejoin="round"
     />
   ),
+  loader: (
+    <path
+      d="M12 3V6M12 18V21M6 12H3M21 12H18M5.63672 5.63672L7.75977 7.75977M16.2422 16.2422L18.3633 18.3633M18.3652 5.63477L16.2441 7.75586M7.75781 16.2422L5.63477 18.3652"
+      stroke="currentColor"
+      strokeWidth="1.3"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  ),
 };
 
 const Icon = ({ name, ...props }: IconProps) => {

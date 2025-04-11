@@ -8,4 +8,5 @@ type Icon =
   | "address"
   | "emptyFolder"
   | "fullArrowLeft"
-  | "checkDouble";
+  | "checkDouble"
+  | "loader";
