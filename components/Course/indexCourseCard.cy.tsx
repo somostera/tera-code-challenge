@@ -7,6 +7,7 @@ const mockCourse = {
   category: "Desenvolvimento",
   level: "iniciante",
   duration_hours: 10,
+  image_url: "https://media.istockphoto.com/id/1356364268/photo/close-up-focus-on-persons-hands-typing-on-the-desktop-computer-keyboard-screens-show-coding.webp?a=1&b=1&s=612x612&w=0&k=20&c=rLOBLfP2c6SKAXPAoZZndGm0OhF6QT-t3a_kQvzIePU=",
   modules: [
     { title: "Introdução ao UX Design", lessons: 4 },
     { title: "Pesquisa com Usuários", lessons: 5 },
