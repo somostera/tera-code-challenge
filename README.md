@@ -7,6 +7,7 @@
 - Tailwind v4
 - TypeScript
 - React Testing Library / Jest
+- Cypress
 
 ## Implementação da Solução
 
@@ -60,6 +61,7 @@
 - Para validar padrões no código durante o commit, é utilizado o `lint-staged`, que está configurado no arquivo `.lintstagedrc.js`. Ele executa as rotinas de formatação com `prettier`, validação do TypeScript e execução das configurações de `lint` do NEXT.
 - A formatação com `prettier` também possui um plugin adicional para o tailwind, garantindo que todas as estilizações com tailwind sigam o mesmo padrão, facilitando assim a leitura e escrita de novos estilos.
 - Antes do push, é executada a rotina de testes da aplicação, que foi escrita utilizando React Testing Library e Jest.
+- Além de utilizar o React Testing Library e o Jest, também utilizei o Cypress para validar o fluxo de usuário na aplicação. Para testes unitários ou de integração, prefiro o React Testing Library em conjunto com o Jest, pois é um runtime de testes mais leve e enxuto, permitindo executar uma rotina de testes de forma relativamente rápida. Já para a validação de jornadas de usuário, que envolvem múltiplas etapas, como o estado da URL e a transição entre páginas, opto pelo Cypress devido à sua capacidade de simular um ambiente fiel ao que o usuário final utiliza, tendo a oportunidade de simular um navegador completo.
 
 ## Executando o Projeto
 
