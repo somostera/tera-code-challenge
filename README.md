@@ -16,7 +16,7 @@ Este projeto foi desenvolvido como parte de um processo seletivo. O desafio cons
 
 ## 🔗 Deploy
 
-Acesse: [https://courses-nextjs-8pn7yl8l3-romaopedro199s-projects.vercel.app/](https://courses-nextjs-8pn7yl8l3-romaopedro199s-projects.vercel.app/)
+Acesse: [https://courses-nextjs-app.vercel.app/](https://courses-nextjs-app.vercel.app/)
 
 ---
 
