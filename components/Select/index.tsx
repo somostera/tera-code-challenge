@@ -37,7 +37,7 @@ const CustomSelect: React.FC<SelectProps> = ({
     <div className="relative w-full max-w-xs" ref={ref}>
       <button
         onClick={() => setOpen((prev) => !prev)}
-        className="w-full text-left px-4 py-3 bg-white dark:bg-zinc-800 border border-gray-300 dark:border-zinc-700 rounded-xl shadow-md text-sm text-gray-700 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 flex items-center justify-between"
+        className="w-full text-left px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-xl shadow-md text-sm text-gray-700 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-green-500 flex items-center justify-between"
       >
         <span>{selectedOption?.label || placeholder}</span>
         <svg

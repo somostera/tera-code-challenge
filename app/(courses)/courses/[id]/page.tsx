@@ -8,7 +8,7 @@ import { Course, Module } from "@/types";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { enrol } from "@/actions/enrol";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import Image from "next/image";
 import { BadgeCheck, Calendar, Clock, Layers, Video } from "lucide-react";
 
@@ -53,8 +53,9 @@ export default function CourseDetailPage() {
       className='max-w-7xl mx-auto px-4 py-10 min-h-screen gap-10'
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4 }}
+      transition={{ duration: 0.1 }}
     >
+      <ToastContainer /> 
       <motion.div
         className='flex flex-col md:flex-row gap-8 mb-12 items-start'
         initial={{ opacity: 0, y: 10 }}
