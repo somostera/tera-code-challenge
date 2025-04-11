@@ -4,6 +4,16 @@ Este projeto foi desenvolvido como parte de um processo seletivo. O desafio cons
 
 ---
 
+## 📷 Screenshots
+
+1. Início:
+   ![Home Page](https://i.ibb.co/PsLGk1JS/Captura-de-tela-2025-04-10-224613.png)
+
+2. Detalhes:
+   ![Course Details Page](https://i.ibb.co/bRg47yBT/Captura-de-tela-2025-04-10-224648.png)
+
+---
+
 ## 🔗 Deploy
 
 > (...)
