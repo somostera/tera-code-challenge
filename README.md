@@ -12,8 +12,8 @@
 
 ### Rotas de API
 
-- Para realizar o fetch dos dados fornecidos no JSON, criei rotas no NEXT utilizando o arquivo `route.ts`, presente em `app/api/courses/[[...id]]`.
-- A rota aceita um parâmetro opcional, sendo este o ID de um curso específico. Ao utilizar o método GET em `/api/courses`, é retornada a listagem de todos os cursos. Já ao utilizar o método GET em `/api/courses/:ID`, é retornado o curso selecionado caso exista; caso contrário, o usuário recebe um erro 404 para indicar que o curso não foi encontrado.
+- Para realizar o fetch dos dados fornecidos no JSON, criei rotas no NEXT utilizando o arquivo `route.ts`, presente em `app/api/courses` e `app/api/courses/[id]`.
+- Ao utilizar o método GET em `/api/courses`, é retornada a listagem de todos os cursos. Já ao utilizar o método GET em `/api/courses/:id`, é retornado o curso selecionado caso exista; caso contrário, o usuário recebe um erro 404 para indicar que o curso não foi encontrado.
 
 ### Rotas de Página
 
@@ -24,7 +24,7 @@
 - Na página inicial index - `/`, o prerender da listagem de cursos acontece pelo lado do servidor, para garantir boas métricas de SEO.
 - As páginas possuem título e descrição dinâmica com base nos dados do curso, para melhorar o ranqueamento através das engines de busca.
 - Caso a filtragem de cursos seja feita utilizando parâmetros que não retornam um resultado, o usuário é apresentado com uma UI de fallback para ser avisado que sua busca não lhe trouxe cursos.
-- A função que pega os dados do servidor possui um cache com revalidação de uma hora, para melhorar a experiência de carregamento ao usuário.
+- As funções que pegam os dados do servidor possuem um cache com revalidação de uma hora, para melhorar a experiência de carregamento ao usuário.
 - Somente os componentes `<CardList/>`, `<Enroll/>`, `<SearchForm/>` e o provider de cursos `<CoursesProvider/>` possuem a diretiva `use client`, marcando estes componentes para serem reidratados no lado do cliente após a renderização inicial, enviando assim a menor quantidade de javascript do servidor ao cliente.
 - As imagens da aplicação utilizam o componente `<Image/>` do NEXT. Elas recebem o atributo `priority` como `true`, para que seja realizado o preload do conteúdo da imagem ainda antes da renderização, melhorando as métricas de First Contentful Paint (FCP).
 - As imagens também recebem o atributo `width` e `height` explícitos para que o NEXT possa calcular sua proporção (aspect-ratio), evitando assim métricas ruins de Cumulative Layout Shift (CLS).
