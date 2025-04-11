@@ -11,5 +11,6 @@ export type Module = {
     level: string;
     duration_hours: number;
     modules: Module[];
+    image_url: string;
   };
   

@@ -1,30 +1,32 @@
 import { Course } from "@/types";
+import { motion } from "framer-motion";
 import React from "react";
+import CourseCard from "../Course/Card";
 
 export default function CourseList({ courses }: { courses: Course[] }) {
   return (
-    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <motion.div
+      className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'
+      initial='hidden'
+      animate='visible'
+      variants={{
+        hidden: {},
+        visible: {
+          transition: { staggerChildren: 0.1 },
+        },
+      }}
+    >
       {courses.map((course) => (
-        <div
+        <motion.div
           key={course.id}
-          className="bg-white dark:bg-gray-800 shadow dark:shadow-md rounded-lg p-6 hover:shadow-lg dark:hover:shadow-xl transition"
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            visible: { opacity: 1, y: 0 },
+          }}
         >
-          <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">
-            {course.title}
-          </h3>
-          <p className="text-gray-600 dark:text-gray-300 text-sm mb-2">
-            {course.short_description}
-          </p>
-          <div className="text-sm text-gray-500 dark:text-gray-400 mb-2">
-            <span className="block">Categoria: {course.category}</span>
-            <span className="block capitalize">Nível: {course.level}</span>
-            <span className="block">Duração: {course.duration_hours}h</span>
-          </div>
-          <button className="mt-2 text-blue-600 dark:text-blue-400 hover:underline text-sm">
-            Ver detalhes
-          </button>
-        </div>
+          <CourseCard course={course} />
+        </motion.div>
       ))}
-    </div>
+    </motion.div>
   );
 }

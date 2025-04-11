@@ -1,4 +1,4 @@
-import CourseCard from "@/components/Card/Course";
+import CourseCard from "@/components/Course/Card";
 
 const mockCourse = {
   id: 123,

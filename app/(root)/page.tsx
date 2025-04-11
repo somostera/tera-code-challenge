@@ -1,9 +1,11 @@
 "use client";
 
-import CourseCard from "@/components/Card/Course";
+import CourseList from "@/components/List/Courses";
+import Select from "@/components/Select";
+import { levelOptions } from "@/constants/levels";
 import { useCoursesStore } from "@/store/Courses";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
@@ -15,6 +17,7 @@ export default function CoursesPage() {
     level,
     setLevel,
     fetchCourses,
+    courses,
   } = useCoursesStore();
 
   const [loading, setLoading] = useState(true);
@@ -28,6 +31,16 @@ export default function CoursesPage() {
     loadData();
   }, [fetchCourses]);
 
+  const categoryOptions = useMemo(() => {
+    const uniqueCategories = Array.from(
+      new Set(courses.map((course) => course.category))
+    );
+    return uniqueCategories.map((cat) => ({
+      value: cat,
+      label: cat,
+    }));
+  }, [courses]);
+
   return (
     <motion.main
       className='p-6 max-w-7xl mx-auto'
@@ -35,34 +48,39 @@ export default function CoursesPage() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.4 }}
     >
+      <motion.header
+        className='mb-10 text-center'
+        initial={{ y: -10, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <h1 className='text-4xl font-bold mb-4 text-gray-900 dark:text-white'>
+          Descubra o curso ideal para você
+        </h1>
+        <p className='text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto'>
+          Explore nossa seleção de cursos especialmente desenvolvidos para ampliar seus conhecimentos, aprimorar habilidades técnicas e impulsionar sua carreira. Utilize os filtros abaixo para refinar sua busca por categoria ou nível de dificuldade.
+        </p>
+      </motion.header>
+
       <motion.div
         className='flex flex-col sm:flex-row gap-4 mb-8'
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.4 }}
       >
-        <select
+        <Select
           value={category}
-          onChange={(e) => setCategory(e.target.value)}
-          className='border border-gray-300 bg-white text-gray-700 dark:border-zinc-700 dark:bg-gray-900 dark:text-gray-100 px-4 py-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition'
-        >
-          <option value=''>Todas as categorias</option>
-          <option value='Design'>Design</option>
-          <option value='Desenvolvimento'>Desenvolvimento</option>
-          <option value='Produto'>Produto</option>
-          <option value='Dados'>Dados</option>
-        </select>
+          onChange={setCategory}
+          options={categoryOptions}
+          placeholder='Todas as categorias'
+        />
 
-        <select
+        <Select
           value={level}
-          onChange={(e) => setLevel(e.target.value)}
-          className='border border-gray-300 bg-white text-gray-700 dark:border-zinc-700 dark:bg-gray-900 dark:text-gray-100 px-4 py-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition'
-        >
-          <option value=''>Todos os níveis</option>
-          <option value='iniciante'>Iniciante</option>
-          <option value='intermediario'>Intermediário</option>
-          <option value='avancado'>Avançado</option>
-        </select>
+          onChange={setLevel}
+          options={levelOptions}
+          placeholder='Todos os níveis'
+        />
       </motion.div>
 
       {loading ? (
@@ -86,29 +104,7 @@ export default function CoursesPage() {
           Nenhum curso encontrado.
         </p>
       ) : (
-        <motion.div
-          className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'
-          initial='hidden'
-          animate='visible'
-          variants={{
-            hidden: {},
-            visible: {
-              transition: { staggerChildren: 0.1 },
-            },
-          }}
-        >
-          {filteredCourses.map((course) => (
-            <motion.div
-              key={course.id}
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 },
-              }}
-            >
-              <CourseCard course={course} />
-            </motion.div>
-          ))}
-        </motion.div>
+        <CourseList courses={filteredCourses} />
       )}
     </motion.main>
   );
