@@ -107,3 +107,7 @@ npm run cypress:open
 ```
 v22.13.1
 ```
+
+## Preview do Projeto
+
+[https://tera-code-challenge-jade.vercel.app/](https://tera-code-challenge-jade.vercel.app/)
