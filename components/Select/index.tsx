@@ -33,6 +33,11 @@ const CustomSelect: React.FC<SelectProps> = ({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const finalOptions = [
+    { value: "", label: placeholder },
+    ...options,
+  ];
+
   return (
     <div className="relative w-full max-w-xs" ref={ref}>
       <button
@@ -55,7 +60,7 @@ const CustomSelect: React.FC<SelectProps> = ({
 
       {open && (
         <ul className="absolute z-10 mt-2 w-full rounded-xl bg-white dark:bg-zinc-800 border border-gray-300 dark:border-zinc-700 shadow-lg max-h-60 overflow-auto text-sm">
-          {options.map((option) => (
+          {finalOptions.map((option) => (
             <li
               key={option.value}
               onClick={() => {
