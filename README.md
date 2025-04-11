@@ -21,7 +21,7 @@ Este projeto foi desenvolvido como parte de um processo seletivo. O desafio cons
 - **Framer Motion**
 - **Cypress**
 - **Jest**
-- **Testing Lybrary**
+- **Testing Library**
 
 ---
 
@@ -66,7 +66,7 @@ Este projeto foi desenvolvido como parte de um processo seletivo. O desafio cons
 
 - Animações com Framer Motion para transições
 - UI responsiva com Tailwind CSS
-- Testes unitários com Jest e Testing Lybrary
+- Testes unitários com Jest e Testing Library
 - Testes end-to-end com Cypress
 
 ---
