@@ -111,3 +111,7 @@ v22.13.1
 ## Preview do Projeto
 
 [https://tera-code-challenge-jade.vercel.app/](https://tera-code-challenge-jade.vercel.app/)
+
+## Métricas de Performance Com PageSpeed Insights
+
+- [https://pagespeed.web.dev/analysis/https-tera-code-challenge-jade-vercel-app/nwmwh4m4jm?form_factor=desktop](https://pagespeed.web.dev/analysis/https-tera-code-challenge-jade-vercel-app/nwmwh4m4jm?form_factor=desktop)
