@@ -8,6 +8,11 @@
 - TypeScript
 - React Testing Library / Jest
 - Cypress
+- Husky
+- Lint-Staged
+- Commitlint
+- Prettier
+- Prettier Plugin Tailwind
 
 ## Implementação da Solução
 
@@ -75,4 +80,30 @@ npm run dev
 # Build de produção
 npm run build
 npm run start
+```
+
+## Executando a Rotina de Testes
+
+```
+npm run test
+```
+
+## Executando lint-staged Para Validar Arquivos
+
+```
+npx lint-staged
+```
+
+## Executando a Rotina de Testes End-to-End
+
+Para executar o Cypress no Linux se atente aos requisitos de instalação presente na [documentação](https://docs.cypress.io/app/get-started/install-cypress#Linux-Prerequisites)
+
+```
+npm run cypress:open
+```
+
+## Versão do Node
+
+```
+v22.13.1
 ```
