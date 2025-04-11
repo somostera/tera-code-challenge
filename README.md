@@ -88,6 +88,7 @@ Este projeto foi desenvolvido como parte de um processo seletivo. O desafio cons
    ```bash
    git clone https://github.com/romaopedro199/courses-nextjs-app.git
    cd courses-nextjs-app
+   # Verifique se está na branch correta
    ```
 
 2. Instale as dependências:
@@ -96,13 +97,19 @@ Este projeto foi desenvolvido como parte de um processo seletivo. O desafio cons
    npm install
    ```
 
-3. Execute o projeto:
+3. Configure o arquivo .env.local:
+
+   ```bash
+   NEXT_PUBLIC_SITE_URL=http://localhost:3000
+   ```
+
+4. Execute o projeto:
 
    ```bash
    npm run dev
    ```
 
-4. Acesse no navegador:
+5. Acesse no navegador:
    http://localhost:3000
 
 ---
@@ -111,19 +118,19 @@ Este projeto foi desenvolvido como parte de um processo seletivo. O desafio cons
 
 1. Para executar os testes unitários:
 
-```bash
-npm test
-```
+   ```bash
+   npm test
+   ```
 
 2. Para executar os testes end-to-end:
 
-```bash
-# Executar o projeto
-npm run dev
+   ```bash
+   # Executar o projeto
+   npm run dev
 
-# Abrir a interface do Cypress
-npm run cypress
-```
+   # Abrir a interface do Cypress
+   npm run cypress
+   ```
 
 ---
 
