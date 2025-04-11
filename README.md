@@ -1,313 +1,117 @@
-# Tera Code Challenge
+# Tera Code Challenge - Jean Silva
 
-## Objetivo
+## Tecnologias Utilizadas
 
-Desenvolver uma aplicação web simples que demonstre suas habilidades com Next.js, React Server Components, Server Actions e gerenciamento de estado no cliente.
+- NEXT 15
+- React 19
+- Tailwind v4
+- TypeScript
+- React Testing Library / Jest
+- Cypress
+- Husky
+- Lint-Staged
+- Commitlint
+- Prettier
+- Prettier Plugin Tailwind
 
-## Requisitos
+## Implementação da Solução
 
-### Tecnologias Obrigatórias
-- [Next.js (v15+, App router)](https://nextjs.org/)
-- [React Server Components](https://react.dev/reference/rsc/server-components#server-components-with-a-server)
-- [Server Actions](https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations)
-- [Tailwind CSS (v4+)](https://tailwindcss.com/)
-- Uma library de state management à sua escolha
+### Rotas de API
 
-### Funcionalidades
+- Para realizar o fetch dos dados fornecidos no JSON, criei rotas no NEXT utilizando o arquivo `route.ts`, presente em `app/api/courses` e `app/api/courses/[id]`.
+- Ao utilizar o método GET em `/api/courses`, é retornada a listagem de todos os cursos. Já ao utilizar o método GET em `/api/courses/:id`, é retornado o curso selecionado caso exista; caso contrário, o usuário recebe um erro 404 para indicar que o curso não foi encontrado.
 
-#### 1. Página Principal - Catálogo de Cursos
-- Criar uma página principal que exiba um catálogo de cursos utilizando SSR
-- Os dados devem ser do JSON fornecido ao final deste documento
-- A página deve mostrar os cursos em cards com:
-  - Título do curso
-  - Descrição curta
-  - Categoria
-  - Nível de dificuldade
+### Rotas de Página
 
-#### 2. Funcionalidade de Filtros (Estado Client-Side)
-- Implementar filtros para os cursos por:
-  - Categoria (todas categorias disponíveis no JSON)
-  - Nível de dificuldade (iniciante, intermediário, avançado)
-- Os filtros devem ser gerenciados com estado client-side
-- A filtragem deve acontecer sem recarregar a página
+- Na aplicação temos as páginas index - `/`, curso específico - `/courses/:id` e página de erro 404.
 
-#### 3. Detalhe do Curso
-- Ao clicar em um curso, exibir uma página de detalhes com:
-  - Todas as informações do curso
-  - Lista de módulos
-  - Botão para "Matricular-se" chamando uma Server Action apropriada (a action não precisa fazer nada, apenas retornar sucesso)
+### Performance e SEO
 
-#### 4. Bônus (opcional)
-- Utilizar framer-motion para animações ou transições
+- Na página inicial index - `/`, o prerender da listagem de cursos acontece pelo lado do servidor, para garantir boas métricas de SEO.
+- As páginas possuem título e descrição dinâmica com base nos dados do curso, para melhorar o ranqueamento através das engines de busca.
+- Caso a filtragem de cursos seja feita utilizando parâmetros que não retornam um resultado, o usuário é apresentado com uma UI de fallback para ser avisado que sua busca não lhe trouxe cursos.
+- As funções que pegam os dados do servidor possuem um cache com revalidação de uma hora, para melhorar a experiência de carregamento ao usuário.
+- Somente os componentes `<CardList/>`, `<Enroll/>`, `<SearchForm/>` e o provider de cursos `<CoursesProvider/>` possuem a diretiva `use client`, marcando estes componentes para serem reidratados no lado do cliente após a renderização inicial, enviando assim a menor quantidade de javascript do servidor ao cliente.
+- As imagens da aplicação utilizam o componente `<Image/>` do NEXT. Elas recebem o atributo `priority` como `true`, para que seja realizado o preload do conteúdo da imagem ainda antes da renderização, melhorando as métricas de First Contentful Paint (FCP).
+- As imagens também recebem o atributo `width` e `height` explícitos para que o NEXT possa calcular sua proporção (aspect-ratio), evitando assim métricas ruins de Cumulative Layout Shift (CLS).
+- As fontes utilizadas na aplicação são disponibilizadas pelo `next/font/google`, para que o NEXT, em tempo de build, compile estes assets estáticos, evitando também métricas ruins de Cumulative Layout Shift (CLS) quando o layout muda de tamanho ao carregar uma fonte externamente pela rede.
+- A transição entre a página index - `/` e a página de detalhes do curso `/courses/:id` é realizada utilizando um `loading.tsx`, garantindo assim ao usuário um feedback instantâneo para a troca de página. No arquivo `loading.tsx` é implementado um loading skeleton para que o usuário possa ter um feedback do conteúdo que está sendo carregado.
+- Caso o ID de um curso não seja encontrado ao tentar acessar a rota `/courses/:id`, o usuário é redirecionado para a página de erro 404.
 
-## Critérios de Avaliação
+### Acessibilidade
 
-Seu projeto será avaliado com base nos seguintes critérios:
+- No arquivo `layout.tsx` está presente o componente `<SkipLink/>`, e as tags `main` da aplicação são inseridas através do componente `<MainLandmark/>`. Esta implementação visa trazer para usuários de tecnologias assistivas uma maneira de pular a navegação através dos controles do teclado, proporcionando assim uma experiência mais inclusiva de navegação.
+- Os componentes interativos da página, como botões, inputs e formulários, possuem labels que os referenciam, permitindo que leitores de tela possam entender o significado de tais campos.
+- Os componentes `<Card/>` implementam feedback visual de foco através da classe utility `focus:` do tailwind, para que usuários de tecnologias assistivas que também realizam a navegação pelo teclado possam ter um feedback de qual item eles estão interagindo.
+- Os componentes `<Card/>` possuem uma configuração de animação para reduced motion através da classe utility `motion-reduce:` do tailwind, para remover a animação de hover e foco caso o usuário opte por navegar sem animações configuradas em seu sistema operacional.
+- Imagens que possuem significado, como a logo do header, possuem um atributo `alt` para leitores de tela, e imagens que são apenas adereços visuais possuem atributo `alt` como uma string vazia.
+- O componente `<Enroll/>`, que realiza a inscrição de um aluno em um curso, possui o atributo `aria-live`, para que, quando o valor seja alterado, leitores de tela também sejam acionados e deem ao usuário um feedback da nova informação.
 
-1. **Qualidade do código**
-   - Clean code, legibilidade e organização
-   - Componentização adequada
-   - Tipos apropriados (TypeScript é um diferencial)
-   - Ser executado sem erros depois de `npm install` e `npm run dev`
+### Estilização
 
-2. **Uso correto das tecnologias**
-   - Implementação adequada de Server Components e Server Actions
-   - Uso apropriado de Client Components apenas onde necessário
-   - Gerenciamento eficiente de estado client-side
+- Para a configuração de cores foram utilizadas variáveis do tailwind através do `@theme inline`, pensando na possibilidade de alteração de cores com facilidade no futuro, sendo necessário apenas alterar os valores das variáveis.
 
-3. **Experiência do usuário**
-   - Interface visual agradável e responsiva
-   - Feedback ao usuário durante carregamentos e ações
+### Gerenciamento de Estado
 
-4. **Performance**
-   - Otimização de renderização
-   - Carregamento eficiente de dados
+- Optei por utilizar uma abordagem baseada na utilização de Context para gerenciar o estado da filtragem de cursos pelo client-side. Optei por esta abordagem por julgar que a manipulação de estado para o requisito proposto era simples o suficiente para não ser necessária a instalação de outra biblioteca no projeto, diminuindo assim a necessidade de gerenciar novas dependências e mantendo o bundle do javascript o menor possível. A implementação se baseia na utilização de dois contextos: um para a injeção de dependência do estado e outro para a injeção de dependência da função dispatch, que realiza alterações neste estado. Essa implementação, separando os dois contextos, permite que seja possível realizar a atualização do estado na tela sem renderizar novamente componentes que apenas chamam a função dispatch, como é o caso do componente `<SearchForm/>` e a listagem com o `<CardList/>`.
 
-## Entrega
+### Implementação Adicional
 
-- Crie um fork deste repositório no GitHub
-- Ao final, abra um PR atualizando este README com:
-  - Instruções para executar o projeto
-  - Escolhas técnicas e justificativas
-  - Desafios enfrentados e soluções aplicadas
-- O prazo para entrega é de 5 dias corridos
+- Realizei a implementação da inicialização dos filtros de busca com base no estado da URL e a alteração destes filtros sem recarregamento de página utilizando `replaceState`. Esta implementação foi pensada no caso em que um usuário quer compartilhar a pesquisa de um determinado curso com outra pessoa, sem que esta outra pessoa precise filtrar novamente a pesquisa com os mesmos parâmetros.
 
-## Dicas
+### Ferramentas de Qualidade de Código
 
-- Foque primeiro na funcionalidade principal antes de adicionar recursos extras ou estilizações
-- Utilize as documentações fornecidas acima para entender bem Server Components e Server Actions
-- Considere a experiência do usuário, mesmo sendo um teste técnico
-- Não se preocupe com autenticação ou persistência de dados além do que foi solicitado
+- Husky para se integrar aos Git Hooks.
+- Para a padronização dos commits do projeto, está configurado o `commitlint`, para impedir mensagens de commit que não sejam adequadas ao padrão estabelecido pela configuração.
+- Para validar padrões no código durante o commit, é utilizado o `lint-staged`, que está configurado no arquivo `.lintstagedrc.js`. Ele executa as rotinas de formatação com `prettier`, validação do TypeScript e execução das configurações de `lint` do NEXT.
+- A formatação com `prettier` também possui um plugin adicional para o tailwind, garantindo que todas as estilizações com tailwind sigam o mesmo padrão, facilitando assim a leitura e escrita de novos estilos.
+- Antes do push, é executada a rotina de testes da aplicação, que foi escrita utilizando React Testing Library e Jest.
+- Além de utilizar o React Testing Library e o Jest, também utilizei o Cypress para validar o fluxo de usuário na aplicação. Para testes unitários ou de integração, prefiro o React Testing Library em conjunto com o Jest, pois é um runtime de testes mais leve e enxuto, permitindo executar uma rotina de testes de forma relativamente rápida. Já para a validação de jornadas de usuário, que envolvem múltiplas etapas, como o estado da URL e a transição entre páginas, opto pelo Cypress devido à sua capacidade de simular um ambiente fiel ao que o usuário final utiliza, tendo a oportunidade de simular um navegador completo.
 
-Boa sorte! Estamos ansiosos para ver sua solução.
+## Executando o Projeto
 
-----
-
-### Dados
-
-```json
-{
-  "courses": [
-    {
-      "id": 1,
-      "title": "UX Design Fundamentals",
-      "short_description": "Aprenda os fundamentos de UX Design e crie experiências incríveis",
-      "full_description": "Este curso aborda os princípios fundamentais de User Experience Design, desde pesquisa com usuários até prototipagem. Você aprenderá metodologias práticas para criar produtos digitais centrados no usuário.",
-      "category": "Design",
-      "level": "iniciante",
-      "duration_hours": 20,
-      "modules": [
-        {
-          "title": "Introdução ao UX Design",
-          "lessons": 4
-        },
-        {
-          "title": "Pesquisa com Usuários",
-          "lessons": 5
-        },
-        {
-          "title": "Prototipagem e Testes",
-          "lessons": 6
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "title": "React Avançado",
-      "short_description": "Domine conceitos avançados de React e construa aplicações complexas",
-      "full_description": "Este curso aprofunda os conceitos avançados do React, incluindo hooks personalizados, context API, otimização de performance e integração com APIs externas. Ideal para quem já conhece os fundamentos e quer se tornar um especialista.",
-      "category": "Desenvolvimento",
-      "level": "avancado",
-      "duration_hours": 30,
-      "modules": [
-        {
-          "title": "Hooks Avançados",
-          "lessons": 7
-        },
-        {
-          "title": "Gerenciamento de Estado",
-          "lessons": 8
-        },
-        {
-          "title": "Performance e Otimização",
-          "lessons": 6
-        },
-        {
-          "title": "Testes e Deployment",
-          "lessons": 5
-        }
-      ]
-    },
-    {
-      "id": 3,
-      "title": "Product Management 101",
-      "short_description": "Inicie sua carreira em gestão de produtos digitais",
-      "full_description": "Este curso introdutório à Gestão de Produtos aborda desde a definição de visão e estratégia até metodologias ágeis para execução. Ideal para quem quer iniciar na carreira ou profissionais que desejam formalizar seus conhecimentos.",
-      "category": "Produto",
-      "level": "iniciante",
-      "duration_hours": 25,
-      "modules": [
-        {
-          "title": "Fundamentos de Produto",
-          "lessons": 5
-        },
-        {
-          "title": "Descoberta e Validação",
-          "lessons": 6
-        },
-        {
-          "title": "Métricas e Analytics",
-          "lessons": 4
-        },
-        {
-          "title": "Execução e Delivery",
-          "lessons": 5
-        }
-      ]
-    },
-    {
-      "id": 4,
-      "title": "Data Science para Produto",
-      "short_description": "Use dados para tomar melhores decisões de produto",
-      "full_description": "Este curso ensina como utilizar ciência de dados para embasar decisões de produto. Desde análise exploratória até testes A/B e modelos preditivos, você aprenderá a extrair insights valiosos de dados para criar produtos melhores.",
-      "category": "Dados",
-      "level": "intermediario",
-      "duration_hours": 35,
-      "modules": [
-        {
-          "title": "Fundamentos de Análise de Dados",
-          "lessons": 6
-        },
-        {
-          "title": "Métricas para Produto",
-          "lessons": 5
-        },
-        {
-          "title": "Testes A/B",
-          "lessons": 7
-        },
-        {
-          "title": "Modelos Preditivos",
-          "lessons": 8
-        }
-      ]
-    },
-    {
-      "id": 5,
-      "title": "IA Generativa para Designers",
-      "short_description": "Aprenda a usar IA para potencializar seu trabalho de design",
-      "full_description": "Este curso explora como designers podem utilizar Inteligência Artificial generativa para amplificar sua criatividade e produtividade. Desde ferramentas de geração de imagens até assistentes de design, você aprenderá a incorporar IA no seu fluxo de trabalho.",
-      "category": "Design",
-      "level": "intermediario",
-      "duration_hours": 18,
-      "modules": [
-        {
-          "title": "Fundamentos de IA Generativa",
-          "lessons": 4
-        },
-        {
-          "title": "Ferramentas de IA para Design",
-          "lessons": 6
-        },
-        {
-          "title": "Prompts e Direção Criativa",
-          "lessons": 5
-        },
-        {
-          "title": "Integrando IA no Fluxo de Trabalho",
-          "lessons": 3
-        }
-      ]
-    },
-    {
-      "id": 6,
-      "title": "Full-Stack JavaScript",
-      "short_description": "Desenvolva aplicações completas com JavaScript",
-      "full_description": "Este curso abrangente ensina desenvolvimento full-stack com JavaScript, desde o front-end com React até back-end com Node.js. Você aprenderá a construir aplicações completas, incluindo autenticação, banco de dados e deployment.",
-      "category": "Desenvolvimento",
-      "level": "intermediario",
-      "duration_hours": 45,
-      "modules": [
-        {
-          "title": "Front-end com React",
-          "lessons": 10
-        },
-        {
-          "title": "Back-end com Node.js",
-          "lessons": 12
-        },
-        {
-          "title": "Bancos de Dados",
-          "lessons": 8
-        },
-        {
-          "title": "Autenticação e Segurança",
-          "lessons": 6
-        },
-        {
-          "title": "Deployment e DevOps",
-          "lessons": 5
-        }
-      ]
-    },
-    {
-      "id": 7,
-      "title": "Product Leadership",
-      "short_description": "Desenvolva habilidades de liderança em produto",
-      "full_description": "Este curso avançado aborda os desafios e estratégias de liderança em produto. Desde gestão de times e stakeholders até definição de visão de longo prazo e estratégia de produto, ideal para PMs experientes que buscam papéis de liderança.",
-      "category": "Produto",
-      "level": "avancado",
-      "duration_hours": 30,
-      "modules": [
-        {
-          "title": "Liderança e Gestão de Times",
-          "lessons": 7
-        },
-        {
-          "title": "Estratégia e Visão de Produto",
-          "lessons": 8
-        },
-        {
-          "title": "Relacionamento com Stakeholders",
-          "lessons": 5
-        },
-        {
-          "title": "Métricas e OKRs",
-          "lessons": 6
-        },
-        {
-          "title": "Cultura de Produto",
-          "lessons": 4
-        }
-      ]
-    },
-    {
-      "id": 8,
-      "title": "Análise de Dados com Python",
-      "short_description": "Aprenda a analisar e visualizar dados com Python",
-      "full_description": "Este curso ensina análise e visualização de dados utilizando Python e suas principais bibliotecas. Desde manipulação de dados com Pandas até visualizações com Matplotlib e análises estatísticas, você aprenderá a extrair insights valiosos de conjuntos de dados complexos.",
-      "category": "Dados",
-      "level": "iniciante",
-      "duration_hours": 28,
-      "modules": [
-        {
-          "title": "Introdução ao Python para Dados",
-          "lessons": 6
-        },
-        {
-          "title": "Manipulação de Dados com Pandas",
-          "lessons": 8
-        },
-        {
-          "title": "Visualização com Matplotlib e Seaborn",
-          "lessons": 7
-        },
-        {
-          "title": "Análise Estatística Básica",
-          "lessons": 5
-        }
-      ]
-    }
-  ]
-}
 ```
+git clone https://github.com/JeanSilva999/tera-code-challenge.git
+npm install
+
+# Modo de desenvolvimento
+npm run dev
+
+# Build de produção
+npm run build
+npm run start
+```
+
+## Executando a Rotina de Testes
+
+```
+npm run test
+```
+
+## Executando lint-staged Para Validar Arquivos
+
+```
+npx lint-staged
+```
+
+## Executando a Rotina de Testes End-to-End
+
+Para executar o Cypress no Linux se atente aos requisitos de instalação presente na [documentação](https://docs.cypress.io/app/get-started/install-cypress#Linux-Prerequisites)
+
+```
+npm run cypress:open
+```
+
+## Versão do Node
+
+```
+v22.13.1
+```
+
+## Preview do Projeto
+
+[https://tera-code-challenge-jade.vercel.app/](https://tera-code-challenge-jade.vercel.app/)
+
+## Métricas de Performance Com PageSpeed Insights
+
+- [https://pagespeed.web.dev/analysis/https-tera-code-challenge-jade-vercel-app/nwmwh4m4jm?form_factor=desktop](https://pagespeed.web.dev/analysis/https-tera-code-challenge-jade-vercel-app/nwmwh4m4jm?form_factor=desktop)
