@@ -8,18 +8,39 @@
    cd learnicorn
    ```
 
-1. **Instale as dependências Certifique-se de ter o Node.js (utilizei a versão 20.17.0) instalado. Em seguida, execute:**
+---
+
+⚠️ Aviso sobre o próximo trecho
+
+Esse trecho foi adicionado **após o prazo de entrega** para facilitar a a execução do projeto, entendimento e avaliação enquanto sinaliza como estava a submissão original para que a devida penalidade na nota possa ser aplicada. Pra deixar claro, não houve mudança na implementação, apenas aqui no readme.
+
+
+1. **Vá pra branch que deseja testar (com nuqs ou com zustand) repositório (mais informações sobre o pq de ter duas implementações na seção sobre escolha de tech):**
+
+```bash
+git switch feature/with-nuqs
+
+// ou
+
+git switch feature/with-zustand
+
+```
+
+---
+
+
+3. **Instale as dependências Certifique-se de ter o Node.js (utilizei a versão 20.17.0) instalado. Em seguida, execute:**
    ```bash
    npm install
    ```
-2. **Execute o projeto rodando os seguintes comandos:**
+4. **Execute o projeto rodando os seguintes comandos:**
    ```bash
    npm run dev // roda em modo de desenvolvimento
 
    npm run build && npm run start // builda e roda o projeto em modo de produção
    ```
 
-2. **Acesse o projeto usando o navegador de sua preferência (mas no chrome/chromium tem surpresa hein) usando a porta indicada no terminal, o endereço padrão é `http://localhost:3000` :**
+3. **Acesse o projeto usando o navegador de sua preferência (mas no chrome/chromium tem surpresa hein) usando a porta indicada no terminal, o endereço padrão é `http://localhost:3000` :**
 
 
 Também fiz testes unitários e E2E. Os unitários rodam com `npm run vitest:watch` e os E2E com `npx playwright test`, mas acredito que pros testes E2E funcionarem precisa setar os navegadores. Sugiro conferir os passos [aqui](https://playwright.dev/). Ah, e os testes E2E assumem que o app vai estar rodando em `http://localhost:3000`
@@ -67,5 +88,21 @@ O arroz com feijão da qualidade de código, não dá pra ficar sem. Além do qu
 ### **tailwind-variants + tailwind-merge (componentização)**
 
 Alguns componentes como as tags de dificuldade e categoria dos cursos são ótimos candidatos pra utlização de variantes, daí usei tailwind-variants aqui por ser um pouquinho mais familiar com ele do que com CVA. Também usei tailwind merge pra implementar escape hatches (no caso foi uma só, no botão de matricula pra manter ele com tamanho fixo quando rola loading)/ter a possibilidade estilizar um componente de maneira diferente sem ter que criar uma variante nova.
+
+---
+
+⚠️ Aviso sobre o próximo trecho
+
+Esse trecho foi adicionado **após o prazo de entrega** para facilitar a a execução do projeto, entendimento e avaliação enquanto sinaliza como estava a submissão original para que a devida penalidade na nota possa ser aplicada. Pra deixar claro, não houve mudança na implementação, apenas aqui no readme.
+
+### Desafios enfrentados e soluções aplicadas
+
+No geral achei o desafio bem legal e não tive muitas dificuldades. O que me pegou mais foi dosar o tanto de componentização que era ok de fazer, fiquei com medo de passar do ponto e espalhar demais o código.
+
+Também pelejei um pouco com as View Transitions. Agarrei num bug meio chato: as transições simplesmente não estavam funcionando por mais que estivessem iguais ao exemplo que achei na internet. Eu arrisco que tenha sido por interferência do *Motion*, já que os elementos que eu queria animar com View Transitions faziam parte de uma lista que também estava usando animações da lib.
+
+Consegui resolver com um hack: adicionei uma view transition invisível fora da lista, e com isso tudo passou a funcionar normalmente.
+
+---
 
 No mais é isso. Me diverti bastante com o projeto :)
